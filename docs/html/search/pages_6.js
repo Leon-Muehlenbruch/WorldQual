@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['konfiguration_0',['Konfiguration',['../tutorial_konfiguration.html',1,'']]],
-  ['konfiguration_20von_20worldqual_1',['Konfiguration von WorldQual',['../tutorial_konfiguration.html#autotoc_md12',1,'']]]
+  ['brew_3a_20command_20not_20found_0',['Problem: &quot;brew: command not found&quot;',['../tutorial_installation.html#autotoc_md34',1,'']]]
 ];

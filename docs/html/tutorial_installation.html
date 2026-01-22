@@ -92,10 +92,160 @@ $(function(){initNavTree('tutorial_installation.html','',''); });
   <div class="headertitle"><div class="title">Installation </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
-Installation von WorldQual</h1>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
-Voraussetzungen</h2>
+<div class="textblock"><h1 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
+WorldQual Installation</h1>
+<p>Von GitHub Repository zum laufenden Programm - in 4 einfachen Schritten.</p>
+<hr  />
+<h2 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
+Schritt 1: Repository klonen</h2>
+<div class="fragment"><div class="line">git clone https://github.com/Leon-Muehlenbruch/WorldQual.git</div>
+<div class="line">cd WorldQual</div>
+</div><!-- fragment --><p>Was passiert:** Das komplette WorldQual-Projekt wird heruntergeladen.</p>
+<hr  />
+<h2 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
+Schritt 2: Dependencies installieren</h2>
+<div class="fragment"><div class="line">./install_dependencies.sh</div>
+</div><!-- fragment --><p>Was passiert:**</p><ul>
+<li>✓ Prüft, ob Homebrew installiert ist</li>
+<li>✓ Installiert MySQL (Datenbank)</li>
+<li>✓ Installiert MySQL++ (C++ Bibliothek)</li>
+<li>✓ Installiert Doxygen (Dokumentation)</li>
+<li><p class="startli">✓ Startet MySQL automatisch</p>
+<p class="startli">Dauer:** 5-10 Minuten (einmalig)</p>
+<p class="startli">Alternative (manuell):** </p><div class="fragment"><div class="line">brew install mysql@8.0 mysql-connector-c++</div>
+<div class="line">brew services start mysql@8.0</div>
+</div><!-- fragment --></li>
+</ul>
+<hr  />
+<h2 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
+Schritt 3: Kompilieren</h2>
+<div class="fragment"><div class="line">cd src/worldqual</div>
+<div class="line">make clean &amp;&amp; make</div>
+</div><!-- fragment --><p>Was passiert:** WorldQual wird kompiliert und die ausführbare Datei <span class="tt">worldqual</span> wird erstellt.</p>
+<p>Dauer:** ~10 Sekunden</p>
+<hr  />
+<h2 class="doxsection"><a class="anchor" id="autotoc_md19"></a>
+Schritt 4: Ausführen</h2>
+<div class="fragment"><div class="line">./worldqual IDrun startYear endYear</div>
+</div><!-- fragment --><p>Beispiel:** </p><div class="fragment"><div class="line">./worldqual 1 2000 2010</div>
+</div><!-- fragment --><p>Parameter:**</p><ul>
+<li><span class="tt">IDrun</span>: Run-ID aus der Datenbank (z.B. 1, 2, 3...)</li>
+<li><span class="tt">startYear</span>: Startjahr der Simulation (z.B. 2000)</li>
+<li><span class="tt">endYear</span>: Endjahr der Simulation (z.B. 2010)</li>
+</ul>
+<hr  />
+<h2 class="doxsection"><a class="anchor" id="autotoc_md21"></a>
+Fertig! 🎉</h2>
+<p>WorldQual ist jetzt einsatzbereit.</p>
+<hr  />
+<h2 class="doxsection"><a class="anchor" id="autotoc_md23"></a>
+Datenbank einrichten (Optional)</h2>
+<p>Für produktiven Einsatz benötigt WorldQual eine MySQL-Datenbank mit Eingabedaten.</p>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md24"></a>
+Datenbank erstellen:</h3>
+<div class="fragment"><div class="line">mysql -u root -p</div>
+</div><!-- fragment --><div class="fragment"><div class="line"><span class="keyword">CREATE</span> DATABASE worldqual_db;</div>
+<div class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="stringliteral">&#39;worldqual_user&#39;</span>@<span class="stringliteral">&#39;localhost&#39;</span> IDENTIFIED <span class="keyword">BY</span> <span class="stringliteral">&#39;your_password&#39;</span>;</div>
+<div class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> worldqual_db.* <span class="keyword">TO</span> <span class="stringliteral">&#39;worldqual_user&#39;</span>@<span class="stringliteral">&#39;localhost&#39;</span>;</div>
+<div class="line">FLUSH PRIVILEGES;</div>
+<div class="line">EXIT;</div>
+</div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md25"></a>
+Verbindung konfigurieren:</h3>
+<p>Bearbeite <span class="tt">src/worldqual/OPTIONS.DAT</span>: </p><div class="fragment"><div class="line">HOST          localhost</div>
+<div class="line">USER          worldqual_user</div>
+<div class="line">PASSWORD      your_password</div>
+<div class="line">DATABASE      worldqual_db</div>
+</div><!-- fragment --><hr  />
+<h2 class="doxsection"><a class="anchor" id="autotoc_md27"></a>
+Weitere Module kompilieren</h2>
+<p>WorldQual besteht aus mehreren Modulen. So kompilieren Sie sie:</p>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md28"></a>
+Nährstoffeinträge (wq_load):</h3>
+<div class="fragment"><div class="line">cd src/wq_load</div>
+<div class="line">make clean &amp;&amp; make</div>
+</div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md29"></a>
+Statistik (wq_stat):</h3>
+<div class="fragment"><div class="line">cd src/wq_stat</div>
+<div class="line">make clean &amp;&amp; make</div>
+</div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md30"></a>
+Visualisierung (MapRiverQuality):</h3>
+<div class="fragment"><div class="line">cd src/MapRiverQuality</div>
+<div class="line">make clean &amp;&amp; make</div>
+</div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md31"></a>
+Wassertemperatur:</h3>
+<div class="fragment"><div class="line">cd src/water_temperature</div>
+<div class="line">make clean &amp;&amp; make</div>
+</div><!-- fragment --><hr  />
+<h2 class="doxsection"><a class="anchor" id="autotoc_md33"></a>
+Troubleshooting</h2>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md34"></a>
+Problem: "brew: command not found"</h3>
+<p>Lösung:** Installiere Homebrew: </p><div class="fragment"><div class="line">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;</div>
+</div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md35"></a>
+Problem: "make: command not found"</h3>
+<p>Lösung:** Installiere Xcode Command Line Tools: </p><div class="fragment"><div class="line">xcode-select --install</div>
+</div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md36"></a>
+Problem: "mysql++.h not found"</h3>
+<p>Lösung:** </p><div class="fragment"><div class="line">brew install mysql-connector-c++</div>
+</div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md37"></a>
+Problem: Datenbankverbindung fehlgeschlagen</h3>
+<p>Lösung:**</p><ol type="1">
+<li>Prüfe ob MySQL läuft: <span class="tt">brew services list | grep mysql</span></li>
+<li>Starte MySQL: <span class="tt">brew services start mysql@8.0</span></li>
+<li>Prüfe OPTIONS.DAT Konfiguration</li>
+</ol>
+<hr  />
+<h2 class="doxsection"><a class="anchor" id="autotoc_md39"></a>
+System-Anforderungen</h2>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md40"></a>
+Unterstützte Systeme:</h3>
+<ul>
+<li>✓ macOS (10.15+, Intel &amp; Apple Silicon)</li>
+<li>✓ Linux (Ubuntu, Debian, CentOS)</li>
+<li>○ Windows (mit WSL oder MinGW)</li>
+</ul>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md41"></a>
+Erforderlich:</h3>
+<ul>
+<li>Git</li>
+<li>C++ Compiler (g++ oder clang++)</li>
+<li>Make</li>
+<li>MySQL 8.0+</li>
+<li>MySQL++ / mysql-connector-c++</li>
+</ul>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md42"></a>
+Empfohlen:</h3>
+<ul>
+<li>4 GB RAM minimum</li>
+<li>10 GB freier Speicherplatz</li>
+<li>Homebrew (macOS) oder apt/yum (Linux)</li>
+</ul>
+<hr  />
+<h2 class="doxsection"><a class="anchor" id="autotoc_md44"></a>
+Schnellstart-Zusammenfassung</h2>
+<div class="fragment"><div class="line"># 1. Klonen</div>
+<div class="line">git clone https://github.com/Leon-Muehlenbruch/WorldQual.git</div>
+<div class="line">cd WorldQual</div>
+<div class="line"> </div>
+<div class="line"># 2. Dependencies installieren</div>
+<div class="line">./install_dependencies.sh</div>
+<div class="line"> </div>
+<div class="line"># 3. Kompilieren</div>
+<div class="line">cd src/worldqual</div>
+<div class="line">make clean &amp;&amp; make</div>
+<div class="line"> </div>
+<div class="line"># 4. Ausführen</div>
+<div class="line">./worldqual 1 2000 2010</div>
+</div><!-- fragment --><p>Das war's!** 🎊</p>
+<hr  />
+<h2 class="doxsection"><a class="anchor" id="autotoc_md46"></a>
+Weitere Hilfe</h2>
+<ul>
+<li>📚 <b>Vollständige Dokumentation:</b> <a href="https://leon-muehlenbruch.github.io/WorldQual/">https://leon-muehlenbruch.github.io/WorldQual/</a></li>
+<li>📖 <b>Dependency-Details:</b> Siehe <span class="tt">DEPENDENCIES.md</span></li>
+<li>🔧 <b>Konfiguration:</b> Siehe <span class="tt">INSTALLATION.md</span></li>
+<li>💻 <b>GitHub:</b> <a href="https://github.com/Leon-Muehlenbruch/WorldQual">https://github.com/Leon-Muehlenbruch/WorldQual</a> </li>
+</ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
