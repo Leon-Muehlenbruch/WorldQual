@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['a_20hydrologische_20zeitreihen_20path_5fwatergap_5foutput_0',['A. Hydrologische Zeitreihen (path_watergap_output)',['../tutorial_konfiguration.html#autotoc_md66',1,'']]],
-  ['a_3a_20echte_20daten_20von_20isimip_1',['Option A: Echte Daten von ISIMIP',['../tutorial_konfiguration.html#autotoc_md73',1,'']]],
-  ['afrika_3a_2',['Beispiel-Konfiguration für Afrika:',['../tutorial_konfiguration.html#autotoc_md55',1,'']]],
-  ['allgemeine_20hilfsfunktionen_3',['Allgemeine Hilfsfunktionen',['../index.html#autotoc_md7',1,'']]],
-  ['anforderungen_4',['System-Anforderungen',['../tutorial_installation.html#autotoc_md39',1,'']]],
-  ['ausführen_5',['Schritt 4: Ausführen',['../tutorial_installation.html#autotoc_md19',1,'']]],
-  ['auswertung_6',['Statistische Auswertung',['../index.html#autotoc_md3',1,'']]]
+  ['b_20path_5fclimate_20zeitreihen_20pro_20jahr_0',['B. path_climate (Zeitreihen - PRO JAHR!)',['../tutorial_konfiguration.html#autotoc_md67',1,'']]],
+  ['b_3a_20direkter_20kontakt_20watergap_20gruppe_1',['Option B: Direkter Kontakt WaterGAP-Gruppe',['../tutorial_konfiguration.html#autotoc_md74',1,'']]],
+  ['beispiel_20konfiguration_2',['Beispiel-Konfiguration',['../tutorial_konfiguration.html#autotoc_md55',1,'']]],
+  ['benötigte_20unf_20dateien_20nach_20pfad_3',['Benötigte UNF-Dateien (nach Pfad)',['../tutorial_konfiguration.html#autotoc_md65',1,'']]],
+  ['benutzer_3a_4',['Windows-Benutzer:',['../tutorial_installation.html#autotoc_md42',1,'']]],
+  ['beschaffen_5',['Teil 4: Daten beschaffen',['../tutorial_konfiguration.html#autotoc_md72',1,'']]],
+  ['brew_3a_20command_20not_20found_6',['Problem: &quot;brew: command not found&quot;',['../tutorial_installation.html#autotoc_md34',1,'']]]
 ];

@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['2_20mysql_20datenbank_20setup_0',['2. MySQL-Datenbank Setup',['../tutorial_konfiguration.html#autotoc_md57',1,'']]],
-  ['2_3a_20dependencies_20installieren_1',['Schritt 2: Dependencies installieren',['../tutorial_installation.html#autotoc_md15',1,'']]],
-  ['2_3a_20user_20und_20rechte_20einrichten_2',['Schritt 2: User und Rechte einrichten',['../tutorial_konfiguration.html#autotoc_md59',1,'']]]
+  ['10_20jahres_20simulation_0',['Gesamtgröße für 10-Jahres-Simulation',['../tutorial_konfiguration.html#autotoc_md70',1,'']]],
+  ['1_3a_20options_20dat_20konfiguration_1',['Teil 1: OPTIONS.DAT Konfiguration',['../tutorial_konfiguration.html#autotoc_md52',1,'']]],
+  ['1_3a_20repository_20klonen_2',['Schritt 1: Repository klonen',['../tutorial_installation.html#autotoc_md13',1,'']]],
+  ['1_3a_20schema_20installieren_3',['Schritt 1: Schema installieren',['../tutorial_konfiguration.html#autotoc_md58',1,'']]]
 ];

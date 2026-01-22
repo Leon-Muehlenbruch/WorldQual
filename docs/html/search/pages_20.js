@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['🎉_0',['Fertig! 🎉',['../tutorial_installation.html#autotoc_md21',1,'']]]
+  ['überblick_0',['Überblick',['../tutorial_konfiguration.html#autotoc_md50',1,'']]],
+  ['übersicht_1',['Übersicht',['../tutorial_konfiguration.html#autotoc_md61',1,'Datenbank-Übersicht'],['../index.html',1,'WorldQual Übersicht']]]
 ];
