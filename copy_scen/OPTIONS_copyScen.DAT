@@ -1,0 +1,63 @@
+Runtime options copyScen
+1. execute type
+  0: nur sql-erzeugen, wird nicht ausgeführt (muss man per Hand machen, evtl. anpassen)
+  1: sql erzeugen und ausführen
+Value: 0
+
+2. Referenz project_id, Tabelle wq_general._project
+  1: CESR
+  2: WWQA
+  3: CESR Sensitivity Analysis
+  4: test, für Entwickler
+Value: 2
+
+3. Referenz IDScen, wq_general._szenario
+Value: 9
+
+4. Ziel project_id , Tabelle wq_general._project
+	Falls neu: muss  in die Tabelle händisch eingetragen werden und Zieldatenbank erzeugt und Rechte vergeben werden!
+  1: CESR
+  2: WWQA
+  3: CESR Sensitivity Analysis
+  4: test, für Entwickler
+Value: 4
+
+5. Ziel IDScenBegin, wq_general._szenario
+	Falls in wq_general._szenario IDScen schon gibt, es wird nicht geändert, falls noch nicht gibt, es wird eine Zeile eingefügt 
+	mit der description: "copy from idscen ... project ... [description von Referenzszenario]"
+Value: 91
+
+6. Ziel IDScenEnd, wq_general._szenario
+	darf größer oder gleich IDScenBegin sein. Falls größer, es werden mehrere Szenarien erzeugt als Kopie von Referenzszenario
+Value: 93
+
+7. parameter_id aus der Tabelle wq_general.wq_parameter. Z.B.
+  80:  BOD
+  260: TDS
+  310: FC
+Value: 310
+
+8. IDVersion
+  2: WaterGAP2
+  3: WaterGAP3 ###
+Value: 3
+
+9. IDReg
+  1 WaterGAP3 eu
+  2 WaterGAP3 af
+  3 WaterGAP3 as
+  4 WaterGAP3 au
+  5 WaterGAP3 na
+  6 WaterGAP3 sa
+  1 WaterGAP2 world standatrd
+  2 WaterGAP2 world watch
+Value: 2
+
+10. MyHost
+Value: MySQL
+
+11. MyUser
+Value: REMOVED_USER
+
+12. MyPassword
+Value: REMOVED_PASSWORD
