@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>WorldQual: Konfiguration</title>
+<title>WorldQual: Konfiguration &amp; Daten-Setup</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -89,183 +89,89 @@ $(function(){initNavTree('tutorial_konfiguration.html','',''); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Konfiguration </div></div>
+  <div class="headertitle"><div class="title">Konfiguration &amp; Daten-Setup </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><h1 class="doxsection"><a class="anchor" id="autotoc_md48"></a>
 WorldQual Konfiguration &amp; Daten-Setup</h1>
-<p>Von der Installation zur ersten Simulation - Vollständiger Leitfaden für Konfiguration und Daten-Setup.</p>
+<p>Vollständiger Leitfaden: Von der Installation zur ersten Simulation mit allen benötigten Daten.</p>
 <hr  />
 <h2 class="doxsection"><a class="anchor" id="autotoc_md50"></a>
 Überblick</h2>
-<p>WorldQual benötigt drei Komponenten für eine Simulation:</p><ol type="1">
-<li><b>OPTIONS.DAT</b> - Konfigurations-Datei</li>
+<p>WorldQual benötigt drei Komponenten:</p><ol type="1">
+<li><b>OPTIONS.DAT</b> - Konfigurations-Datei <br  />
+</li>
 <li><b>MySQL-Datenbank</b> - Routing, Szenarien, Ergebnisse</li>
-<li><b>Input-Dateien</b> - Hydrologische und klimatische Daten</li>
+<li><b>Input-Dateien</b> - Hydrologische und klimatische Daten (UNF-Format)</li>
 </ol>
 <hr  />
 <h2 class="doxsection"><a class="anchor" id="autotoc_md52"></a>
-1. OPTIONS.DAT Konfiguration</h2>
-<p>Die OPTIONS.DAT-Datei steuert das Verhalten von WorldQual.</p>
+Teil 1: OPTIONS.DAT Konfiguration</h2>
 <h3 class="doxsection"><a class="anchor" id="autotoc_md53"></a>
-Speicherort:</h3>
+Speicherort</h3>
 <div class="fragment"><div class="line">src/worldqual/OPTIONS.DAT</div>
 </div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md54"></a>
-Vollständige Parameter-Übersicht:</h3>
-<div class="fragment"><div class="line">Runtime options worldqual</div>
-<div class="line"> </div>
-<div class="line">1. river length</div>
-<div class="line">  0: no calculate (Standard)</div>
-<div class="line">  1: calculate</div>
-<div class="line">Value: 0</div>
-<div class="line"> </div>
-<div class="line">2. routing order</div>
-<div class="line">  0: no calculate (Standard)</div>
-<div class="line">  1: calculate</div>
-<div class="line">Value: 0</div>
-<div class="line"> </div>
-<div class="line">3. Fließgeschwindigkeit</div>
-<div class="line">  0: variable (aus Tabelle/UNF-Datei)</div>
-<div class="line">  1: variable (berechnet) (Standard)</div>
-<div class="line">  2: konstant (ein Wert für alle Zellen)</div>
-<div class="line">Value: 1</div>
-<div class="line"> </div>
-<div class="line">4. Wert für konstante Fließgeschwindigkeit</div>
-<div class="line">  (nur relevant wenn Option 3 == 2)</div>
-<div class="line">Value: 0.5</div>
-<div class="line"> </div>
-<div class="line">5. Klimainput</div>
-<div class="line">  0: 0.5° Auflösung (Standard)</div>
-<div class="line">  1: 5 Minuten Auflösung</div>
-<div class="line">  2: 0.5° CRU/WATCH</div>
-<div class="line">Value: 0</div>
-<div class="line"> </div>
-<div class="line">6. water temperature</div>
-<div class="line">  0: from database (IDTemp aus wq_general._runlist)</div>
-<div class="line">  1: from air temperature (berechnet)</div>
-<div class="line">Value: 0</div>
-<div class="line"> </div>
-<div class="line">7. path_watergap_output</div>
-<div class="line">  WaterGAP hydrologische Ausgaben</div>
-<div class="line">  Benötigt: G_RIVER_VELOCITY_{year}.12.UNF0</div>
-<div class="line">           G_GLO_LAKE_STOR_MEAN_{year}.12.UNF0</div>
-<div class="line">           G_RES_STOR_MEAN_{year}.12.UNF0</div>
-<div class="line">Value: /data/watergap/output</div>
-<div class="line"> </div>
-<div class="line">8. path_climate</div>
-<div class="line">  Klimadaten für Wassertemperatur</div>
-<div class="line">  Benötigt: GSHORTWAVE_{year}.12.UNF2</div>
-<div class="line">           GTEMP_{year}.12.UNF2 (wenn water temp berechnet)</div>
-<div class="line">Value: /data/climate</div>
-<div class="line"> </div>
-<div class="line">9. path_hydro_input</div>
-<div class="line">  Statische hydrologische Daten</div>
-<div class="line">  Benötigt: G_WG3_WG2WITH5MIN.UNF4</div>
-<div class="line">           G_MEANDERING_RATIO.UNF0</div>
-<div class="line">           G_ELEV_MEAN_CLM.UNF0 (optional)</div>
-<div class="line">           G_ELEV_MEAN_WATCH.UNF0 (optional)</div>
-<div class="line">Value: /data/<a class="code hl_variable" href="create__scenarios_8cpp.html#af3d0bc51e7c8830ee3ae059b462a0b0b">hydro_input</a></div>
-<div class="line"> </div>
-<div class="line">10. path_hydro_routing</div>
-<div class="line">  Routing-Informationen</div>
-<div class="line">  Benötigt: GCELLDIST.9.UNF0</div>
-<div class="line">Value: /data/routing</div>
-<div class="line"> </div>
-<div class="line">11. loading type</div>
-<div class="line">  0: Tabelle <span class="stringliteral">&#39;load&#39;</span></div>
-<div class="line">  1: Load_{IDScen}_{parameter_id}</div>
-<div class="line">  2: Aufsummieren aus wq_load Ergebnissen (Standard)</div>
-<div class="line">Value: 2</div>
-<div class="line"> </div>
-<div class="line">12. IDVersion</div>
-<div class="line">  2: WaterGAP2</div>
-<div class="line">  3: WaterGAP3 (Standard)</div>
-<div class="line">Value: 3</div>
-<div class="line"> </div>
-<div class="line">13. IDReg (Region)</div>
-<div class="line">  WaterGAP3:</div>
-<div class="line">    1: Europa (eu)</div>
-<div class="line">    2: Afrika (af)</div>
-<div class="line">    3: Asien (as)</div>
-<div class="line">    4: Australien (au)</div>
-<div class="line">    5: Nordamerika (na)</div>
-<div class="line">    6: Südamerika (sa)</div>
-<div class="line">  WaterGAP2:</div>
-<div class="line">    1: World standard</div>
-<div class="line">    2: World WATCH</div>
-<div class="line">Value: 2</div>
-<div class="line"> </div>
-<div class="line">14. MyHost</div>
-<div class="line">  MySQL Server Hostname</div>
-<div class="line">Value: localhost</div>
-<div class="line"> </div>
-<div class="line">15. MyUser</div>
-<div class="line">  MySQL Username</div>
-<div class="line">Value: worldqual_user</div>
-<div class="line"> </div>
-<div class="line">16. MyPassword</div>
-<div class="line">  MySQL Passwort</div>
-<div class="line">Value: your_password</div>
-<div class="line"> </div>
-<div class="line">17. InputType</div>
-<div class="line">  0: Daten aus Datenbank</div>
-<div class="line">  1: Daten aus UNF-Dateien (Standard)</div>
-<div class="line">Value: 1</div>
-<div class="line"> </div>
-<div class="line">18. input_dir</div>
-<div class="line">  Verzeichnis für Input-Daten (wenn InputType == 1)</div>
-<div class="line">Value: /data/input</div>
-<div class="ttc" id="acreate__scenarios_8cpp_html_af3d0bc51e7c8830ee3ae059b462a0b0b"><div class="ttname"><a href="create__scenarios_8cpp.html#af3d0bc51e7c8830ee3ae059b462a0b0b">hydro_input</a></div><div class="ttdeci">char hydro_input[maxcharlength]</div><div class="ttdef"><b>Definition</b> <a href="create__scenarios_8cpp_source.html#l00042">create_scenarios.cpp:42</a></div></div>
+Wichtigste Parameter</h3>
+<p>Parameter 7-10: Daten-Pfade (KRITISCH!)** </p><div class="fragment"><div class="line">7. path_watergap_output  → WaterGAP hydrologische Zeitreihen</div>
+<div class="line">8. path_climate          → Klimadaten</div>
+<div class="line">9. path_hydro_input      → Statische hydrologische Daten  </div>
+<div class="line">10. path_hydro_routing   → Routing-Informationen</div>
+</div><!-- fragment --><p>Parameter 14-16: Datenbank-Verbindung** </p><div class="fragment"><div class="line">14. MyHost      → localhost</div>
+<div class="line">15. MyUser      → worldqual_user</div>
+<div class="line">16. MyPassword  → your_password</div>
+</div><!-- fragment --><p>Parameter 12-13: Region &amp; Version** </p><div class="fragment"><div class="line">12. IDVersion   → 3 (WaterGAP3)</div>
+<div class="line">13. IDReg       → 2 (Afrika), 1 (Europa), 3 (Asien), etc.</div>
 </div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md55"></a>
-Beispiel-Konfiguration für Afrika:</h3>
-<div class="fragment"><div class="line">Value: 0</div>
-<div class="line">Value: 0</div>
-<div class="line">Value: 1</div>
-<div class="line">Value: 0.5</div>
-<div class="line">Value: 0</div>
-<div class="line">Value: 0</div>
-<div class="line">Value: /data/watergap_output</div>
-<div class="line">Value: /data/climate</div>
-<div class="line">Value: /data/<a class="code hl_variable" href="create__scenarios_8cpp.html#af3d0bc51e7c8830ee3ae059b462a0b0b">hydro_input</a></div>
-<div class="line">Value: /data/routing</div>
-<div class="line">Value: 2</div>
-<div class="line">Value: 3</div>
-<div class="line">Value: 2</div>
-<div class="line">Value: localhost</div>
-<div class="line">Value: worldqual_user</div>
-<div class="line">Value: my_secure_password</div>
-<div class="line">Value: 1</div>
-<div class="line">Value: /data/input/africa</div>
+Beispiel-Konfiguration</h3>
+<div class="fragment"><div class="line">Value: 0                              # 1. river length</div>
+<div class="line">Value: 0                              # 2. routing order</div>
+<div class="line">Value: 1                              # 3. Fließgeschwindigkeit (berechnet)</div>
+<div class="line">Value: 0.5                            # 4. Konstante Geschwindigkeit</div>
+<div class="line">Value: 0                              # 5. Klimainput (0.5°)</div>
+<div class="line">Value: 0                              # 6. water temperature (from DB)</div>
+<div class="line">Value: /data/watergap_output          # 7. WaterGAP Output-Pfad</div>
+<div class="line">Value: /data/climate                  # 8. Klimadaten-Pfad</div>
+<div class="line">Value: /data/<a class="code hl_variable" href="create__scenarios_8cpp.html#af3d0bc51e7c8830ee3ae059b462a0b0b">hydro_input</a>              # 9. Hydro-Input-Pfad</div>
+<div class="line">Value: /data/routing                  # 10. Routing-Pfad</div>
+<div class="line">Value: 2                              # 11. loading type</div>
+<div class="line">Value: 3                              # 12. IDVersion (WaterGAP3)</div>
+<div class="line">Value: 2                              # 13. IDReg (Afrika)</div>
+<div class="line">Value: localhost                      # 14. MySQL Host</div>
+<div class="line">Value: worldqual_user                 # 15. MySQL User</div>
+<div class="line">Value: my_secure_password             # 16. MySQL Password</div>
+<div class="line">Value: 1                              # 17. InputType (UNF files)</div>
+<div class="line">Value: /data/input/africa             # 18. input_dir</div>
+<div class="ttc" id="acreate__scenarios_8cpp_html_af3d0bc51e7c8830ee3ae059b462a0b0b"><div class="ttname"><a href="create__scenarios_8cpp.html#af3d0bc51e7c8830ee3ae059b462a0b0b">hydro_input</a></div><div class="ttdeci">char hydro_input[maxcharlength]</div><div class="ttdef"><b>Definition</b> <a href="create__scenarios_8cpp_source.html#l00042">create_scenarios.cpp:42</a></div></div>
 </div><!-- fragment --><hr  />
 <h2 class="doxsection"><a class="anchor" id="autotoc_md57"></a>
-2. MySQL-Datenbank Setup</h2>
+Teil 2: MySQL-Datenbank Setup</h2>
 <h3 class="doxsection"><a class="anchor" id="autotoc_md58"></a>
-Schritt 1: Datenbank-Schema installieren</h3>
-<div class="fragment"><div class="line"># Schema-Datei anwenden</div>
+Schritt 1: Schema installieren</h3>
+<div class="fragment"><div class="line"># Schema anwenden</div>
+<div class="line">cd /Users/leon/WorldQual/C++</div>
 <div class="line">mysql -u root -p &lt; database_schema.sql</div>
 <div class="line"> </div>
 <div class="line"># Alle Kontinente-Datenbanken erstellen</div>
 <div class="line">mysql -u root -p -e &quot;CALL wq_general.create_continent_dbs();&quot;</div>
 </div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md59"></a>
-Schritt 2: User und Rechte einrichten</h3>
-<div class="fragment"><div class="line"><span class="comment">-- MySQL als root einloggen</span></div>
-<div class="line">mysql -u root -p</div>
-<div class="line"> </div>
-<div class="line"><span class="comment">-- User erstellen</span></div>
+Schritt 2: User einrichten</h3>
+<div class="fragment"><div class="line">mysql -u root -p</div>
+</div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">-- User erstellen</span></div>
 <div class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="stringliteral">&#39;worldqual_user&#39;</span>@<span class="stringliteral">&#39;localhost&#39;</span> IDENTIFIED <span class="keyword">BY</span> <span class="stringliteral">&#39;your_password&#39;</span>;</div>
 <div class="line"> </div>
-<div class="line"><span class="comment">-- Rechte vergeben</span></div>
+<div class="line"><span class="comment">-- Rechte vergeben (alle WorldQual-Datenbanken)</span></div>
 <div class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> wq_general.* <span class="keyword">TO</span> <span class="stringliteral">&#39;worldqual_user&#39;</span>@<span class="stringliteral">&#39;localhost&#39;</span>;</div>
 <div class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> worldqual_*.* <span class="keyword">TO</span> <span class="stringliteral">&#39;worldqual_user&#39;</span>@<span class="stringliteral">&#39;localhost&#39;</span>;</div>
 <div class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> wq_out_*.* <span class="keyword">TO</span> <span class="stringliteral">&#39;worldqual_user&#39;</span>@<span class="stringliteral">&#39;localhost&#39;</span>;</div>
 <div class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> wq_load_*.* <span class="keyword">TO</span> <span class="stringliteral">&#39;worldqual_user&#39;</span>@<span class="stringliteral">&#39;localhost&#39;</span>;</div>
 <div class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> PRIVILEGES <span class="keyword">ON</span> watergap_unf.* <span class="keyword">TO</span> <span class="stringliteral">&#39;worldqual_user&#39;</span>@<span class="stringliteral">&#39;localhost&#39;</span>;</div>
-<div class="line"> </div>
 <div class="line">FLUSH PRIVILEGES;</div>
 <div class="line">EXIT;</div>
 </div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md60"></a>
 Schritt 3: Test-Daten einfügen</h3>
-<div class="fragment"><div class="line">USE wq_general;</div>
+<div class="fragment"><div class="line">mysql -u worldqual_user -p</div>
+<div class="line"> </div>
+<div class="line">USE wq_general;</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">-- Parameter definieren</span></div>
 <div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> _parameter <span class="keyword">VALUES</span> </div>
@@ -275,388 +181,392 @@ Schritt 3: Test-Daten einfügen</h3>
 <div class="line"> </div>
 <div class="line"><span class="comment">-- Szenario definieren</span></div>
 <div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> _szenario <span class="keyword">VALUES</span> </div>
-<div class="line">(<span class="stringliteral">1</span>, <span class="stringliteral">&#39;BASELINE&#39;</span>, <span class="stringliteral">&#39;Baseline scenario&#39;</span>);</div>
+<div class="line">(<span class="stringliteral">1</span>, <span class="stringliteral">&#39;BASELINE&#39;</span>, <span class="stringliteral">&#39;Baseline scenario - current conditions&#39;</span>);</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">-- Run konfigurieren</span></div>
 <div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> _runlist <span class="keyword">VALUES</span> </div>
-<div class="line">(<span class="stringliteral">1</span>, <span class="stringliteral">1</span>, <span class="stringliteral">1</span>, <span class="stringliteral">1</span>, <span class="stringliteral">3</span>, <span class="stringliteral">2</span>, <span class="stringliteral">2000</span>, <span class="stringliteral">2010</span>, <span class="stringliteral">&#39;Test run - Africa TN&#39;</span>);</div>
+<div class="line">(<span class="stringliteral">1</span>, <span class="stringliteral">1</span>, <span class="stringliteral">1</span>, <span class="stringliteral">1</span>, <span class="stringliteral">3</span>, <span class="stringliteral">2</span>, <span class="stringliteral">2000</span>, <span class="stringliteral">2010</span>, <span class="stringliteral">&#39;Test run - Africa TN 2000-2010&#39;</span>);</div>
 </div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md61"></a>
-Datenbank-Struktur:</h3>
-<div class="fragment"><div class="line">MySQL Datenbanken:</div>
-<div class="line">├── wq_general              # Core-Konfiguration</div>
-<div class="line">│   ├── _runlist           # Run-Definitionen</div>
-<div class="line">│   ├── _szenario          # Szenarien</div>
-<div class="line">│   └── _parameter         # Parameter-Liste</div>
-<div class="line">│</div>
-<div class="line">├── worldqual_af            # Afrika-spezifisch</div>
-<div class="line">│   ├── routing            # Fluss-Routing</div>
-<div class="line">│   ├── flow_velocity      # Fließgeschwindigkeiten</div>
-<div class="line">│   └── load               # Nährstoff-Einträge</div>
-<div class="line">│</div>
-<div class="line">├── wq_out_af               # Ausgabe-Datenbank</div>
-<div class="line">│   └── concentration_{IDrun}  # Ergebnisse (dynamisch)</div>
-<div class="line">│</div>
-<div class="line">├── watergap_unf            # WaterGAP Basis-Daten</div>
-<div class="line">│   ├── gr, gc             # Grid-Koordinaten</div>
-<div class="line">│   ├── g_inflc_arc_id     # Zufluss-Verbindungen</div>
-<div class="line">│   └── mother_af          # Einzugsgebiete</div>
-<div class="line">│</div>
-<div class="line">└── wq_load_af              # Berechnete Einträge</div>
-<div class="line">    └── calc_cell_month_load_*  # Load-Tabellen</div>
-</div><!-- fragment --><hr  />
+Datenbank-Übersicht</h3>
+<div class="fragment"><div class="line">wq_general              → Core: Runs, Szenarien, Parameter</div>
+<div class="line">worldqual_{<a class="code hl_variable" href="create__scenarios_8cpp.html#a674e1d0b75609ea84fc670b3f86876b5">continent</a>}   → Routing, flow_velocity, load</div>
+<div class="line">wq_out_{<a class="code hl_variable" href="create__scenarios_8cpp.html#a674e1d0b75609ea84fc670b3f86876b5">continent</a>}      → Ergebnisse: concentration_{IDrun}</div>
+<div class="line">watergap_unf            → WaterGAP Basis: Grid, Einzugsgebiete</div>
+<div class="line">wq_load_{<a class="code hl_variable" href="create__scenarios_8cpp.html#a674e1d0b75609ea84fc670b3f86876b5">continent</a>}     → Berechnete Nährstoff-Einträge</div>
+<div class="ttc" id="acreate__scenarios_8cpp_html_a674e1d0b75609ea84fc670b3f86876b5"><div class="ttname"><a href="create__scenarios_8cpp.html#a674e1d0b75609ea84fc670b3f86876b5">continent</a></div><div class="ttdeci">int continent[5]</div><div class="ttdef"><b>Definition</b> <a href="create__scenarios_8cpp_source.html#l00040">create_scenarios.cpp:40</a></div></div>
+</div><!-- fragment --><p>Kontinente: <span class="tt">af</span> (Afrika), <span class="tt">as</span> (Asien), <span class="tt">au</span> (Australien), <span class="tt">eu</span> (Europa), <span class="tt">na</span> (Nordamerika), <span class="tt">sa</span> (Südamerika)</p>
+<hr  />
 <h2 class="doxsection"><a class="anchor" id="autotoc_md63"></a>
-3. Input-Daten: UNF-Dateien</h2>
+Teil 3: Input-Daten - UNF-Dateien</h2>
 <h3 class="doxsection"><a class="anchor" id="autotoc_md64"></a>
 Was sind UNF-Dateien?</h3>
 <p>UNF** = Unformatted Binary Files (WaterGAP-Format)</p><ul>
-<li>Binäre Rasterdateien</li>
-<li>0.5° oder 5' Auflösung</li>
-<li>Monatliche Zeitreihen</li>
+<li>Binäre Raster-Dateien</li>
+<li>0.5° oder 5' räumliche Auflösung <br  />
+</li>
+<li>Monatliche Zeitreihen (12 Werte pro Jahr)</li>
 </ul>
 <h3 class="doxsection"><a class="anchor" id="autotoc_md65"></a>
-Benötigte UNF-Dateien:</h3>
+Benötigte UNF-Dateien (nach Pfad)</h3>
 <h4 class="doxsection"><a class="anchor" id="autotoc_md66"></a>
-A. Hydrologische Zeitreihen (path_watergap_output)</h4>
+A. path_watergap_output (Zeitreihen - PRO JAHR!)</h4>
 <table class="markdownTable">
 <tr class="markdownTableHead">
-<th class="markdownTableHeadNone">Datei  </th><th class="markdownTableHeadNone">Beschreibung  </th><th class="markdownTableHeadNone">Zeitauflösung  </th></tr>
+<th class="markdownTableHeadNone">Dateiname  </th><th class="markdownTableHeadNone">Beschreibung  </th><th class="markdownTableHeadNone">Größe/Jahr  </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><span class="tt">G_RIVER_VELOCITY_{year}.12.UNF0</span>  </td><td class="markdownTableBodyNone">Fließgeschwindigkeit  </td><td class="markdownTableBodyNone">12 Monate/Jahr  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">G_RIVER_VELOCITY_{year}.12.UNF0</span>  </td><td class="markdownTableBodyNone">Fließgeschwindigkeit (m/s)  </td><td class="markdownTableBodyNone">~50 MB  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><span class="tt">G_GLO_LAKE_STOR_MEAN_{year}.12.UNF0</span>  </td><td class="markdownTableBodyNone">Seespeicher  </td><td class="markdownTableBodyNone">12 Monate/Jahr  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">G_GLO_LAKE_STOR_MEAN_{year}.12.UNF0</span>  </td><td class="markdownTableBodyNone">Seespeicher (km³)  </td><td class="markdownTableBodyNone">~50 MB  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><span class="tt">G_RES_STOR_MEAN_{year}.12.UNF0</span>  </td><td class="markdownTableBodyNone">Reservoir-Speicher  </td><td class="markdownTableBodyNone">12 Monate/Jahr  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">G_RES_STOR_MEAN_{year}.12.UNF0</span>  </td><td class="markdownTableBodyNone">Reservoir-Speicher (km³)  </td><td class="markdownTableBodyNone">~50 MB  </td></tr>
 </table>
 <p>Beispiel für 2000-2010:** </p><div class="fragment"><div class="line">/data/watergap_output/</div>
 <div class="line">├── G_RIVER_VELOCITY_2000.12.UNF0</div>
 <div class="line">├── G_RIVER_VELOCITY_2001.12.UNF0</div>
+<div class="line">├── G_RIVER_VELOCITY_2002.12.UNF0</div>
 <div class="line">├── ...</div>
 <div class="line">├── G_RIVER_VELOCITY_2010.12.UNF0</div>
 <div class="line">├── G_GLO_LAKE_STOR_MEAN_2000.12.UNF0</div>
-<div class="line">└── ...</div>
-</div><!-- fragment --><h4 class="doxsection"><a class="anchor" id="autotoc_md67"></a>
-B. Klimadaten (path_climate)</h4>
+<div class="line">├── ...</div>
+<div class="line">└── G_RES_STOR_MEAN_2010.12.UNF0</div>
+</div><!-- fragment --><p>Gesamt:** ~1.5 GB für 10 Jahre</p>
+<h4 class="doxsection"><a class="anchor" id="autotoc_md67"></a>
+B. path_climate (Zeitreihen - PRO JAHR!)</h4>
 <table class="markdownTable">
 <tr class="markdownTableHead">
-<th class="markdownTableHeadNone">Datei  </th><th class="markdownTableHeadNone">Beschreibung  </th><th class="markdownTableHeadNone">Verwendung  </th></tr>
+<th class="markdownTableHeadNone">Dateiname  </th><th class="markdownTableHeadNone">Beschreibung  </th><th class="markdownTableHeadNone">Verwendung  </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><span class="tt">GSHORTWAVE_{year}.12.UNF2</span>  </td><td class="markdownTableBodyNone">Kurzwellige Strahlung  </td><td class="markdownTableBodyNone">Wassertemperatur  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">GSHORTWAVE_{year}.12.UNF2</span>  </td><td class="markdownTableBodyNone">Kurzwellige Strahlung (W/m²)  </td><td class="markdownTableBodyNone">Wassertemperatur  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><span class="tt">GTEMP_{year}.12.UNF2</span>  </td><td class="markdownTableBodyNone">Lufttemperatur  </td><td class="markdownTableBodyNone">Wassertemperatur (wenn berechnet)  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">GTEMP_{year}.12.UNF2</span>  </td><td class="markdownTableBodyNone">Lufttemperatur (°C)  </td><td class="markdownTableBodyNone">Wassertemp. (wenn berechnet)  </td></tr>
 </table>
+<div class="fragment"><div class="line">/data/climate/</div>
+<div class="line">├── GSHORTWAVE_2000.12.UNF2</div>
+<div class="line">├── GSHORTWAVE_2001.12.UNF2</div>
+<div class="line">├── ...</div>
+<div class="line">└── GTEMP_2010.12.UNF2</div>
+</div><!-- fragment --><p>Gesamt:** ~500 MB für 10 Jahre</p>
 <h4 class="doxsection"><a class="anchor" id="autotoc_md68"></a>
-C. Statische Hydro-Daten (path_hydro_input)</h4>
+C. path_hydro_input (Statisch - EINMALIG!)</h4>
 <table class="markdownTable">
 <tr class="markdownTableHead">
-<th class="markdownTableHeadNone">Datei  </th><th class="markdownTableHeadNone">Beschreibung  </th><th class="markdownTableHeadNone">Pflicht  </th></tr>
+<th class="markdownTableHeadNone">Dateiname  </th><th class="markdownTableHeadNone">Beschreibung  </th><th class="markdownTableHeadNone">Pflicht?  </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><span class="tt">G_WG3_WG2WITH5MIN.UNF4</span>  </td><td class="markdownTableBodyNone">Grid-Mapping  </td><td class="markdownTableBodyNone">Ja  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">G_WG3_WG2WITH5MIN.UNF4</span>  </td><td class="markdownTableBodyNone">Grid-Mapping WG3→WG2  </td><td class="markdownTableBodyNone"><b>JA</b>  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><span class="tt">G_WG3_WATCH.UNF4</span>  </td><td class="markdownTableBodyNone">Grid-Mapping WATCH  </td><td class="markdownTableBodyNone">Ja  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">G_WG3_WATCH.UNF4</span>  </td><td class="markdownTableBodyNone">Grid-Mapping WG3→WATCH  </td><td class="markdownTableBodyNone"><b>JA</b>  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><span class="tt">G_MEANDERING_RATIO.UNF0</span>  </td><td class="markdownTableBodyNone">Flussmäander  </td><td class="markdownTableBodyNone">Ja  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">G_MEANDERING_RATIO.UNF0</span>  </td><td class="markdownTableBodyNone">Flussmäander-Verhältnis  </td><td class="markdownTableBodyNone"><b>JA</b>  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><span class="tt">G_ELEV_MEAN_CLM.UNF0</span>  </td><td class="markdownTableBodyNone">Höhe (CLM)  </td><td class="markdownTableBodyNone">Optional  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">G_ELEV_MEAN_CLM.UNF0</span>  </td><td class="markdownTableBodyNone">Mittlere Höhe CLM (m)  </td><td class="markdownTableBodyNone">Optional  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><span class="tt">G_ELEV_MEAN_WATCH.UNF0</span>  </td><td class="markdownTableBodyNone">Höhe (WATCH)  </td><td class="markdownTableBodyNone">Optional  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">G_ELEV_MEAN_WATCH.UNF0</span>  </td><td class="markdownTableBodyNone">Mittlere Höhe WATCH (m)  </td><td class="markdownTableBodyNone">Optional  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><span class="tt">G_LAND_AREA.UNF1</span>  </td><td class="markdownTableBodyNone">Landfläche  </td><td class="markdownTableBodyNone">Nein  </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><span class="tt">G_SURFACE_RUNOFF_MEAN.UNF0</span>  </td><td class="markdownTableBodyNone">Abfluss  </td><td class="markdownTableBodyNone">Nein  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">G_LAND_AREA.UNF1</span>  </td><td class="markdownTableBodyNone">Landfläche (km²)  </td><td class="markdownTableBodyNone">Nein  </td></tr>
 </table>
+<div class="fragment"><div class="line">/data/<a class="code hl_variable" href="create__scenarios_8cpp.html#af3d0bc51e7c8830ee3ae059b462a0b0b">hydro_input</a>/</div>
+<div class="line">├── G_WG3_WG2WITH5MIN.UNF4</div>
+<div class="line">├── G_WG3_WATCH.UNF4</div>
+<div class="line">├── G_MEANDERING_RATIO.UNF0</div>
+<div class="line">├── G_ELEV_MEAN_CLM.UNF0</div>
+<div class="line">└── G_ELEV_MEAN_WATCH.UNF0</div>
+</div><!-- fragment --><p>Gesamt:** ~200 MB (einmalig)</p>
 <h4 class="doxsection"><a class="anchor" id="autotoc_md69"></a>
-D. Routing (path_hydro_routing)</h4>
+D. path_hydro_routing (Statisch - EINMALIG!)</h4>
 <table class="markdownTable">
 <tr class="markdownTableHead">
-<th class="markdownTableHeadNone">Datei  </th><th class="markdownTableHeadNone">Beschreibung  </th></tr>
+<th class="markdownTableHeadNone">Dateiname  </th><th class="markdownTableHeadNone">Beschreibung  </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><span class="tt">GCELLDIST.9.UNF0</span>  </td><td class="markdownTableBodyNone">Zell-Distanzen  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">GCELLDIST.9.UNF0</span>  </td><td class="markdownTableBodyNone">Zell-Distanzen für Routing  </td></tr>
 </table>
+<div class="fragment"><div class="line">/data/routing/</div>
+<div class="line">└── GCELLDIST.9.UNF0</div>
+</div><!-- fragment --><p>Gesamt:** ~50 MB (einmalig)</p>
 <h3 class="doxsection"><a class="anchor" id="autotoc_md70"></a>
-Verzeichnis-Struktur (Empfohlen):</h3>
-<div class="fragment"><div class="line">/data/</div>
-<div class="line">├── watergap_output/           # Hydrologische Zeitreihen</div>
-<div class="line">│   ├── africa/</div>
-<div class="line">│   │   ├── G_RIVER_VELOCITY_2000.12.UNF0</div>
-<div class="line">│   │   ├── G_RIVER_VELOCITY_2001.12.UNF0</div>
-<div class="line">│   │   └── ...</div>
-<div class="line">│   └── europe/</div>
-<div class="line">│       └── ...</div>
-<div class="line">│</div>
-<div class="line">├── climate/                   # Klimadaten</div>
-<div class="line">│   ├── GSHORTWAVE_2000.12.UNF2</div>
-<div class="line">│   ├── GSHORTWAVE_2001.12.UNF2</div>
-<div class="line">│   └── ...</div>
-<div class="line">│</div>
-<div class="line">├── hydro_input/              # Statische Daten</div>
-<div class="line">│   ├── G_MEANDERING_RATIO.UNF0</div>
-<div class="line">│   ├── G_WG3_WG2WITH5MIN.UNF4</div>
-<div class="line">│   └── ...</div>
-<div class="line">│</div>
-<div class="line">└── routing/                  # Routing</div>
-<div class="line">    └── GCELLDIST.9.UNF0</div>
+Gesamtgröße für 10-Jahres-Simulation</h3>
+<div class="fragment"><div class="line">Zeitreihen (2000-2010):</div>
+<div class="line">├── Hydrologie: 1.5 GB</div>
+<div class="line">├── Klima: 500 MB</div>
+<div class="line">└── Subtotal: 2 GB</div>
+<div class="line"> </div>
+<div class="line">Statische Daten (einmalig):</div>
+<div class="line">├── Hydro Input: 200 MB</div>
+<div class="line">├── Routing: 50 MB</div>
+<div class="line">└── Subtotal: 250 MB</div>
+<div class="line"> </div>
+<div class="line">MySQL-Datenbank:</div>
+<div class="line">└── ~500 MB</div>
+<div class="line"> </div>
+<div class="line">GESAMT: ~3 GB für Afrika 2000-2010</div>
 </div><!-- fragment --><hr  />
 <h2 class="doxsection"><a class="anchor" id="autotoc_md72"></a>
-4. Daten beschaffen</h2>
+Teil 4: Daten beschaffen</h2>
 <h3 class="doxsection"><a class="anchor" id="autotoc_md73"></a>
-Option A: Echte Daten von ISIMIP</h3>
-<p>WaterGAP-Daten (Hauptquelle):**</p>
+Option A: ISIMIP Portal (Empfohlen, KOSTENLOS)</h3>
+<p>WaterGAP-Daten herunterladen:**</p>
 <ol type="1">
-<li><b>Registrierung:</b><ul>
-<li>Gehe zu <a href="https://www.isimip.org/">https://www.isimip.org/</a></li>
-<li>Erstelle einen Account</li>
-<li>Bestätige E-Mail</li>
+<li><b>Account erstellen:</b><ul>
+<li>URL: <a href="https://www.isimip.org/">https://www.isimip.org/</a></li>
+<li>Registrierung mit E-Mail</li>
+<li>Bestätigung abwarten (1-2 Tage)</li>
 </ul>
 </li>
-<li><b>Daten-Download:</b><ul>
-<li>Suche nach "WaterGAP" im Data Portal</li>
-<li>Wähle benötigte Variablen: Discharge (Abfluss) River Velocity (Fließgeschwindigkeit) Lake/Reservoir Storage</li>
-<li>Wähle Region und Zeitraum</li>
-<li>Download als NetCDF</li>
+<li><b>Daten suchen:</b><ul>
+<li>Im Data Portal nach "WaterGAP" suchen</li>
+<li>Model: WaterGAP2 oder WaterGAP3 wählen</li>
+<li>Variables auswählen: <span class="tt">dis</span> (discharge) → für RIVER_VELOCITY <span class="tt">lakesto</span> (lake storage) → für GLO_LAKE_STOR <span class="tt">resstor</span> (reservoir storage) → für RES_STOR</li>
 </ul>
 </li>
-<li><p class="startli"><b>Format-Konversion:</b> </p><div class="fragment"><div class="line"># NetCDF zu UNF konvertieren (Tool muss entwickelt werden)</div>
+<li><b>Download:</b><ul>
+<li>Region wählen (global oder kontinental)</li>
+<li>Zeitraum wählen (z.B. 2000-2010)</li>
+<li>Format: <b>NetCDF</b> (muss konvertiert werden!)</li>
+</ul>
+</li>
+<li><p class="startli"><b>Konversion NetCDF → UNF:</b> </p><div class="fragment"><div class="line"># Tool muss noch entwickelt werden!</div>
 <div class="line">python netcdf_to_unf.py \</div>
-<div class="line">  --input watergap_discharge.nc \</div>
-<div class="line">  --output G_RIVER_VELOCITY_2000.12.UNF0 \</div>
-<div class="line">  --variable dis</div>
-</div><!-- fragment --><p class="startli">Zeitbedarf:** 4-8 Wochen (inkl. Genehmigung)</p>
-<p class="startli">Kosten:** Kostenlos für akademische Nutzung</p>
+<div class="line">  --input watergap_dis_2000-2010.nc \</div>
+<div class="line">  --output /data/watergap_output/ \</div>
+<div class="line">  --variable dis \</div>
+<div class="line">  --pattern &quot;G_RIVER_VELOCITY_{year}.12.UNF0&quot;</div>
+</div><!-- fragment --><p class="startli">Zeitbedarf:** 4-6 Wochen (inkl. Genehmigung + Download)</p>
+<p class="startli">Kosten:** 0€ (akademische Nutzung)</p>
 </li>
 </ol>
 <h3 class="doxsection"><a class="anchor" id="autotoc_md74"></a>
-Option B: Synthetische Test-Daten</h3>
-<p>Für erste Tests ohne echte Daten:</p>
-<div class="fragment"><div class="line"># Test-Daten Generator (muss entwickelt werden)</div>
-<div class="line">python generate_test_data.py \</div>
-<div class="line">  --cells 100 \</div>
+Option B: Direkter Kontakt WaterGAP-Gruppe</h3>
+<p>E-Mail:** <a href="#" onclick="location.href='mai'+'lto:'+'wat'+'er'+'gap'+'@e'+'m.u'+'ni'+'-fr'+'an'+'kfu'+'rt'+'.de'; return false;">water<span class="obfuscator">.nosp@m.</span>gap@<span class="obfuscator">.nosp@m.</span>em.un<span class="obfuscator">.nosp@m.</span>i-fr<span class="obfuscator">.nosp@m.</span>ankfu<span class="obfuscator">.nosp@m.</span>rt.d<span class="obfuscator">.nosp@m.</span>e</a></p>
+<p>Anfrage-Template:** </p><div class="fragment"><div class="line">Betreff: Data request <span class="keywordflow">for</span> WorldQual simulation</div>
+<div class="line"> </div>
+<div class="line">Dear WaterGAP Team,</div>
+<div class="line"> </div>
+<div class="line">I am working with the WorldQual water quality model and need WaterGAP output data.</div>
+<div class="line"> </div>
+<div class="line">Required data:</div>
+<div class="line">- Variables: River velocity, lake storage, reservoir storage</div>
+<div class="line">- Region: Africa (or specify)</div>
+<div class="line">- Time period: 2000-2010</div>
+<div class="line">- Format: UNF binary files (or NetCDF)</div>
+<div class="line"> </div>
+<div class="line">Purpose: [Research / Teaching / Commercial]</div>
+<div class="line"> </div>
+<div class="line">Could you please provide access or guidance on obtaining these data?</div>
+<div class="line"> </div>
+<div class="line">Best regards,</div>
+<div class="line">[Your Name]</div>
+</div><!-- fragment --><p>Antwortzeit:** 2-4 Wochen</p>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md75"></a>
+Option C: Test-Daten generieren (Schnellstart)</h3>
+<p>Für sofortige Tests ohne echte Daten:</p>
+<div class="fragment"><div class="line"># Synthetische Test-Daten (muss noch entwickelt werden)</div>
+<div class="line">python generate_test_unf.py \</div>
+<div class="line">  --region africa \</div>
 <div class="line">  --years 2000-2001 \</div>
+<div class="line">  --cells 100 \</div>
 <div class="line">  --output /data/test/</div>
-</div><!-- fragment --><p>Zeitbedarf:** 1-2 Tage</p>
-<p>Verwendbar für:** Entwicklung, Tests, Pipeline-Validierung</p>
+</div><!-- fragment --><p>Zeitbedarf:** 1 Tag</p>
+<p>Verwendbar für:** Entwicklung, Pipeline-Tests, Demonstration</p>
 <hr  />
-<h2 class="doxsection"><a class="anchor" id="autotoc_md76"></a>
-5. Daten-Import Workflow</h2>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md77"></a>
-Kompletter Workflow:</h3>
-<div class="fragment"><div class="line"># 1. Datenbank aufsetzen</div>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md77"></a>
+Teil 5: Kompletter Workflow</h2>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md78"></a>
+Schritt-für-Schritt von 0 zu ersten Ergebnissen</h3>
+<div class="fragment"><div class="line"># ============================================</div>
+<div class="line"># SCHRITT 1: Datenbank vorbereiten</div>
+<div class="line"># ============================================</div>
+<div class="line"> </div>
+<div class="line">cd /Users/leon/WorldQual/C++</div>
+<div class="line"> </div>
+<div class="line"># Schema installieren</div>
 <div class="line">mysql -u root -p &lt; database_schema.sql</div>
 <div class="line"> </div>
-<div class="line"># 2. User konfigurieren</div>
-<div class="line">mysql -u root -p</div>
-<div class="line">&gt; CREATE USER &#39;worldqual_user&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;password&#39;;</div>
-<div class="line">&gt; GRANT ALL PRIVILEGES ON wq_*.* TO &#39;worldqual_user&#39;@&#39;localhost&#39;;</div>
-<div class="line">&gt; EXIT;</div>
+<div class="line"># User erstellen</div>
+<div class="line">mysql -u root -p &lt;&lt;EOF</div>
+<div class="line">CREATE USER &#39;worldqual_user&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;password123&#39;;</div>
+<div class="line">GRANT ALL PRIVILEGES ON wq_*.* TO &#39;worldqual_user&#39;@&#39;localhost&#39;;</div>
+<div class="line">GRANT ALL PRIVILEGES ON watergap_unf.* TO &#39;worldqual_user&#39;@&#39;localhost&#39;;</div>
+<div class="line">FLUSH PRIVILEGES;</div>
+<div class="line">EOF</div>
 <div class="line"> </div>
-<div class="line"># 3. Test-Daten einfügen</div>
-<div class="line">mysql -u worldqual_user -p wq_general &lt; test_data.sql</div>
+<div class="line"># Test-Daten einfügen</div>
+<div class="line">mysql -u worldqual_user -p wq_general &lt;&lt;EOF</div>
+<div class="line">INSERT INTO _parameter VALUES (1, &#39;TN&#39;, &#39;mg/l&#39;, &#39;Total Nitrogen&#39;);</div>
+<div class="line">INSERT INTO _szenario VALUES (1, &#39;BASELINE&#39;, &#39;Baseline&#39;);</div>
+<div class="line">INSERT INTO _runlist VALUES (1, 1, 1, 1, 3, 2, 2000, 2001, &#39;Test&#39;);</div>
+<div class="line">EOF</div>
 <div class="line"> </div>
-<div class="line"># 4. UNF-Dateien organisieren</div>
-<div class="line">mkdir -p /data/{watergap_output,climate,hydro_input,routing}</div>
-<div class="line">cp downloaded_files/*.UNF* /data/watergap_output/</div>
 <div class="line"> </div>
-<div class="line"># 5. OPTIONS.DAT anpassen</div>
+<div class="line"># ============================================</div>
+<div class="line"># SCHRITT 2: Verzeichnisse erstellen</div>
+<div class="line"># ============================================</div>
+<div class="line"> </div>
+<div class="line">sudo mkdir -p /data/{watergap_output,climate,hydro_input,routing}</div>
+<div class="line">sudo chown -R $USER /data</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"># ============================================</div>
+<div class="line"># SCHRITT 3: Daten beschaffen</div>
+<div class="line"># ============================================</div>
+<div class="line"> </div>
+<div class="line"># Option A: Von ISIMIP herunterladen (siehe oben)</div>
+<div class="line"># Option B: Test-Daten generieren</div>
+<div class="line">python generate_test_unf.py --output /data --years 2000-2001</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"># ============================================</div>
+<div class="line"># SCHRITT 4: OPTIONS.DAT konfigurieren</div>
+<div class="line"># ============================================</div>
+<div class="line"> </div>
 <div class="line">cd src/worldqual</div>
-<div class="line">nano OPTIONS.DAT</div>
-<div class="line"># Pfade anpassen: /data/watergap_output, etc.</div>
-<div class="line"># MySQL-Credentials: worldqual_user, password</div>
+<div class="line">cp OPTIONS.DAT OPTIONS.DAT.backup</div>
 <div class="line"> </div>
-<div class="line"># 6. Erste Simulation</div>
-<div class="line">./worldqual 1 2000 2010</div>
-</div><!-- fragment --><hr  />
-<h2 class="doxsection"><a class="anchor" id="autotoc_md79"></a>
-6. Konfiguration prüfen</h2>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md80"></a>
-Datenbank-Verbindung testen:</h3>
-<div class="fragment"><div class="line">mysql -u worldqual_user -p -e &quot;USE wq_general; SELECT * FROM _runlist;&quot;</div>
-</div><!-- fragment --><p>Erwartete Ausgabe:** </p><div class="fragment"><div class="line">+-------+--------+--------------+--------+-----------+-------+------------+----------+-------------+</div>
-<div class="line">| IDrun | IDScen | parameter_id | IDTemp | IDVersion | IDReg | start_year | end_year | description |</div>
-<div class="line">+-------+--------+--------------+--------+-----------+-------+------------+----------+-------------+</div>
-<div class="line">|     1 |      1 |            1 |      1 |         3 |     2 |       2000 |     2010 | Test run    |</div>
-<div class="line">+-------+--------+--------------+--------+-----------+-------+------------+----------+-------------+</div>
-</div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md81"></a>
-UNF-Dateien prüfen:</h3>
-<div class="fragment"><div class="line"># Prüfe ob Dateien existieren</div>
+<div class="line"># Pfade anpassen</div>
+<div class="line">sed -i &#39;&#39; &#39;s|/path/to/watergap-Output|/data/watergap_output|g&#39; OPTIONS.DAT</div>
+<div class="line">sed -i &#39;&#39; &#39;s|/path/to/climate|/data/climate|g&#39; OPTIONS.DAT</div>
+<div class="line">sed -i &#39;&#39; &#39;s|/path/to/hydro_input|/data/hydro_input|g&#39; OPTIONS.DAT</div>
+<div class="line">sed -i &#39;&#39; &#39;s|/path/to/routing|/data/routing|g&#39; OPTIONS.DAT</div>
+<div class="line"> </div>
+<div class="line"># DB-Credentials anpassen</div>
+<div class="line">sed -i &#39;&#39; &#39;s/Value: MySQL/Value: localhost/g&#39; OPTIONS.DAT</div>
+<div class="line">sed -i &#39;&#39; &#39;s/Value: REMOVED_USER/Value: worldqual_user/g&#39; OPTIONS.DAT</div>
+<div class="line">sed -i &#39;&#39; &#39;s/Value: REMOVED_PASSWORD/Value: password123/g&#39; OPTIONS.DAT</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"># ============================================</div>
+<div class="line"># SCHRITT 5: Konfiguration testen</div>
+<div class="line"># ============================================</div>
+<div class="line"> </div>
+<div class="line"># DB-Verbindung</div>
+<div class="line">mysql -u worldqual_user -p -e &quot;SELECT * FROM wq_general._runlist;&quot;</div>
+<div class="line"> </div>
+<div class="line"># Dateien vorhanden?</div>
 <div class="line">ls -lh /data/watergap_output/G_RIVER_VELOCITY_2000.12.UNF0</div>
 <div class="line"> </div>
-<div class="line"># Prüfe Dateigröße (sollte &gt; 0 sein)</div>
-<div class="line">du -h /data/watergap_output/*.UNF0</div>
-</div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md82"></a>
-OPTIONS.DAT validieren:</h3>
-<div class="fragment"><div class="line"># Alle Pfade existieren?</div>
-<div class="line">cat src/worldqual/OPTIONS.DAT | grep &quot;Value: /&quot; | while read line; do</div>
-<div class="line">  path=$(echo $line | cut -d&#39; &#39; -f2)</div>
-<div class="line">  if [ -d &quot;$path&quot; ]; then</div>
-<div class="line">    echo &quot;✓ $path exists&quot;</div>
-<div class="line">  else</div>
-<div class="line">    echo &quot;✗ $path NOT FOUND&quot;</div>
-<div class="line">  fi</div>
-<div class="line">done</div>
-</div><!-- fragment --><hr  />
-<h2 class="doxsection"><a class="anchor" id="autotoc_md84"></a>
-7. Erstes Simulations-Beispiel</h2>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md85"></a>
-Minimal-Beispiel (Test-Lauf):</h3>
-<div class="fragment"><div class="line">cd /Users/leon/WorldQual/C++/src/worldqual</div>
 <div class="line"> </div>
-<div class="line"># Run-ID: 1, Jahr: 2000-2001</div>
+<div class="line"># ============================================</div>
+<div class="line"># SCHRITT 6: Erste Simulation</div>
+<div class="line"># ============================================</div>
+<div class="line"> </div>
 <div class="line">./worldqual 1 2000 2001</div>
-</div><!-- fragment --><p>Erwartete Ausgabe:** </p><div class="fragment"><div class="line">Program worldqual started at: ...</div>
-<div class="line">database wq_general connection ok...</div>
-<div class="line">Reading OPTIONS.DAT...</div>
-<div class="line">IDVersion: 3</div>
-<div class="line">IDReg: 2 (Africa)</div>
-<div class="line">Processing year 2000...</div>
-<div class="line">Processing year 2001...</div>
-<div class="line">Results written to wq_out_af.concentration_1</div>
-<div class="line">Program finished successfully</div>
-</div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md86"></a>
-Ergebnisse prüfen:</h3>
-<div class="fragment"><div class="line">mysql -u worldqual_user -p</div>
 <div class="line"> </div>
+<div class="line"> </div>
+<div class="line"># ============================================</div>
+<div class="line"># SCHRITT 7: Ergebnisse prüfen</div>
+<div class="line"># ============================================</div>
+<div class="line"> </div>
+<div class="line">mysql -u worldqual_user -p &lt;&lt;EOF</div>
 <div class="line">USE wq_out_af;</div>
-<div class="line"><span class="keyword">SELECT</span> COUNT(*) <span class="keyword">FROM</span> concentration_1;</div>
-<div class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> concentration_1 <span class="keyword">WHERE</span> <span class="keywordtype">date</span>=<span class="stringliteral">200001</span> LIMIT <span class="stringliteral">10</span>;</div>
+<div class="line">SELECT COUNT(*) as total_records FROM concentration_1;</div>
+<div class="line">SELECT date, cell, con FROM concentration_1 LIMIT 10;</div>
+<div class="line">EOF</div>
 </div><!-- fragment --><hr  />
-<h2 class="doxsection"><a class="anchor" id="autotoc_md88"></a>
-8. Erweiterte Konfiguration</h2>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md89"></a>
-Mehrere Parameter simulieren:</h3>
-<div class="fragment"><div class="line"><span class="comment">-- Verschiedene Runs für N, P, BOD</span></div>
-<div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> wq_general._runlist <span class="keyword">VALUES</span> </div>
-<div class="line">(<span class="stringliteral">1</span>, <span class="stringliteral">1</span>, <span class="stringliteral">1</span>, <span class="stringliteral">1</span>, <span class="stringliteral">3</span>, <span class="stringliteral">2</span>, <span class="stringliteral">2000</span>, <span class="stringliteral">2010</span>, <span class="stringliteral">&#39;TN&#39;</span>),</div>
-<div class="line">(<span class="stringliteral">2</span>, <span class="stringliteral">1</span>, <span class="stringliteral">2</span>, <span class="stringliteral">1</span>, <span class="stringliteral">3</span>, <span class="stringliteral">2</span>, <span class="stringliteral">2000</span>, <span class="stringliteral">2010</span>, <span class="stringliteral">&#39;TP&#39;</span>),</div>
-<div class="line">(<span class="stringliteral">3</span>, <span class="stringliteral">1</span>, <span class="stringliteral">3</span>, <span class="stringliteral">1</span>, <span class="stringliteral">3</span>, <span class="stringliteral">2</span>, <span class="stringliteral">2000</span>, <span class="stringliteral">2010</span>, <span class="stringliteral">&#39;BOD&#39;</span>);</div>
-</div><!-- fragment --><div class="fragment"><div class="line"># Nacheinander ausführen</div>
-<div class="line">./worldqual 1 2000 2010  # TN</div>
-<div class="line">./worldqual 2 2000 2010  # TP</div>
-<div class="line">./worldqual 3 2000 2010  # BOD</div>
-</div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md90"></a>
-Verschiedene Szenarien:</h3>
-<div class="fragment"><div class="line"><span class="comment">-- Baseline vs. SSP2</span></div>
-<div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> wq_general._szenario <span class="keyword">VALUES</span> </div>
-<div class="line">(<span class="stringliteral">1</span>, <span class="stringliteral">&#39;BASELINE&#39;</span>, <span class="stringliteral">&#39;Current conditions&#39;</span>),</div>
-<div class="line">(<span class="stringliteral">2</span>, <span class="stringliteral">&#39;SSP2&#39;</span>, <span class="stringliteral">&#39;Shared Socioeconomic Pathway 2&#39;</span>);</div>
-<div class="line"> </div>
-<div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> wq_general._runlist <span class="keyword">VALUES</span> </div>
-<div class="line">(<span class="stringliteral">10</span>, <span class="stringliteral">1</span>, <span class="stringliteral">1</span>, <span class="stringliteral">1</span>, <span class="stringliteral">3</span>, <span class="stringliteral">2</span>, <span class="stringliteral">2000</span>, <span class="stringliteral">2010</span>, <span class="stringliteral">&#39;TN Baseline&#39;</span>),</div>
-<div class="line">(<span class="stringliteral">11</span>, <span class="stringliteral">2</span>, <span class="stringliteral">1</span>, <span class="stringliteral">1</span>, <span class="stringliteral">3</span>, <span class="stringliteral">2</span>, <span class="stringliteral">2000</span>, <span class="stringliteral">2010</span>, <span class="stringliteral">&#39;TN SSP2&#39;</span>);</div>
-</div><!-- fragment --><hr  />
-<h2 class="doxsection"><a class="anchor" id="autotoc_md92"></a>
-9. Troubleshooting</h2>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md93"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md80"></a>
+Teil 6: Troubleshooting</h2>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md81"></a>
 Problem: "Database connection failed"</h3>
-<p>Lösung:** </p><div class="fragment"><div class="line"># MySQL läuft?</div>
+<div class="fragment"><div class="line"># MySQL läuft?</div>
 <div class="line">brew services list | grep mysql</div>
 <div class="line"> </div>
-<div class="line"># Starten falls nötig</div>
+<div class="line"># Starten</div>
 <div class="line">brew services start mysql@8.0</div>
 <div class="line"> </div>
 <div class="line"># User-Rechte prüfen</div>
 <div class="line">mysql -u root -p -e &quot;SHOW GRANTS FOR &#39;worldqual_user&#39;@&#39;localhost&#39;;&quot;</div>
-</div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md94"></a>
+</div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md82"></a>
 Problem: "UNF file not found"</h3>
-<p>Lösung:** </p><div class="fragment"><div class="line"># Pfade in OPTIONS.DAT prüfen</div>
-<div class="line">cat src/worldqual/OPTIONS.DAT | grep &quot;path&quot;</div>
+<div class="fragment"><div class="line"># Pfade in OPTIONS.DAT</div>
+<div class="line">grep &quot;Value: /&quot; src/worldqual/OPTIONS.DAT</div>
 <div class="line"> </div>
 <div class="line"># Dateien vorhanden?</div>
 <div class="line">ls -la /data/watergap_output/</div>
 <div class="line"> </div>
-<div class="line"># Pfade korrigieren in OPTIONS.DAT</div>
-</div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md95"></a>
-Problem: "No data in load tables"</h3>
-<p>Lösung:** </p><div class="fragment"><div class="line"># wq_load Modul ausführen um Einträge zu berechnen</div>
-<div class="line">cd src/wq_load</div>
-<div class="line">./wq_load [parameters]</div>
-</div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md96"></a>
+<div class="line"># Berechtigungen?</div>
+<div class="line">ls -ld /data/watergap_output/</div>
+</div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md83"></a>
 Problem: "Segmentation fault"</h3>
 <p>Mögliche Ursachen:**</p><ul>
-<li>UNF-Datei korrupt oder falsches Format</li>
-<li>Speicher-Overflow (zu große Daten)</li>
+<li>UNF-Datei korrupt</li>
+<li>Falsches Format</li>
 <li><p class="startli">Fehlende Datenbank-Tabellen</p>
-<p class="startli">Lösung:** </p><div class="fragment"><div class="line"># Debug-Modus</div>
-<div class="line">gdb ./worldqual</div>
+<p class="startli">Debug:** </p><div class="fragment"><div class="line">gdb ./worldqual</div>
 <div class="line">(gdb) run 1 2000 2001</div>
 <div class="line">(gdb) backtrace</div>
 </div><!-- fragment --></li>
 </ul>
 <hr  />
-<h2 class="doxsection"><a class="anchor" id="autotoc_md98"></a>
-10. Performance-Optimierung</h2>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md99"></a>
-MySQL-Optimierung:</h3>
-<div class="fragment"><div class="line"><span class="comment">-- Indizes für schnellere Abfragen</span></div>
-<div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> worldqual_af.routing <span class="keyword">ADD</span> INDEX idx_cell (cell);</div>
-<div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> worldqual_af.load <span class="keyword">ADD</span> INDEX idx_date (<span class="keywordtype">date</span>);</div>
-<div class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> wq_out_af.concentration_1 <span class="keyword">ADD</span> INDEX idx_date_cell (<span class="keywordtype">date</span>, cell);</div>
-</div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md100"></a>
-Parallel-Verarbeitung:</h3>
-<div class="fragment"><div class="line"># Verschiedene Regionen parallel</div>
-<div class="line">./worldqual 1 2000 2010 &amp;  # Afrika</div>
-<div class="line">./worldqual 2 2000 2010 &amp;  # Europa</div>
-<div class="line">wait</div>
-</div><!-- fragment --><hr  />
-<h2 class="doxsection"><a class="anchor" id="autotoc_md102"></a>
-11. Weitere Module</h2>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md103"></a>
-wq_load (Nährstoff-Einträge berechnen):</h3>
-<div class="fragment"><div class="line">cd src/wq_load</div>
-<div class="line">nano OPTIONS.DAT  # Konfigurieren</div>
-<div class="line">make clean &amp;&amp; make</div>
-<div class="line">./wq_load [parameters]</div>
-</div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md104"></a>
-wq_stat (Statistik):</h3>
-<div class="fragment"><div class="line">cd src/wq_stat</div>
-<div class="line">nano OPTIONS.DAT</div>
-<div class="line">make clean &amp;&amp; make</div>
-<div class="line">./wq_stat [parameters]</div>
-</div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md105"></a>
-MapRiverQuality (Visualisierung):</h3>
-<div class="fragment"><div class="line">cd src/MapRiverQuality</div>
-<div class="line">nano OPTIONS.DAT</div>
-<div class="line">make clean &amp;&amp; make</div>
-<div class="line">./MapRiverQuality [parameters]</div>
-</div><!-- fragment --><hr  />
-<h2 class="doxsection"><a class="anchor" id="autotoc_md107"></a>
-12. Best Practices</h2>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md108"></a>
-Daten-Organisation:</h3>
-<p>✓ Separate Verzeichnisse pro Region ✓ Klare Namenskonventionen ✓ Backup vor größeren Änderungen ✓ Dokumentation der Datenquellen</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md109"></a>
-Simulations-Workflow:</h3>
-<ol type="1">
-<li>Kleine Region zuerst testen</li>
-<li>Kurze Zeiträume (1-2 Jahre)</li>
-<li>Ergebnisse validieren</li>
-<li>Dann auf größere Region/Zeitraum skalieren</li>
-</ol>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md110"></a>
-Versionskontrolle:</h3>
-<ul>
-<li>OPTIONS.DAT in Git committen</li>
-<li>SQL-Schema versionieren</li>
-<li>Dokumentation aktuell halten</li>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md85"></a>
+Teil 7: Daten-Checkliste</h2>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md86"></a>
+Vor dem ersten Lauf prüfen:</h3>
+<p>Datenbank:**</p><ul class="check">
+<li class="unchecked">MySQL läuft</li>
+</ul>
+<ul class="check">
+<li class="unchecked">Schema installiert</li>
+</ul>
+<ul class="check">
+<li class="unchecked">User erstellt mit Rechten</li>
+</ul>
+<ul class="check">
+<li class="unchecked"><p class="startli">Test-Daten in _runlist</p>
+<p class="startli">UNF-Dateien:**</p>
+</li>
+</ul>
+<ul class="check">
+<li class="unchecked">/data/watergap_output/ existiert</li>
+</ul>
+<ul class="check">
+<li class="unchecked">G_RIVER_VELOCITY_{year}.12.UNF0 vorhanden (für alle Jahre)</li>
+</ul>
+<ul class="check">
+<li class="unchecked">G_GLO_LAKE_STOR_MEAN_{year}.12.UNF0 vorhanden</li>
+</ul>
+<ul class="check">
+<li class="unchecked">G_RES_STOR_MEAN_{year}.12.UNF0 vorhanden</li>
+</ul>
+<ul class="check">
+<li class="unchecked">/data/climate/ mit GSHORTWAVE_{year}.12.UNF2</li>
+</ul>
+<ul class="check">
+<li class="unchecked">/data/hydro_input/ mit G_MEANDERING_RATIO.UNF0</li>
+</ul>
+<ul class="check">
+<li class="unchecked"><p class="startli">/data/routing/ mit GCELLDIST.9.UNF0</p>
+<p class="startli">Konfiguration:**</p>
+</li>
+</ul>
+<ul class="check">
+<li class="unchecked">OPTIONS.DAT Pfade korrekt</li>
+</ul>
+<ul class="check">
+<li class="unchecked">OPTIONS.DAT DB-Credentials korrekt</li>
+</ul>
+<ul class="check">
+<li class="unchecked">IDReg passt zu Daten (2=Afrika, 1=Europa, etc.)</li>
 </ul>
 <hr  />
-<h2 class="doxsection"><a class="anchor" id="autotoc_md112"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md88"></a>
 Zusammenfassung</h2>
-<p>Für produktive Nutzung benötigt WorldQual:**</p>
-<p>✅ <b>OPTIONS.DAT</b> mit korrekten Pfaden und DB-Credentials ✅ <b>MySQL-Datenbank</b> mit vollständigem Schema ✅ <b>UNF-Dateien</b> von WaterGAP/ISIMIP ✅ <b>Nährstoff-Daten</b> (optional, für wq_load)</p>
-<p>Schnellstart-Checkliste:**</p><ol type="1">
-<li>[ ] MySQL installiert und läuft</li>
-<li>[ ] Schema erstellt (database_schema.sql)</li>
-<li>[ ] User und Rechte konfiguriert</li>
-<li>[ ] Test-Daten eingefügt</li>
-<li>[ ] UNF-Dateien organisiert</li>
-<li>[ ] OPTIONS.DAT angepasst</li>
-<li><p class="startli">[ ] Erste Simulation erfolgreich</p>
-<p class="startli">Weitere Informationen:**</p>
-</li>
-</ol>
+<p>Minimum für erste Simulation:**</p>
+<p>✅ MySQL-Datenbank mit Schema ✅ 3 Datenbanken: wq_general, worldqual_af, wq_out_af ✅ UNF-Dateien für mindestens 1 Jahr ✅ OPTIONS.DAT mit korrekten Pfaden</p>
+<p>Typischer Zeitaufwand:**</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Task  </th><th class="markdownTableHeadNone">Zeit  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Datenbank-Setup  </td><td class="markdownTableBodyNone">30 Min  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Test-Daten generieren  </td><td class="markdownTableBodyNone">1 Tag  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">ODER echte Daten beschaffen  </td><td class="markdownTableBodyNone">4-6 Wochen  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Erste Simulation  </td><td class="markdownTableBodyNone">5 Min  </td></tr>
+</table>
+<p>Weitere Dokumentation:**</p>
 <ul>
-<li>Daten-Beschaffung: siehe DATA_ACQUISITION_GUIDE.md</li>
-<li>Datenbank-Details: siehe DATA_REQUIREMENTS.md</li>
-<li>SQL-Schema: siehe database_schema.sql </li>
+<li>Daten-Beschaffung: <span class="tt">DATA_ACQUISITION_GUIDE.md</span></li>
+<li>Datenbank-Details: <span class="tt">DATA_REQUIREMENTS.md</span></li>
+<li>SQL-Schema: <span class="tt">database_schema.sql</span> </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['8_20erweiterte_20konfiguration_0',['8. Erweiterte Konfiguration',['../tutorial_konfiguration.html#autotoc_md88',1,'']]]
+  ['7_3a_20daten_20checkliste_0',['Teil 7: Daten-Checkliste',['../tutorial_konfiguration.html#autotoc_md85',1,'']]]
 ];

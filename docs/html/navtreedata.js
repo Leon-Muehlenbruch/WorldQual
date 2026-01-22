@@ -59,71 +59,47 @@ var NAVTREE =
         [ "Weitere Hilfe", "tutorial_installation.html#autotoc_md47", null ]
       ] ]
     ] ],
-    [ "Konfiguration", "tutorial_konfiguration.html", [
+    [ "Konfiguration &amp; Daten-Setup", "tutorial_konfiguration.html", [
       [ "WorldQual Konfiguration &amp; Daten-Setup", "tutorial_konfiguration.html#autotoc_md48", [
         [ "Überblick", "tutorial_konfiguration.html#autotoc_md50", null ],
-        [ "1. OPTIONS.DAT Konfiguration", "tutorial_konfiguration.html#autotoc_md52", [
-          [ "Speicherort:", "tutorial_konfiguration.html#autotoc_md53", null ],
-          [ "Vollständige Parameter-Übersicht:", "tutorial_konfiguration.html#autotoc_md54", null ],
-          [ "Beispiel-Konfiguration für Afrika:", "tutorial_konfiguration.html#autotoc_md55", null ]
+        [ "Teil 1: OPTIONS.DAT Konfiguration", "tutorial_konfiguration.html#autotoc_md52", [
+          [ "Speicherort", "tutorial_konfiguration.html#autotoc_md53", null ],
+          [ "Wichtigste Parameter", "tutorial_konfiguration.html#autotoc_md54", null ],
+          [ "Beispiel-Konfiguration", "tutorial_konfiguration.html#autotoc_md55", null ]
         ] ],
-        [ "2. MySQL-Datenbank Setup", "tutorial_konfiguration.html#autotoc_md57", [
-          [ "Schritt 1: Datenbank-Schema installieren", "tutorial_konfiguration.html#autotoc_md58", null ],
-          [ "Schritt 2: User und Rechte einrichten", "tutorial_konfiguration.html#autotoc_md59", null ],
+        [ "Teil 2: MySQL-Datenbank Setup", "tutorial_konfiguration.html#autotoc_md57", [
+          [ "Schritt 1: Schema installieren", "tutorial_konfiguration.html#autotoc_md58", null ],
+          [ "Schritt 2: User einrichten", "tutorial_konfiguration.html#autotoc_md59", null ],
           [ "Schritt 3: Test-Daten einfügen", "tutorial_konfiguration.html#autotoc_md60", null ],
-          [ "Datenbank-Struktur:", "tutorial_konfiguration.html#autotoc_md61", null ]
+          [ "Datenbank-Übersicht", "tutorial_konfiguration.html#autotoc_md61", null ]
         ] ],
-        [ "3. Input-Daten: UNF-Dateien", "tutorial_konfiguration.html#autotoc_md63", [
+        [ "Teil 3: Input-Daten - UNF-Dateien", "tutorial_konfiguration.html#autotoc_md63", [
           [ "Was sind UNF-Dateien?", "tutorial_konfiguration.html#autotoc_md64", null ],
-          [ "Benötigte UNF-Dateien:", "tutorial_konfiguration.html#autotoc_md65", [
-            [ "A. Hydrologische Zeitreihen (path_watergap_output)", "tutorial_konfiguration.html#autotoc_md66", null ],
-            [ "B. Klimadaten (path_climate)", "tutorial_konfiguration.html#autotoc_md67", null ],
-            [ "C. Statische Hydro-Daten (path_hydro_input)", "tutorial_konfiguration.html#autotoc_md68", null ],
-            [ "D. Routing (path_hydro_routing)", "tutorial_konfiguration.html#autotoc_md69", null ]
+          [ "Benötigte UNF-Dateien (nach Pfad)", "tutorial_konfiguration.html#autotoc_md65", [
+            [ "A. path_watergap_output (Zeitreihen - PRO JAHR!)", "tutorial_konfiguration.html#autotoc_md66", null ],
+            [ "B. path_climate (Zeitreihen - PRO JAHR!)", "tutorial_konfiguration.html#autotoc_md67", null ],
+            [ "C. path_hydro_input (Statisch - EINMALIG!)", "tutorial_konfiguration.html#autotoc_md68", null ],
+            [ "D. path_hydro_routing (Statisch - EINMALIG!)", "tutorial_konfiguration.html#autotoc_md69", null ]
           ] ],
-          [ "Verzeichnis-Struktur (Empfohlen):", "tutorial_konfiguration.html#autotoc_md70", null ]
+          [ "Gesamtgröße für 10-Jahres-Simulation", "tutorial_konfiguration.html#autotoc_md70", null ]
         ] ],
-        [ "4. Daten beschaffen", "tutorial_konfiguration.html#autotoc_md72", [
-          [ "Option A: Echte Daten von ISIMIP", "tutorial_konfiguration.html#autotoc_md73", null ],
-          [ "Option B: Synthetische Test-Daten", "tutorial_konfiguration.html#autotoc_md74", null ]
+        [ "Teil 4: Daten beschaffen", "tutorial_konfiguration.html#autotoc_md72", [
+          [ "Option A: ISIMIP Portal (Empfohlen, KOSTENLOS)", "tutorial_konfiguration.html#autotoc_md73", null ],
+          [ "Option B: Direkter Kontakt WaterGAP-Gruppe", "tutorial_konfiguration.html#autotoc_md74", null ],
+          [ "Option C: Test-Daten generieren (Schnellstart)", "tutorial_konfiguration.html#autotoc_md75", null ]
         ] ],
-        [ "5. Daten-Import Workflow", "tutorial_konfiguration.html#autotoc_md76", [
-          [ "Kompletter Workflow:", "tutorial_konfiguration.html#autotoc_md77", null ]
+        [ "Teil 5: Kompletter Workflow", "tutorial_konfiguration.html#autotoc_md77", [
+          [ "Schritt-für-Schritt von 0 zu ersten Ergebnissen", "tutorial_konfiguration.html#autotoc_md78", null ]
         ] ],
-        [ "6. Konfiguration prüfen", "tutorial_konfiguration.html#autotoc_md79", [
-          [ "Datenbank-Verbindung testen:", "tutorial_konfiguration.html#autotoc_md80", null ],
-          [ "UNF-Dateien prüfen:", "tutorial_konfiguration.html#autotoc_md81", null ],
-          [ "OPTIONS.DAT validieren:", "tutorial_konfiguration.html#autotoc_md82", null ]
+        [ "Teil 6: Troubleshooting", "tutorial_konfiguration.html#autotoc_md80", [
+          [ "Problem: \"Database connection failed\"", "tutorial_konfiguration.html#autotoc_md81", null ],
+          [ "Problem: \"UNF file not found\"", "tutorial_konfiguration.html#autotoc_md82", null ],
+          [ "Problem: \"Segmentation fault\"", "tutorial_konfiguration.html#autotoc_md83", null ]
         ] ],
-        [ "7. Erstes Simulations-Beispiel", "tutorial_konfiguration.html#autotoc_md84", [
-          [ "Minimal-Beispiel (Test-Lauf):", "tutorial_konfiguration.html#autotoc_md85", null ],
-          [ "Ergebnisse prüfen:", "tutorial_konfiguration.html#autotoc_md86", null ]
+        [ "Teil 7: Daten-Checkliste", "tutorial_konfiguration.html#autotoc_md85", [
+          [ "Vor dem ersten Lauf prüfen:", "tutorial_konfiguration.html#autotoc_md86", null ]
         ] ],
-        [ "8. Erweiterte Konfiguration", "tutorial_konfiguration.html#autotoc_md88", [
-          [ "Mehrere Parameter simulieren:", "tutorial_konfiguration.html#autotoc_md89", null ],
-          [ "Verschiedene Szenarien:", "tutorial_konfiguration.html#autotoc_md90", null ]
-        ] ],
-        [ "9. Troubleshooting", "tutorial_konfiguration.html#autotoc_md92", [
-          [ "Problem: \"Database connection failed\"", "tutorial_konfiguration.html#autotoc_md93", null ],
-          [ "Problem: \"UNF file not found\"", "tutorial_konfiguration.html#autotoc_md94", null ],
-          [ "Problem: \"No data in load tables\"", "tutorial_konfiguration.html#autotoc_md95", null ],
-          [ "Problem: \"Segmentation fault\"", "tutorial_konfiguration.html#autotoc_md96", null ]
-        ] ],
-        [ "10. Performance-Optimierung", "tutorial_konfiguration.html#autotoc_md98", [
-          [ "MySQL-Optimierung:", "tutorial_konfiguration.html#autotoc_md99", null ],
-          [ "Parallel-Verarbeitung:", "tutorial_konfiguration.html#autotoc_md100", null ]
-        ] ],
-        [ "11. Weitere Module", "tutorial_konfiguration.html#autotoc_md102", [
-          [ "wq_load (Nährstoff-Einträge berechnen):", "tutorial_konfiguration.html#autotoc_md103", null ],
-          [ "wq_stat (Statistik):", "tutorial_konfiguration.html#autotoc_md104", null ],
-          [ "MapRiverQuality (Visualisierung):", "tutorial_konfiguration.html#autotoc_md105", null ]
-        ] ],
-        [ "12. Best Practices", "tutorial_konfiguration.html#autotoc_md107", [
-          [ "Daten-Organisation:", "tutorial_konfiguration.html#autotoc_md108", null ],
-          [ "Simulations-Workflow:", "tutorial_konfiguration.html#autotoc_md109", null ],
-          [ "Versionskontrolle:", "tutorial_konfiguration.html#autotoc_md110", null ]
-        ] ],
-        [ "Zusammenfassung", "tutorial_konfiguration.html#autotoc_md112", null ]
+        [ "Zusammenfassung", "tutorial_konfiguration.html#autotoc_md88", null ]
       ] ]
     ] ],
     [ "Klassen", "annotated.html", [
@@ -154,7 +130,7 @@ var NAVTREEINDEX =
 "class_l_s___c_l_a_s_s.html#a48aa9326ec724fcec43f8b08fadb7d43",
 "copy__scen_8cpp.html#adc58c9862730d1b6c6bc472aaa13f6a7",
 "map_river_quality_8cpp.html#ae2b9d5fbeb940658c8ab8ec58f40bd62",
-"wq__load_2def_8h.html#a48cab1269f5c8a1d17e0d7bec446b151"
+"wq__stat_8cpp.html#a342be6ae3e892ad1029493eb8ef0c7fd"
 ];
 
 var SYNCONMSG = 'Klicken um Panelsynchronisation auszuschalten';
