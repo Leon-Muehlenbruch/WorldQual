@@ -1,0 +1,275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>WorldQual: /Users/leon/WorldQual/C++/src/wq_stat/options_wqstat.cpp Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">WorldQual<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Water Quality Model for River Systems</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Suchen',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('options__wqstat_8cpp_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Lade ...</div>
+<div class="SRStatus" id="Searching">Suche ...</div>
+<div class="SRStatus" id="NoMatches">Keine Treffer</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">options_wqstat.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="options__wqstat_8cpp.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * options.cpp</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *  Created on: 11.05.2015</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *      Author: kynast</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> *      based on optionClass from WaterGAP hydro model</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;cstdio&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;cstring&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;iomanip&gt;</span>      <span class="comment">// std::setw</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">//#include &quot;../general_function/general_functions.h&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="options_8h.html">../options/options.h</a>&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="options__wqstat_8h.html">options_wqstat.h</a>&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">using namespace </span>std;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">//options_wqstatClass::options_wqstatClass() :optionsClass() {</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">//  // TODO Auto-generated constructor stub</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">//}</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">//options_wqstatClass(int option_c, char* option_v[]) : optionsClass(option_c, option_v)  {</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">//</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">//}</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="foldopen" id="foldopen00028" data-start="{" data-end="}">
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classoptions__wqstat_class.html#a13c82b5f787e02b32408e10ac873d3f7">   28</a></span><a class="code hl_function" href="classoptions__wqstat_class.html#a13c82b5f787e02b32408e10ac873d3f7">options_wqstatClass::~options_wqstatClass</a>() {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="comment">// TODO Auto-generated destructor stub</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">//  cout &lt;&lt; &quot;destructor options_wqstatClass\n&quot;;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>}</div>
+</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="foldopen" id="foldopen00033" data-start="{" data-end="}">
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classoptions__wqstat_class.html#a9db858618f2abfdbbbe3026a56718e1e">   33</a></span><span class="keywordtype">short</span> <a class="code hl_function" href="classoptions__wqstat_class.html#a9db858618f2abfdbbbe3026a56718e1e">options_wqstatClass::init</a>(<span class="keywordtype">int</span> option_c, <span class="keywordtype">char</span>* option_v[])</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>{</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">char</span> <span class="keywordtype">string</span>[<a class="code hl_variable" href="classoptions_class.html#ac1bdfc71ba5cef27fd83a55c659ee7e5">maxcharlength</a>];</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="comment">//#############</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="comment">// set default options</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="comment">// which will be used, when OPTIONS.DAT is not found</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <a class="code hl_function" href="classoptions_class.html#ad6ca77842d200ec3661de6a3fa84c14e">optionsClass::init</a>(option_c, option_v); <span class="comment">// initiiren allgemeine Optionen</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <a class="code hl_variable" href="classoptions__wqstat_class.html#a8ab9b6f260255c6ebb48bbaa22fdbfa0">flowVelocityVariant</a> = 0;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <a class="code hl_variable" href="classoptions__wqstat_class.html#a81740466e59a3bf1381b5316593f82b7">ConstVelocity</a> = 0.0;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <a class="code hl_variable" href="classoptions__wqstat_class.html#a4902d354e297a2ad528bd638d7c35345">climate</a> = 0;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <a class="code hl_variable" href="classoptions__wqstat_class.html#a5965edaef2013f75f68958700a71c119">watertype</a> = 1;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="comment">//#############</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="comment">// read OPTIONS.DAT</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">int</span> parent_number=5; <span class="comment">// ab diesem Nummer sind Optionen von der Klasse optionsClass</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    FILE *file_ptr;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    file_ptr = fopen(<a class="code hl_variable" href="classoptions_class.html#a5f51d6d18ec55e90f5bfe487a542625d">filename_opt</a>, <span class="stringliteral">&quot;r&quot;</span>);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordflow">if</span> (file_ptr != NULL) {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        printf(<span class="stringliteral">&quot;Reading: %s\n\n&quot;</span>, <a class="code hl_variable" href="classoptions_class.html#a5f51d6d18ec55e90f5bfe487a542625d">filename_opt</a>);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordtype">int</span> i = 0, <a class="code hl_variable" href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2">n</a>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordflow">while</span> (fgets(<span class="keywordtype">string</span>, <a class="code hl_variable" href="classoptions_class.html#ac1bdfc71ba5cef27fd83a55c659ee7e5">maxcharlength</a>, file_ptr) &amp;&amp; i&lt;parent_number-1) {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            <span class="keywordflow">if</span> (0 == strncmp(<span class="keywordtype">string</span>, <span class="stringliteral">&quot;Value:&quot;</span>, 6)) {</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                i++;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                <a class="code hl_variable" href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2">n</a> = atoi(&amp;<span class="keywordtype">string</span>[7]);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                <span class="keywordflow">if</span> (1 == i) {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                    <span class="keywordflow">if</span> (<a class="code hl_variable" href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2">n</a> == 0 || <a class="code hl_variable" href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2">n</a> == 1 || <a class="code hl_variable" href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2">n</a> == 2)</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                        <a class="code hl_variable" href="classoptions__wqstat_class.html#a8ab9b6f260255c6ebb48bbaa22fdbfa0">flowVelocityVariant</a> = <a class="code hl_variable" href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2">n</a>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                    <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                        cerr &lt;&lt; <span class="stringliteral">&quot;OPTIONS ERROR: 8. Option &#39;Flie�geschwindigkeit&#39;.\n&quot;</span>;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                        cerr &lt;&lt; <span class="stringliteral">&quot;  0: mit variablen Flie�geschwindigkeit  aus der Tabelle oder UNF-Datei  als Standart ###\n&quot;</span>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                        cerr &lt;&lt; <span class="stringliteral">&quot;  1: mit variablen Flie�geschwindigkeit (berechnet)\n&quot;</span>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                        cerr &lt;&lt; <span class="stringliteral">&quot;  2: mit konstanten Flie�geschwindigkeit (ein Wert f�r alle Zellen)\n&quot;</span>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                    }</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                }</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                <span class="keywordflow">if</span> (2 == i) {</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                    <span class="keywordflow">if</span> (<a class="code hl_variable" href="classoptions__wqstat_class.html#a8ab9b6f260255c6ebb48bbaa22fdbfa0">flowVelocityVariant</a> == 2)</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                        <a class="code hl_variable" href="classoptions__wqstat_class.html#a81740466e59a3bf1381b5316593f82b7">ConstVelocity</a> = atof(&amp;<span class="keywordtype">string</span>[7]);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                    <span class="keywordflow">else</span> <a class="code hl_variable" href="classoptions__wqstat_class.html#a81740466e59a3bf1381b5316593f82b7">ConstVelocity</a> = 0.;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                }</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>                <span class="keywordflow">if</span> (3 == i) {</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                    <span class="keywordflow">if</span> (<a class="code hl_variable" href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2">n</a> == 0 || <a class="code hl_variable" href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2">n</a> == 1)</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>                        <a class="code hl_variable" href="classoptions__wqstat_class.html#a4902d354e297a2ad528bd638d7c35345">climate</a> = <a class="code hl_variable" href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2">n</a>;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>                    <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                        cerr &lt;&lt; <span class="stringliteral">&quot;OPTIONS ERROR: 10. Option &#39;Klimainput&#39; darf 0 oder 1 sein!\n&quot;</span>;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                        cerr &lt;&lt; <span class="stringliteral">&quot;  0: Klimainput in 0.5�\n&quot;</span>;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                        cerr &lt;&lt; <span class="stringliteral">&quot;  1: Klimainput 5 min\n&quot;</span>;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                    }</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                }</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                <span class="keywordflow">if</span> (4 == i) {</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                    <a class="code hl_variable" href="classoptions__wqstat_class.html#a5965edaef2013f75f68958700a71c119">watertype</a> = <a class="code hl_variable" href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2">n</a>;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                }</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            } <span class="comment">// if(Value)</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        }</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="classoptions_class.html#a15417efa56d0d5583939797f16e39986">read_parentOptions</a>(parent_number, file_ptr)) <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        fclose(file_ptr);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        printf(<span class="stringliteral">&quot;\nError while opening file &#39;%s&#39;.\n&quot;</span>, <a class="code hl_variable" href="classoptions_class.html#a5f51d6d18ec55e90f5bfe487a542625d">filename_opt</a>);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <span class="comment">//printf(&quot;Using default options.\n&quot;);</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    }</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="comment">//#############</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="comment">// Options Ausgabe</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="comment">// Ausgabe worldqual-Optionen</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordflow">switch</span> (<a class="code hl_variable" href="classoptions__wqstat_class.html#a8ab9b6f260255c6ebb48bbaa22fdbfa0">flowVelocityVariant</a>) {</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <span class="keywordflow">case</span> 0:</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>            <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classoptions_class.html#a4d3b7e94482620aaac2b9698e22913ac">InputType</a>) cout &lt;&lt; <span class="stringliteral">&quot;mit variablen Fliessgeschwindigkeit  aus der Tabelle\n&quot;</span>;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            <span class="keywordflow">else</span> cout &lt;&lt; <span class="stringliteral">&quot;mit variablen Fliessgeschwindigkeit  aus UNF-Dateien\n&quot;</span>;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        <span class="keywordflow">case</span> 1: cout &lt;&lt; <span class="stringliteral">&quot;mit variablen Fliessgeschwindigkeit (berechnet im Programm)\n&quot;</span>; <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <span class="keywordflow">case</span> 2: cout &lt;&lt; <span class="stringliteral">&quot;mit konstanten Fliessgeschwindigkeit = &quot;</span>&lt;&lt; <a class="code hl_variable" href="classoptions__wqstat_class.html#a81740466e59a3bf1381b5316593f82b7">ConstVelocity</a> &lt;&lt;<span class="charliteral">&#39;\n&#39;</span>; <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    }</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordflow">switch</span> (<a class="code hl_variable" href="classoptions__wqstat_class.html#a4902d354e297a2ad528bd638d7c35345">climate</a>) {</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordflow">case</span> 0: cout &lt;&lt; <span class="stringliteral">&quot;Climate Input: 0.5�\n&quot;</span>; <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keywordflow">case</span> 1: cout &lt;&lt; <span class="stringliteral">&quot;Climate Input: 5min\n&quot;</span>; <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    }</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="classoptions_class.html#a4d3b7e94482620aaac2b9698e22913ac">InputType</a>) cout &lt;&lt; <span class="stringliteral">&quot;q und runoff  aus der Tabelle\n&quot;</span>;</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordflow">else</span> cout &lt;&lt; <span class="stringliteral">&quot;q und runoff  aus UNF-Dateien\n&quot;</span>;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    cout &lt;&lt; <span class="stringliteral">&quot;watertype: &quot;</span> &lt;&lt; <a class="code hl_variable" href="classoptions__wqstat_class.html#a5965edaef2013f75f68958700a71c119">watertype</a>      &lt;&lt; endl;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <a class="code hl_function" href="classoptions_class.html#ad12cc5950be10e1813d8387062679188">optionsClass::printOptions</a>(); <span class="comment">// Ausgabe allgemeinen Optionen, continent_abb wird hier gef�llt</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> } <span class="comment">// init()</span></div>
+</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="foldopen" id="foldopen00127" data-start="{" data-end="}">
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="classoptions__wqstat_class.html#a4b4d77df103a346023ce0699cddf2836">  127</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classoptions__wqstat_class.html#a4b4d77df103a346023ce0699cddf2836">options_wqstatClass::Help</a>(<span class="keywordtype">int</span> num) {</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    num = 1;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    cout &lt;&lt; <a class="code hl_variable" href="classoptions_class.html#a69af51950cba3a01597a03809d89015a">programme</a> &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; <a class="code hl_variable" href="classoptions_class.html#a154ef14990903eeeae77baca08e6db31">commandLine</a> &lt;&lt; <span class="charliteral">&#39; &#39;</span>;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="comment">//  cout &lt;&lt; &quot;\n./wq_stat IDrun startYear endYear &quot;;</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    cout &lt;&lt; <span class="stringliteral">&quot;[-ooptions_file (default: OPTIONS.DAT)]\n&quot;</span>;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    cout &lt;&lt; <span class="stringliteral">&quot;\nStruktur von  OPTIONS.DAT:\n&quot;</span>;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    cout &lt;&lt; std::setw(3) &lt;&lt; num++ &lt;&lt; <span class="stringliteral">&quot;. Fließgeschwindigkeit\n&quot;</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>         &lt;&lt; <span class="stringliteral">&quot;      0: mit variablen Fließgeschwindigkeit  aus der Tabelle oder UNF-Datei  als Standart\n&quot;</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>         &lt;&lt; <span class="stringliteral">&quot;      1: mit variablen Fließgeschwindigkeit (berechnet) ###\n&quot;</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>         &lt;&lt; <span class="stringliteral">&quot;      2: mit konstanten Fließgeschwindigkeit (ein Wert für alle Zellen)\n&quot;</span>;</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    cout &lt;&lt; std::setw(3) &lt;&lt; num++ &lt;&lt; <span class="stringliteral">&quot;. Wert für konstante Fließgeschwindigkeit (nur bei 1. == 2: mit konstanten Flie�geschwindigkeit)\n&quot;</span>;</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    cout &lt;&lt; std::setw(3) &lt;&lt; num++ &lt;&lt; <span class="stringliteral">&quot;. Klimainput\n&quot;</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        &lt;&lt; <span class="stringliteral">&quot;      0: in 0.5° ###\n&quot;</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        &lt;&lt; <span class="stringliteral">&quot;      1. in 5 min\n&quot;</span>;</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    cout &lt;&lt; std::setw(3) &lt;&lt; num++ &lt;&lt; <span class="stringliteral">&quot;. water type, Tabelle wq_general._watertype\n&quot;</span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>         &lt;&lt; <span class="stringliteral">&quot;      1: River\n&quot;</span>;</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <a class="code hl_function" href="classoptions_class.html#a23a2504c78edabd79f5b53fc2e484ea4">optionsClass::Help</a>(num);</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>} <span class="comment">// Help()</span></div>
+</div>
+<div class="ttc" id="a_newton_8h_html_acfc02ec89670db29251fda6a66602ce2"><div class="ttname"><a href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2">n</a></div><div class="ttdeci">const int n</div><div class="ttdoc">Anzahl der Koeffizienten in der Approximationsfunktion (c0, c1, c2).</div><div class="ttdef"><b>Definition</b> <a href="_newton_8h_source.html#l00050">Newton.h:50</a></div></div>
+<div class="ttc" id="aclassoptions__wqstat_class_html_a13c82b5f787e02b32408e10ac873d3f7"><div class="ttname"><a href="classoptions__wqstat_class.html#a13c82b5f787e02b32408e10ac873d3f7">options_wqstatClass::~options_wqstatClass</a></div><div class="ttdeci">virtual ~options_wqstatClass()</div><div class="ttdoc">Destruktor.</div><div class="ttdef"><b>Definition</b> <a href="#l00028">options_wqstat.cpp:28</a></div></div>
+<div class="ttc" id="aclassoptions__wqstat_class_html_a4902d354e297a2ad528bd638d7c35345"><div class="ttname"><a href="classoptions__wqstat_class.html#a4902d354e297a2ad528bd638d7c35345">options_wqstatClass::climate</a></div><div class="ttdeci">short climate</div><div class="ttdoc">Klima-Input Auflösung.</div><div class="ttdef"><b>Definition</b> <a href="options__wqstat_8h_source.html#l00069">options_wqstat.h:69</a></div></div>
+<div class="ttc" id="aclassoptions__wqstat_class_html_a4b4d77df103a346023ce0699cddf2836"><div class="ttname"><a href="classoptions__wqstat_class.html#a4b4d77df103a346023ce0699cddf2836">options_wqstatClass::Help</a></div><div class="ttdeci">void Help(int num=1)</div><div class="ttdoc">Zeigt Hilfe-Text an.</div><div class="ttdef"><b>Definition</b> <a href="#l00127">options_wqstat.cpp:127</a></div></div>
+<div class="ttc" id="aclassoptions__wqstat_class_html_a5965edaef2013f75f68958700a71c119"><div class="ttname"><a href="classoptions__wqstat_class.html#a5965edaef2013f75f68958700a71c119">options_wqstatClass::watertype</a></div><div class="ttdeci">int watertype</div><div class="ttdoc">Gewässertyp.</div><div class="ttdef"><b>Definition</b> <a href="options__wqstat_8h_source.html#l00077">options_wqstat.h:77</a></div></div>
+<div class="ttc" id="aclassoptions__wqstat_class_html_a81740466e59a3bf1381b5316593f82b7"><div class="ttname"><a href="classoptions__wqstat_class.html#a81740466e59a3bf1381b5316593f82b7">options_wqstatClass::ConstVelocity</a></div><div class="ttdeci">double ConstVelocity</div><div class="ttdoc">Konstante Fließgeschwindigkeit [m/s].</div><div class="ttdef"><b>Definition</b> <a href="options__wqstat_8h_source.html#l00061">options_wqstat.h:61</a></div></div>
+<div class="ttc" id="aclassoptions__wqstat_class_html_a8ab9b6f260255c6ebb48bbaa22fdbfa0"><div class="ttname"><a href="classoptions__wqstat_class.html#a8ab9b6f260255c6ebb48bbaa22fdbfa0">options_wqstatClass::flowVelocityVariant</a></div><div class="ttdeci">short flowVelocityVariant</div><div class="ttdoc">Variante der Fließgeschwindigkeitsberechnung.</div><div class="ttdef"><b>Definition</b> <a href="options__wqstat_8h_source.html#l00053">options_wqstat.h:53</a></div></div>
+<div class="ttc" id="aclassoptions__wqstat_class_html_a9db858618f2abfdbbbe3026a56718e1e"><div class="ttname"><a href="classoptions__wqstat_class.html#a9db858618f2abfdbbbe3026a56718e1e">options_wqstatClass::init</a></div><div class="ttdeci">short init(int optionc, char *optionv[])</div><div class="ttdoc">Initialisiert die Optionen aus Kommandozeilenargumenten.</div><div class="ttdef"><b>Definition</b> <a href="#l00033">options_wqstat.cpp:33</a></div></div>
+<div class="ttc" id="aclassoptions_class_html_a15417efa56d0d5583939797f16e39986"><div class="ttname"><a href="classoptions_class.html#a15417efa56d0d5583939797f16e39986">optionsClass::read_parentOptions</a></div><div class="ttdeci">short read_parentOptions(int num, FILE *file_ptr)</div><div class="ttdoc">Liest Basis-Optionen aus OPTIONS.DAT.</div><div class="ttdef"><b>Definition</b> <a href="options_8cpp_source.html#l00139">options.cpp:139</a></div></div>
+<div class="ttc" id="aclassoptions_class_html_a154ef14990903eeeae77baca08e6db31"><div class="ttname"><a href="classoptions_class.html#a154ef14990903eeeae77baca08e6db31">optionsClass::commandLine</a></div><div class="ttdeci">char * commandLine</div><div class="ttdoc">Vollständige Kommandozeile (z.B. &quot;./rtf_input startYear endYear&quot;).</div><div class="ttdef"><b>Definition</b> <a href="options_8h_source.html#l00131">options.h:131</a></div></div>
+<div class="ttc" id="aclassoptions_class_html_a23a2504c78edabd79f5b53fc2e484ea4"><div class="ttname"><a href="classoptions_class.html#a23a2504c78edabd79f5b53fc2e484ea4">optionsClass::Help</a></div><div class="ttdeci">virtual void Help(int num=1)=0</div><div class="ttdoc">Zeigt Hilfe-Text (muss von abgeleiteten Klassen implementiert werden).</div><div class="ttdef"><b>Definition</b> <a href="options_8cpp_source.html#l00203">options.cpp:203</a></div></div>
+<div class="ttc" id="aclassoptions_class_html_a4d3b7e94482620aaac2b9698e22913ac"><div class="ttname"><a href="classoptions_class.html#a4d3b7e94482620aaac2b9698e22913ac">optionsClass::InputType</a></div><div class="ttdeci">short InputType</div><div class="ttdoc">Typ der Input-Datenquelle.</div><div class="ttdef"><b>Definition</b> <a href="options_8h_source.html#l00074">options.h:74</a></div></div>
+<div class="ttc" id="aclassoptions_class_html_a5f51d6d18ec55e90f5bfe487a542625d"><div class="ttname"><a href="classoptions_class.html#a5f51d6d18ec55e90f5bfe487a542625d">optionsClass::filename_opt</a></div><div class="ttdeci">char * filename_opt</div><div class="ttdoc">Pfad zur OPTIONS.DAT Konfigurationsdatei.</div><div class="ttdef"><b>Definition</b> <a href="options_8h_source.html#l00084">options.h:84</a></div></div>
+<div class="ttc" id="aclassoptions_class_html_a69af51950cba3a01597a03809d89015a"><div class="ttname"><a href="classoptions_class.html#a69af51950cba3a01597a03809d89015a">optionsClass::programme</a></div><div class="ttdeci">char * programme</div><div class="ttdoc">Name des Programms (z.B. &quot;rtf_input&quot;).</div><div class="ttdef"><b>Definition</b> <a href="options_8h_source.html#l00128">options.h:128</a></div></div>
+<div class="ttc" id="aclassoptions_class_html_ac1bdfc71ba5cef27fd83a55c659ee7e5"><div class="ttname"><a href="classoptions_class.html#ac1bdfc71ba5cef27fd83a55c659ee7e5">optionsClass::maxcharlength</a></div><div class="ttdeci">short maxcharlength</div><div class="ttdoc">Maximale Zeichenkettenlänge.</div><div class="ttdef"><b>Definition</b> <a href="options_8h_source.html#l00080">options.h:80</a></div></div>
+<div class="ttc" id="aclassoptions_class_html_ad12cc5950be10e1813d8387062679188"><div class="ttname"><a href="classoptions_class.html#ad12cc5950be10e1813d8387062679188">optionsClass::printOptions</a></div><div class="ttdeci">void printOptions()</div><div class="ttdoc">Gibt alle aktuellen Optionen auf stdout aus.</div><div class="ttdef"><b>Definition</b> <a href="options_8cpp_source.html#l00096">options.cpp:96</a></div></div>
+<div class="ttc" id="aclassoptions_class_html_ad6ca77842d200ec3661de6a3fa84c14e"><div class="ttname"><a href="classoptions_class.html#ad6ca77842d200ec3661de6a3fa84c14e">optionsClass::init</a></div><div class="ttdeci">short init(int optionc, char *optionv[])</div><div class="ttdoc">Initialisiert Optionen aus Kommandozeile.</div><div class="ttdef"><b>Definition</b> <a href="options_8cpp_source.html#l00056">options.cpp:56</a></div></div>
+<div class="ttc" id="aoptions_8h_html"><div class="ttname"><a href="options_8h.html">options.h</a></div><div class="ttdoc">Basis-Klasse für Konfigurationsoptionen aller WorldQual-Module.</div></div>
+<div class="ttc" id="aoptions__wqstat_8h_html"><div class="ttname"><a href="options__wqstat_8h.html">options_wqstat.h</a></div><div class="ttdoc">Optionen-Klasse für WQ-Stat Statistik-Berechnungen.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d522931ffa1371640980b621734a4381.html">Users</a></li><li class="navelem"><a href="dir_d1f41d8fb8a63c6c76cf423d5998a81b.html">leon</a></li><li class="navelem"><a href="dir_466fb836fbf7d8b9a30beefb96f7ad0b.html">WorldQual</a></li><li class="navelem"><a href="dir_c46e372f1beef086879ee5119eaffc60.html">C++</a></li><li class="navelem"><a href="dir_b246705ef14cade7b4c54a03c1375769.html">src</a></li><li class="navelem"><a href="dir_7c2e21ce8fbc75268bc39a20e4efd49b.html">wq_stat</a></li><li class="navelem"><a href="options__wqstat_8cpp.html">options_wqstat.cpp</a></li>
+    <li class="footer">Erzeugt von <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

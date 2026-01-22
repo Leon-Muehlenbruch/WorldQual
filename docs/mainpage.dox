@@ -1,0 +1,81 @@
+/**
+@mainpage WorldQual Übersicht
+
+Willkommen zur Dokumentation von **WorldQual** – einem Wasserqualitätsmodell für Flusssysteme.
+
+## Erste Schritte
+
+Für den Einstieg in WorldQual empfehlen wir, mit diesen Tutorials zu beginnen:
+
+- @ref tutorial_installation "Installation" – Einführung in die Installation des Systems
+- @ref tutorial_konfiguration "Konfiguration" – Erklärung der wichtigsten Konfigurationsoptionen und typischer Einstellungen
+
+## Programmmodule
+
+WorldQual besteht aus mehreren spezialisierten Modulen, die verschiedene Aspekte der Wasserqualitätsmodellierung abdecken:
+
+### Hauptmodule
+- **worldqual** – Hauptprogramm für Wasserqualitätsberechnungen in Flusssystemen
+- **wq_load** – Berechnung von Nährstoff- und Schadstoffeinträgen (ClassWQ_load)
+- **wq_instream_daily** – Tägliche Berechnungen im Flusssystem
+
+### Statistische Auswertung
+- **wq_stat** – Statistische Auswertungen der Wasserqualität
+- **wq_stat_scen** – Szenario-basierte Statistiken
+- **wq_stat_stations** – Stationsbezogene Auswertungen
+- **wq_stat_riverdef** – Flussdefinitions-Statistiken
+
+### Visualisierung und Mapping
+- **MapRiverQuality** – Kartierung und Visualisierung der Flussqualität
+
+### Hilfsprogramme
+- **find_river_cells** – Identifikation von Flusszellen
+- **water_temperature** – Wassertemperaturberechnungen
+- **newton** – Numerische Lösungsverfahren
+- **create_scenarios** – Szenarienerstellung
+- **copy_run** / **copy_scen** – Verwaltung von Modellläufen und Szenarien
+- **fill_worldqual_load** – Befüllung der Lastdaten
+- **rtf_input** / **rtf_input_corr_factor** – Rückflussfaktor-Eingabe und Korrekturen
+- **pop_dens_input** – Bevölkerungsdichte-Eingabe
+
+## Code-Dokumentation
+
+Für eine detaillierte Übersicht über den Code nutzen Sie die folgenden automatisch generierten Seiten:
+
+- **Klassen** – Vollständige Liste aller C++-Klassen mit Methoden und Attributen
+  - ClassWQ_load – Hauptklasse für Nährstofflastberechnungen
+  - optionsClass – Basis-Klasse für Programmoptionen
+  - COUNTRY_CLASS, CROP_CLASS, LS_CLASS, GB_CLASS – Hilfsklassen für Berechnungen
+  
+- **Dateien** – Übersicht aller Quelldateien (.cpp) und Header-Dateien
+  - Organisiert nach Modulen und Funktionalität
+  - Mit Quellcode-Browser zum Durchsuchen des Codes
+
+- **Datenstrukturen** – Strukturen und Typdefinitionen
+  - Substance – Struktur für Stoffdaten
+  - continentStruct – Kontinentdaten
+  - Weitere projektspezifische Strukturen
+
+## Allgemeine Hilfsfunktionen
+
+Das Projekt enthält eine Sammlung von Hilfsfunktionen in `general_function`:
+- **timestring** – Zeitstempel-Funktionen
+- **country** – Länder-bezogene Funktionen
+- **general_functions** – Allgemeine Hilfsfunktionen
+
+## Projektinformationen
+
+- [**GitHub Repository**](https://github.com/Leon-Muehlenbruch/WorldQual/tree/main) – Quellcode und Versionsverwaltung
+- **Version**: 1.0
+- **Beschreibung**: Water Quality Model for River Systems
+- **Sprache**: C++ mit MySQL-Datenbankanbindung
+
+## Technische Hinweise
+
+Das Projekt nutzt:
+- MySQL++ für Datenbankzugriff
+- Verschiedene mathematische Berechnungsmodule
+- Geografische Datenverarbeitung für Flusssysteme
+- Modulare Architektur für verschiedene Aspekte der Wasserqualitätsmodellierung
+
+*/

@@ -1,0 +1,567 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>WorldQual: /Users/leon/WorldQual/C++/src/find_river_cells/find_river_cells.cpp-Dateireferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">WorldQual<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Water Quality Model for River Systems</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Suchen',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('find__river__cells_8cpp.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Lade ...</div>
+<div class="SRStatus" id="Searching">Suche ...</div>
+<div class="SRStatus" id="NoMatches">Keine Treffer</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">find_river_cells.cpp-Dateireferenz</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;mysql++.h&gt;</code><br />
+<code>#include &lt;ssqls.h&gt;</code><br />
+<code>#include &lt;mysql.h&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="timestring_8h_source.html">timestring.h</a>&quot;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &quot;<a class="el" href="general__functions_8h_source.html">general_functions.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="optionsfind_river_cells_8h_source.html">optionsfindRiverCells.h</a>&quot;</code><br />
+</div>
+<p><a href="find__river__cells_8cpp_source.html">gehe zum Quellcode dieser Datei</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+Makrodefinitionen</h2></td></tr>
+<tr class="memitem:a7715143bdb2e6515a667a5f605c6960d" id="r_a7715143bdb2e6515a667a5f605c6960d"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a7715143bdb2e6515a667a5f605c6960d">MY_DATABASE</a>&#160;&#160;&#160;&quot;&quot;</td></tr>
+<tr class="memitem:ad1e294eb862b9e470bbb490f6590137d" id="r_ad1e294eb862b9e470bbb490f6590137d"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ad1e294eb862b9e470bbb490f6590137d">MY_HOST</a>&#160;&#160;&#160;&quot;MySQL&quot;</td></tr>
+<tr class="memitem:aad3071d7a52ba58be1731eca6b195cd9" id="r_aad3071d7a52ba58be1731eca6b195cd9"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#aad3071d7a52ba58be1731eca6b195cd9">MY_USER</a>&#160;&#160;&#160;&quot;worldqual&quot;</td></tr>
+<tr class="memitem:a51495d303d660334429faa5b76155676" id="r_a51495d303d660334429faa5b76155676"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a51495d303d660334429faa5b76155676">MY_PASSWORD</a>&#160;&#160;&#160;&quot;1qay&quot;</td></tr>
+<tr class="memitem:ae518031d203bda6f2ae023d68116ba21" id="r_ae518031d203bda6f2ae023d68116ba21"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#ae518031d203bda6f2ae023d68116ba21">INPUT_DIR</a>&#160;&#160;&#160;&quot;INPUT&quot;</td></tr>
+<tr class="memitem:a18417af576c43dcd202ed6c62fe3705c" id="r_a18417af576c43dcd202ed6c62fe3705c"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a18417af576c43dcd202ed6c62fe3705c">DEBUG_queries</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funktionen</h2></td></tr>
+<tr class="memitem:a8041210b611c3c188647ad1100c3a098" id="r_a8041210b611c3c188647ad1100c3a098"><td class="memItemLeft">mysqlpp::Connection&#160;</td><td class="memItemRight"><a class="el" href="#a8041210b611c3c188647ad1100c3a098">con</a> (use_exceptions)</td></tr>
+<tr class="memitem:a2fda738a71bce48ec45a20a51f20920d" id="r_a2fda738a71bce48ec45a20a51f20920d"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a2fda738a71bce48ec45a20a51f20920d">getStartArcId</a> (int <a class="el" href="_world_qual_8cpp.html#ab314bda3028efc7ff5f435a6c94dd91d">cell</a>, int(*inflow)[8], double *dis, int *arc_glob_id, const continentStruct *continent_ptr)</td></tr>
+<tr class="memitem:a71dbe1c4e2685ec7a344a51fe9223455" id="r_a71dbe1c4e2685ec7a344a51fe9223455"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a71dbe1c4e2685ec7a344a51fe9223455">getInflowCell</a> (int <a class="el" href="_world_qual_8cpp.html#ab314bda3028efc7ff5f435a6c94dd91d">cell</a>, int(*inflow)[8], double *dis)</td></tr>
+<tr class="memitem:a38ddf64edf42ac067917294899ff96cf" id="r_a38ddf64edf42ac067917294899ff96cf"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a38ddf64edf42ac067917294899ff96cf">arcid2globid</a> (int <a class="el" href="_world_qual_8cpp.html#ab314bda3028efc7ff5f435a6c94dd91d">cell</a>, int *arc_glob_id, const continentStruct *continent_ptr)</td></tr>
+<tr class="memitem:acc9bd39bdc70d915b5a78d86b0907ce7" id="r_acc9bd39bdc70d915b5a78d86b0907ce7"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#acc9bd39bdc70d915b5a78d86b0907ce7">getHiDis</a> (int(*inflow)[8], int <a class="el" href="_world_qual_8cpp.html#ab314bda3028efc7ff5f435a6c94dd91d">cell</a>, double *dis)</td></tr>
+<tr class="memitem:aec397f7040fe27bc8720cc508c89c8ae" id="r_aec397f7040fe27bc8720cc508c89c8ae"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aec397f7040fe27bc8720cc508c89c8ae">goDownstream</a> (int start, int end, char *filename, int *g_outflc, int *arc_glob_id, const continentStruct *continent_ptr)</td></tr>
+<tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97" id="r_a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variablen</h2></td></tr>
+<tr class="memitem:adc58c9862730d1b6c6bc472aaa13f6a7" id="r_adc58c9862730d1b6c6bc472aaa13f6a7"><td class="memItemLeft">char&#160;</td><td class="memItemRight"><a class="el" href="#adc58c9862730d1b6c6bc472aaa13f6a7">MyDatabase</a> [<a class="el" href="_newton_8h.html#a76924e55bfcb713ac77bfae077728ab9">maxcharlength</a>]</td></tr>
+<tr class="memdesc:adc58c9862730d1b6c6bc472aaa13f6a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Name der MySQL-Datenbank.  <br /></td></tr>
+<tr class="memitem:a342be6ae3e892ad1029493eb8ef0c7fd" id="r_a342be6ae3e892ad1029493eb8ef0c7fd"><td class="memItemLeft">mysqlpp::Query&#160;</td><td class="memItemRight"><a class="el" href="#a342be6ae3e892ad1029493eb8ef0c7fd">query</a> = con.query()</td></tr>
+<tr class="memitem:a0e02388c69b3603f5b4f3b336c511fc1" id="r_a0e02388c69b3603f5b4f3b336c511fc1"><td class="memItemLeft">mysqlpp::Query&#160;</td><td class="memItemRight"><a class="el" href="#a0e02388c69b3603f5b4f3b336c511fc1">query_ins</a> = <a class="el" href="copy__run_8cpp.html#a342be6ae3e892ad1029493eb8ef0c7fd">con.query</a>()</td></tr>
+<tr class="memitem:a12d050cfcf538c9a59f36edd9974c686" id="r_a12d050cfcf538c9a59f36edd9974c686"><td class="memItemLeft">mysqlpp::StoreQueryResult&#160;</td><td class="memItemRight"><a class="el" href="#a12d050cfcf538c9a59f36edd9974c686">res</a></td></tr>
+<tr class="memitem:a5eafef877960884bf7cfec12620ac15f" id="r_a5eafef877960884bf7cfec12620ac15f"><td class="memItemLeft">mysqlpp::Row&#160;</td><td class="memItemRight"><a class="el" href="#a5eafef877960884bf7cfec12620ac15f">row</a></td></tr>
+</table>
+<a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Makro-Dokumentation</h2>
+<a id="a18417af576c43dcd202ed6c62fe3705c" name="a18417af576c43dcd202ed6c62fe3705c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18417af576c43dcd202ed6c62fe3705c">&#9670;&#160;</a></span>DEBUG_queries</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEBUG_queries</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="find__river__cells_8cpp_source.html#l00068">68</a> der Datei <a class="el" href="find__river__cells_8cpp_source.html">find_river_cells.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ae518031d203bda6f2ae023d68116ba21" name="ae518031d203bda6f2ae023d68116ba21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae518031d203bda6f2ae023d68116ba21">&#9670;&#160;</a></span>INPUT_DIR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INPUT_DIR&#160;&#160;&#160;&quot;INPUT&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="find__river__cells_8cpp_source.html#l00065">65</a> der Datei <a class="el" href="find__river__cells_8cpp_source.html">find_river_cells.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a7715143bdb2e6515a667a5f605c6960d" name="a7715143bdb2e6515a667a5f605c6960d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7715143bdb2e6515a667a5f605c6960d">&#9670;&#160;</a></span>MY_DATABASE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MY_DATABASE&#160;&#160;&#160;&quot;&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="find__river__cells_8cpp_source.html#l00061">61</a> der Datei <a class="el" href="find__river__cells_8cpp_source.html">find_river_cells.cpp</a>.</p>
+
+</div>
+</div>
+<a id="ad1e294eb862b9e470bbb490f6590137d" name="ad1e294eb862b9e470bbb490f6590137d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1e294eb862b9e470bbb490f6590137d">&#9670;&#160;</a></span>MY_HOST</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MY_HOST&#160;&#160;&#160;&quot;MySQL&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="find__river__cells_8cpp_source.html#l00062">62</a> der Datei <a class="el" href="find__river__cells_8cpp_source.html">find_river_cells.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a51495d303d660334429faa5b76155676" name="a51495d303d660334429faa5b76155676"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51495d303d660334429faa5b76155676">&#9670;&#160;</a></span>MY_PASSWORD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MY_PASSWORD&#160;&#160;&#160;&quot;1qay&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="find__river__cells_8cpp_source.html#l00064">64</a> der Datei <a class="el" href="find__river__cells_8cpp_source.html">find_river_cells.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aad3071d7a52ba58be1731eca6b195cd9" name="aad3071d7a52ba58be1731eca6b195cd9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad3071d7a52ba58be1731eca6b195cd9">&#9670;&#160;</a></span>MY_USER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MY_USER&#160;&#160;&#160;&quot;worldqual&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="find__river__cells_8cpp_source.html#l00063">63</a> der Datei <a class="el" href="find__river__cells_8cpp_source.html">find_river_cells.cpp</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Dokumentation der Funktionen</h2>
+<a id="a38ddf64edf42ac067917294899ff96cf" name="a38ddf64edf42ac067917294899ff96cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38ddf64edf42ac067917294899ff96cf">&#9670;&#160;</a></span>arcid2globid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int arcid2globid </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>cell</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>arc_glob_id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const continentStruct *</td>          <td class="paramname"><span class="paramname"><em>continent_ptr</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="find__river__cells_8cpp_source.html#l00348">348</a> der Datei <a class="el" href="find__river__cells_8cpp_source.html">find_river_cells.cpp</a>.</p>
+
+<p class="reference">Benutzt <a class="el" href="_world_qual_8cpp_source.html#l00043">cell</a>, <a class="el" href="worldqual_2def_8h_source.html#l00054">ng</a> und <a class="el" href="general__functions_8cpp_source.html#l00015">NODATA</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="find__river__cells_8cpp_source.html#l00484">goDownstream()</a> und <a class="el" href="find__river__cells_8cpp_source.html#l00095">main()</a>.</p>
+
+</div>
+</div>
+<a id="a8041210b611c3c188647ad1100c3a098" name="a8041210b611c3c188647ad1100c3a098"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8041210b611c3c188647ad1100c3a098">&#9670;&#160;</a></span>con()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">mysqlpp::Connection con </td>
+          <td>(</td>
+          <td class="paramtype">use_exceptions</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acc9bd39bdc70d915b5a78d86b0907ce7" name="acc9bd39bdc70d915b5a78d86b0907ce7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc9bd39bdc70d915b5a78d86b0907ce7">&#9670;&#160;</a></span>getHiDis()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getHiDis </td>
+          <td>(</td>
+          <td class="paramtype">int(*)</td>          <td class="paramname"><span class="paramname"><em>inflow</em></span>[8], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>cell</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *</td>          <td class="paramname"><span class="paramname"><em>dis</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="find__river__cells_8cpp_source.html#l00464">464</a> der Datei <a class="el" href="find__river__cells_8cpp_source.html">find_river_cells.cpp</a>.</p>
+
+<p class="reference">Benutzt <a class="el" href="_world_qual_8cpp_source.html#l00043">cell</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="find__river__cells_8cpp_source.html#l00415">getInflowCell()</a>.</p>
+
+</div>
+</div>
+<a id="a71dbe1c4e2685ec7a344a51fe9223455" name="a71dbe1c4e2685ec7a344a51fe9223455"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71dbe1c4e2685ec7a344a51fe9223455">&#9670;&#160;</a></span>getInflowCell()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getInflowCell </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>cell</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int(*)</td>          <td class="paramname"><span class="paramname"><em>inflow</em></span>[8], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *</td>          <td class="paramname"><span class="paramname"><em>dis</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<ul>
+<li>for(int j =0; j&lt;8;j++){ </li>
+</ul>
+
+<p class="definition">Definiert in Zeile <a class="el" href="find__river__cells_8cpp_source.html#l00415">415</a> der Datei <a class="el" href="find__river__cells_8cpp_source.html">find_river_cells.cpp</a>.</p>
+
+<p class="reference">Benutzt <a class="el" href="_world_qual_8cpp_source.html#l00043">cell</a> und <a class="el" href="find__river__cells_8cpp_source.html#l00464">getHiDis()</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="find__river__cells_8cpp_source.html#l00441">getStartArcId()</a>.</p>
+
+</div>
+</div>
+<a id="a2fda738a71bce48ec45a20a51f20920d" name="a2fda738a71bce48ec45a20a51f20920d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fda738a71bce48ec45a20a51f20920d">&#9670;&#160;</a></span>getStartArcId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getStartArcId </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>cell</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int(*)</td>          <td class="paramname"><span class="paramname"><em>inflow</em></span>[8], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *</td>          <td class="paramname"><span class="paramname"><em>dis</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>arc_glob_id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const continentStruct *</td>          <td class="paramname"><span class="paramname"><em>continent_ptr</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="find__river__cells_8cpp_source.html#l00441">441</a> der Datei <a class="el" href="find__river__cells_8cpp_source.html">find_river_cells.cpp</a>.</p>
+
+<p class="reference">Benutzt <a class="el" href="_world_qual_8cpp_source.html#l00043">cell</a> und <a class="el" href="find__river__cells_8cpp_source.html#l00415">getInflowCell()</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="find__river__cells_8cpp_source.html#l00095">main()</a>.</p>
+
+</div>
+</div>
+<a id="aec397f7040fe27bc8720cc508c89c8ae" name="aec397f7040fe27bc8720cc508c89c8ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec397f7040fe27bc8720cc508c89c8ae">&#9670;&#160;</a></span>goDownstream()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void goDownstream </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>start</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>end</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>filename</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>g_outflc</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>arc_glob_id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const continentStruct *</td>          <td class="paramname"><span class="paramname"><em>continent_ptr</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="find__river__cells_8cpp_source.html#l00484">484</a> der Datei <a class="el" href="find__river__cells_8cpp_source.html">find_river_cells.cpp</a>.</p>
+
+<p class="reference">Benutzt <a class="el" href="find__river__cells_8cpp_source.html#l00348">arcid2globid()</a> und <a class="el" href="general__functions_8cpp_source.html#l00015">NODATA</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="find__river__cells_8cpp_source.html#l00095">main()</a>.</p>
+
+</div>
+</div>
+<a id="a0ddf1224851353fc92bfbff6f499fa97" name="a0ddf1224851353fc92bfbff6f499fa97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ddf1224851353fc92bfbff6f499fa97">&#9670;&#160;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>argc</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>argv</em></span>[]&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>=================================</p>
+
+<p class="definition">Definiert in Zeile <a class="el" href="find__river__cells_8cpp_source.html#l00095">95</a> der Datei <a class="el" href="find__river__cells_8cpp_source.html">find_river_cells.cpp</a>.</p>
+
+<p class="reference">Benutzt <a class="el" href="find__river__cells_8cpp_source.html#l00348">arcid2globid()</a>, <a class="el" href="country_8cpp.html#aaadab29d45f00eebda3eca39e826da7f">con</a>, <a class="el" href="create__scenarios_8cpp_source.html#l00040">continent</a>, <a class="el" href="optionsfind_river_cells_8h_source.html#l00102">options_findRiverCellsClass::endArcID</a>, <a class="el" href="optionsfind_river_cells_8h_source.html#l00094">options_findRiverCellsClass::endGlobal</a>, <a class="el" href="general__functions_8cpp_source.html#l01319">get_ArcID()</a>, <a class="el" href="general__functions_8cpp_source.html#l00083">get_inflow()</a>, <a class="el" href="general__functions_8cpp_source.html#l00024">get_outflc()</a>, <a class="el" href="general__functions_8cpp_source.html#l00930">getArcGlobId()</a>, <a class="el" href="general__functions_8cpp_source.html#l00888">getCELLS()</a>, <a class="el" href="general__functions_8cpp_source.html#l00959">getGCRC()</a>, <a class="el" href="find__river__cells_8cpp_source.html#l00441">getStartArcId()</a>, <a class="el" href="timestring_8cpp_source.html#l00026">getTimeString()</a>, <a class="el" href="find__river__cells_8cpp_source.html#l00484">goDownstream()</a>, <a class="el" href="optionsfind_river_cells_8cpp_source.html#l00045">options_findRiverCellsClass::init()</a>, <a class="el" href="options_8h_source.html#l00077">optionsClass::input_dir</a>, <a class="el" href="optionsfind_river_cells_8h_source.html#l00063">options_findRiverCellsClass::inputfile</a>, <a class="el" href="_newton_8h_source.html#l00021">maxcharlength</a>, <a class="el" href="copy__run_8cpp_source.html#l00022">MyDatabase</a>, <a class="el" href="options_8h_source.html#l00056">optionsClass::MyHost</a>, <a class="el" href="options_8h_source.html#l00062">optionsClass::MyPassword</a>, <a class="el" href="options_8h_source.html#l00059">optionsClass::MyUser</a>, <a class="el" href="general__functions_8cpp_source.html#l00015">NODATA</a>, <a class="el" href="optionsfind_river_cells_8cpp_source.html#l00111">options_findRiverCellsClass::printOptions()</a>, <a class="el" href="general__functions_8cpp_source.html#l00871">readInputFile()</a>, <a class="el" href="optionsfind_river_cells_8h_source.html#l00086">options_findRiverCellsClass::startArcID</a> und <a class="el" href="optionsfind_river_cells_8h_source.html#l00078">options_findRiverCellsClass::startGlobal</a>.</p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variablen-Dokumentation</h2>
+<a id="adc58c9862730d1b6c6bc472aaa13f6a7" name="adc58c9862730d1b6c6bc472aaa13f6a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc58c9862730d1b6c6bc472aaa13f6a7">&#9670;&#160;</a></span>MyDatabase</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char MyDatabase[<a class="el" href="_newton_8h.html#a76924e55bfcb713ac77bfae077728ab9">maxcharlength</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Name der MySQL-Datenbank. </p>
+
+<p class="definition">Definiert in Zeile <a class="el" href="find__river__cells_8cpp_source.html#l00075">75</a> der Datei <a class="el" href="find__river__cells_8cpp_source.html">find_river_cells.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a342be6ae3e892ad1029493eb8ef0c7fd" name="a342be6ae3e892ad1029493eb8ef0c7fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a342be6ae3e892ad1029493eb8ef0c7fd">&#9670;&#160;</a></span>query</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">mysqlpp::Query query = con.query()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="find__river__cells_8cpp_source.html#l00080">80</a> der Datei <a class="el" href="find__river__cells_8cpp_source.html">find_river_cells.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a0e02388c69b3603f5b4f3b336c511fc1" name="a0e02388c69b3603f5b4f3b336c511fc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e02388c69b3603f5b4f3b336c511fc1">&#9670;&#160;</a></span>query_ins</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">mysqlpp::Query query_ins = <a class="el" href="copy__run_8cpp.html#a342be6ae3e892ad1029493eb8ef0c7fd">con.query</a>()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="find__river__cells_8cpp_source.html#l00081">81</a> der Datei <a class="el" href="find__river__cells_8cpp_source.html">find_river_cells.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a12d050cfcf538c9a59f36edd9974c686" name="a12d050cfcf538c9a59f36edd9974c686"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12d050cfcf538c9a59f36edd9974c686">&#9670;&#160;</a></span>res</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">mysqlpp::StoreQueryResult res</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="find__river__cells_8cpp_source.html#l00082">82</a> der Datei <a class="el" href="find__river__cells_8cpp_source.html">find_river_cells.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a5eafef877960884bf7cfec12620ac15f" name="a5eafef877960884bf7cfec12620ac15f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5eafef877960884bf7cfec12620ac15f">&#9670;&#160;</a></span>row</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">mysqlpp::Row row</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="find__river__cells_8cpp_source.html#l00083">83</a> der Datei <a class="el" href="find__river__cells_8cpp_source.html">find_river_cells.cpp</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d522931ffa1371640980b621734a4381.html">Users</a></li><li class="navelem"><a href="dir_d1f41d8fb8a63c6c76cf423d5998a81b.html">leon</a></li><li class="navelem"><a href="dir_466fb836fbf7d8b9a30beefb96f7ad0b.html">WorldQual</a></li><li class="navelem"><a href="dir_c46e372f1beef086879ee5119eaffc60.html">C++</a></li><li class="navelem"><a href="dir_b246705ef14cade7b4c54a03c1375769.html">src</a></li><li class="navelem"><a href="dir_cfdd79953996c791360426174f4baffd.html">find_river_cells</a></li><li class="navelem"><a href="find__river__cells_8cpp.html">find_river_cells.cpp</a></li>
+    <li class="footer">Erzeugt von <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

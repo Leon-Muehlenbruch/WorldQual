@@ -1,71 +1,23 @@
-# Compiled Object files
+# Build files
 *.o
-*.obj
-*.ko
-*.elf
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
 *.out
-*.app
-worldqual
-wq_load
-wq_stat
-copy_run
-copy_scen
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Build directories
+*.exe
 build/
-bin/
-obj/
+*.a
+*.so
 
-# IDE specific files
+# IDE files
 .vscode/
 .idea/
 *.swp
-*.swo
 *~
 
-# Mac specific
+# OS files
 .DS_Store
-.AppleDouble
-.LSOverride
+Thumbs.db
 
-# MySQL dumps and temporary files
-*.sql.gz
-*.bak
-
-# Temporary files
+# Doxygen temporäre Dateien
 *.tmp
-*.temp
 *.log
 
-# R specific files
-.Rhistory
-.RData
-.Rproj.user
+# WICHTIG: docs/ wird NICHT ignoriert für GitHub Pages!
