@@ -1,0 +1,40 @@
+Runtime options worldqual
+
+1. Thresholds used
+  0: general ###
+  1: european bathing directive thresholds - only apply for FC
+Value: 0
+
+2. IDVersion
+  2: WaterGAP2
+  3: WaterGAP3 ###
+Value: 3
+
+3. IDReg
+  1 WaterGAP3 eu
+  2 WaterGAP3 af
+  3 WaterGAP3 as
+  4 WaterGAP3 au
+  5 WaterGAP3 na
+  6 WaterGAP3 sa
+  1 WaterGAP2 world standatrd
+  2 WaterGAP2 world watch
+Value: 2
+
+4. MyHost
+Value: MySQL
+
+5. MyUser
+Value: REMOVED_USER
+
+6. MyPassword
+Value: REMOVED_PASSWORD
+
+7. InputType
+  0: Daten aus der Datenbanlk einlesen 
+  1: Daten aus UNF-Dateien. Es wird Option 12: input_dir gebraucht. ###
+Value: 1
+
+8. input_dir
+Value: /home/USF/reder/run/input/af/WWQA_FC_validation_1990_2010_scen_9
+
