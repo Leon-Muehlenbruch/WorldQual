@@ -1,0 +1,7 @@
+# This File specifies the INPUT and OUTPUT directories for Data
+# first line indicates INPUT Directory
+# second line indicates OUTPUT Directory
+#../INPUT
+#../OUTPUT
+WaterAirTemp
+WaterAirTemp
