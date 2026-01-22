@@ -1,0 +1,115 @@
+Runtime options worldqual
+
+1. parameter_id aus der Tabelle wq_general.wq_parameter. Z.B.
+  80:  BOD
+  260: TDS
+  310: FC
+Value: 310
+
+2. following_year only for pesticide; 
+	0: first year to calculate; (default)
+	1:  following year. there are a loading from december last year
+Value: 0
+
+3. project_id, Tabelle wq_general._project
+  1: CESR
+  2: WWQA
+  3: CESR Sensitivity Analysis
+  4: test, für Entwickler
+Value: 4
+
+4. IDScen, wq_general._szenario
+Value: 91
+
+5. manure timing 
+  0:  all year round application ###
+  1:  application between March and October
+Value: 0
+
+6. Klimainput
+  0: in 0.5° ###
+  1. in 5 min
+  2: in 0.5° CRU/WATCH
+Value: 0
+
+7. gridded_pop_from_file
+  0: nein, aus der Tabelle wq_loas_[continent].cell_input (default)
+  1: ja, aus UNF-Datei (z.B. griddi-Output)
+Value: 0
+
+8.gridded_pop_path (nur für gridded_pop_from_file==1)
+Value: /path/to/griddi-Output
+
+9.path_watergap_output
+  OUTPUT von WaterGAP (hydrology): G_URBAN_RUNOFF_[year].12.UNF0, G_SURFACE_RUNOFF_[year].12.UNF0, G_GW_RUNOFF_[year].12.UNF0
+Value: /path/to/watergap-Output
+
+10.path_livestock_output
+  G_LIVESTOCK_NR_[year].12.UNF0
+Value: /path/to/livestock-Output
+
+11.path_corr_factor
+  G_CORR_FACT_RTF_[year].12.UNF0
+Value: /path/to/corr_factor
+
+12.path_climate
+  GTEMP_[year].12.UNF2, GPREC_[year].12.UNF2 (only pesticide)
+Value: /path/to/climate
+
+13.path_gnrd
+  GNRD_[year].12.UNF1
+Value: /path/to/gnrd
+
+14.path_tp_input
+  G_SURFACE_RUNOFF_MEAN.UNF0            TP
+  G_SOILEROS.UNF0                       TP
+  G_PWEATHERING.UNF0                    TP
+  GLCC[year].UNF2                       TN
+Value: /path/to/tp_tn_input
+
+15.path_tp_input2
+  CROPLAND_CORR_KM2_[year].UNF0         TP
+  P_RATE_TON_KM2_[year].UNF0            TP
+Value: /path/to/tp_tn_input2
+
+16.path_tp_input3
+  G_PATMDEPOS_[year].UNF0                      TP
+Value: /path/to/tp_tn_input3
+
+17. IDScen und parameterID in table name (cell_input, cell_) default: 0 
+ 0: cell_input, cell_input_rtf_irr, wateruse mit der Spalte IDScen
+ 1: Wert IDScen in dem Namen der Tabellen: cell_input_[IDScen], cell_input_rtf_irr_[IDScen], wateruse_[IDScen]
+Value: 0
+
+18. IDVersion
+  2: WaterGAP2
+  3: WaterGAP3 ###
+Value: 3
+
+19. IDReg
+  1 WaterGAP3 eu
+  2 WaterGAP3 af
+  3 WaterGAP3 as
+  4 WaterGAP3 au
+  5 WaterGAP3 na
+  6 WaterGAP3 sa
+  1 WaterGAP2 world standatrd
+  2 WaterGAP2 world watch
+Value: 2
+
+20. MyHost
+Value: MySQL
+
+21. MyUser
+Value: REMOVED_USER
+
+22. MyPassword
+Value: REMOVED_PASSWORD
+
+23. InputType
+  0: Daten aus der Datenbank einlesen (q, runoff... (auch Fliessgeschwindigkeit, wenn flowVelocityVariant==0))
+  1: Daten aus UNF-Dateien. Es wird Option 12: input_dir gebraucht. ###
+Value: 1
+
+24. Path to Land Area data
+Value: /path/to/input

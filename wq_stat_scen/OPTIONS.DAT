@@ -1,0 +1,53 @@
+Runtime options wq_stat_scen
+
+1. IDrun
+Value: 403100091
+
+2. Jahresunterschied zwischen baseline und Szenarien.
+Value: 30
+
+3. IDrun Szenario 1
+Value: 403100010
+
+4. IDrun Szenario 2
+Value: 403100011
+
+5. IDrun Szenario 3
+Value: 403100012
+
+6. water type, Tabelle wq_general._watertype
+	1: River
+Value: 1
+
+7. IDVersion
+  2: WaterGAP2
+  3: WaterGAP3 ###
+Value: 3
+
+8. IDReg
+  1 WaterGAP3 eu
+  2 WaterGAP3 af
+  3 WaterGAP3 as
+  4 WaterGAP3 au
+  5 WaterGAP3 na
+  6 WaterGAP3 sa
+  1 WaterGAP2 world standatrd
+  2 WaterGAP2 world watch
+Value: 2
+
+9. MyHost
+Value: MySQL
+
+10. MyUser
+Value: REMOVED_USER
+
+11. MyPassword
+Value: REMOVED_PASSWORD
+
+12. InputType
+  0: Daten aus der Datenbanlk einlesen (q, runoff... (auch Fliessgeschwindigkeit, wenn flowVelocityVariant==0))
+  1: Daten aus UNF-Dateien. Es wird Option 10: input_dir gebraucht. ###
+Value: 1
+
+13. input_dir
+Value: ../wq_load/INPUT
