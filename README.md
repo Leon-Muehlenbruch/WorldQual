@@ -48,16 +48,33 @@ make clean && make
 - **MySQL++** (C++ MySQL Connector)
 - **Make** (Build-Tool)
 
-### Automatische Installation:
+### Automatische Installation (macOS/Linux):
 ```bash
 ./install_dependencies.sh
 ```
 
-Oder manuell (macOS):
+### Manuelle Installation:
+
+**macOS:**
 ```bash
+# Xcode Command Line Tools installieren
+xcode-select --install
+
+# Dependencies installieren
 brew install mysql@8.0 mysql-connector-c++
 brew services start mysql@8.0
 ```
+
+**Linux (Ubuntu/Debian):**
+```bash
+sudo apt-get update
+sudo apt-get install build-essential mysql-server libmysqlclient-dev libmysql++-dev
+sudo systemctl start mysql
+```
+
+**Windows:**
+- **Empfohlen:** WSL (Windows Subsystem for Linux) + Ubuntu, dann Linux-Anweisungen folgen
+- **Alternativ:** MSYS2/MinGW oder Visual Studio (siehe [requirements.txt](requirements.txt) für Details)
 
 ---
 

@@ -2,7 +2,7 @@ var searchData=
 [
   ['salinity_0',['salinity',['../class_class_w_q__load.html#a51f082cdca7ff5e37b1e72c220838a1a',1,'ClassWQ_load']]],
   ['salt_5fclass_1',['Salt_class',['../class_class_w_q__load.html#a468cee4204b0867c7b36fa9340580bc0',1,'ClassWQ_load']]],
-  ['schnellstart_20zusammenfassung_2',['Schnellstart-Zusammenfassung',['../tutorial_installation.html#autotoc_md44',1,'']]],
+  ['schnellstart_20zusammenfassung_2',['Schnellstart-Zusammenfassung',['../tutorial_installation.html#autotoc_md45',1,'']]],
   ['schritt_201_3a_20repository_20klonen_3',['Schritt 1: Repository klonen',['../tutorial_installation.html#autotoc_md13',1,'']]],
   ['schritt_202_3a_20dependencies_20installieren_4',['Schritt 2: Dependencies installieren',['../tutorial_installation.html#autotoc_md15',1,'']]],
   ['schritt_203_3a_20kompilieren_5',['Schritt 3: Kompilieren',['../tutorial_installation.html#autotoc_md17',1,'']]],
