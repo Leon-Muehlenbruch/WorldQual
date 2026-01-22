@@ -1,0 +1,71 @@
+# Compiled Object files
+*.o
+*.obj
+*.ko
+*.elf
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+worldqual
+wq_load
+wq_stat
+copy_run
+copy_scen
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Build directories
+build/
+bin/
+obj/
+
+# IDE specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Mac specific
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# MySQL dumps and temporary files
+*.sql.gz
+*.bak
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# R specific files
+.Rhistory
+.RData
+.Rproj.user
