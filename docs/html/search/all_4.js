@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_3a_0',[':',['../tutorial_installation.html#autotoc_md28',1,'Nährstoffeinträge (wq_load):'],['../tutorial_installation.html#autotoc_md29',1,'Statistik (wq_stat):'],['../tutorial_installation.html#autotoc_md30',1,'Visualisierung (MapRiverQuality):']]]
+  ['5_20daten_20import_20workflow_0',['5. Daten-Import Workflow',['../tutorial_konfiguration.html#autotoc_md76',1,'']]]
 ];
