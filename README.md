@@ -10,7 +10,25 @@
 
 ## Installation
 
-See the Documentation [here]
+## Documentation
+
+Die vollständige Code-Dokumentation wird mit Doxygen generiert. 
+
+### Dokumentation lokal generieren
+
+```bash
+cd docs
+doxygen Doxyfile
+```
+
+Öffne dann `docs/html/index.html` im Browser.
+
+### Online-Dokumentation
+
+Die Dokumentation wird automatisch bei jedem Push über GitHub Actions generiert und ist verfügbar unter:
+`https://<your-username>.github.io/C++/`
+
+Weitere Informationen findest du in [docs/README.md](docs/README.md)
 
 ## Modules
 

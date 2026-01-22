@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>WorldQual: /Users/leon/WorldQual/C++/src/wq_load/crop.h Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">WorldQual<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Water Quality Model for River Systems</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Suchen',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('crop_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Lade ...</div>
+<div class="SRStatus" id="Searching">Suche ...</div>
+<div class="SRStatus" id="NoMatches">Keine Treffer</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">crop.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="crop_8h.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifndef CROP_H_</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define CROP_H_</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;mysql++.h&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="country_8h.html">../general_function/country.h</a>&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="general__functions_8h.html">../general_function/general_functions.h</a>&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">using namespace </span>std;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">using namespace </span>mysqlpp;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">extern</span> <span class="keywordtype">char</span> <a class="code hl_variable" href="copy__run_8cpp.html#adc58c9862730d1b6c6bc472aaa13f6a7">MyDatabase</a>[<a class="code hl_variable" href="_newton_8h.html#a76924e55bfcb713ac77bfae077728ab9">maxcharlength</a>];</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">extern</span> <span class="keywordtype">char</span> <a class="code hl_variable" href="create__scenarios_8cpp.html#aa01c7cd8b11874b4c6af37d110f7af6c">continent_abb</a>[10];</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span></div>
+<div class="foldopen" id="foldopen00040" data-start="{" data-end="};">
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="class_c_r_o_p___c_l_a_s_s.html">   40</a></span><span class="keyword">class </span><a class="code hl_function" href="class_c_r_o_p___c_l_a_s_s.html#ab51541a24e7dd2f3e7d1e53cea565982">CROP_CLASS</a>{</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <a class="code hl_function" href="class_c_r_o_p___c_l_a_s_s.html#ab51541a24e7dd2f3e7d1e53cea565982">CROP_CLASS</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="class_c_r_o_p___c_l_a_s_s.html#aed9c5d460b600d73f4ea80e0eb625ee2">parameter_id</a>, <a class="code hl_class" href="class_c_o_u_n_t_r_y___c_l_a_s_s.html">COUNTRY_CLASS</a>* countries, <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="class_c_r_o_p___c_l_a_s_s.html#ab550457ede3f11d967c26ef8d1dc32d4">toCalc</a>, <span class="keyword">const</span> <span class="keywordtype">int</span> year);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordtype">double</span> <a class="code hl_function" href="class_c_r_o_p___c_l_a_s_s.html#a3a3d1fa9f48f5eb328df631e9a60daeb">getCrop_Appl_Rate</a>(<span class="keywordtype">int</span> country, <span class="keywordtype">int</span> crop, <span class="keywordtype">int</span> <a class="code hl_variable" href="_world_qual_8cpp.html#ab314bda3028efc7ff5f435a6c94dd91d">cell</a>);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="class_c_r_o_p___c_l_a_s_s.html#a485ee7028cfc3ef358e264c82ba2d709">   62</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="class_c_r_o_p___c_l_a_s_s.html#a485ee7028cfc3ef358e264c82ba2d709">numberCT</a>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="class_c_r_o_p___c_l_a_s_s.html#aed9c5d460b600d73f4ea80e0eb625ee2">   65</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="class_c_r_o_p___c_l_a_s_s.html#aed9c5d460b600d73f4ea80e0eb625ee2">parameter_id</a>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="class_c_r_o_p___c_l_a_s_s.html#ab550457ede3f11d967c26ef8d1dc32d4">   68</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="class_c_r_o_p___c_l_a_s_s.html#ab550457ede3f11d967c26ef8d1dc32d4">toCalc</a>;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="class_c_r_o_p___c_l_a_s_s.html#a10ba37f462eca776dd028a43dfee5dd6">   77</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="class_c_r_o_p___c_l_a_s_s.html#a10ba37f462eca776dd028a43dfee5dd6">YearFrom</a>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="class_c_r_o_p___c_l_a_s_s.html#a4146e19c9d80626c4308dadd6ba7d3d5">   80</a></span>    mysqlpp::StoreQueryResult <a class="code hl_variable" href="class_c_r_o_p___c_l_a_s_s.html#a4146e19c9d80626c4308dadd6ba7d3d5">res</a>;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="class_c_r_o_p___c_l_a_s_s.html#af1a8f1777098d38a0a141b1792fe5cf5">   83</a></span>    <span class="keywordtype">short</span> *<a class="code hl_variable" href="class_c_r_o_p___c_l_a_s_s.html#af1a8f1777098d38a0a141b1792fe5cf5">crop_type</a>;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="class_c_r_o_p___c_l_a_s_s.html#ad2a5093e0b8e2a11da69c1e1bd91764e">   86</a></span>    <span class="keywordtype">short</span> *<a class="code hl_variable" href="class_c_r_o_p___c_l_a_s_s.html#ad2a5093e0b8e2a11da69c1e1bd91764e">glcc</a>;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="class_c_r_o_p___c_l_a_s_s.html#ad33320ab65cb0ab7aeba99ec38a10e20">   94</a></span>    <span class="keywordtype">double</span> **<a class="code hl_variable" href="class_c_r_o_p___c_l_a_s_s.html#ad33320ab65cb0ab7aeba99ec38a10e20">rate_N</a>;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="class_c_r_o_p___c_l_a_s_s.html#a10a9c2ff5c65874c82b1a5b970ddb222">  102</a></span>    <span class="keywordtype">double</span> **<a class="code hl_variable" href="class_c_r_o_p___c_l_a_s_s.html#a10a9c2ff5c65874c82b1a5b970ddb222">rate_P</a>;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_c_r_o_p___c_l_a_s_s.html#ab72b38041debe6481e4d2a823ed2476d">getDataNumberCT</a>();</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_c_r_o_p___c_l_a_s_s.html#a292e15be5ab7ad76f82734d0c716889b">getGLCC</a>();</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_c_r_o_p___c_l_a_s_s.html#a77a8a6e5f2130cac2189f200b4c12f26">getDataNumberActCrops</a>(<span class="keywordtype">int</span> countryIsoNr, <span class="keywordtype">int</span> *crop_numb, <span class="keywordtype">int</span> *ccn);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_c_r_o_p___c_l_a_s_s.html#aff1f06b73aa4a6f2dbc2ca21c1c3d697">getData</a>(<a class="code hl_class" href="class_c_o_u_n_t_r_y___c_l_a_s_s.html">COUNTRY_CLASS</a>* countries);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_c_r_o_p___c_l_a_s_s.html#a8a781ce903d466d64f391a0923090059">getYearFrom</a>(<span class="keywordtype">int</span> year);</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>};</div>
+</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="preprocessor">#endif </span><span class="comment">/* CROP_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="a_newton_8h_html_a76924e55bfcb713ac77bfae077728ab9"><div class="ttname"><a href="_newton_8h.html#a76924e55bfcb713ac77bfae077728ab9">maxcharlength</a></div><div class="ttdeci">const short maxcharlength</div><div class="ttdoc">Maximale Länge von Strings.</div><div class="ttdef"><b>Definition</b> <a href="_newton_8h_source.html#l00021">Newton.h:21</a></div></div>
+<div class="ttc" id="a_world_qual_8cpp_html_ab314bda3028efc7ff5f435a6c94dd91d"><div class="ttname"><a href="_world_qual_8cpp.html#ab314bda3028efc7ff5f435a6c94dd91d">cell</a></div><div class="ttdeci">cell</div><div class="ttdef"><b>Definition</b> <a href="_world_qual_8cpp_source.html#l00043">WorldQual.cpp:43</a></div></div>
+<div class="ttc" id="aclass_c_o_u_n_t_r_y___c_l_a_s_s_html"><div class="ttname"><a href="class_c_o_u_n_t_r_y___c_l_a_s_s.html">COUNTRY_CLASS</a></div><div class="ttdoc">Verwaltet Länderinformationen für ein bestimmtes Szenario und Jahr.</div><div class="ttdef"><b>Definition</b> <a href="country_8h_source.html#l00036">country.h:36</a></div></div>
+<div class="ttc" id="aclass_c_r_o_p___c_l_a_s_s_html_a10a9c2ff5c65874c82b1a5b970ddb222"><div class="ttname"><a href="class_c_r_o_p___c_l_a_s_s.html#a10a9c2ff5c65874c82b1a5b970ddb222">CROP_CLASS::rate_P</a></div><div class="ttdeci">double ** rate_P</div><div class="ttdoc">Anwendungsrate anorganischer Phosphordünger.</div><div class="ttdef"><b>Definition</b> <a href="#l00102">crop.h:102</a></div></div>
+<div class="ttc" id="aclass_c_r_o_p___c_l_a_s_s_html_a10ba37f462eca776dd028a43dfee5dd6"><div class="ttname"><a href="class_c_r_o_p___c_l_a_s_s.html#a10ba37f462eca776dd028a43dfee5dd6">CROP_CLASS::YearFrom</a></div><div class="ttdeci">int YearFrom</div><div class="ttdoc">Jahr aus dem die Werte genommen werden.</div><div class="ttdef"><b>Definition</b> <a href="#l00077">crop.h:77</a></div></div>
+<div class="ttc" id="aclass_c_r_o_p___c_l_a_s_s_html_a292e15be5ab7ad76f82734d0c716889b"><div class="ttname"><a href="class_c_r_o_p___c_l_a_s_s.html#a292e15be5ab7ad76f82734d0c716889b">CROP_CLASS::getGLCC</a></div><div class="ttdeci">void getGLCC()</div><div class="ttdoc">Liest GLCC-Äquivalente für Kulturpflanzen-Typen.</div><div class="ttdef"><b>Definition</b> <a href="crop_8cpp_source.html#l00121">crop.cpp:121</a></div></div>
+<div class="ttc" id="aclass_c_r_o_p___c_l_a_s_s_html_a3a3d1fa9f48f5eb328df631e9a60daeb"><div class="ttname"><a href="class_c_r_o_p___c_l_a_s_s.html#a3a3d1fa9f48f5eb328df631e9a60daeb">CROP_CLASS::getCrop_Appl_Rate</a></div><div class="ttdeci">double getCrop_Appl_Rate(int country, int crop, int cell)</div><div class="ttdoc">Gibt Düngemittel-Anwendungsrate zurück.</div><div class="ttdef"><b>Definition</b> <a href="crop_8cpp_source.html#l00228">crop.cpp:228</a></div></div>
+<div class="ttc" id="aclass_c_r_o_p___c_l_a_s_s_html_a4146e19c9d80626c4308dadd6ba7d3d5"><div class="ttname"><a href="class_c_r_o_p___c_l_a_s_s.html#a4146e19c9d80626c4308dadd6ba7d3d5">CROP_CLASS::res</a></div><div class="ttdeci">mysqlpp::StoreQueryResult res</div><div class="ttdoc">MySQL++ Ergebnis-Container.</div><div class="ttdef"><b>Definition</b> <a href="#l00080">crop.h:80</a></div></div>
+<div class="ttc" id="aclass_c_r_o_p___c_l_a_s_s_html_a485ee7028cfc3ef358e264c82ba2d709"><div class="ttname"><a href="class_c_r_o_p___c_l_a_s_s.html#a485ee7028cfc3ef358e264c82ba2d709">CROP_CLASS::numberCT</a></div><div class="ttdeci">int numberCT</div><div class="ttdoc">Anzahl der Kulturpflanzen-Typen.</div><div class="ttdef"><b>Definition</b> <a href="#l00062">crop.h:62</a></div></div>
+<div class="ttc" id="aclass_c_r_o_p___c_l_a_s_s_html_a77a8a6e5f2130cac2189f200b4c12f26"><div class="ttname"><a href="class_c_r_o_p___c_l_a_s_s.html#a77a8a6e5f2130cac2189f200b4c12f26">CROP_CLASS::getDataNumberActCrops</a></div><div class="ttdeci">bool getDataNumberActCrops(int countryIsoNr, int *crop_numb, int *ccn)</div><div class="ttdoc">Ermittelt Kulturpflanzen-Nummern für ein bestimmtes Land.</div><div class="ttdef"><b>Definition</b> <a href="crop_8cpp_source.html#l00148">crop.cpp:148</a></div></div>
+<div class="ttc" id="aclass_c_r_o_p___c_l_a_s_s_html_a8a781ce903d466d64f391a0923090059"><div class="ttname"><a href="class_c_r_o_p___c_l_a_s_s.html#a8a781ce903d466d64f391a0923090059">CROP_CLASS::getYearFrom</a></div><div class="ttdeci">int getYearFrom(int year)</div><div class="ttdoc">Ermittelt verfügbares Jahr für Daten.</div><div class="ttdef"><b>Definition</b> <a href="crop_8cpp_source.html#l00101">crop.cpp:101</a></div></div>
+<div class="ttc" id="aclass_c_r_o_p___c_l_a_s_s_html_ab51541a24e7dd2f3e7d1e53cea565982"><div class="ttname"><a href="class_c_r_o_p___c_l_a_s_s.html#ab51541a24e7dd2f3e7d1e53cea565982">CROP_CLASS::CROP_CLASS</a></div><div class="ttdeci">CROP_CLASS(const int parameter_id, COUNTRY_CLASS *countries, const int toCalc, const int year)</div><div class="ttdoc">Konstruktor - Initialisiert Kulturpflanzen-Daten.</div><div class="ttdef"><b>Definition</b> <a href="crop_8cpp_source.html#l00017">crop.cpp:17</a></div></div>
+<div class="ttc" id="aclass_c_r_o_p___c_l_a_s_s_html_ab550457ede3f11d967c26ef8d1dc32d4"><div class="ttname"><a href="class_c_r_o_p___c_l_a_s_s.html#ab550457ede3f11d967c26ef8d1dc32d4">CROP_CLASS::toCalc</a></div><div class="ttdeci">int toCalc</div><div class="ttdoc">Berechnungstyp (3=TN, 4=TP).</div><div class="ttdef"><b>Definition</b> <a href="#l00068">crop.h:68</a></div></div>
+<div class="ttc" id="aclass_c_r_o_p___c_l_a_s_s_html_ab72b38041debe6481e4d2a823ed2476d"><div class="ttname"><a href="class_c_r_o_p___c_l_a_s_s.html#ab72b38041debe6481e4d2a823ed2476d">CROP_CLASS::getDataNumberCT</a></div><div class="ttdeci">int getDataNumberCT()</div><div class="ttdoc">Ermittelt Anzahl der Kulturpflanzen-Typen.</div><div class="ttdef"><b>Definition</b> <a href="crop_8cpp_source.html#l00086">crop.cpp:86</a></div></div>
+<div class="ttc" id="aclass_c_r_o_p___c_l_a_s_s_html_ad2a5093e0b8e2a11da69c1e1bd91764e"><div class="ttname"><a href="class_c_r_o_p___c_l_a_s_s.html#ad2a5093e0b8e2a11da69c1e1bd91764e">CROP_CLASS::glcc</a></div><div class="ttdeci">short * glcc</div><div class="ttdoc">GLCC (Global Land Cover Characterization) Äquivalente zu Kulturpflanzen-Typen.</div><div class="ttdef"><b>Definition</b> <a href="#l00086">crop.h:86</a></div></div>
+<div class="ttc" id="aclass_c_r_o_p___c_l_a_s_s_html_ad33320ab65cb0ab7aeba99ec38a10e20"><div class="ttname"><a href="class_c_r_o_p___c_l_a_s_s.html#ad33320ab65cb0ab7aeba99ec38a10e20">CROP_CLASS::rate_N</a></div><div class="ttdeci">double ** rate_N</div><div class="ttdoc">Anwendungsrate anorganischer Stickstoffdünger.</div><div class="ttdef"><b>Definition</b> <a href="#l00094">crop.h:94</a></div></div>
+<div class="ttc" id="aclass_c_r_o_p___c_l_a_s_s_html_aed9c5d460b600d73f4ea80e0eb625ee2"><div class="ttname"><a href="class_c_r_o_p___c_l_a_s_s.html#aed9c5d460b600d73f4ea80e0eb625ee2">CROP_CLASS::parameter_id</a></div><div class="ttdeci">int parameter_id</div><div class="ttdoc">Parameter-ID (TN oder TP).</div><div class="ttdef"><b>Definition</b> <a href="#l00065">crop.h:65</a></div></div>
+<div class="ttc" id="aclass_c_r_o_p___c_l_a_s_s_html_af1a8f1777098d38a0a141b1792fe5cf5"><div class="ttname"><a href="class_c_r_o_p___c_l_a_s_s.html#af1a8f1777098d38a0a141b1792fe5cf5">CROP_CLASS::crop_type</a></div><div class="ttdeci">short * crop_type</div><div class="ttdoc">Array der Kulturpflanzen-Typen.</div><div class="ttdef"><b>Definition</b> <a href="#l00083">crop.h:83</a></div></div>
+<div class="ttc" id="aclass_c_r_o_p___c_l_a_s_s_html_aff1f06b73aa4a6f2dbc2ca21c1c3d697"><div class="ttname"><a href="class_c_r_o_p___c_l_a_s_s.html#aff1f06b73aa4a6f2dbc2ca21c1c3d697">CROP_CLASS::getData</a></div><div class="ttdeci">void getData(COUNTRY_CLASS *countries)</div><div class="ttdoc">Liest alle Daten für alle Länder.</div><div class="ttdef"><b>Definition</b> <a href="crop_8cpp_source.html#l00180">crop.cpp:180</a></div></div>
+<div class="ttc" id="acopy__run_8cpp_html_adc58c9862730d1b6c6bc472aaa13f6a7"><div class="ttname"><a href="copy__run_8cpp.html#adc58c9862730d1b6c6bc472aaa13f6a7">MyDatabase</a></div><div class="ttdeci">char MyDatabase[maxcharlength]</div><div class="ttdoc">Name der MySQL-Datenbank.</div><div class="ttdef"><b>Definition</b> <a href="copy__run_8cpp_source.html#l00022">copy_run.cpp:22</a></div></div>
+<div class="ttc" id="acountry_8h_html"><div class="ttname"><a href="country_8h.html">country.h</a></div><div class="ttdoc">Klasse zur Verwaltung von Länderinformationen.</div></div>
+<div class="ttc" id="acreate__scenarios_8cpp_html_aa01c7cd8b11874b4c6af37d110f7af6c"><div class="ttname"><a href="create__scenarios_8cpp.html#aa01c7cd8b11874b4c6af37d110f7af6c">continent_abb</a></div><div class="ttdeci">char continent_abb[10]</div><div class="ttdoc">Kontinent-Abkürzung für Datenbank-Erkennung.</div><div class="ttdef"><b>Definition</b> <a href="create__scenarios_8cpp_source.html#l00044">create_scenarios.cpp:44</a></div></div>
+<div class="ttc" id="ageneral__functions_8h_html"><div class="ttname"><a href="general__functions_8h.html">general_functions.h</a></div><div class="ttdoc">Allgemeine Hilfsfunktionen für das WorldQual Wasserqualitätsmodell.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d522931ffa1371640980b621734a4381.html">Users</a></li><li class="navelem"><a href="dir_d1f41d8fb8a63c6c76cf423d5998a81b.html">leon</a></li><li class="navelem"><a href="dir_466fb836fbf7d8b9a30beefb96f7ad0b.html">WorldQual</a></li><li class="navelem"><a href="dir_c46e372f1beef086879ee5119eaffc60.html">C++</a></li><li class="navelem"><a href="dir_b246705ef14cade7b4c54a03c1375769.html">src</a></li><li class="navelem"><a href="dir_225e67493dede2e000f84207e81c3065.html">wq_load</a></li><li class="navelem"><a href="crop_8h.html">crop.h</a></li>
+    <li class="footer">Erzeugt von <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

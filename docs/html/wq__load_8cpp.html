@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>WorldQual: /Users/leon/WorldQual/C++/src/wq_load/wq_load.cpp-Dateireferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">WorldQual<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Water Quality Model for River Systems</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Suchen',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('wq__load_8cpp.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Lade ...</div>
+<div class="SRStatus" id="Searching">Suche ...</div>
+<div class="SRStatus" id="NoMatches">Keine Treffer</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">wq_load.cpp-Dateireferenz</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;mysql++.h&gt;</code><br />
+<code>#include &lt;ssqls.h&gt;</code><br />
+<code>#include &lt;mysql.h&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="timestring_8h_source.html">timestring.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="country_8h_source.html">country.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="options__wq__load_8h_source.html">options_wq_load.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="general__functions_8h_source.html">general_functions.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_class_w_qload_8h_source.html">ClassWQload.h</a>&quot;</code><br />
+</div>
+<p><a href="wq__load_8cpp_source.html">gehe zum Quellcode dieser Datei</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+Makrodefinitionen</h2></td></tr>
+<tr class="memitem:a18417af576c43dcd202ed6c62fe3705c" id="r_a18417af576c43dcd202ed6c62fe3705c"><td class="memItemLeft">#define&#160;</td><td class="memItemRight"><a class="el" href="#a18417af576c43dcd202ed6c62fe3705c">DEBUG_queries</a></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funktionen</h2></td></tr>
+<tr class="memitem:a8041210b611c3c188647ad1100c3a098" id="r_a8041210b611c3c188647ad1100c3a098"><td class="memItemLeft">mysqlpp::Connection&#160;</td><td class="memItemRight"><a class="el" href="#a8041210b611c3c188647ad1100c3a098">con</a> (use_exceptions)</td></tr>
+<tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97" id="r_a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft">int&#160;</td><td class="memItemRight"><a class="el" href="#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variablen</h2></td></tr>
+<tr class="memitem:af3d0bc51e7c8830ee3ae059b462a0b0b" id="r_af3d0bc51e7c8830ee3ae059b462a0b0b"><td class="memItemLeft">char&#160;</td><td class="memItemRight"><a class="el" href="#af3d0bc51e7c8830ee3ae059b462a0b0b">hydro_input</a> [<a class="el" href="_newton_8h.html#a76924e55bfcb713ac77bfae077728ab9">maxcharlength</a>]</td></tr>
+<tr class="memitem:adc58c9862730d1b6c6bc472aaa13f6a7" id="r_adc58c9862730d1b6c6bc472aaa13f6a7"><td class="memItemLeft">char&#160;</td><td class="memItemRight"><a class="el" href="#adc58c9862730d1b6c6bc472aaa13f6a7">MyDatabase</a> [<a class="el" href="_newton_8h.html#a76924e55bfcb713ac77bfae077728ab9">maxcharlength</a>]</td></tr>
+<tr class="memdesc:adc58c9862730d1b6c6bc472aaa13f6a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Name der MySQL-Datenbank.  <br /></td></tr>
+</table>
+<a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Makro-Dokumentation</h2>
+<a id="a18417af576c43dcd202ed6c62fe3705c" name="a18417af576c43dcd202ed6c62fe3705c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18417af576c43dcd202ed6c62fe3705c">&#9670;&#160;</a></span>DEBUG_queries</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DEBUG_queries</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="wq__load_8cpp_source.html#l00036">36</a> der Datei <a class="el" href="wq__load_8cpp_source.html">wq_load.cpp</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Dokumentation der Funktionen</h2>
+<a id="a8041210b611c3c188647ad1100c3a098" name="a8041210b611c3c188647ad1100c3a098"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8041210b611c3c188647ad1100c3a098">&#9670;&#160;</a></span>con()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">mysqlpp::Connection con </td>
+          <td>(</td>
+          <td class="paramtype">use_exceptions</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0ddf1224851353fc92bfbff6f499fa97" name="a0ddf1224851353fc92bfbff6f499fa97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ddf1224851353fc92bfbff6f499fa97">&#9670;&#160;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>argc</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>argv</em></span>[]&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>=================================</p>
+
+<p class="definition">Definiert in Zeile <a class="el" href="wq__load_8cpp_source.html#l00039">39</a> der Datei <a class="el" href="wq__load_8cpp_source.html">wq_load.cpp</a>.</p>
+
+<p class="reference">Benutzt <a class="el" href="country_8cpp.html#aaadab29d45f00eebda3eca39e826da7f">con</a>, <a class="el" href="timestring_8cpp_source.html#l00026">getTimeString()</a>, <a class="el" href="options__wq__load_8cpp_source.html#l00207">options_wq_loadClass::Help()</a>, <a class="el" href="options__wq__load_8cpp_source.html#l00028">options_wq_loadClass::init()</a>, <a class="el" href="general__functions_8cpp_source.html#l00994">IsNumber()</a>, <a class="el" href="_newton_8h_source.html#l00021">maxcharlength</a>, <a class="el" href="options_8h_source.html#l00056">optionsClass::MyHost</a>, <a class="el" href="options_8h_source.html#l00062">optionsClass::MyPassword</a> und <a class="el" href="options_8h_source.html#l00059">optionsClass::MyUser</a>.</p>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variablen-Dokumentation</h2>
+<a id="af3d0bc51e7c8830ee3ae059b462a0b0b" name="af3d0bc51e7c8830ee3ae059b462a0b0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3d0bc51e7c8830ee3ae059b462a0b0b">&#9670;&#160;</a></span>hydro_input</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char hydro_input[<a class="el" href="_newton_8h.html#a76924e55bfcb713ac77bfae077728ab9">maxcharlength</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definiert in Zeile <a class="el" href="wq__load_8cpp_source.html#l00026">26</a> der Datei <a class="el" href="wq__load_8cpp_source.html">wq_load.cpp</a>.</p>
+
+</div>
+</div>
+<a id="adc58c9862730d1b6c6bc472aaa13f6a7" name="adc58c9862730d1b6c6bc472aaa13f6a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc58c9862730d1b6c6bc472aaa13f6a7">&#9670;&#160;</a></span>MyDatabase</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char MyDatabase[<a class="el" href="_newton_8h.html#a76924e55bfcb713ac77bfae077728ab9">maxcharlength</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Name der MySQL-Datenbank. </p>
+
+<p class="definition">Definiert in Zeile <a class="el" href="wq__load_8cpp_source.html#l00027">27</a> der Datei <a class="el" href="wq__load_8cpp_source.html">wq_load.cpp</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d522931ffa1371640980b621734a4381.html">Users</a></li><li class="navelem"><a href="dir_d1f41d8fb8a63c6c76cf423d5998a81b.html">leon</a></li><li class="navelem"><a href="dir_466fb836fbf7d8b9a30beefb96f7ad0b.html">WorldQual</a></li><li class="navelem"><a href="dir_c46e372f1beef086879ee5119eaffc60.html">C++</a></li><li class="navelem"><a href="dir_b246705ef14cade7b4c54a03c1375769.html">src</a></li><li class="navelem"><a href="dir_225e67493dede2e000f84207e81c3065.html">wq_load</a></li><li class="navelem"><a href="wq__load_8cpp.html">wq_load.cpp</a></li>
+    <li class="footer">Erzeugt von <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

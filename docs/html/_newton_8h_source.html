@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>WorldQual: /Users/leon/WorldQual/C++/src/newton/Newton.h Quellcode</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">WorldQual<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Water Quality Model for River Systems</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Suchen',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('_newton_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Lade ...</div>
+<div class="SRStatus" id="Searching">Suche ...</div>
+<div class="SRStatus" id="NoMatches">Keine Treffer</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Newton.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_newton_8h.html">gehe zur Dokumentation dieser Datei</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;math.h&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;iomanip&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="countryinfo_8h.html">countryinfo.h</a>&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="_newton_8h.html#a76924e55bfcb713ac77bfae077728ab9">   21</a></span><span class="keyword">const</span> <span class="keywordtype">short</span> <a class="code hl_variable" href="_newton_8h.html#a76924e55bfcb713ac77bfae077728ab9">maxcharlength</a> = 255;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">// ============================================================================</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">// Datei-Konstanten</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">// ============================================================================</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="_newton_8h.html#ae49de5908573f18451a55be475776e4a">   28</a></span><span class="keyword">const</span> <span class="keywordtype">char</span> <a class="code hl_variable" href="_newton_8h.html#ae49de5908573f18451a55be475776e4a">directory_file</a>[] = <span class="stringliteral">&quot;DATA.DIR&quot;</span>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="_newton_8h.html#ac5ab696c65599a1b6cceb0acfb2d76b2">   31</a></span><span class="keyword">const</span> <span class="keywordtype">char</span> <a class="code hl_variable" href="_newton_8h.html#ac5ab696c65599a1b6cceb0acfb2d76b2">points_file</a>[] = <span class="stringliteral">&quot;POINTS.DAT&quot;</span>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="_newton_8h.html#af84ecb53096a9e2d69385c1e0dceb667">   34</a></span><span class="keyword">const</span> <span class="keywordtype">char</span> <a class="code hl_variable" href="_newton_8h.html#af84ecb53096a9e2d69385c1e0dceb667">init_file</a>[] = <span class="stringliteral">&quot;INIT.DAT&quot;</span>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="_newton_8h.html#a1e7a0363c10a9f6c5df8648aabb8aaa7">   37</a></span><span class="keyword">const</span> <span class="keywordtype">char</span> <a class="code hl_variable" href="_newton_8h.html#a1e7a0363c10a9f6c5df8648aabb8aaa7">maxSWI_file</a>[] = <span class="stringliteral">&quot;MaxSWI.DAT&quot;</span>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="_newton_8h.html#a72344d2a4d12a1ab609e22904472642a">   40</a></span><span class="keyword">const</span> <span class="keywordtype">char</span> <a class="code hl_variable" href="_newton_8h.html#a72344d2a4d12a1ab609e22904472642a">output_file</a>[] = <span class="stringliteral">&quot;COEFF.OUT&quot;</span>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="_newton_8h.html#a9ecfbc39c91998adf69e582de5faba51">   43</a></span><span class="keyword">const</span> <span class="keywordtype">char</span> <a class="code hl_variable" href="_newton_8h.html#a9ecfbc39c91998adf69e582de5faba51">IndexAgreenment_file</a>[] = <span class="stringliteral">&quot;IndexOfAgreenment.OUT&quot;</span>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">// ============================================================================</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">// Algorithmus-Konstanten</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">// ============================================================================</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2">   50</a></span><span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2">n</a> = 3;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">   53</a></span><span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a> = 199999;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="_newton_8h.html#a093d3886b803d7c1f5dd68b16b65e7c5">   56</a></span><span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="_newton_8h.html#a093d3886b803d7c1f5dd68b16b65e7c5">imax</a> = 4;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="_newton_8h.html#a424bedf5285739d17ab013b8dd6b635b">   59</a></span><span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="_newton_8h.html#a424bedf5285739d17ab013b8dd6b635b">MaxIteration</a> = 1000;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="_newton_8h.html#aed54e3f02ef7426fd92cd6e7e1cd181c">   62</a></span><span class="keywordtype">double</span> <a class="code hl_variable" href="_newton_8h.html#aed54e3f02ef7426fd92cd6e7e1cd181c">N</a>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">// ============================================================================</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">// Partielle Ableitungen - Zweite Ordnung (Hesse-Matrix)</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">// ============================================================================</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="_newton_8h.html#a365b8a4e4d77d9d698dc7ebc319dff01">   76</a></span><span class="keywordtype">double</span> <a class="code hl_function" href="_newton_8h.html#a365b8a4e4d77d9d698dc7ebc319dff01">g0c0</a>(<span class="keywordtype">double</span> c[<a class="code hl_variable" href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2">n</a>], <span class="keywordtype">double</span> x[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">double</span> w[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">int</span> pointNumber);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="_newton_8h.html#a9590409bbbdb18634526f4c679207dc3">   87</a></span><span class="keywordtype">double</span> <a class="code hl_function" href="_newton_8h.html#a9590409bbbdb18634526f4c679207dc3">g1c0</a>(<span class="keywordtype">double</span> c[<a class="code hl_variable" href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2">n</a>], <span class="keywordtype">double</span> x[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">double</span> y[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">double</span> w[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">int</span> pointNumber);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="_newton_8h.html#a4ef9581a31af060c6cd69fd049605c6d">   98</a></span><span class="keywordtype">double</span> <a class="code hl_function" href="_newton_8h.html#a4ef9581a31af060c6cd69fd049605c6d">g2c0</a>(<span class="keywordtype">double</span> c[<a class="code hl_variable" href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2">n</a>], <span class="keywordtype">double</span> x[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">double</span> y[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">double</span> w[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">int</span> pointNumber);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="_newton_8h.html#afc436a3b9a3e984db8ef2b2ee23c03e8">  109</a></span><span class="keywordtype">double</span> <a class="code hl_function" href="_newton_8h.html#afc436a3b9a3e984db8ef2b2ee23c03e8">g0c1</a>(<span class="keywordtype">double</span> c[<a class="code hl_variable" href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2">n</a>], <span class="keywordtype">double</span> x[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">double</span> y[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">double</span> w[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">int</span> pointNumber);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="_newton_8h.html#a529c93b1cf4b4f6c58cafd5c34619764">  120</a></span><span class="keywordtype">double</span> <a class="code hl_function" href="_newton_8h.html#a529c93b1cf4b4f6c58cafd5c34619764">g1c1</a>(<span class="keywordtype">double</span> c[<a class="code hl_variable" href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2">n</a>], <span class="keywordtype">double</span> x[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">double</span> y[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">double</span> w[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">int</span> pointNumber);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="_newton_8h.html#a9d8e3bf41fb8ddd4a55b3fe00c632374">  131</a></span><span class="keywordtype">double</span> <a class="code hl_function" href="_newton_8h.html#a9d8e3bf41fb8ddd4a55b3fe00c632374">g2c1</a>(<span class="keywordtype">double</span> c[<a class="code hl_variable" href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2">n</a>], <span class="keywordtype">double</span> x[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">double</span> y[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">double</span> w[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">int</span> pointNumber);</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="_newton_8h.html#a5fb51a5f101878f38fff9cb13a231749">  142</a></span><span class="keywordtype">double</span> <a class="code hl_function" href="_newton_8h.html#a5fb51a5f101878f38fff9cb13a231749">g0c2</a>(<span class="keywordtype">double</span> c[<a class="code hl_variable" href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2">n</a>], <span class="keywordtype">double</span> x[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">double</span> y[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">double</span> w[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">int</span> pointNumber);</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno"><a class="line" href="_newton_8h.html#acb5ba72a213ec60982ce11a579d6436c">  153</a></span><span class="keywordtype">double</span> <a class="code hl_function" href="_newton_8h.html#acb5ba72a213ec60982ce11a579d6436c">g1c2</a>(<span class="keywordtype">double</span> c[<a class="code hl_variable" href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2">n</a>], <span class="keywordtype">double</span> x[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">double</span> y[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">double</span> w[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">int</span> pointNumber);</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno"><a class="line" href="_newton_8h.html#a922d9d8a062ce9057afef538810c91bf">  164</a></span><span class="keywordtype">double</span> <a class="code hl_function" href="_newton_8h.html#a922d9d8a062ce9057afef538810c91bf">g2c2</a>(<span class="keywordtype">double</span> c[<a class="code hl_variable" href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2">n</a>], <span class="keywordtype">double</span> x[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">double</span> y[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">double</span> w[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">int</span> pointNumber);</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="comment">// ============================================================================</span></div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span><span class="comment">// Erste Ableitungen (Gradient)</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="comment">// ============================================================================</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span></div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno"><a class="line" href="_newton_8h.html#abb9a921513651382e3c87dd57488b8cb">  179</a></span><span class="keywordtype">double</span> <a class="code hl_function" href="_newton_8h.html#abb9a921513651382e3c87dd57488b8cb">g0</a>(<span class="keywordtype">double</span> c[<a class="code hl_variable" href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2">n</a>], <span class="keywordtype">double</span> x[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">double</span> y[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">double</span> w[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">int</span> pointNumber);</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno"><a class="line" href="_newton_8h.html#a413310ce23f859aa62cf5c7fd33e6006">  190</a></span><span class="keywordtype">double</span> <a class="code hl_function" href="_newton_8h.html#a413310ce23f859aa62cf5c7fd33e6006">g1</a>(<span class="keywordtype">double</span> c[<a class="code hl_variable" href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2">n</a>], <span class="keywordtype">double</span> x[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">double</span> y[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">double</span> w[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">int</span> pointNumber);</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno"><a class="line" href="_newton_8h.html#a5dbc1c4f3fabba18419f7e0250133c72">  201</a></span><span class="keywordtype">double</span> <a class="code hl_function" href="_newton_8h.html#a5dbc1c4f3fabba18419f7e0250133c72">g2</a>(<span class="keywordtype">double</span> c[<a class="code hl_variable" href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2">n</a>], <span class="keywordtype">double</span> x[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">double</span> y[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">double</span> w[<a class="code hl_variable" href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a>], <span class="keywordtype">int</span> pointNumber);</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="comment">// ============================================================================</span></div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="comment">// Hilfsfunktionen</span></div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span><span class="comment">// ============================================================================</span></div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span></div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno"><a class="line" href="_newton_8h.html#ad97f22373f152789f69115e3b4d06609">  212</a></span><span class="keywordtype">int</span> <a class="code hl_function" href="_newton_8h.html#ad97f22373f152789f69115e3b4d06609">sign</a>(<span class="keywordtype">double</span> a);</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span></div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno"><a class="line" href="_newton_8h.html#a5d8bc3d0e6557990422bb05f52a5a55d">  226</a></span><span class="keywordtype">double</span> <a class="code hl_function" href="_newton_8h.html#a5d8bc3d0e6557990422bb05f52a5a55d">F</a>(<span class="keywordtype">double</span> c0, <span class="keywordtype">double</span> c1, <span class="keywordtype">double</span> c2, <span class="keywordtype">double</span> x);</div>
+<div class="ttc" id="a_newton_8h_html_a093d3886b803d7c1f5dd68b16b65e7c5"><div class="ttname"><a href="_newton_8h.html#a093d3886b803d7c1f5dd68b16b65e7c5">imax</a></div><div class="ttdeci">const int imax</div><div class="ttdoc">Maximale Anzahl innerer Iterationen.</div><div class="ttdef"><b>Definition</b> <a href="#l00056">Newton.h:56</a></div></div>
+<div class="ttc" id="a_newton_8h_html_a1e7a0363c10a9f6c5df8648aabb8aaa7"><div class="ttname"><a href="_newton_8h.html#a1e7a0363c10a9f6c5df8648aabb8aaa7">maxSWI_file</a></div><div class="ttdeci">const char maxSWI_file[]</div><div class="ttdoc">Maximaler SWI (Surface Water Index) Datei.</div><div class="ttdef"><b>Definition</b> <a href="#l00037">Newton.h:37</a></div></div>
+<div class="ttc" id="a_newton_8h_html_a365b8a4e4d77d9d698dc7ebc319dff01"><div class="ttname"><a href="_newton_8h.html#a365b8a4e4d77d9d698dc7ebc319dff01">g0c0</a></div><div class="ttdeci">double g0c0(double c[n], double x[Nmax], double w[Nmax], int pointNumber)</div><div class="ttdoc">Berechnet partielle Ableitung ∂²F/∂c0²</div></div>
+<div class="ttc" id="a_newton_8h_html_a413310ce23f859aa62cf5c7fd33e6006"><div class="ttname"><a href="_newton_8h.html#a413310ce23f859aa62cf5c7fd33e6006">g1</a></div><div class="ttdeci">double g1(double c[n], double x[Nmax], double y[Nmax], double w[Nmax], int pointNumber)</div><div class="ttdoc">Berechnet partielle Ableitung ∂F/∂c1.</div></div>
+<div class="ttc" id="a_newton_8h_html_a424bedf5285739d17ab013b8dd6b635b"><div class="ttname"><a href="_newton_8h.html#a424bedf5285739d17ab013b8dd6b635b">MaxIteration</a></div><div class="ttdeci">const int MaxIteration</div><div class="ttdoc">Maximale Anzahl Newton-Iterationen.</div><div class="ttdef"><b>Definition</b> <a href="#l00059">Newton.h:59</a></div></div>
+<div class="ttc" id="a_newton_8h_html_a4ef9581a31af060c6cd69fd049605c6d"><div class="ttname"><a href="_newton_8h.html#a4ef9581a31af060c6cd69fd049605c6d">g2c0</a></div><div class="ttdeci">double g2c0(double c[n], double x[Nmax], double y[Nmax], double w[Nmax], int pointNumber)</div><div class="ttdoc">Berechnet partielle Ableitung ∂²F/∂c2∂c0.</div></div>
+<div class="ttc" id="a_newton_8h_html_a529c93b1cf4b4f6c58cafd5c34619764"><div class="ttname"><a href="_newton_8h.html#a529c93b1cf4b4f6c58cafd5c34619764">g1c1</a></div><div class="ttdeci">double g1c1(double c[n], double x[Nmax], double y[Nmax], double w[Nmax], int pointNumber)</div><div class="ttdoc">Berechnet partielle Ableitung ∂²F/∂c1²</div></div>
+<div class="ttc" id="a_newton_8h_html_a5d8bc3d0e6557990422bb05f52a5a55d"><div class="ttname"><a href="_newton_8h.html#a5d8bc3d0e6557990422bb05f52a5a55d">F</a></div><div class="ttdeci">double F(double c0, double c1, double c2, double x)</div><div class="ttdoc">Approximationsfunktion für Kurvenanpassung.</div></div>
+<div class="ttc" id="a_newton_8h_html_a5dbc1c4f3fabba18419f7e0250133c72"><div class="ttname"><a href="_newton_8h.html#a5dbc1c4f3fabba18419f7e0250133c72">g2</a></div><div class="ttdeci">double g2(double c[n], double x[Nmax], double y[Nmax], double w[Nmax], int pointNumber)</div><div class="ttdoc">Berechnet partielle Ableitung ∂F/∂c2.</div></div>
+<div class="ttc" id="a_newton_8h_html_a5fb51a5f101878f38fff9cb13a231749"><div class="ttname"><a href="_newton_8h.html#a5fb51a5f101878f38fff9cb13a231749">g0c2</a></div><div class="ttdeci">double g0c2(double c[n], double x[Nmax], double y[Nmax], double w[Nmax], int pointNumber)</div><div class="ttdoc">Berechnet partielle Ableitung ∂²F/∂c0∂c2.</div></div>
+<div class="ttc" id="a_newton_8h_html_a6a84531a0bbc8e41a34acc4697d8b0cd"><div class="ttname"><a href="_newton_8h.html#a6a84531a0bbc8e41a34acc4697d8b0cd">Nmax</a></div><div class="ttdeci">const int Nmax</div><div class="ttdoc">Maximale Anzahl von Datenpunkten (Xi, Yi).</div><div class="ttdef"><b>Definition</b> <a href="#l00053">Newton.h:53</a></div></div>
+<div class="ttc" id="a_newton_8h_html_a72344d2a4d12a1ab609e22904472642a"><div class="ttname"><a href="_newton_8h.html#a72344d2a4d12a1ab609e22904472642a">output_file</a></div><div class="ttdeci">const char output_file[]</div><div class="ttdoc">Ausgabedatei für berechnete Koeffizienten.</div><div class="ttdef"><b>Definition</b> <a href="#l00040">Newton.h:40</a></div></div>
+<div class="ttc" id="a_newton_8h_html_a76924e55bfcb713ac77bfae077728ab9"><div class="ttname"><a href="_newton_8h.html#a76924e55bfcb713ac77bfae077728ab9">maxcharlength</a></div><div class="ttdeci">const short maxcharlength</div><div class="ttdoc">Maximale Länge von Strings.</div><div class="ttdef"><b>Definition</b> <a href="#l00021">Newton.h:21</a></div></div>
+<div class="ttc" id="a_newton_8h_html_a922d9d8a062ce9057afef538810c91bf"><div class="ttname"><a href="_newton_8h.html#a922d9d8a062ce9057afef538810c91bf">g2c2</a></div><div class="ttdeci">double g2c2(double c[n], double x[Nmax], double y[Nmax], double w[Nmax], int pointNumber)</div><div class="ttdoc">Berechnet partielle Ableitung ∂²F/∂c2²</div></div>
+<div class="ttc" id="a_newton_8h_html_a9590409bbbdb18634526f4c679207dc3"><div class="ttname"><a href="_newton_8h.html#a9590409bbbdb18634526f4c679207dc3">g1c0</a></div><div class="ttdeci">double g1c0(double c[n], double x[Nmax], double y[Nmax], double w[Nmax], int pointNumber)</div><div class="ttdoc">Berechnet partielle Ableitung ∂²F/∂c1∂c0.</div></div>
+<div class="ttc" id="a_newton_8h_html_a9d8e3bf41fb8ddd4a55b3fe00c632374"><div class="ttname"><a href="_newton_8h.html#a9d8e3bf41fb8ddd4a55b3fe00c632374">g2c1</a></div><div class="ttdeci">double g2c1(double c[n], double x[Nmax], double y[Nmax], double w[Nmax], int pointNumber)</div><div class="ttdoc">Berechnet partielle Ableitung ∂²F/∂c2∂c1.</div></div>
+<div class="ttc" id="a_newton_8h_html_a9ecfbc39c91998adf69e582de5faba51"><div class="ttname"><a href="_newton_8h.html#a9ecfbc39c91998adf69e582de5faba51">IndexAgreenment_file</a></div><div class="ttdeci">const char IndexAgreenment_file[]</div><div class="ttdoc">Ausgabedatei für Index of Agreement (Güte der Anpassung).</div><div class="ttdef"><b>Definition</b> <a href="#l00043">Newton.h:43</a></div></div>
+<div class="ttc" id="a_newton_8h_html_abb9a921513651382e3c87dd57488b8cb"><div class="ttname"><a href="_newton_8h.html#abb9a921513651382e3c87dd57488b8cb">g0</a></div><div class="ttdeci">double g0(double c[n], double x[Nmax], double y[Nmax], double w[Nmax], int pointNumber)</div><div class="ttdoc">Berechnet partielle Ableitung ∂F/∂c0.</div></div>
+<div class="ttc" id="a_newton_8h_html_ac5ab696c65599a1b6cceb0acfb2d76b2"><div class="ttname"><a href="_newton_8h.html#ac5ab696c65599a1b6cceb0acfb2d76b2">points_file</a></div><div class="ttdeci">const char points_file[]</div><div class="ttdoc">Datenpunkte-Eingabedatei (X, Y Koordinaten).</div><div class="ttdef"><b>Definition</b> <a href="#l00031">Newton.h:31</a></div></div>
+<div class="ttc" id="a_newton_8h_html_acb5ba72a213ec60982ce11a579d6436c"><div class="ttname"><a href="_newton_8h.html#acb5ba72a213ec60982ce11a579d6436c">g1c2</a></div><div class="ttdeci">double g1c2(double c[n], double x[Nmax], double y[Nmax], double w[Nmax], int pointNumber)</div><div class="ttdoc">Berechnet partielle Ableitung ∂²F/∂c1∂c2.</div></div>
+<div class="ttc" id="a_newton_8h_html_acfc02ec89670db29251fda6a66602ce2"><div class="ttname"><a href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2">n</a></div><div class="ttdeci">const int n</div><div class="ttdoc">Anzahl der Koeffizienten in der Approximationsfunktion (c0, c1, c2).</div><div class="ttdef"><b>Definition</b> <a href="#l00050">Newton.h:50</a></div></div>
+<div class="ttc" id="a_newton_8h_html_ad97f22373f152789f69115e3b4d06609"><div class="ttname"><a href="_newton_8h.html#ad97f22373f152789f69115e3b4d06609">sign</a></div><div class="ttdeci">int sign(double a)</div><div class="ttdoc">Gibt Vorzeichen einer Zahl zurück.</div></div>
+<div class="ttc" id="a_newton_8h_html_ae49de5908573f18451a55be475776e4a"><div class="ttname"><a href="_newton_8h.html#ae49de5908573f18451a55be475776e4a">directory_file</a></div><div class="ttdeci">const char directory_file[]</div><div class="ttdoc">Verzeichnis-Konfigurationsdatei.</div><div class="ttdef"><b>Definition</b> <a href="#l00028">Newton.h:28</a></div></div>
+<div class="ttc" id="a_newton_8h_html_aed54e3f02ef7426fd92cd6e7e1cd181c"><div class="ttname"><a href="_newton_8h.html#aed54e3f02ef7426fd92cd6e7e1cd181c">N</a></div><div class="ttdeci">double N</div><div class="ttdoc">Tatsächliche Anzahl von Datenpunkten.</div><div class="ttdef"><b>Definition</b> <a href="#l00062">Newton.h:62</a></div></div>
+<div class="ttc" id="a_newton_8h_html_af84ecb53096a9e2d69385c1e0dceb667"><div class="ttname"><a href="_newton_8h.html#af84ecb53096a9e2d69385c1e0dceb667">init_file</a></div><div class="ttdeci">const char init_file[]</div><div class="ttdoc">Initialisierungsdatei (Startwerte für Koeffizienten).</div><div class="ttdef"><b>Definition</b> <a href="#l00034">Newton.h:34</a></div></div>
+<div class="ttc" id="a_newton_8h_html_afc436a3b9a3e984db8ef2b2ee23c03e8"><div class="ttname"><a href="_newton_8h.html#afc436a3b9a3e984db8ef2b2ee23c03e8">g0c1</a></div><div class="ttdeci">double g0c1(double c[n], double x[Nmax], double y[Nmax], double w[Nmax], int pointNumber)</div><div class="ttdoc">Berechnet partielle Ableitung ∂²F/∂c0∂c1.</div></div>
+<div class="ttc" id="acountryinfo_8h_html"><div class="ttname"><a href="countryinfo_8h.html">countryinfo.h</a></div><div class="ttdoc">Klasse zur Verwaltung von Länder-Informationen aus Datei.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_d522931ffa1371640980b621734a4381.html">Users</a></li><li class="navelem"><a href="dir_d1f41d8fb8a63c6c76cf423d5998a81b.html">leon</a></li><li class="navelem"><a href="dir_466fb836fbf7d8b9a30beefb96f7ad0b.html">WorldQual</a></li><li class="navelem"><a href="dir_c46e372f1beef086879ee5119eaffc60.html">C++</a></li><li class="navelem"><a href="dir_b246705ef14cade7b4c54a03c1375769.html">src</a></li><li class="navelem"><a href="dir_7838f82c991b06bd817d439c15943bf7.html">newton</a></li><li class="navelem"><a href="_newton_8h.html">Newton.h</a></li>
+    <li class="footer">Erzeugt von <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>

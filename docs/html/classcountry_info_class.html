@@ -1,0 +1,388 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.16.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>WorldQual: countryInfoClass Klassenreferenz</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">WorldQual<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">Water Quality Model for River Systems</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Erzeugt von Doxygen 1.16.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Suchen',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('classcountry_info_class.html','','classcountry_info_class-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Lade ...</div>
+<div class="SRStatus" id="Searching">Suche ...</div>
+<div class="SRStatus" id="NoMatches">Keine Treffer</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">countryInfoClass Klassenreferenz</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Verwaltet Länder-Informationen aus COUNTRY_NAMES.DAT.  
+ <a href="#details">Mehr ...</a></p>
+
+<p><code>#include &lt;<a class="el" href="countryinfo_8h_source.html">countryinfo.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Öffentliche Methoden</h2></td></tr>
+<tr class="memitem:af99f5b3ca0cc32854a63fc876e413354" id="r_af99f5b3ca0cc32854a63fc876e413354"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af99f5b3ca0cc32854a63fc876e413354">init</a> (const char *input_dir, const unsigned short maxLengthOfCountryName=15)</td></tr>
+<tr class="memdesc:af99f5b3ca0cc32854a63fc876e413354"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialisiert die Länder-Datenbank aus Datei.  <br /></td></tr>
+<tr class="memitem:ac00186283527d837af098be99fc1b0ac" id="r_ac00186283527d837af098be99fc1b0ac"><td class="memItemLeft">short&#160;</td><td class="memItemRight"><a class="el" href="#ac00186283527d837af098be99fc1b0ac">getIsoNumber</a> (const short <a class="el" href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2">n</a>)</td></tr>
+<tr class="memdesc:ac00186283527d837af098be99fc1b0ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gibt ISO-Nummer für Array-Position zurück.  <br /></td></tr>
+<tr class="memitem:abd3edb64cc67124fd251e795feed03ee" id="r_abd3edb64cc67124fd251e795feed03ee"><td class="memItemLeft">short&#160;</td><td class="memItemRight"><a class="el" href="#abd3edb64cc67124fd251e795feed03ee">getArrayPosition</a> (const short IsoNumber)</td></tr>
+<tr class="memdesc:abd3edb64cc67124fd251e795feed03ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Findet Array-Position für eine ISO-Nummer.  <br /></td></tr>
+<tr class="memitem:a73d5d291809ad35d6f2e93e23ad0c97b" id="r_a73d5d291809ad35d6f2e93e23ad0c97b"><td class="memItemLeft">short&#160;</td><td class="memItemRight"><a class="el" href="#a73d5d291809ad35d6f2e93e23ad0c97b">getNumberOfCountries</a> (void)</td></tr>
+<tr class="memdesc:a73d5d291809ad35d6f2e93e23ad0c97b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gibt Gesamtzahl der Länder zurück.  <br /></td></tr>
+<tr class="memitem:aaa48203c86d0f9386527d42bb864490d" id="r_aaa48203c86d0f9386527d42bb864490d"><td class="memItemLeft">char *&#160;</td><td class="memItemRight"><a class="el" href="#aaa48203c86d0f9386527d42bb864490d">getCountryName</a> (const short <a class="el" href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2">n</a>)</td></tr>
+<tr class="memdesc:aaa48203c86d0f9386527d42bb864490d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gibt Ländernamen für Array-Position zurück.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attribute</h2></td></tr>
+<tr class="memitem:a167ad2e0ca6334ab3cf68aa0ecbbe214" id="r_a167ad2e0ca6334ab3cf68aa0ecbbe214"><td class="memItemLeft">std::vector&lt; short &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a167ad2e0ca6334ab3cf68aa0ecbbe214">countryIsoNumber</a></td></tr>
+<tr class="memdesc:a167ad2e0ca6334ab3cf68aa0ecbbe214"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector mit ISO-Nummern der Länder.  <br /></td></tr>
+<tr class="memitem:a7e312ea7a7152e4e3b64879bfd27588c" id="r_a7e312ea7a7152e4e3b64879bfd27588c"><td class="memItemLeft">std::vector&lt; char * &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a7e312ea7a7152e4e3b64879bfd27588c">countryName</a></td></tr>
+<tr class="memdesc:a7e312ea7a7152e4e3b64879bfd27588c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector mit Ländernamen.  <br /></td></tr>
+<tr class="memitem:a83dac378dae56e200cf14357f0459562" id="r_a83dac378dae56e200cf14357f0459562"><td class="memItemLeft">short&#160;</td><td class="memItemRight"><a class="el" href="#a83dac378dae56e200cf14357f0459562">numberOfCountries</a></td></tr>
+<tr class="memdesc:a83dac378dae56e200cf14357f0459562"><td class="mdescLeft">&#160;</td><td class="mdescRight">Anzahl der geladenen Länder.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Ausführliche Beschreibung</h2>
+<div class="textblock"><p>Verwaltet Länder-Informationen aus COUNTRY_NAMES.DAT. </p>
+<p>Diese Klasse liest eine Datei mit Länderinformationen und stellt Methoden zur Verfügung, um zwischen ISO-Nummern, Array-Positionen und Ländernamen zu konvertieren.</p>
+<dl class="section note"><dt>Zu beachten</dt><dd>Verwendet std::vector für dynamische Arrays </dd></dl>
+
+<p class="definition">Definiert in Zeile <a class="el" href="countryinfo_8h_source.html#l00030">30</a> der Datei <a class="el" href="countryinfo_8h_source.html">countryinfo.h</a>.</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Dokumentation der Elementfunktionen</h2>
+<a id="abd3edb64cc67124fd251e795feed03ee" name="abd3edb64cc67124fd251e795feed03ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd3edb64cc67124fd251e795feed03ee">&#9670;&#160;</a></span>getArrayPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">short countryInfoClass::getArrayPosition </td>
+          <td>(</td>
+          <td class="paramtype">const short</td>          <td class="paramname"><span class="paramname"><em>IsoNumber</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Findet Array-Position für eine ISO-Nummer. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">IsoNumber</td><td>ISO-Nummer des Landes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Array-Position des Landes, oder -1 wenn nicht gefunden </dd></dl>
+
+<p class="definition">Definiert in Zeile <a class="el" href="countryinfo_8cpp_source.html#l00130">130</a> der Datei <a class="el" href="countryinfo_8cpp_source.html">countryinfo.cpp</a>.</p>
+
+<p class="reference">Benutzt <a class="el" href="countryinfo_8h_source.html#l00077">countryIsoNumber</a>.</p>
+
+</div>
+</div>
+<a id="aaa48203c86d0f9386527d42bb864490d" name="aaa48203c86d0f9386527d42bb864490d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa48203c86d0f9386527d42bb864490d">&#9670;&#160;</a></span>getCountryName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * countryInfoClass::getCountryName </td>
+          <td>(</td>
+          <td class="paramtype">const short</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gibt Ländernamen für Array-Position zurück. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2" title="Anzahl der Koeffizienten in der Approximationsfunktion (c0, c1, c2).">n</a></td><td>Array-Position (0-basiert) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>Zeiger auf Ländernamen-String </dd></dl>
+
+<p class="definition">Definiert in Zeile <a class="el" href="countryinfo_8cpp_source.html#l00142">142</a> der Datei <a class="el" href="countryinfo_8cpp_source.html">countryinfo.cpp</a>.</p>
+
+<p class="reference">Benutzt <a class="el" href="countryinfo_8h_source.html#l00085">countryName</a>, <a class="el" href="_newton_8h_source.html#l00050">n</a> und <a class="el" href="countryinfo_8h_source.html#l00090">numberOfCountries</a>.</p>
+
+</div>
+</div>
+<a id="ac00186283527d837af098be99fc1b0ac" name="ac00186283527d837af098be99fc1b0ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac00186283527d837af098be99fc1b0ac">&#9670;&#160;</a></span>getIsoNumber()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">short countryInfoClass::getIsoNumber </td>
+          <td>(</td>
+          <td class="paramtype">const short</td>          <td class="paramname"><span class="paramname"><em>n</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gibt ISO-Nummer für Array-Position zurück. </p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="_newton_8h.html#acfc02ec89670db29251fda6a66602ce2" title="Anzahl der Koeffizienten in der Approximationsfunktion (c0, c1, c2).">n</a></td><td>Array-Position (0-basiert) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Rückgabe</dt><dd>ISO-Nummer des Landes an Position n </dd></dl>
+
+<p class="definition">Definiert in Zeile <a class="el" href="countryinfo_8cpp_source.html#l00119">119</a> der Datei <a class="el" href="countryinfo_8cpp_source.html">countryinfo.cpp</a>.</p>
+
+<p class="reference">Benutzt <a class="el" href="countryinfo_8h_source.html#l00077">countryIsoNumber</a>, <a class="el" href="_newton_8h_source.html#l00050">n</a> und <a class="el" href="countryinfo_8h_source.html#l00090">numberOfCountries</a>.</p>
+
+</div>
+</div>
+<a id="a73d5d291809ad35d6f2e93e23ad0c97b" name="a73d5d291809ad35d6f2e93e23ad0c97b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73d5d291809ad35d6f2e93e23ad0c97b">&#9670;&#160;</a></span>getNumberOfCountries()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">short countryInfoClass::getNumberOfCountries </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gibt Gesamtzahl der Länder zurück. </p>
+<dl class="section return"><dt>Rückgabe</dt><dd>Anzahl der geladenen Länder </dd></dl>
+
+<p class="definition">Definiert in Zeile <a class="el" href="countryinfo_8cpp_source.html#l00114">114</a> der Datei <a class="el" href="countryinfo_8cpp_source.html">countryinfo.cpp</a>.</p>
+
+<p class="reference">Benutzt <a class="el" href="countryinfo_8h_source.html#l00090">numberOfCountries</a>.</p>
+
+</div>
+</div>
+<a id="af99f5b3ca0cc32854a63fc876e413354" name="af99f5b3ca0cc32854a63fc876e413354"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af99f5b3ca0cc32854a63fc876e413354">&#9670;&#160;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void countryInfoClass::init </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>input_dir</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned short</td>          <td class="paramname"><span class="paramname"><em>maxLengthOfCountryName</em></span><span class="paramdefsep"> = </span><span class="paramdefval">15</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialisiert die Länder-Datenbank aus Datei. </p>
+<p>Liest COUNTRY_NAMES.DAT und lädt alle Länderinformationen</p>
+<dl class="params"><dt>Parameter</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input_dir</td><td>Verzeichnis mit COUNTRY_NAMES.DAT Datei </td></tr>
+    <tr><td class="paramname">maxLengthOfCountryName</td><td>Maximale Länge eines Ländernamens (default=15) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definiert in Zeile <a class="el" href="countryinfo_8cpp_source.html#l00048">48</a> der Datei <a class="el" href="countryinfo_8cpp_source.html">countryinfo.cpp</a>.</p>
+
+<p class="reference">Benutzt <a class="el" href="countryinfo_8h_source.html#l00077">countryIsoNumber</a>, <a class="el" href="countryinfo_8h_source.html#l00085">countryName</a> und <a class="el" href="countryinfo_8h_source.html#l00090">numberOfCountries</a>.</p>
+
+</div>
+</div>
+<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Dokumentation der Datenelemente</h2>
+<a id="a167ad2e0ca6334ab3cf68aa0ecbbe214" name="a167ad2e0ca6334ab3cf68aa0ecbbe214"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a167ad2e0ca6334ab3cf68aa0ecbbe214">&#9670;&#160;</a></span>countryIsoNumber</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;short&gt; countryInfoClass::countryIsoNumber</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Vector mit ISO-Nummern der Länder. </p>
+<p>Enthält die ISO-Nummer für jedes Land in der Reihenfolge wie sie in COUNTRY_NAMES.DAT erscheinen </p>
+
+<p class="definition">Definiert in Zeile <a class="el" href="countryinfo_8h_source.html#l00077">77</a> der Datei <a class="el" href="countryinfo_8h_source.html">countryinfo.h</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="countryinfo_8cpp_source.html#l00130">getArrayPosition()</a>, <a class="el" href="countryinfo_8cpp_source.html#l00119">getIsoNumber()</a> und <a class="el" href="countryinfo_8cpp_source.html#l00048">init()</a>.</p>
+
+</div>
+</div>
+<a id="a7e312ea7a7152e4e3b64879bfd27588c" name="a7e312ea7a7152e4e3b64879bfd27588c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e312ea7a7152e4e3b64879bfd27588c">&#9670;&#160;</a></span>countryName</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;char*&gt; countryInfoClass::countryName</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Vector mit Ländernamen. </p>
+<p>Enthält Zeiger auf Ländernamen-Strings in der gleichen Reihenfolge wie countryIsoNumber </p>
+
+<p class="definition">Definiert in Zeile <a class="el" href="countryinfo_8h_source.html#l00085">85</a> der Datei <a class="el" href="countryinfo_8h_source.html">countryinfo.h</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="countryinfo_8cpp_source.html#l00142">getCountryName()</a> und <a class="el" href="countryinfo_8cpp_source.html#l00048">init()</a>.</p>
+
+</div>
+</div>
+<a id="a83dac378dae56e200cf14357f0459562" name="a83dac378dae56e200cf14357f0459562"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83dac378dae56e200cf14357f0459562">&#9670;&#160;</a></span>numberOfCountries</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">short countryInfoClass::numberOfCountries</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Anzahl der geladenen Länder. </p>
+
+<p class="definition">Definiert in Zeile <a class="el" href="countryinfo_8h_source.html#l00090">90</a> der Datei <a class="el" href="countryinfo_8h_source.html">countryinfo.h</a>.</p>
+
+<p class="reference">Wird benutzt von <a class="el" href="countryinfo_8cpp_source.html#l00142">getCountryName()</a>, <a class="el" href="countryinfo_8cpp_source.html#l00119">getIsoNumber()</a>, <a class="el" href="countryinfo_8cpp_source.html#l00114">getNumberOfCountries()</a> und <a class="el" href="countryinfo_8cpp_source.html#l00048">init()</a>.</p>
+
+</div>
+</div>
+<hr/>Die Dokumentation für diese Klasse wurde erzeugt aufgrund der Dateien:<ul>
+<li>/Users/leon/WorldQual/C++/src/newton/<a class="el" href="countryinfo_8h_source.html">countryinfo.h</a></li>
+<li>/Users/leon/WorldQual/C++/src/newton/<a class="el" href="countryinfo_8cpp_source.html">countryinfo.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="classcountry_info_class.html">countryInfoClass</a></li>
+    <li class="footer">Erzeugt von <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.16.1 </li>
+  </ul>
+</div>
+</body>
+</html>
