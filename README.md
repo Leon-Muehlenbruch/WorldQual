@@ -2,11 +2,11 @@
 
 **C++ Wasserqualitätsmodell für Flusssysteme**
 
-Ein wissenschaftliches Modell zur Simulation von Wasserqualität in Flüssen, entwickelt für globale und regionale Analysen.
+Ein Modell zur Simulation von Wasserqualität in Flüssen, entwickelt für globale und regionale Analysen.
 
 ---
 
-## 🚀 Schnellstart
+## Schnellstart
 
 ```bash
 # 1. Repository klonen
@@ -21,26 +21,17 @@ cd src/worldqual
 make clean && make
 
 # 4. Ausführen
-./worldqual 1 2000 2010
+./worldqual 1 startjahr endjahr
 ```
-
-**Das war's!** 🎉
-
 ---
 
-## 📚 Dokumentation
+##  Dokumentation
 
 **Online:** https://leon-muehlenbruch.github.io/WorldQual/
 
-### Wichtige Dokumente:
-- 📖 [Installation](https://leon-muehlenbruch.github.io/WorldQual/tutorial_installation.html) - Von Git Clone zum laufenden Programm
-- 🔧 [Konfiguration](https://leon-muehlenbruch.github.io/WorldQual/tutorial_konfiguration.html) - OPTIONS.DAT und Parameter
-- 📦 [DEPENDENCIES.md](DEPENDENCIES.md) - Dependency-Management
-- 📋 [INSTALLATION.md](INSTALLATION.md) - Detaillierte Installationsanleitung
-
 ---
 
-## 📦 Voraussetzungen
+## Voraussetzungen
 
 ### Erforderlich:
 - **C++ Compiler** (g++ oder clang++)
@@ -78,7 +69,7 @@ sudo systemctl start mysql
 
 ---
 
-## 🏗️ Module
+## Module
 
 WorldQual besteht aus mehreren unabhängigen Modulen:
 
@@ -99,7 +90,7 @@ make clean && make
 
 ---
 
-## 🎯 Verwendung
+## Verwendung
 
 ### Basis-Aufruf:
 ```bash
@@ -123,7 +114,7 @@ make clean && make
 
 ---
 
-## 🗄️ Datenbank einrichten
+## Datenbank einrichten
 
 WorldQual benötigt eine MySQL-Datenbank mit Eingabedaten:
 
@@ -140,34 +131,6 @@ HOST          localhost
 USER          worldqual_user
 PASSWORD      your_password
 DATABASE      worldqual_db
-```
-
----
-
-## 📊 Projektstruktur
-
-```
-WorldQual/
-├── install_dependencies.sh    # Automatische Dependency-Installation
-├── Brewfile                    # Homebrew Dependencies
-├── CMakeLists.txt             # CMake Build Configuration
-├── DEPENDENCIES.md            # Dependency-Dokumentation
-├── INSTALLATION.md            # Detaillierte Installation
-├── README.md                  # Diese Datei
-│
-├── src/                       # Quellcode
-│   ├── worldqual/            # Hauptprogramm
-│   ├── wq_load/              # Nährstoffeinträge
-│   ├── wq_stat/              # Statistik
-│   ├── MapRiverQuality/      # Visualisierung
-│   ├── water_temperature/    # Wassertemperatur
-│   ├── general_function/     # Hilfsfunktionen
-│   └── options/              # Konfiguration
-│
-└── docs/                      # Dokumentation
-    ├── html/                 # Generierte Doxygen-Docs
-    ├── Doxyfile              # Doxygen-Konfiguration
-    └── *.dox                 # Dokumentations-Quellen
 ```
 
 ---
@@ -198,31 +161,7 @@ cd src/worldqual
 
 ---
 
-## 🐛 Troubleshooting
-
-### "brew: command not found"
-```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-
-### "mysql++.h not found"
-```bash
-brew install mysql-connector-c++
-```
-
-### "make: command not found"
-```bash
-xcode-select --install
-```
-
-### Datenbankverbindung fehlgeschlagen
-1. Prüfe MySQL Status: `brew services list | grep mysql`
-2. Starte MySQL: `brew services start mysql@8.0`
-3. Prüfe OPTIONS.DAT Konfiguration
-
----
-
-## 📖 Weitere Ressourcen
+## Weitere Ressourcen
 
 - **Dokumentation:** https://leon-muehlenbruch.github.io/WorldQual/
 - **GitHub:** https://github.com/Leon-Muehlenbruch/WorldQual
@@ -230,30 +169,17 @@ xcode-select --install
 
 ---
 
-## 👥 Autoren
+## AutorInnen und Kontakt
 
 - **Ursprüngliche Entwicklung:** Ellen Teichert (2007)
 - **Weiterentwicklung:** kynast (2015-2018)
 - **Dokumentation & Build System:** Leon Mühlenbruch (2026)
 
+Für Kontaktaufnahem kontaktieren Sie [email hier].
+
 ---
 
-## 📄 Lizenz
+## Lizenz
 
 [Lizenz hier angeben]
 
----
-
-## 🌊 Über WorldQual
-
-WorldQual ist ein wissenschaftliches C++ Modell zur Simulation von Wasserqualität in Flusssystemen. Es berechnet Nährstoffkonzentrationen, Wassertemperaturen und andere Qualitätsparameter basierend auf hydrologischen und klimatischen Eingangsdaten.
-
-**Anwendungsbereiche:**
-- Globale Wasserqualitäts-Analysen
-- Regionale Flusssystem-Studien
-- Szenario-Analysen
-- Klimawandel-Auswirkungen
-
----
-
-**Viel Erfolg mit WorldQual! 🌊**
