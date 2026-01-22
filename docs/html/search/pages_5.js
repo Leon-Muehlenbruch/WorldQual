@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['installation_0',['Installation',['../tutorial_installation.html',1,'']]],
-  ['installation_20von_20worldqual_1',['Installation von WorldQual',['../tutorial_installation.html#autotoc_md10',1,'']]]
+  ['allgemeine_20hilfsfunktionen_0',['Allgemeine Hilfsfunktionen',['../index.html#autotoc_md7',1,'']]],
+  ['anforderungen_1',['System-Anforderungen',['../tutorial_installation.html#autotoc_md39',1,'']]],
+  ['ausführen_2',['Schritt 4: Ausführen',['../tutorial_installation.html#autotoc_md19',1,'']]],
+  ['auswertung_3',['Statistische Auswertung',['../index.html#autotoc_md3',1,'']]]
 ];

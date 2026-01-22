@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['allgemeine_20hilfsfunktionen_0',['Allgemeine Hilfsfunktionen',['../index.html#autotoc_md7',1,'']]],
-  ['auswertung_1',['Statistische Auswertung',['../index.html#autotoc_md3',1,'']]]
+  ['1_3a_20repository_20klonen_0',['Schritt 1: Repository klonen',['../tutorial_installation.html#autotoc_md13',1,'']]]
 ];
