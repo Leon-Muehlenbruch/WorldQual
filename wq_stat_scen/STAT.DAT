@@ -1,0 +1,13 @@
+#BOD7:  Kokemaeenjoki, Narva
+#BOD5:  Thames, Vistula, ODRA, Danube, Ebro, Daugava, Rhine
+#
+#river name	arcid_begin	arcid_end
+#Kokemaeenjoki	484812	521611
+#Narva	673910	591765
+Thames	819738	833045
+Vistula	886927	742622
+ODRA	886917	765995
+Danube	937294	1014760
+Ebro	1076476	1133584
+Daugava	669100	661739
+Rhine	979332	819803

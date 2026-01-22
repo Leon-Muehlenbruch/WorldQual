@@ -1,0 +1,54 @@
+Runtime options worldqual
+
+1. Flieﬂgeschwindigkeit
+  0: mit variablen Flieﬂgeschwindigkeit  aus der Tabelle oder UNF-Datei  als Standart
+  1: mit variablen Flieﬂgeschwindigkeit (berechnet) ###
+  2: mit konstanten Flieﬂgeschwindigkeit (ein Wert f¸r alle Zellen)
+Value: 1
+
+2. Wert f¸r konstante Flieﬂgeschwindigkeit (nur bei 1. == 2: mit konstanten Flieﬂgeschwindigkeit)
+Value: 0.0
+
+3. Klimainput
+  0: in 0.5∞ ###
+  1. in 5 min
+Value: 0
+
+4. water type, Tabelle wq_general._watertype
+	1: River
+Value: 1
+
+5. IDVersion
+  2: WaterGAP2
+  3: WaterGAP3 ###
+Value: 3
+
+6. IDReg
+  1 WaterGAP3 eu
+  2 WaterGAP3 af
+  3 WaterGAP3 as
+  4 WaterGAP3 au
+  5 WaterGAP3 na
+  6 WaterGAP3 sa
+  1 WaterGAP2 world standatrd
+  2 WaterGAP2 world watch
+Value: 2
+
+7. MyHost
+Value: MySQL
+
+8. MyUser
+Value: REMOVED_USER
+
+9. MyPassword
+Value: REMOVED_PASSWORD
+
+10. InputType
+  0: Daten aus der Datenbanlk einlesen (q, runoff... (auch Fliessgeschwindigkeit, wenn flowVelocityVariant==0))
+  1: Daten aus UNF-Dateien. Es wird Option input_dir gebraucht. ###
+Value: 1
+
+10. input_dir
+Val: /home/USF/reder/run/input/af/WWQA_FC_validation_1990_2010_scen_9
+Value: /home/USF/kynast/worldqual_workspace/WorldQual/wq_load/INPUT
+
