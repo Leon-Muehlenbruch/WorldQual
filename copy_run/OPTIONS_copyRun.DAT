@@ -1,0 +1,59 @@
+Runtime options worldqual
+1. execute type
+  0: nur sql-erzeugen, wird nicht ausgeführt (muss man per Hand machen, evtl. anpassen)
+  1: sql erzeugen und ausführen
+Value: 0
+
+2. Referenz IDRun, Tabelle wq_general._runlist
+Value: 203100009
+
+3. Ziel IDRun, Tabelle wq_general._runlist
+  Falls in der Tabelle wq_general._runlist IDRun schon gibt, wird überprüft, ob es gleiche Werte sind, Falls nicht Fehlermeldung und Abbruch, 
+  Falls noch nicht gibt, es wird eine Zeile eingefügt 
+  mit der comment: "copy from idrun  ... [comment von Referenzrun]"
+Value: 403100092
+
+4. load:
+  0: kein [project]_worldqual_[continent].`load` kopieren, sondern eigener mit fill_worldqual_load selbst rechnen. 
+     Falls wq_load keine reine Kopie von der Referenz, sondern angepasste, man sollte loading selbst rechnen
+  1: [project]_worldqual_[continent].`load` mitkopieren
+Value: 0
+
+5. Ziel project_id, Tabelle wq_general._project
+	Falls neu: muss  in die Tabelle händisch eingetragen werden und Zieldatenbank erzeugt und Rechte vergeben werden!
+  -1: Referenz project_id übernehmen
+  1:  CESR
+  2:  WWQA
+  3:  CESR Sensitivity Analysis
+  4:  test, für Entwickler
+Value: 4
+
+6. Ziel IDScen, wq_general._szenario
+	Falls in wq_general._szenario IDScen schon gibt, es wird nicht geändert, falls noch nicht gibt, es wird eine Zeile eingefügt 
+	mit der description: "copy from idscen ... project ... [description von Referenzszenario]"
+Value: 92
+
+7. IDVersion
+  2: WaterGAP2
+  3: WaterGAP3 ###
+Value: 3
+
+8. IDReg
+  1 WaterGAP3 eu
+  2 WaterGAP3 af
+  3 WaterGAP3 as
+  4 WaterGAP3 au
+  5 WaterGAP3 na
+  6 WaterGAP3 sa
+  1 WaterGAP2 world standatrd
+  2 WaterGAP2 world watch
+Value: 2
+
+9. MyHost
+Value: MySQL
+
+10. MyUser
+Value: teichert
+
+11. MyPassword
+Value: owszp
