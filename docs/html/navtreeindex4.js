@@ -1,5 +1,6 @@
 var NAVTREEINDEX4 =
 {
+"wq__stat__stations_8cpp.html#a116207cce9059d2fa370ed81dcba0571":[4,0,0,0,0,0,1,19,1,4],
 "wq__stat__stations_8cpp.html#a12d050cfcf538c9a59f36edd9974c686":[4,0,0,0,0,0,1,19,1,13],
 "wq__stat__stations_8cpp.html#a1817ccc2e60762105a131b1bc62d1102":[4,0,0,0,0,0,1,19,1,6],
 "wq__stat__stations_8cpp.html#a1d5f72b699ad8c378a534c4d1580e7e3":[4,0,0,0,0,0,1,19,1,7],

@@ -159,11 +159,12 @@ var NAVTREEINDEX3 =
 "tutorial_installation.html#autotoc_md40":[1,0,8,0],
 "tutorial_installation.html#autotoc_md41":[1,0,8,1],
 "tutorial_installation.html#autotoc_md42":[1,0,8,2],
-"tutorial_installation.html#autotoc_md44":[1,0,9],
-"tutorial_installation.html#autotoc_md46":[1,0,10],
+"tutorial_installation.html#autotoc_md43":[1,0,8,3],
+"tutorial_installation.html#autotoc_md45":[1,0,9],
+"tutorial_installation.html#autotoc_md47":[1,0,10],
 "tutorial_konfiguration.html":[2],
-"tutorial_konfiguration.html#autotoc_md47":[2,0],
-"tutorial_konfiguration.html#autotoc_md48":[2,0,0],
+"tutorial_konfiguration.html#autotoc_md48":[2,0],
+"tutorial_konfiguration.html#autotoc_md49":[2,0,0],
 "water__temperature_8cpp.html":[4,0,0,0,0,0,1,12,2],
 "water__temperature_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97":[4,0,0,0,0,0,1,12,2,2],
 "water__temperature_8cpp.html#a0e02388c69b3603f5b4f3b336c511fc1":[4,0,0,0,0,0,1,12,2,6],
@@ -248,6 +249,5 @@ var NAVTREEINDEX3 =
 "wq__stat__scen_8cpp_source.html":[4,0,0,0,0,0,1,18,2],
 "wq__stat__stations_8cpp.html":[4,0,0,0,0,0,1,19,1],
 "wq__stat__stations_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97":[4,0,0,0,0,0,1,19,1,3],
-"wq__stat__stations_8cpp.html#a0e02388c69b3603f5b4f3b336c511fc1":[4,0,0,0,0,0,1,19,1,12],
-"wq__stat__stations_8cpp.html#a116207cce9059d2fa370ed81dcba0571":[4,0,0,0,0,0,1,19,1,4]
+"wq__stat__stations_8cpp.html#a0e02388c69b3603f5b4f3b336c511fc1":[4,0,0,0,0,0,1,19,1,12]
 };

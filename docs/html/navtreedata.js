@@ -52,15 +52,16 @@ var NAVTREE =
         [ "System-Anforderungen", "tutorial_installation.html#autotoc_md39", [
           [ "Unterstützte Systeme:", "tutorial_installation.html#autotoc_md40", null ],
           [ "Erforderlich:", "tutorial_installation.html#autotoc_md41", null ],
-          [ "Empfohlen:", "tutorial_installation.html#autotoc_md42", null ]
+          [ "Windows-Benutzer:", "tutorial_installation.html#autotoc_md42", null ],
+          [ "Empfohlen:", "tutorial_installation.html#autotoc_md43", null ]
         ] ],
-        [ "Schnellstart-Zusammenfassung", "tutorial_installation.html#autotoc_md44", null ],
-        [ "Weitere Hilfe", "tutorial_installation.html#autotoc_md46", null ]
+        [ "Schnellstart-Zusammenfassung", "tutorial_installation.html#autotoc_md45", null ],
+        [ "Weitere Hilfe", "tutorial_installation.html#autotoc_md47", null ]
       ] ]
     ] ],
     [ "Konfiguration", "tutorial_konfiguration.html", [
-      [ "Konfiguration von WorldQual", "tutorial_konfiguration.html#autotoc_md47", [
-        [ "Voraussetzungen", "tutorial_konfiguration.html#autotoc_md48", null ]
+      [ "Konfiguration von WorldQual", "tutorial_konfiguration.html#autotoc_md48", [
+        [ "Voraussetzungen", "tutorial_konfiguration.html#autotoc_md49", null ]
       ] ]
     ] ],
     [ "Klassen", "annotated.html", [
@@ -91,7 +92,7 @@ var NAVTREEINDEX =
 "class_l_s___c_l_a_s_s.html#a48aa9326ec724fcec43f8b08fadb7d43",
 "copy__scen_8cpp.html#adc58c9862730d1b6c6bc472aaa13f6a7",
 "map_river_quality_8cpp.html#ae2b9d5fbeb940658c8ab8ec58f40bd62",
-"wq__stat__stations_8cpp.html#a12d050cfcf538c9a59f36edd9974c686"
+"wq__stat__stations_8cpp.html#a116207cce9059d2fa370ed81dcba0571"
 ];
 
 var SYNCONMSG = 'Klicken um Panelsynchronisation auszuschalten';

@@ -1,0 +1,189 @@
+# WorldQual C++ Dependencies
+# ============================
+
+## Quick Start
+## -----------
+## macOS/Linux:   ./install_dependencies.sh
+## Windows:       See Windows section below
+
+
+## Core Dependencies (Required on all platforms)
+## ---------------------------------------------
+mysql@8.0                    # MySQL Database Server
+mysql-connector-c++          # MySQL C++ Connector Library
+
+### Build Tools (Platform-specific)
+# See platform sections below for installation
+
+
+## Optional Dependencies
+## ---------------------
+doxygen                      # Documentation generator
+graphviz                     # For Doxygen class diagrams
+r                           # For R statistical scripts in src/R-scripte/
+
+
+## Platform-Specific Installation
+## ==============================
+
+### macOS
+## -------
+## Automatic (recommended):
+# ./install_dependencies.sh
+
+## Manual:
+# 1. Install Homebrew (if not installed):
+#    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+#
+# 2. Install Xcode Command Line Tools (provides gcc, g++, make):
+#    xcode-select --install
+#
+# 3. Install dependencies:
+#    brew install mysql@8.0 mysql-connector-c++ doxygen graphviz
+#
+# 4. Start MySQL:
+#    brew services start mysql@8.0
+
+
+### Linux (Debian/Ubuntu)
+## ----------------------
+# 1. Install build tools:
+#    sudo apt-get update
+#    sudo apt-get install build-essential  # Provides: gcc, g++, make
+#
+# 2. Install MySQL and dependencies:
+#    sudo apt-get install mysql-server libmysqlclient-dev libmysql++-dev
+#
+# 3. Install optional tools:
+#    sudo apt-get install doxygen graphviz git
+#
+# 4. Start MySQL:
+#    sudo systemctl start mysql
+#    sudo systemctl enable mysql  # Start on boot
+
+
+### Linux (RedHat/CentOS/Fedora)
+## -----------------------------
+# 1. Install build tools:
+#    sudo yum groupinstall "Development Tools"  # Provides: gcc, g++, make
+#
+# 2. Install MySQL and dependencies:
+#    sudo yum install mysql-server mysql-devel mysql++-devel
+#
+# 3. Install optional tools:
+#    sudo yum install doxygen graphviz git
+#
+# 4. Start MySQL:
+#    sudo systemctl start mysqld
+#    sudo systemctl enable mysqld  # Start on boot
+
+
+### Windows
+## -------
+## Option 1: WSL (Windows Subsystem for Linux) - RECOMMENDED
+# 1. Enable WSL:
+#    Open PowerShell as Administrator and run:
+#    wsl --install
+#
+# 2. Install Ubuntu from Microsoft Store
+#
+# 3. Inside WSL Ubuntu, follow Linux (Ubuntu) instructions above
+#
+# 4. Clone and build WorldQual inside WSL
+
+
+## Option 2: Native Windows (MinGW/MSYS2) - Advanced Users
+# 1. Install MSYS2 from: https://www.msys2.org/
+#
+# 2. Open MSYS2 MINGW64 terminal and install dependencies:
+#    pacman -S mingw-w64-x86_64-gcc
+#    pacman -S mingw-w64-x86_64-make
+#    pacman -S mingw-w64-x86_64-mysql
+#    pacman -S mingw-w64-x86_64-mysql-connector-c++
+#
+# 3. Download MySQL Community Server:
+#    https://dev.mysql.com/downloads/mysql/
+#
+# 4. Build WorldQual using MSYS2 terminal
+
+
+## Option 3: Visual Studio (Windows) - Requires project setup
+# 1. Install Visual Studio 2019/2022 with C++ Desktop Development
+#
+# 2. Install MySQL Server:
+#    https://dev.mysql.com/downloads/mysql/
+#
+# 3. Install MySQL Connector/C++:
+#    https://dev.mysql.com/downloads/connector/cpp/
+#
+# 4. Configure Visual Studio project with MySQL include/lib paths
+#
+# 5. Build using Visual Studio
+#
+# Note: Makefiles need to be converted to Visual Studio project files
+
+
+## Verification
+## ------------
+## Check if dependencies are installed:
+
+# MySQL:
+mysql --version              # Should show MySQL 8.0+
+
+# C++ Compiler:
+g++ --version                # macOS/Linux
+# or
+cl                          # Windows (Visual Studio)
+
+# Make:
+make --version               # macOS/Linux/WSL
+
+# MySQL++ headers (macOS):
+ls /opt/homebrew/include/mysql++/mysql++.h
+# or (Intel Mac):
+ls /usr/local/include/mysql++/mysql++.h
+
+# MySQL++ headers (Linux):
+ls /usr/include/mysql++/mysql++.h
+
+
+## Build System Options
+## --------------------
+## Option 1: Traditional Make (macOS/Linux/WSL)
+# cd src/worldqual && make
+
+## Option 2: CMake (Cross-platform, modern)
+# mkdir build && cd build
+# cmake ..
+# make           # macOS/Linux/WSL
+# or
+# cmake --build .  # All platforms including Windows
+
+
+## Troubleshooting
+## ---------------
+
+### "command not found" errors
+# macOS: Install Xcode Command Line Tools
+# Linux: Install build-essential (Debian) or Development Tools (RedHat)
+# Windows: Use WSL or install MSYS2/MinGW
+
+### MySQL connection errors
+# Check if MySQL is running:
+#   macOS: brew services list | grep mysql
+#   Linux: systemctl status mysql
+#   Windows WSL: sudo service mysql status
+
+### Include path errors
+# Verify MySQL++ installation:
+#   macOS: brew list mysql-connector-c++
+#   Linux: dpkg -l | grep mysql++
+#   Windows: Check installation directory
+
+
+## Notes
+## -----
+# - Windows users: WSL is the easiest and most compatible option
+# - Native Windows build requires significant setup (not recommended for beginners)
+# - All paths in this file use Unix-style (/) - Windows users in WSL should use these
+# - For Windows native builds, convert paths to Windows-style (\)

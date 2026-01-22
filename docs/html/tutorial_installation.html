@@ -183,8 +183,11 @@ Problem: "brew: command not found"</h3>
 <p>Lösung:** Installiere Homebrew: </p><div class="fragment"><div class="line">/bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;</div>
 </div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md35"></a>
 Problem: "make: command not found"</h3>
-<p>Lösung:** Installiere Xcode Command Line Tools: </p><div class="fragment"><div class="line">xcode-select --install</div>
-</div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md36"></a>
+<p>Lösung (macOS):** </p><div class="fragment"><div class="line">xcode-select --install</div>
+</div><!-- fragment --><p>Lösung (Linux - Ubuntu/Debian):** </p><div class="fragment"><div class="line">sudo apt-get install build-essential</div>
+</div><!-- fragment --><p>Lösung (Linux - RedHat/CentOS):** </p><div class="fragment"><div class="line">sudo yum groupinstall &quot;Development Tools&quot;</div>
+</div><!-- fragment --><p>Lösung (Windows):** Verwende WSL (Windows Subsystem for Linux) und folge den Linux-Anweisungen</p>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md36"></a>
 Problem: "mysql++.h not found"</h3>
 <p>Lösung:** </p><div class="fragment"><div class="line">brew install mysql-connector-c++</div>
 </div><!-- fragment --><h3 class="doxsection"><a class="anchor" id="autotoc_md37"></a>
@@ -200,9 +203,9 @@ System-Anforderungen</h2>
 <h3 class="doxsection"><a class="anchor" id="autotoc_md40"></a>
 Unterstützte Systeme:</h3>
 <ul>
-<li>✓ macOS (10.15+, Intel &amp; Apple Silicon)</li>
-<li>✓ Linux (Ubuntu, Debian, CentOS)</li>
-<li>○ Windows (mit WSL oder MinGW)</li>
+<li>✓ <b>macOS</b> (10.15+, Intel &amp; Apple Silicon)</li>
+<li>✓ <b>Linux</b> (Ubuntu, Debian, CentOS, Fedora)</li>
+<li>✓ <b>Windows</b> (mit WSL - Windows Subsystem for Linux)</li>
 </ul>
 <h3 class="doxsection"><a class="anchor" id="autotoc_md41"></a>
 Erforderlich:</h3>
@@ -214,14 +217,23 @@ Erforderlich:</h3>
 <li>MySQL++ / mysql-connector-c++</li>
 </ul>
 <h3 class="doxsection"><a class="anchor" id="autotoc_md42"></a>
+Windows-Benutzer:</h3>
+<p>Empfohlen:** WSL (Windows Subsystem for Linux)</p><ol type="1">
+<li>Installiere WSL: <span class="tt">wsl --install</span> (in PowerShell als Administrator)</li>
+<li>Installiere Ubuntu aus dem Microsoft Store</li>
+<li><p class="startli">Führe alle Befehle in WSL Ubuntu aus</p>
+<p class="startli">Alternativ:** MSYS2/MinGW oder Visual Studio (siehe <a href="../../requirements.txt">requirements.txt</a>)</p>
+</li>
+</ol>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md43"></a>
 Empfohlen:</h3>
 <ul>
 <li>4 GB RAM minimum</li>
 <li>10 GB freier Speicherplatz</li>
-<li>Homebrew (macOS) oder apt/yum (Linux)</li>
+<li>Homebrew (macOS/Linux) oder apt/yum (Linux)</li>
 </ul>
 <hr  />
-<h2 class="doxsection"><a class="anchor" id="autotoc_md44"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md45"></a>
 Schnellstart-Zusammenfassung</h2>
 <div class="fragment"><div class="line"># 1. Klonen</div>
 <div class="line">git clone https://github.com/Leon-Muehlenbruch/WorldQual.git</div>
@@ -238,7 +250,7 @@ Schnellstart-Zusammenfassung</h2>
 <div class="line">./worldqual 1 2000 2010</div>
 </div><!-- fragment --><p>Das war's!** 🎊</p>
 <hr  />
-<h2 class="doxsection"><a class="anchor" id="autotoc_md46"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md47"></a>
 Weitere Hilfe</h2>
 <ul>
 <li>📚 <b>Vollständige Dokumentation:</b> <a href="https://leon-muehlenbruch.github.io/WorldQual/">https://leon-muehlenbruch.github.io/WorldQual/</a></li>

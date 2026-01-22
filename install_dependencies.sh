@@ -1,5 +1,7 @@
 #!/bin/bash
 # WorldQual Dependency Installer
+# PLATFORM: macOS and Linux (with Homebrew)
+# For Windows: Use WSL (Windows Subsystem for Linux) and run this script inside WSL
 # Automatically installs all required dependencies
 
 set -e  # Exit on error
@@ -13,16 +15,49 @@ NC='\033[0m' # No Color
 
 echo "╔══════════════════════════════════════════════════════════════╗"
 echo "║        WorldQual Dependency Installer                        ║"
+echo "║        Platforms: macOS, Linux (with Homebrew)               ║"
 echo "╚══════════════════════════════════════════════════════════════╝"
 echo ""
 
-# Check if running on macOS
-if [[ "$OSTYPE" != "darwin"* ]]; then
-    echo -e "${RED}Error: This script is designed for macOS${NC}"
-    echo "For Linux, please install manually:"
-    echo "  - MySQL 8.0+"
-    echo "  - libmysqlclient-dev"
-    echo "  - libmysql++-dev"
+# Check platform
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    echo -e "${BLUE}Linux detected${NC}"
+    echo ""
+    echo -e "${YELLOW}This script uses Homebrew.${NC}"
+    echo "For native package managers (apt/yum), please see requirements.txt"
+    echo ""
+    read -p "Continue with Homebrew installation? (y/n): " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        echo "Installation cancelled."
+        echo ""
+        echo "For manual installation on Linux:"
+        echo "  Ubuntu/Debian: sudo apt-get install mysql-server libmysqlclient-dev libmysql++-dev"
+        echo "  RedHat/CentOS: sudo yum install mysql-server mysql-devel mysql++-devel"
+        exit 0
+    fi
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    echo -e "${GREEN}macOS detected${NC}"
+elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" ]]; then
+    echo -e "${RED}Windows detected${NC}"
+    echo ""
+    echo "This script does not support native Windows."
+    echo ""
+    echo "Recommended options for Windows:"
+    echo "  1. WSL (Windows Subsystem for Linux) - Easiest"
+    echo "     • Install WSL: wsl --install"
+    echo "     • Run this script inside WSL Ubuntu"
+    echo ""
+    echo "  2. MSYS2/MinGW - For advanced users"
+    echo "     • See requirements.txt for details"
+    echo ""
+    echo "  3. Visual Studio - Requires manual setup"
+    echo "     • See requirements.txt for details"
+    exit 1
+else
+    echo -e "${YELLOW}Unknown platform: $OSTYPE${NC}"
+    echo "This script is designed for macOS and Linux."
+    echo "See requirements.txt for manual installation instructions."
     exit 1
 fi
 
