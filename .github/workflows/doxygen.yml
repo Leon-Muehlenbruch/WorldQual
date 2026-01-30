@@ -29,15 +29,6 @@ jobs:
         cd docs
         doxygen Doxyfile
         
-    - name: Debug - List generated files
-      run: |
-        echo "Contents of docs/:"
-        ls -la docs/
-        echo "Contents of docs/html/:"
-        ls -la docs/html/ | head -20
-        echo "Checking for index.html:"
-        ls -la docs/html/index.html
-        
     - name: Setup Pages
       uses: actions/configure-pages@v4
       
