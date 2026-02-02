@@ -51,14 +51,302 @@ WorldQual kann verschiedene **Wasserqualitätsparameter** simulieren:
 
 ---
 
+## Voraussetzungen - Schritt für Schritt
+
+Bevor Sie WorldQual nutzen können, müssen Sie drei Dinge einrichten. Diese Anleitung erklärt jeden Schritt detailliert, als ob Sie niemanden hätten, den Sie fragen können.
+
+### 1. MySQL-Datenbank einrichten
+
+#### Was ist MySQL?
+MySQL ist ein Datenbankserver, der die Daten für WorldQual speichert (Projekte, Szenarien, Simulationsergebnisse, etc.).
+
+#### Schritt 1.1: MySQL installieren
+
+**Linux (Ubuntu/Debian):**
+```bash
+# MySQL Server installieren
+sudo apt-get update
+sudo apt-get install mysql-server
+
+# MySQL starten
+sudo systemctl start mysql
+sudo systemctl enable mysql  # Startet automatisch beim Booten
+```
+
+**macOS:**
+```bash
+# Mit Homebrew installieren
+brew install mysql@8.0
+brew services start mysql@8.0
+```
+
+**Prüfen ob MySQL läuft:**
+```bash
+sudo systemctl status mysql  # Linux
+# oder
+brew services list | grep mysql  # macOS
+```
+
+#### Schritt 1.2: MySQL konfigurieren
+
+**Erste Einrichtung (nur beim ersten Start):**
+```bash
+# Sicherheits-Skript ausführen (Linux)
+sudo mysql_secure_installation
+
+# Oder direkt als root einloggen (macOS)
+mysql -u root
+```
+
+**Benutzer für WorldQual erstellen:**
+```sql
+-- In MySQL einloggen
+mysql -u root -p
+
+-- Benutzer erstellen
+CREATE USER 'worldqual'@'localhost' IDENTIFIED BY 'ihr_passwort_hier';
+
+-- Berechtigungen geben
+GRANT ALL PRIVILEGES ON *.* TO 'worldqual'@'localhost';
+FLUSH PRIVILEGES;
+
+-- Testen
+mysql -u worldqual -p
+-- Passwort eingeben, dann sollte es funktionieren
+```
+
+**Wichtig:** Merken Sie sich:
+- Benutzername: `worldqual` (oder wie Sie es genannt haben)
+- Passwort: Das, was Sie oben eingegeben haben
+- Host: `localhost` (wenn lokal) oder die IP-Adresse des Servers
+
+#### Schritt 1.3: Datenbankstruktur einrichten
+
+WorldQual benötigt spezielle Datenbanktabellen. Diese müssen Sie entweder:
+- **Von einem bestehenden Projekt kopieren**, oder
+- **Neu erstellen** (benötigt Datenbank-Schema-Dateien)
+
+**Falls Sie ein bestehendes Projekt haben:**
+```bash
+# Datenbank exportieren
+mysqldump -u root -p wq_general > wq_general_backup.sql
+
+# Auf neuem System importieren
+mysql -u root -p < wq_general_backup.sql
+```
+
+**Falls Sie neu starten:**
+Sie benötigen die Datenbank-Schema-Dateien (normalerweise `.sql` Dateien). Diese sollten vom Projekt bereitgestellt werden.
+
+**Prüfen ob Datenbanken existieren:**
+```sql
+mysql -u worldqual -p
+SHOW DATABASES;
+-- Sollten Sie sehen: wq_general (und eventuell weitere)
+```
+
+### 2. WaterGAP-Daten beschaffen
+
+#### Was sind WaterGAP-Daten?
+WaterGAP (Water Global Assessment and Prognosis) ist ein hydrologisches Modell. WorldQual benötigt dessen Output-Daten:
+- Abfluss (Q_out) - wie viel Wasser fließt im Fluss?
+- Runoff - wie viel Wasser fließt ab?
+- Weitere hydrologische Daten
+
+#### Schritt 2.1: Datenquelle finden
+
+**Option A: Sie haben bereits Zugriff**
+- Fragen Sie Ihren Betreuer/Kollegen nach dem Pfad zu den Daten
+- Daten sind normalerweise in UNF-Dateien (binäres Format)
+
+**Option B: Daten müssen beschafft werden**
+- Kontaktieren Sie die WaterGAP-Projektgruppe
+- Oder nutzen Sie öffentlich verfügbare WaterGAP-Daten (falls verfügbar)
+
+#### Schritt 2.2: Datenformat verstehen
+
+WaterGAP-Daten kommen als **UNF-Dateien** (Unformatted):
+- Format: Binär (nicht lesbar als Text)
+- Struktur: Grid-Daten (0.5° x 0.5° Auflösung)
+- Zeitreihen: Monatlich (12 Werte pro Jahr) oder jährlich
+
+**Typische Dateinamen:**
+```
+G_Q_out_m3_2010.12.UNF0    # Monatlicher Abfluss für 2010
+G_RUNOFF_TOTAL_mm_2010.12.UNF0  # Monatlicher Runoff für 2010
+```
+
+#### Schritt 2.3: Daten prüfen
+
+**Prüfen ob Dateien existieren:**
+```bash
+# In das Verzeichnis wechseln
+cd /pfad/zu/watergap/daten
+
+# Dateien anzeigen
+ls -lh G_*.UNF0
+
+# Sollten Sie sehen:
+# - Dateien für verschiedene Jahre
+# - Verschiedene Parameter (Q_out, RUNOFF, etc.)
+```
+
+**Wichtig:** 
+- Notieren Sie den vollständigen Pfad (z.B. `/home/user/watergap_data/africa`)
+- Dieser Pfad wird später in `OPTIONS.DAT` benötigt
+
+### 3. Module kompilieren
+
+#### Was bedeutet "kompilieren"?
+Kompilieren bedeutet, den C++-Quellcode in ausführbare Programme umzuwandeln.
+
+#### Schritt 3.1: Abhängigkeiten installieren
+
+**C++ Compiler:**
+```bash
+# Linux
+sudo apt-get install build-essential g++
+
+# macOS (Xcode Command Line Tools)
+xcode-select --install
+```
+
+**MySQL++ Bibliothek (C++ MySQL Connector):**
+```bash
+# Linux (Ubuntu/Debian)
+sudo apt-get install libmysql++-dev libmysqlclient-dev
+
+# macOS
+brew install mysql-connector-c++
+```
+
+**Prüfen ob installiert:**
+```bash
+g++ --version  # Sollte Version anzeigen
+mysql_config --version  # Sollte MySQL-Version anzeigen
+```
+
+#### Schritt 3.2: Pfade in Makefiles anpassen
+
+**Problem:** Die Makefiles müssen wissen, wo MySQL++ installiert ist. Dies kann je nach System unterschiedlich sein.
+
+**Schritt 1: MySQL++ Pfade finden**
+```bash
+# Header-Dateien finden
+find /usr -name "mysql++.h" 2>/dev/null
+# Oder
+find /usr/local -name "mysql++.h" 2>/dev/null
+
+# Bibliotheken finden
+find /usr -name "libmysqlpp.so" 2>/dev/null
+# Oder
+find /usr/local -name "libmysqlpp.so" 2>/dev/null
+```
+
+**Schritt 2: Makefile anpassen**
+
+Öffnen Sie ein Makefile (z.B. `water_temperature/makefile`):
+
+```makefile
+# Aktuelle Zeile (kann unterschiedlich sein):
+INCDIROPTS  = -L/usr/lib/libmysqlpp.so -I/usr/include/mysql  -I/usr/include/mysql++ ...
+
+# Anpassen falls nötig:
+INCDIROPTS  = -L/usr/local/lib/libmysqlpp.so -I/usr/include/mysql  -I/usr/local/include/mysql++ ...
+```
+
+**Typische Pfade:**
+- Linux: `/usr/include/mysql++`, `/usr/lib/libmysqlpp.so`
+- macOS: `/usr/local/include/mysql++`, `/usr/local/lib/libmysqlpp.so`
+
+#### Schritt 3.3: Module kompilieren
+
+**Reihenfolge ist wichtig! Zuerst gemeinsame Module:**
+
+```bash
+# 1. general_function (wird von allen anderen benötigt)
+cd general_function
+make clean
+make all
+# Sollte keine Fehler geben
+
+# 2. options (wird auch von allen benötigt)
+cd ../options
+make clean
+make all
+# Sollte keine Fehler geben
+```
+
+**Dann spezifische Module:**
+
+```bash
+# 3. water_temperature
+cd ../water_temperature
+make clean
+make all
+# Prüfen: ls -la water_temperature (sollte ausführbare Datei sein)
+
+# 4. fill_worldqual_load
+cd ../fill_worldqual_load
+make clean
+make all
+# Prüfen: ls -la fill_worldqual_load
+
+# 5. worldqual (Hauptprogramm)
+cd ../worldqual
+make clean
+make all
+# Prüfen: ls -la worldqual
+
+# 6. Weitere Module nach Bedarf...
+```
+
+#### Schritt 3.4: Kompilierungsfehler beheben
+
+**Häufige Fehler:**
+
+**Fehler: "mysql++.h: No such file or directory"**
+- Lösung: MySQL++ Header-Pfad in Makefile anpassen (siehe Schritt 3.2)
+
+**Fehler: "cannot find -lmysqlpp"**
+- Lösung: Bibliotheks-Pfad in Makefile anpassen
+
+**Fehler: "undefined reference to mysqlpp::..."**
+- Lösung: Bibliothek nicht gefunden, Pfade prüfen
+
+**Test ob Kompilierung erfolgreich:**
+```bash
+# Prüfen ob ausführbare Dateien existieren
+ls -la worldqual fill_worldqual_load water_temperature
+
+# Sollten ausführbar sein (grün, x-Berechtigung)
+# Test-Ausführung (sollte Hilfe anzeigen oder Fehler wegen fehlender Parameter)
+./worldqual
+```
+
+### Checkliste: Alles bereit?
+
+Prüfen Sie vor dem Start:
+
+- [ ] MySQL läuft: `systemctl status mysql` (Linux) oder `brew services list | grep mysql` (macOS)
+- [ ] MySQL-Benutzer existiert: `mysql -u worldqual -p` funktioniert
+- [ ] Datenbanken existieren: `SHOW DATABASES;` zeigt `wq_general`
+- [ ] WaterGAP-Daten vorhanden: `ls /pfad/zu/daten/*.UNF0` zeigt Dateien
+- [ ] Module kompiliert: `ls -la worldqual fill_worldqual_load` zeigt ausführbare Dateien
+- [ ] Pfade bekannt: Sie wissen wo MySQL++ installiert ist
+
+**Wenn alles erledigt ist, können Sie mit dem Schnellstart beginnen!**
+
+---
+
 ## Schnellstart (Quick Start)
 
 ### Für neue Nutzer: Erste Schritte
 
-**Voraussetzung:** Sie haben bereits:
-- ✅ MySQL-Datenbank eingerichtet
-- ✅ WaterGAP-Daten verfügbar
-- ✅ Alle Module kompiliert
+**Voraussetzung:** Sie haben die obigen Schritte abgeschlossen:
+- ✅ MySQL-Datenbank eingerichtet und getestet
+- ✅ WaterGAP-Daten verfügbar und Pfad notiert
+- ✅ Alle Module erfolgreich kompiliert
 
 ### Schritt 1: Konfiguration vorbereiten
 
@@ -548,37 +836,36 @@ INTO OUTFILE '/tmp/ergebnisse.csv';
 
 ## Installation
 
-### 1. Abhängigkeiten installieren
+**Wichtig:** Die detaillierte Schritt-für-Schritt Installation finden Sie oben im Abschnitt [Voraussetzungen - Schritt für Schritt](#voraussetzungen---schritt-für-schritt).
 
-**Ubuntu/Debian:**
+### Kurzübersicht
+
+1. **MySQL installieren und konfigurieren** (siehe oben, Abschnitt 1)
+2. **WaterGAP-Daten beschaffen** (siehe oben, Abschnitt 2)
+3. **Module kompilieren** (siehe oben, Abschnitt 3)
+
+### Schnellreferenz für Erfahrene
+
+**Abhängigkeiten installieren:**
 ```bash
+# Ubuntu/Debian
 sudo apt-get update
-sudo apt-get install g++ mysql-server libmysql++-dev r-base
+sudo apt-get install build-essential g++ mysql-server libmysql++-dev libmysqlclient-dev r-base
+
+# R-Pakete
+R -e "install.packages(c('ggplot2', 'gridExtra'))"
 ```
 
-**R-Pakete:**
-```r
-install.packages(c("ggplot2", "gridExtra"))
-```
-
-### 2. Datenbank einrichten
-
-MySQL-Datenbank mit Tabellen einrichten (siehe Datenbank-Dokumentation).
-
-### 3. Module kompilieren
-
+**Module kompilieren:**
 ```bash
-# Zuerst gemeinsame Module
-cd general_function && make all
-cd ../options && make all
-
-# Dann spezifische Module
-cd ../water_temperature && make all
-cd ../fill_worldqual_load && make all
-# etc.
+cd general_function && make clean && make all
+cd ../options && make clean && make all
+cd ../water_temperature && make clean && make all
+cd ../fill_worldqual_load && make clean && make all
+cd ../worldqual && make clean && make all
 ```
 
-**Wichtig:** Pfade in Makefiles anpassen, falls MySQL++ nicht im Standardpfad ist!
+**Wichtig:** Pfade in Makefiles anpassen, falls MySQL++ nicht im Standardpfad ist! Siehe [Voraussetzungen - Schritt für Schritt](#voraussetzungen---schritt-für-schritt) für Details.
 
 ---
 
