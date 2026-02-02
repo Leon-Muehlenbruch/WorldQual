@@ -1,18 +1,18 @@
 # WorldQual Dokumentation
 
-> 📚 **Start hier:** [INDEX.md](../INDEX.md) - Übersicht aller Dokumentationen
+**Start hier:** [INDEX.md](../INDEX.md) - Übersicht aller Dokumentationen
 
 Diese Dokumentation ist interaktiv! Klicken Sie auf die Links, um zu navigieren.
 
-## 📖 Dokumentationen
+## Dokumentationen
 
-- 🚀 **[README.md](../README.md)** - Übersicht und Schnellstart
-- 📚 **[DOCUMENTATION.md](../DOCUMENTATION.md)** - Detaillierte Schritt-für-Schritt Anleitung
-- ⚡ **[QUICK_REFERENCE.md](../QUICK_REFERENCE.md)** - Schnellreferenz für tägliche Nutzung
-- 🏗️ **[STRUCTURE.md](../STRUCTURE.md)** - Projektstruktur und Verzeichnisse
-- 🎯 **[INDEX.md](../INDEX.md)** - Dokumentations-Übersicht und Navigation
+- **[README.md](../README.md)** - Übersicht und Schnellstart
+- **[DOCUMENTATION.md](../DOCUMENTATION.md)** - Detaillierte Schritt-für-Schritt Anleitung
+- **[QUICK_REFERENCE.md](../QUICK_REFERENCE.md)** - Schnellreferenz für tägliche Nutzung
+- **[STRUCTURE.md](../STRUCTURE.md)** - Projektstruktur und Verzeichnisse
+- **[INDEX.md](../INDEX.md)** - Dokumentations-Übersicht und Navigation
 
-## 🎯 Schnelle Navigation
+## Schnelle Navigation
 
 ### Ich möchte...
 

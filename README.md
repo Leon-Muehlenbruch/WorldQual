@@ -1,6 +1,6 @@
 # WorldQual - Globales Wasserqualitäts-Modellierungssystem
 
-> 📚 **Dokumentations-Übersicht:** [INDEX.md](INDEX.md) | [Schnellreferenz](QUICK_REFERENCE.md) | [Detaillierte Anleitung](DOCUMENTATION.md) | [Projektstruktur](STRUCTURE.md)
+**Dokumentations-Übersicht:** [INDEX.md](INDEX.md) | [Schnellreferenz](QUICK_REFERENCE.md) | [Detaillierte Anleitung](DOCUMENTATION.md) | [Projektstruktur](STRUCTURE.md)
 
 ## Inhaltsverzeichnis
 
@@ -64,7 +64,7 @@ WorldQual kann verschiedene **Wasserqualitätsparameter** simulieren:
 
 Jedes Modul braucht eine `OPTIONS.DAT` Datei. Kopieren Sie eine Beispiel-Datei:
 
-> 💡 **Tipp:** Detaillierte Erklärung der Konfiguration finden Sie in [DOCUMENTATION.md - Konfiguration verstehen](DOCUMENTATION.md#konfiguration-verstehen)
+**Tipp:** Detaillierte Erklärung der Konfiguration finden Sie in [DOCUMENTATION.md - Konfiguration verstehen](DOCUMENTATION.md#konfiguration-verstehen)
 
 ```bash
 cd fill_worldqual_load
@@ -82,7 +82,7 @@ cp OPTIONS.DAT OPTIONS.DAT.mein_projekt
 
 Berechnen Sie, wie viele Schadstoffe in die Flüsse gelangen:
 
-> 📖 **Mehr Details:** Siehe [DOCUMENTATION.md - fill_worldqual_load](DOCUMENTATION.md#fill_worldqual_load---einträge-berechnen)
+**Mehr Details:** Siehe [DOCUMENTATION.md - fill_worldqual_load](DOCUMENTATION.md#fill_worldqual_load---einträge-berechnen)
 
 ```bash
 cd fill_worldqual_load
@@ -101,7 +101,7 @@ cd fill_worldqual_load
 
 Simulieren Sie die Wasserqualität im Fluss:
 
-> 📖 **Mehr Details:** Siehe [DOCUMENTATION.md - worldqual](DOCUMENTATION.md#worldqual---hauptsimulation)
+**Mehr Details:** Siehe [DOCUMENTATION.md - worldqual](DOCUMENTATION.md#worldqual---hauptsimulation)
 
 ```bash
 cd ../worldqual
@@ -458,7 +458,7 @@ Die R-Skripte erstellen **Diagramme und Grafiken** aus den Ergebnissen.
 
 Die IDrun ist eine eindeutige Nummer für eine Simulation. Sie finden sie in der Datenbank:
 
-> ⚡ **Schnellreferenz:** Siehe [QUICK_REFERENCE.md - IDrun finden](QUICK_REFERENCE.md#idrun-finden)
+**Schnellreferenz:** Siehe [QUICK_REFERENCE.md - IDrun finden](QUICK_REFERENCE.md#idrun-finden)
 
 ```sql
 SELECT IDrun, runName, parameter_id, IDScen 
@@ -478,7 +478,7 @@ Die IDrun setzt sich zusammen aus: `parameter_id` + `IDScen` + weitere Nummern.
 
 ### Was mache ich bei Fehlern?
 
-> 🔧 **Detaillierte Fehlerbehebung:** Siehe [DOCUMENTATION.md - Fehlerbehebung](DOCUMENTATION.md#fehlerbehebung)
+**Detaillierte Fehlerbehebung:** Siehe [DOCUMENTATION.md - Fehlerbehebung](DOCUMENTATION.md#fehlerbehebung)
 
 1. **Datenbankverbindung schlägt fehl**
    - MySQL läuft? `systemctl status mysql`
@@ -584,11 +584,11 @@ cd ../fill_worldqual_load && make all
 
 ## Weitere Hilfe
 
-- 📖 **[Detaillierte Dokumentation](DOCUMENTATION.md)** - Schritt-für-Schritt Anleitungen
-- ⚡ **[Schnellreferenz](QUICK_REFERENCE.md)** - Wichtige Befehle und Nummern
-- 🏗️ **[Projektstruktur](STRUCTURE.md)** - Verzeichnisse und Dateien
-- 🎯 **[Dokumentations-Index](INDEX.md)** - Übersicht aller Dokumentationen
-- 🔧 **[Fehlerbehebung](DOCUMENTATION.md#fehlerbehebung)** - Probleme lösen
+- **[Detaillierte Dokumentation](DOCUMENTATION.md)** - Schritt-für-Schritt Anleitungen
+- **[Schnellreferenz](QUICK_REFERENCE.md)** - Wichtige Befehle und Nummern
+- **[Projektstruktur](STRUCTURE.md)** - Verzeichnisse und Dateien
+- **[Dokumentations-Index](INDEX.md)** - Übersicht aller Dokumentationen
+- **[Fehlerbehebung](DOCUMENTATION.md#fehlerbehebung)** - Probleme lösen
 
 ---
 

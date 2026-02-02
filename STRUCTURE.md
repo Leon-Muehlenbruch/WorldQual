@@ -1,6 +1,6 @@
 # WorldQual - Projektstruktur
 
-> 📚 **Navigation:** [Übersicht](README.md) | [Schnellreferenz](QUICK_REFERENCE.md) | [Detaillierte Anleitung](DOCUMENTATION.md) | [Index](INDEX.md)
+**Navigation:** [Übersicht](README.md) | [Schnellreferenz](QUICK_REFERENCE.md) | [Detaillierte Anleitung](DOCUMENTATION.md) | [Index](INDEX.md)
 
 Übersicht über die Verzeichnisstruktur und wichtige Dateien.
 
@@ -351,9 +351,9 @@ Wichtige Variablen:
 ---
 
 **Weitere Hilfe:**
-- 📖 [README.md](README.md) - Übersicht und Einführung
-- 📚 [DOCUMENTATION.md](DOCUMENTATION.md) - Detaillierte Anleitung
-- ⚡ [QUICK_REFERENCE.md](QUICK_REFERENCE.md) - Schnellreferenz
-- 🎯 [INDEX.md](INDEX.md) - Dokumentations-Übersicht
+- [README.md](README.md) - Übersicht und Einführung
+- [DOCUMENTATION.md](DOCUMENTATION.md) - Detaillierte Anleitung
+- [QUICK_REFERENCE.md](QUICK_REFERENCE.md) - Schnellreferenz
+- [INDEX.md](INDEX.md) - Dokumentations-Übersicht
 
 **Hinweis:** Diese Strukturübersicht dient als Referenz. Für detaillierte Informationen siehe [DOCUMENTATION.md](DOCUMENTATION.md).
