@@ -68,7 +68,33 @@ SELECT * FROM _szenario;
 -- Merken Sie sich die IDScen (z.B. 91)
 ```
 
-**Wichtig:** Wenn Projekt oder Szenario fehlen, müssen Sie sie zuerst anlegen!
+**Was tun wenn Projekt oder Szenario fehlen?**
+
+Falls die Abfrage keine Ergebnisse liefert, müssen Sie Projekt/Szenario anlegen:
+
+**Projekt anlegen:**
+```sql
+USE wq_general;
+INSERT INTO _project (project_id, Project_Name, description) 
+VALUES (2, 'WWQA', 'World Water Quality Assessment');
+-- Prüfen
+SELECT * FROM _project WHERE project_id=2;
+```
+
+**Szenario anlegen:**
+```sql
+USE wq_general;
+INSERT INTO _szenario (IDScen, ScenName, description, project_id) 
+VALUES (91, 'Baseline 2010', 'Baseline-Szenario für 2010', 2);
+-- Prüfen
+SELECT * FROM _szenario WHERE IDScen=91;
+```
+
+**Wichtig:** Die genauen Spaltennamen können variieren. Prüfen Sie zuerst die Tabellenstruktur:
+```sql
+DESCRIBE _project;
+DESCRIBE _szenario;
+```
 
 #### Schritt 2: Parameter wählen
 
@@ -94,19 +120,100 @@ SELECT * FROM _szenario;
 cd fill_worldqual_load
 
 # 2. OPTIONS.DAT öffnen und anpassen
-nano OPTIONS.DAT
-# oder
-vim OPTIONS.DAT
 
-# Wichtige Einstellungen ändern:
-# project_id = 2          (Ihre Projekt-ID)
-# IDScen = 91             (Ihre Szenario-ID)
-# IDReg = 2               (2 = Afrika, 1 = Europa, etc.)
-# MyHost = localhost       (Ihr MySQL-Server)
-# MyUser = worldqual       (Ihr MySQL-User)
-# MyPassword = passwort    (Ihr MySQL-Passwort)
-# InputType = 1           (1 = UNF-Dateien, 0 = Datenbank)
-# input_dir = /pfad/zu/daten
+**Wie öffnet man die Datei?**
+
+**Option A: Mit Texteditor (empfohlen für Anfänger)**
+```bash
+# Mit nano (einfacher Editor)
+nano OPTIONS.DAT
+
+# Navigation:
+# - Pfeiltasten: Bewegen
+# - Strg+O: Speichern (dann Enter)
+# - Strg+X: Beenden
+```
+
+**Option B: Mit vim (für Erfahrene)**
+```bash
+vim OPTIONS.DAT
+# Drücken Sie 'i' zum Einfügen
+# Ändern Sie die Werte
+# Drücken Sie ESC, dann ':wq' zum Speichern und Beenden
+```
+
+**Option C: Mit grafischem Editor**
+```bash
+# macOS
+open -a TextEdit OPTIONS.DAT
+
+# Linux (GNOME)
+gedit OPTIONS.DAT
+
+# Oder jeder andere Texteditor
+```
+
+**Was genau ändern?**
+
+Die OPTIONS.DAT sieht etwa so aus:
+```
+Runtime options fill_worldqual_load
+
+1. project_id, Tabelle wq_general._project
+  1: CESR
+  2: WWQA
+  3: CESR Sensitivity Analysis
+  4: test
+Value: 2
+
+2. IDScen, wq_general._szenario
+Value: 91
+
+3. IDVersion
+  2: WaterGAP2
+  3: WaterGAP3
+Value: 3
+
+4. IDReg
+  1 WaterGAP3 eu
+  2 WaterGAP3 af
+  ...
+Value: 2
+
+5. MyHost
+Value: localhost
+
+6. MyUser
+Value: worldqual
+
+7. MyPassword
+Value: ihr_passwort_hier
+
+8. InputType
+  0: Daten aus der Datenbank einlesen
+  1: Daten aus UNF-Dateien einlesen
+Value: 1
+
+9. input_dir
+Value: /pfad/zu/ihren/daten
+```
+
+**Ändern Sie die Werte nach "Value:":**
+
+- `Value: 2` → Ihre Projekt-ID (z.B. 2 für WWQA)
+- `Value: 91` → Ihre Szenario-ID (z.B. 91)
+- `Value: 3` → WaterGAP Version (2 oder 3)
+- `Value: 2` → Region (1=EU, 2=AF, 3=AS, 4=AU, 5=NA, 6=SA)
+- `Value: localhost` → MySQL-Server (localhost oder IP-Adresse)
+- `Value: worldqual` → Ihr MySQL-Benutzername
+- `Value: ihr_passwort_hier` → Ihr MySQL-Passwort
+- `Value: 1` → InputType (0=Datenbank, 1=UNF-Dateien)
+- `Value: /pfad/zu/ihren/daten` → Vollständiger Pfad zu WaterGAP-Daten
+
+**Wichtig:** 
+- Ändern Sie NUR die Werte nach "Value:"
+- Lassen Sie den Rest der Datei unverändert
+- Speichern Sie die Datei nach den Änderungen
 
 # 3. Programm starten
 ./fill_worldqual_load 2010 2010
@@ -168,11 +275,68 @@ cd ../water_temperature
 cd ../worldqual
 
 # 1. IDrun aus Datenbank holen
-mysql -u username -p
+
+**Was ist eine IDrun?**
+Die IDrun ist eine eindeutige Nummer für eine Simulation. Sie identifiziert:
+- Welchen Parameter (z.B. FC = 2)
+- Welches Szenario (z.B. 91)
+- Weitere Konfigurationen (Temperatur, etc.)
+
+**Wie finden Sie die IDrun?**
+
+```sql
+# In MySQL einloggen
+mysql -u worldqual -p
+# Passwort eingeben
+
+# Datenbank wählen
 USE wq_general;
-SELECT IDrun, runName FROM _runlist 
+
+# IDrun suchen
+SELECT IDrun, runName, parameter_id, IDScen FROM _runlist 
 WHERE parameter_id=2 AND IDScen=91;
-# Ergebnis z.B.: 403100091
+
+# Sollte Ergebnis zeigen, z.B.:
+# +-----------+------------------+-------------+--------+
+# | IDrun     | runName          | parameter_id| IDScen |
+# +-----------+------------------+-------------+--------+
+# | 403100091 | FC Baseline 2010 |           2 |     91 |
+# +-----------+------------------+-------------+--------+
+```
+
+**Was wenn keine IDrun existiert?**
+
+Falls die Abfrage keine Ergebnisse liefert, müssen Sie eine IDrun anlegen. Dies ist komplexer und erfordert mehrere Schritte:
+
+**Schritt 1: Prüfen welche Spalten die Tabelle hat**
+```sql
+DESCRIBE _runlist;
+-- Zeigt alle Spalten und deren Typen
+```
+
+**Schritt 2: IDrun anlegen (Beispiel)**
+```sql
+INSERT INTO _runlist (
+    IDrun, 
+    runName, 
+    parameter_id, 
+    IDScen, 
+    IDTemp,
+    project_id,
+    -- weitere benötigte Spalten je nach Schema
+) VALUES (
+    403100091,
+    'FC Baseline 2010',
+    2,      -- Parameter-ID für FC
+    91,     -- Szenario-ID
+    -9999,  -- IDTemp (oder konkrete Nummer)
+    2       -- project_id
+);
+```
+
+**Wichtig:** Die genaue Struktur hängt von Ihrer Datenbank-Version ab. Fragen Sie einen Kollegen oder prüfen Sie die Tabellenstruktur genau!
+
+**Alternative:** Nutzen Sie `create_scenarios` Modul, um Runs automatisch zu erstellen (siehe Modul-Dokumentation).
 
 # 2. OPTIONS.DAT anpassen (wie Schritt 3)
 
@@ -254,20 +418,112 @@ cd ../wq_stat_stations
 
 **Wie erstellen Sie Diagramme?**
 
+**Voraussetzung: R installieren**
+
+**R installieren:**
+
+**Linux (Ubuntu/Debian):**
+```bash
+sudo apt-get update
+sudo apt-get install r-base
+```
+
+**macOS:**
+```bash
+brew install r
+```
+
+**Windows:**
+- Download von https://cran.r-project.org/
+- Installer ausführen
+
+**R-Pakete installieren:**
 ```r
-# In R öffnen
+# R öffnen (im Terminal: R)
+install.packages("ggplot2")
+install.packages("gridExtra")
+# Falls nach CRAN-Mirror gefragt wird, wählen Sie einen aus (z.B. Deutschland)
+```
+
+**R-Skripte nutzen:**
+
+**Schritt 1: R öffnen**
+```bash
+# Im Terminal
+cd /pfad/zu/WorldQual
+R
+# R startet, Sie sehen jetzt ">"
+```
+
+**Schritt 2: In das richtige Verzeichnis wechseln**
+```r
+# In R
 setwd("R-scripte")
+# Prüfen ob es funktioniert hat:
+getwd()
+# Sollte zeigen: .../WorldQual/R-scripte
+```
 
-# start.R öffnen und anpassen:
+**Schritt 3: start.R anpassen**
+
+**Option A: In R öffnen und ändern**
+```r
+# Datei öffnen
+file.edit("start.R")
+# Editor öffnet sich, ändern Sie die Variablen
+```
+
+**Option B: Mit Texteditor öffnen**
+```bash
+# In neuem Terminal (R läuft weiter)
+nano R-scripte/start.R
+# Oder
+vim R-scripte/start.R
+```
+
+**Wichtige Variablen in start.R anpassen:**
+
+```r
+# Verzeichnis mit R-Skripten
+r_script_dir <- "/vollständiger/pfad/zu/WorldQual/R-scripte"
+
+# Verzeichnis für Ausgabe (Grafiken)
+current_dir <- "/pfad/wo/grafiken/gespeichert/werden"
+
+# Pfad zu Statistik-Dateien (Output von wq_stat_stations)
 input.path <- "/pfad/zu/statistik/dateien"
-input.filename <- ""  # leer = alle Dateien
-unit <- "cfu/100ml"   # Einheit
-log_scale <- "y"      # logarithmische y-Achse
+input.filename <- ""  # leer = alle Dateien, oder spezifischer Dateiname
 
-# Skripte ausführen
+# Einheit für Konzentration
+unit <- "cfu/100ml"   # Für FC, andere: "mg/l", "mg/m³", etc.
+
+# Logarithmische Skalierung
+log_scale <- "y"      # "y" = y-Achse logarithmisch, "" = linear
+
+# Weitere Optionen je nach Skript
+```
+
+**Schritt 4: Skripte ausführen**
+```r
+# In R (nachdem start.R angepasst wurde)
 source("start.R")
-source("station.R")      # Diagramme für Stationen
-source("stations_scatterplot.R")  # Streudiagramme
+# Lädt die Konfiguration
+
+# Dann spezifische Skripte ausführen:
+source("station.R")              # Diagramme für einzelne Stationen
+source("stations_scatterplot.R") # Streudiagramme (Simulation vs. Messung)
+source("RiverSection.R")        # Flussabschnitte
+```
+
+**Wo werden die Grafiken gespeichert?**
+- In dem Verzeichnis, das Sie in `current_dir` angegeben haben
+- Normalerweise als PNG-Dateien (z.B. `station_plot.png`)
+
+**R beenden:**
+```r
+# In R
+q()
+# Wird gefragt: "Save workspace image?" → 'n' für Nein
 ```
 
 ---
