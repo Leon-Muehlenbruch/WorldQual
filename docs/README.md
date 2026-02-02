@@ -41,6 +41,33 @@ Diese Dokumentation richtet sich an **Entwickler**, die WorldQual weiterentwicke
 4. **Beitragen**
    - Siehe [CONTRIBUTING.md](technical/CONTRIBUTING.md)
 
+## Dokumentations-Struktur
+
+```
+WorldQual/
+├── README.md              # Hauptdokumentation (für Nutzer)
+├── DOCUMENTATION.md       # Detaillierte Anleitung (für Nutzer)
+├── QUICK_REFERENCE.md     # Schnellreferenz (für Nutzer)
+├── STRUCTURE.md           # Projektstruktur (für Nutzer)
+├── INDEX.md               # Dokumentations-Index (für Nutzer)
+│
+└── docs/                  # Technische Dokumentation (für Entwickler)
+    ├── README.md          # Dieser Index
+    └── technical/
+        ├── ARCHITECTURE.md      # Code-Architektur
+        ├── DEVELOPMENT.md       # Entwicklungsumgebung
+        ├── CODING_STANDARDS.md  # Code-Standards
+        ├── CONTRIBUTING.md      # Contributing Guidelines
+        ├── DATABASE_SCHEMA.md   # Datenbank-Schema
+        ├── API.md               # API-Referenz
+        └── BUILD_SYSTEM.md      # Build-System
+```
+
+**GitHub-Standard:**
+- **Root-Verzeichnis**: Benutzer-Dokumentation (README.md, etc.)
+- **docs/ Ordner**: Technische/Entwickler-Dokumentation
+- Dies ist der übliche Weg für GitHub-Projekte!
+
 ---
 
 **Hinweis:** Diese technische Dokumentation ergänzt die Benutzer-Dokumentation im Root-Verzeichnis.

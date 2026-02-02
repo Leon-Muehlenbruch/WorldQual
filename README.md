@@ -957,11 +957,19 @@ cd ../worldqual && make clean && make all
 
 ## Weitere Hilfe
 
+**Für Nutzer:**
 - **[Detaillierte Dokumentation](DOCUMENTATION.md)** - Schritt-für-Schritt Anleitungen
 - **[Schnellreferenz](QUICK_REFERENCE.md)** - Wichtige Befehle und Nummern
 - **[Projektstruktur](STRUCTURE.md)** - Verzeichnisse und Dateien
 - **[Dokumentations-Index](INDEX.md)** - Übersicht aller Dokumentationen
 - **[Fehlerbehebung](DOCUMENTATION.md#fehlerbehebung)** - Probleme lösen
+
+**Für Entwickler:**
+- **[Technische Dokumentation](docs/README.md)** - Entwickler-Dokumentation
+- **[Architektur](docs/technical/ARCHITECTURE.md)** - Code-Struktur und Design
+- **[Entwicklungsumgebung](docs/technical/DEVELOPMENT.md)** - Build-System und Entwicklung
+- **[Code-Standards](docs/technical/CODING_STANDARDS.md)** - Coding-Konventionen
+- **[Contributing](docs/technical/CONTRIBUTING.md)** - Wie man beiträgt
 
 ---
 
