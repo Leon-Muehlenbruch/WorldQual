@@ -359,12 +359,46 @@ cd fill_worldqual_load
 cp OPTIONS.DAT OPTIONS.DAT.mein_projekt
 ```
 
-Öffnen Sie die Datei und ändern Sie:
-- `project_id`: Ihre Projektnummer (z.B. 2 für WWQA)
-- `IDScen`: Ihre Szenario-Nummer (z.B. 91)
-- `IDReg`: Region (1=EU, 2=AF, 3=AS, 4=AU, 5=NA, 6=SA)
-- `MyHost`, `MyUser`, `MyPassword`: Ihre MySQL-Daten
-- `input_dir`: Pfad zu Ihren Input-Dateien
+**Wie öffnet man OPTIONS.DAT?**
+
+```bash
+# Mit nano (einfacher Editor)
+nano OPTIONS.DAT
+
+# Navigation in nano:
+# - Pfeiltasten: Bewegen
+# - Strg+O: Speichern (dann Enter drücken)
+# - Strg+X: Beenden
+```
+
+**Was genau ändern?**
+
+Die Datei enthält Zeilen wie:
+```
+Value: 2
+Value: 91
+Value: localhost
+Value: worldqual
+Value: passwort
+Value: /pfad/zu/daten
+```
+
+**Ändern Sie die Werte nach "Value:":**
+
+- `Value: 2` → Ihre Projektnummer (z.B. 2 für WWQA)
+- `Value: 91` → Ihre Szenario-Nummer (z.B. 91)
+- `Value: 2` → Region (1=EU, 2=AF, 3=AS, 4=AU, 5=NA, 6=SA)
+- `Value: localhost` → MySQL-Server (localhost oder IP-Adresse)
+- `Value: worldqual` → MySQL-Benutzername
+- `Value: passwort` → MySQL-Passwort
+- `Value: /pfad/zu/daten` → Vollständiger Pfad zu WaterGAP-Daten
+
+**Wichtig:** 
+- Ändern Sie NUR die Werte nach "Value:"
+- Lassen Sie den Rest der Datei unverändert
+- Speichern Sie die Datei (Strg+O, dann Enter)
+
+**Detaillierte Erklärung:** Siehe [DOCUMENTATION.md - Konfiguration verstehen](DOCUMENTATION.md#konfiguration-verstehen)
 
 ### Schritt 2: Einträge berechnen
 
@@ -393,9 +427,30 @@ Simulieren Sie die Wasserqualität im Fluss:
 
 ```bash
 cd ../worldqual
-# OPTIONS.DAT anpassen! IDrun aus Datenbank holen
+
+# 1. IDrun aus Datenbank holen (siehe unten)
+# 2. OPTIONS.DAT anpassen (wie Schritt 1)
+# 3. Simulation starten
 ./worldqual 403100091 2010 2010
 ```
+
+**Wie finde ich die IDrun?**
+
+```sql
+# In MySQL einloggen
+mysql -u worldqual -p
+
+# Datenbank wählen
+USE wq_general;
+
+# IDrun suchen
+SELECT IDrun, runName FROM _runlist 
+WHERE parameter_id=2 AND IDScen=91;
+# Ergebnis z.B.: 403100091
+```
+
+**Was wenn keine IDrun existiert?**
+Sie müssen eine IDrun in der Datenbank anlegen. Dies ist komplex - siehe [DOCUMENTATION.md - IDrun finden](DOCUMENTATION.md#schritt-5-hauptsimulation) für Details.
 
 **Was passiert hier?**
 - Das Programm liest die Einträge aus Schritt 2
@@ -424,13 +479,44 @@ cd ../wq_stat_stations
 
 Erstellen Sie Diagramme mit R:
 
+**Voraussetzung: R installieren**
+
+```bash
+# Linux
+sudo apt-get install r-base
+
+# macOS
+brew install r
+```
+
+**R-Pakete installieren:**
 ```r
-# In R öffnen
+# R öffnen (im Terminal: R)
+install.packages(c("ggplot2", "gridExtra"))
+```
+
+**R-Skripte nutzen:**
+
+```r
+# 1. R öffnen
+R
+
+# 2. In Verzeichnis wechseln
 setwd("R-scripte")
+
+# 3. start.R anpassen (mit Texteditor oder file.edit("start.R"))
+# Wichtige Variablen:
+# - input.path: Pfad zu Statistik-Dateien
+# - current_dir: Wo Grafiken gespeichert werden
+# - unit: Einheit (z.B. "cfu/100ml" für FC)
+# - log_scale: "y" für logarithmische y-Achse
+
+# 4. Skripte ausführen
 source("start.R")
-# Konfiguration in start.R anpassen (siehe unten)
 source("station.R")  # Diagramme für einzelne Stationen
 ```
+
+**Detaillierte Anleitung:** Siehe [DOCUMENTATION.md - Visualisierung](DOCUMENTATION.md#schritt-8-visualisierung)
 
 ---
 
