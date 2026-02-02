@@ -1,6 +1,6 @@
 # WorldQual - Detaillierte Anleitung
 
-> 📚 **Navigation:** [Übersicht](README.md) | [Schnellreferenz](QUICK_REFERENCE.md) | [Index](INDEX.md) | [Struktur](STRUCTURE.md)
+**Navigation:** [Übersicht](README.md) | [Schnellreferenz](QUICK_REFERENCE.md) | [Index](INDEX.md) | [Struktur](STRUCTURE.md)
 
 Diese Dokumentation erklärt **genau**, wie Sie WorldQual Schritt für Schritt nutzen.
 
@@ -320,7 +320,7 @@ InputType = 1          # 1 = UNF-Dateien
 input_dir = /pfad/zu/daten
 ```
 
-> 💡 **Tipp:** Detaillierte Erklärung aller Optionen finden Sie weiter unten in [Konfiguration verstehen](#konfiguration-verstehen)
+**Tipp:** Detaillierte Erklärung aller Optionen finden Sie weiter unten in [Konfiguration verstehen](#konfiguration-verstehen)
 
 ### worldqual - Hauptsimulation
 
@@ -372,7 +372,7 @@ input_dir = /pfad/zu/daten
 
 **Wie finde ich die IDrun?**
 
-> ⚡ **Schnellreferenz:** Siehe auch [QUICK_REFERENCE.md - IDrun finden](QUICK_REFERENCE.md#idrun-finden)
+**Schnellreferenz:** Siehe auch [QUICK_REFERENCE.md - IDrun finden](QUICK_REFERENCE.md#idrun-finden)
 
 Die IDrun ist eine eindeutige Nummer für eine Simulation. Sie setzt sich zusammen aus:
 - Parameter-ID (z.B. 2 für FC)
@@ -454,7 +454,7 @@ Die Konstanten (C0, C1, C2) werden in der Datenbank gespeichert (Tabelle `_water
 
 ### OPTIONS.DAT - Die wichtigste Datei
 
-> ⚡ **Schnellreferenz:** Siehe auch [QUICK_REFERENCE.md - OPTIONS.DAT](QUICK_REFERENCE.md#optionsdat---wichtige-einstellungen)
+**Schnellreferenz:** Siehe auch [QUICK_REFERENCE.md - OPTIONS.DAT](QUICK_REFERENCE.md#optionsdat---wichtige-einstellungen)
 
 Jedes Modul hat eine `OPTIONS.DAT` Datei. Diese Datei enthält **alle Einstellungen** für die Simulation.
 
@@ -613,7 +613,7 @@ Value: /home/user/watergap_data/africa
 
 ### Übersicht über die Datenbanken
 
-> ⚡ **Schnellreferenz:** Siehe auch [QUICK_REFERENCE.md - Datenbank-Abfragen](QUICK_REFERENCE.md#datenbank-abfragen)
+**Schnellreferenz:** Siehe auch [QUICK_REFERENCE.md - Datenbank-Abfragen](QUICK_REFERENCE.md#datenbank-abfragen)
 
 WorldQual verwendet **mehrere Datenbanken**:
 
@@ -968,7 +968,7 @@ LINES TERMINATED BY '\n';
 ---
 
 **Weitere Hilfe:**
-- 📖 [README.md](README.md) - Übersicht und Einführung
-- ⚡ [QUICK_REFERENCE.md](QUICK_REFERENCE.md) - Schnellreferenz
-- 🏗️ [STRUCTURE.md](STRUCTURE.md) - Projektstruktur
-- 🎯 [INDEX.md](INDEX.md) - Dokumentations-Übersicht
+- [README.md](README.md) - Übersicht und Einführung
+- [QUICK_REFERENCE.md](QUICK_REFERENCE.md) - Schnellreferenz
+- [STRUCTURE.md](STRUCTURE.md) - Projektstruktur
+- [INDEX.md](INDEX.md) - Dokumentations-Übersicht

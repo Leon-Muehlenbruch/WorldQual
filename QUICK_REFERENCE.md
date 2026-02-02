@@ -1,6 +1,6 @@
 # WorldQual - Schnellreferenz
 
-> 📚 **Navigation:** [Übersicht](README.md) | [Detaillierte Anleitung](DOCUMENTATION.md) | [Index](INDEX.md) | [Struktur](STRUCTURE.md)
+**Navigation:** [Übersicht](README.md) | [Detaillierte Anleitung](DOCUMENTATION.md) | [Index](INDEX.md) | [Struktur](STRUCTURE.md)
 
 Kurze Übersicht für die tägliche Nutzung.
 
@@ -235,10 +235,10 @@ R-scripte/              # Visualisierung
 
 ## Weitere Hilfe
 
-- 📖 [README.md](README.md) - Übersicht und Einführung
-- 📚 [DOCUMENTATION.md](DOCUMENTATION.md) - Detaillierte Anleitung
-- 🏗️ [STRUCTURE.md](STRUCTURE.md) - Projektstruktur
-- 🎯 [INDEX.md](INDEX.md) - Dokumentations-Übersicht
+- [README.md](README.md) - Übersicht und Einführung
+- [DOCUMENTATION.md](DOCUMENTATION.md) - Detaillierte Anleitung
+- [STRUCTURE.md](STRUCTURE.md) - Projektstruktur
+- [INDEX.md](INDEX.md) - Dokumentations-Übersicht
 
 ---
 

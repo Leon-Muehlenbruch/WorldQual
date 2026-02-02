@@ -2,27 +2,27 @@
 
 Willkommen zur WorldQual-Dokumentation! Diese Seite hilft Ihnen, die richtige Dokumentation zu finden.
 
-## 📚 Dokumentations-Übersicht
+## Dokumentations-Übersicht
 
-### 🚀 [Schnellstart](README.md#schnellstart-quick-start)
+### [Schnellstart](README.md#schnellstart-quick-start)
 **Für neue Nutzer:** Erste Schritte und Quick Start Guide
 - [README.md](README.md) - Hauptdokumentation mit Übersicht und Schnellstart
 
-### 📖 [Detaillierte Anleitung](DOCUMENTATION.md)
+### [Detaillierte Anleitung](DOCUMENTATION.md)
 **Schritt-für-Schritt Anleitungen** für alle Funktionen
 - [DOCUMENTATION.md](DOCUMENTATION.md) - Komplette Anleitung mit Beispielen
 
-### ⚡ [Schnellreferenz](QUICK_REFERENCE.md)
+### [Schnellreferenz](QUICK_REFERENCE.md)
 **Für tägliche Nutzung:** Wichtige Befehle und Nummern auf einen Blick
 - [QUICK_REFERENCE.md](QUICK_REFERENCE.md) - Schnellreferenz
 
-### 🏗️ [Projektstruktur](STRUCTURE.md)
+### [Projektstruktur](STRUCTURE.md)
 **Übersicht über Verzeichnisse** und Dateien
 - [STRUCTURE.md](STRUCTURE.md) - Projektstruktur und Verzeichnisse
 
 ---
 
-## 🎯 Schnelle Navigation nach Thema
+## Schnelle Navigation nach Thema
 
 ### Erste Schritte
 - [Was macht WorldQual?](README.md#was-macht-worldqual) - Einführung
@@ -46,34 +46,34 @@ Willkommen zur WorldQual-Dokumentation! Diese Seite hilft Ihnen, die richtige Do
 
 ---
 
-## 🔍 Nach Aufgabe suchen
+## Nach Aufgabe suchen
 
 ### Ich möchte...
 
 #### ...WorldQual zum ersten Mal nutzen
-👉 Starten Sie mit [README.md - Schnellstart](README.md#schnellstart-quick-start)
+Starten Sie mit [README.md - Schnellstart](README.md#schnellstart-quick-start)
 
 #### ...eine Simulation durchführen
-👉 Siehe [DOCUMENTATION.md - Kompletter Workflow](DOCUMENTATION.md#erste-schritte---kompletter-workflow)
+Siehe [DOCUMENTATION.md - Kompletter Workflow](DOCUMENTATION.md#erste-schritte---kompletter-workflow)
 
 #### ...ein Modul verstehen
-👉 Siehe [DOCUMENTATION.md - Module im Detail](DOCUMENTATION.md#module-im-detail)
+Siehe [DOCUMENTATION.md - Module im Detail](DOCUMENTATION.md#module-im-detail)
 
 #### ...die Konfiguration anpassen
-👉 Siehe [DOCUMENTATION.md - Konfiguration verstehen](DOCUMENTATION.md#konfiguration-verstehen)
+Siehe [DOCUMENTATION.md - Konfiguration verstehen](DOCUMENTATION.md#konfiguration-verstehen)
 
 #### ...ein Problem lösen
-👉 Siehe [DOCUMENTATION.md - Fehlerbehebung](DOCUMENTATION.md#fehlerbehebung)
+Siehe [DOCUMENTATION.md - Fehlerbehebung](DOCUMENTATION.md#fehlerbehebung)
 
 #### ...schnell etwas nachschlagen
-👉 Siehe [QUICK_REFERENCE.md](QUICK_REFERENCE.md)
+Siehe [QUICK_REFERENCE.md](QUICK_REFERENCE.md)
 
 #### ...die Projektstruktur verstehen
-👉 Siehe [STRUCTURE.md](STRUCTURE.md)
+Siehe [STRUCTURE.md](STRUCTURE.md)
 
 ---
 
-## 📋 Häufige Workflows
+## Häufige Workflows
 
 ### Workflow 1: Erste Simulation
 1. [Schnellstart lesen](README.md#schnellstart-quick-start)
@@ -91,7 +91,7 @@ Willkommen zur WorldQual-Dokumentation! Diese Seite hilft Ihnen, die richtige Do
 
 ---
 
-## 🔗 Wichtige Links
+## Wichtige Links
 
 - [Parameter-IDs](QUICK_REFERENCE.md#parameter-ids)
 - [Region-IDs](QUICK_REFERENCE.md#region-ids)
@@ -101,7 +101,7 @@ Willkommen zur WorldQual-Dokumentation! Diese Seite hilft Ihnen, die richtige Do
 
 ---
 
-## 💡 Tipps
+## Tipps
 
 - **Neue Nutzer:** Beginnen Sie mit [README.md](README.md)
 - **Tägliche Nutzung:** Nutzen Sie [QUICK_REFERENCE.md](QUICK_REFERENCE.md)
