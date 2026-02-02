@@ -20,17 +20,39 @@ Diese Dokumentation erklärt **genau**, wie Sie WorldQual Schritt für Schritt n
 4. [Datenbank verstehen](#datenbank-verstehen)
    - [Übersicht über die Datenbanken](#übersicht-über-die-datenbanken)
    - [wq_general - Konfigurationsdatenbank](#wq_general---konfigurationsdatenbank)
-5. [Praktische Beispiele](#praktische-beispiele)
+5. [Datenbankstruktur komplett anlegen](#datenbankstruktur-komplett-anlegen)
+   - [Voraussetzungen](#voraussetzungen)
+   - [Schritt 1: Basis-Datenbank erstellen](#schritt-1-basis-datenbank-erstellen)
+   - [Schritt 2: wq_general Tabellen erstellen](#schritt-2-wq_general-tabellen-erstellen)
+   - [Schritt 3-7: Weitere Tabellen](#schritt-3-regionsspezifische-datenbanken---concentration-tabelle)
+6. [WaterGAP-Daten genau beschaffen](#watergap-daten-genau-beschaffen)
+   - [Was sind WaterGAP-Daten?](#was-sind-watergap-daten)
+   - [Welche Daten werden benötigt?](#welche-daten-werden-benötigt)
+   - [Wo bekommt man WaterGAP-Daten?](#wo-bekommt-man-watergap-daten)
+   - [Datenformat verstehen](#datenformat-verstehen)
+   - [Benötigte Dateien - Komplette Liste](#benötigte-dateien---komplette-liste)
+7. [Alle Module kompilieren - Komplette Liste](#alle-module-kompilieren---komplette-liste)
+   - [Kompilierungsreihenfolge (wichtig!)](#kompilierungsreihenfolge-wichtig)
+   - [Automatisiertes Build-Skript](#automatisiertes-build-skript)
+   - [Modul-Übersicht](#modul-übersicht)
+   - [Häufige Kompilierungsfehler](#häufige-kompilierungsfehler)
+8. [Fehlermeldungen verstehen - Kompletter Guide](#fehlermeldungen-verstehen---kompletter-guide)
+   - [Datenbank-Fehler](#datenbank-fehler)
+   - [Datei-Fehler](#datei-fehler)
+   - [Kompilierungsfehler](#kompilierungsfehler)
+   - [Laufzeit-Fehler](#laufzeit-fehler)
+   - [Fehlerbehebungs-Workflow](#fehlerbehebungs-workflow)
+9. [Praktische Beispiele](#praktische-beispiele)
    - [Beispiel 1: Einfache Simulation](#beispiel-1-einfache-simulation-ein-jahr-ein-parameter)
    - [Beispiel 2: Mehrere Jahre](#beispiel-2-mehrere-jahre)
    - [Beispiel 3: Szenarienvergleich](#beispiel-3-szenarienvergleich)
-6. [Fehlerbehebung](#fehlerbehebung)
-   - [Problem 1: Datenbankverbindung schlägt fehl](#problem-1-datenbankverbindung-schlägt-fehl)
-   - [Problem 2: Datei nicht gefunden](#problem-2-datei-nicht-gefunden)
-   - [Problem 3: Falsche Parameter-ID](#problem-3-falsche-parameter-id)
-   - [Problem 4: Speicherprobleme](#problem-4-speicherprobleme)
-   - [Problem 5: Falsche IDrun](#problem-5-falsche-idrun)
-7. [Tipps und Tricks](#tipps-und-tricks)
+10. [Fehlerbehebung](#fehlerbehebung)
+    - [Problem 1: Datenbankverbindung schlägt fehl](#problem-1-datenbankverbindung-schlägt-fehl)
+    - [Problem 2: Datei nicht gefunden](#problem-2-datei-nicht-gefunden)
+    - [Problem 3: Falsche Parameter-ID](#problem-3-falsche-parameter-id)
+    - [Problem 4: Speicherprobleme](#problem-4-speicherprobleme)
+    - [Problem 5: Falsche IDrun](#problem-5-falsche-idrun)
+11. [Tipps und Tricks](#tipps-und-tricks)
 
 ---
 
@@ -970,6 +992,1258 @@ LIMIT 10;
 - `year`: Jahr
 - `month`: Monat (1-12)
 - `load`: Eintrag
+
+---
+
+## Datenbankstruktur komplett anlegen
+
+Falls Sie ein **komplett neues System** aufsetzen müssen und keine bestehende Datenbank haben, müssen Sie die Datenbankstruktur von Grund auf erstellen.
+
+### Voraussetzungen
+
+- MySQL Server läuft
+- MySQL-Benutzer mit Berechtigungen erstellt
+- Root-Zugriff auf MySQL (für Schema-Erstellung)
+
+### Schritt 1: Basis-Datenbank erstellen
+
+```sql
+-- Als root einloggen
+mysql -u root -p
+
+-- Datenbanken erstellen
+CREATE DATABASE wq_general;
+CREATE DATABASE wwqa_worldqual_af;
+CREATE DATABASE wwqa_worldqual_eu;
+CREATE DATABASE wwqa_worldqual_as;
+CREATE DATABASE wwqa_worldqual_au;
+CREATE DATABASE wwqa_worldqual_na;
+CREATE DATABASE wwqa_worldqual_sa;
+
+CREATE DATABASE wwqa_wq_load_af;
+CREATE DATABASE wwqa_wq_load_eu;
+CREATE DATABASE wwqa_wq_load_as;
+CREATE DATABASE wwqa_wq_load_au;
+CREATE DATABASE wwqa_wq_load_na;
+CREATE DATABASE wwqa_wq_load_sa;
+
+-- Berechtigungen geben
+GRANT ALL PRIVILEGES ON wq_general.* TO 'worldqual'@'localhost';
+GRANT ALL PRIVILEGES ON wwqa_worldqual_*.* TO 'worldqual'@'localhost';
+GRANT ALL PRIVILEGES ON wwqa_wq_load_*.* TO 'worldqual'@'localhost';
+FLUSH PRIVILEGES;
+```
+
+### Schritt 2: wq_general Tabellen erstellen
+
+**Wichtig:** Die genauen Tabellendefinitionen können variieren. Diese sind Beispiele basierend auf dem Code.
+
+#### _project Tabelle
+
+```sql
+USE wq_general;
+
+CREATE TABLE _project (
+    project_id INT PRIMARY KEY,
+    Project_Name VARCHAR(255) NOT NULL,
+    database_name VARCHAR(255) DEFAULT NULL,
+    description TEXT
+);
+
+-- Standard-Projekte einfügen
+INSERT INTO _project (project_id, Project_Name, description) VALUES
+(1, 'CESR', 'Climate and Environment System Research'),
+(2, 'WWQA', 'World Water Quality Assessment'),
+(3, 'CESR Sensitivity Analysis', 'Sensitivity Analysis'),
+(4, 'test', 'Test-Projekt für Entwickler');
+```
+
+#### _parameter Tabelle
+
+```sql
+CREATE TABLE _parameter (
+    parameter_id INT PRIMARY KEY,
+    ParameterName VARCHAR(255) NOT NULL,
+    description TEXT,
+    unit VARCHAR(50)
+);
+
+-- Standard-Parameter einfügen
+INSERT INTO _parameter (parameter_id, ParameterName, unit) VALUES
+(0, 'BOD', 'mg/l'),
+(1, 'TDS', 'mg/l'),
+(2, 'FC', 'cfu/100ml'),
+(3, 'TN', 'mg/l'),
+(4, 'TP', 'mg/l');
+```
+
+#### _szenario Tabelle
+
+```sql
+CREATE TABLE _szenario (
+    IDScen INT PRIMARY KEY,
+    ScenName VARCHAR(255) NOT NULL,
+    description TEXT,
+    project_id INT,
+    FOREIGN KEY (project_id) REFERENCES _project(project_id)
+);
+
+-- Beispiel-Szenario
+INSERT INTO _szenario (IDScen, ScenName, description, project_id) VALUES
+(91, 'Baseline 2010', 'Baseline-Szenario für 2010', 2);
+```
+
+#### _runlist Tabelle
+
+```sql
+CREATE TABLE _runlist (
+    IDrun INT PRIMARY KEY,
+    runName VARCHAR(255),
+    parameter_id INT,
+    parameter_id_input INT,
+    parameter_id_load INT,
+    IDScen INT,
+    IDScen_wq_load INT,
+    project_id INT,
+    IDTemp INT DEFAULT -9999,
+    Q_low_limit DOUBLE DEFAULT NULL,
+    Q_low_limit_type INT DEFAULT NULL,
+    conservative INT DEFAULT 0,
+    lake INT DEFAULT 0,
+    UseWaterTemp INT DEFAULT 0,
+    svn_version_id INT DEFAULT NULL,
+    comment TEXT,
+    FOREIGN KEY (parameter_id) REFERENCES _parameter(parameter_id),
+    FOREIGN KEY (IDScen) REFERENCES _szenario(IDScen),
+    FOREIGN KEY (project_id) REFERENCES _project(project_id)
+);
+```
+
+#### _water_temperature_list Tabelle
+
+```sql
+CREATE TABLE _water_temperature_list (
+    IDTemp INT PRIMARY KEY,
+    Name VARCHAR(255),
+    climate VARCHAR(255),
+    comment TEXT,
+    C0 DOUBLE,
+    C1 DOUBLE,
+    C2 DOUBLE
+);
+
+-- Beispiel-Temperatur-Konfiguration
+INSERT INTO _water_temperature_list (IDTemp, Name, climate, C0, C1, C2) VALUES
+(100, 'Standard', 'air_temp', 20.0, -0.1, 5.0);
+```
+
+#### watergap_region Tabelle
+
+```sql
+CREATE TABLE watergap_region (
+    IDVersion INT,
+    IDRegion INT,
+    hydro_input VARCHAR(255),
+    PRIMARY KEY (IDVersion, IDRegion)
+);
+
+-- Beispiel-Regionen
+INSERT INTO watergap_region (IDVersion, IDRegion, hydro_input) VALUES
+(3, 1, '/path/to/watergap/eu'),
+(3, 2, '/path/to/watergap/af'),
+(3, 3, '/path/to/watergap/as'),
+(3, 4, '/path/to/watergap/au'),
+(3, 5, '/path/to/watergap/na'),
+(3, 6, '/path/to/watergap/sa');
+```
+
+### Schritt 3: Regionsspezifische Datenbanken - concentration Tabelle
+
+**Für jede Region (af, eu, as, au, na, sa):**
+
+```sql
+USE wwqa_worldqual_af;
+
+CREATE TABLE concentration (
+    IDrun INT NOT NULL,
+    cell INT NOT NULL,
+    year INT NOT NULL,
+    month INT NOT NULL,
+    concentration DOUBLE,
+    PRIMARY KEY (IDrun, cell, year, month),
+    INDEX idx_cell (cell),
+    INDEX idx_year (year),
+    INDEX idx_idrun (IDrun),
+    INDEX idx_idrun_year (IDrun, year)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+```
+
+### Schritt 4: Regionsspezifische Datenbanken - Eintragstabellen
+
+**Für jede Region:**
+
+```sql
+USE wwqa_wq_load_af;
+
+-- Industrieabwasser
+CREATE TABLE calc_cell_month_load_man_ww (
+    cell INT NOT NULL,
+    year INT NOT NULL,
+    month INT NOT NULL,
+    load DOUBLE,
+    PRIMARY KEY (cell, year, month),
+    INDEX idx_cell (cell),
+    INDEX idx_year (year)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Haushaltsabwasser
+CREATE TABLE calc_cell_month_load_dom_ww (
+    cell INT NOT NULL,
+    year INT NOT NULL,
+    month INT NOT NULL,
+    load DOUBLE,
+    PRIMARY KEY (cell, year, month),
+    INDEX idx_cell (cell),
+    INDEX idx_year (year)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Bewässerungs-Rückfluss
+CREATE TABLE calc_cell_month_load_rtf_irr (
+    cell INT NOT NULL,
+    year INT NOT NULL,
+    month INT NOT NULL,
+    load DOUBLE,
+    PRIMARY KEY (cell, year, month),
+    INDEX idx_cell (cell),
+    INDEX idx_year (year)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Viehhaltung
+CREATE TABLE calc_cell_month_load_ls (
+    cell INT NOT NULL,
+    year INT NOT NULL,
+    month INT NOT NULL,
+    load DOUBLE,
+    PRIMARY KEY (cell, year, month),
+    INDEX idx_cell (cell),
+    INDEX idx_year (year)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Landwirtschaft
+CREATE TABLE calc_cell_month_load_crop (
+    cell INT NOT NULL,
+    year INT NOT NULL,
+    month INT NOT NULL,
+    load DOUBLE,
+    PRIMARY KEY (cell, year, month),
+    INDEX idx_cell (cell),
+    INDEX idx_year (year)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Weitere Tabellen je nach Parameter...
+```
+
+### Schritt 5: Weitere benötigte Tabellen
+
+**cell_input Tabelle:**
+
+```sql
+USE wwqa_wq_load_af;
+
+CREATE TABLE cell_input (
+    cell INT NOT NULL,
+    IDScen INT NOT NULL,
+    year INT NOT NULL,
+    -- Weitere Spalten je nach Parameter
+    PRIMARY KEY (cell, IDScen, year)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+```
+
+**country_parameter_input Tabelle:**
+
+```sql
+CREATE TABLE country_parameter_input (
+    country_id INT NOT NULL,
+    IDScen INT NOT NULL,
+    year INT NOT NULL,
+    parameter_id INT NOT NULL,
+    -- Weitere Spalten je nach Parameter
+    PRIMARY KEY (country_id, IDScen, year, parameter_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+```
+
+### Schritt 6: Routing-Tabellen (wichtig!)
+
+WorldQual benötigt Routing-Informationen aus WaterGAP. Diese müssen importiert werden:
+
+**Typische Tabellen:**
+- `outflow_cell` - Abflusszellen
+- `inflow` - Zuflüsse
+- `river_length` - Flusslängen
+- `routing_order` - Routing-Reihenfolge
+
+**Wichtig:** Diese Tabellen müssen aus WaterGAP-Daten importiert werden oder von einem bestehenden System kopiert werden.
+
+### Schritt 7: Schema exportieren und dokumentieren
+
+**Nach erfolgreicher Erstellung:**
+
+```bash
+# Schema exportieren
+mysqldump -u root -p --no-data wq_general > schema_wq_general.sql
+mysqldump -u root -p --no-data wwqa_worldqual_af > schema_worldqual_af.sql
+mysqldump -u root -p --no-data wwqa_wq_load_af > schema_wq_load_af.sql
+
+# Für alle Regionen wiederholen
+```
+
+**Dokumentieren Sie:**
+- Welche Tabellen erstellt wurden
+- Welche Indizes gesetzt wurden
+- Welche Daten importiert wurden
+
+### Wichtiger Hinweis
+
+**Die vollständige Datenbankstruktur ist komplex!**
+
+- Viele Tabellen haben parameter-spezifische Spalten
+- Routing-Tabellen müssen aus WaterGAP importiert werden
+- Einige Tabellen werden dynamisch erstellt
+
+**Empfehlung:**
+- Nutzen Sie ein bestehendes System als Vorlage
+- Exportieren Sie das Schema: `mysqldump --no-data`
+- Importieren Sie auf neuem System: `mysql < schema.sql`
+
+**Falls Sie komplett neu starten müssen:**
+- Kontaktieren Sie das Entwicklungsteam
+- Prüfen Sie ob Schema-Dateien vorhanden sind
+- Siehe auch [docs/technical/DATABASE_SCHEMA.md](../docs/technical/DATABASE_SCHEMA.md) für Details
+
+---
+
+## WaterGAP-Daten genau beschaffen
+
+### Was sind WaterGAP-Daten?
+
+WaterGAP (Water Global Assessment and Prognosis) ist ein globales hydrologisches Modell. WorldQual benötigt dessen **Output-Daten** als Input.
+
+### Welche Daten werden benötigt?
+
+#### Für worldqual (Hauptsimulation):
+
+**Erforderlich:**
+- `G_Q_out_m3_[year].12.UNF0` - Monatlicher Abfluss [m³/month]
+- `G_RUNOFF_TOTAL_mm_[year].12.UNF0` - Monatlicher Gesamtabfluss [mm/month]
+
+**Optional aber empfohlen:**
+- `G_FLOW_VELOCITY_m_s_[year].12.UNF0` - Fließgeschwindigkeit [m/s]
+- `G_WATER_TEMP_C_[year].12.UNF0` - Wassertemperatur [°C] (falls nicht berechnet)
+
+#### Für fill_worldqual_load (Eintragsberechnung):
+
+**Erforderlich:**
+- Bevölkerungsdaten (Grid-Daten)
+- Landnutzungsdaten (Grid-Daten)
+- Abwasserbehandlungsraten (Länderdaten)
+
+**Diese können aus verschiedenen Quellen kommen:**
+- UNF-Dateien
+- Datenbank-Tabellen
+- CSV-Dateien (müssen importiert werden)
+
+#### Für water_temperature:
+
+**Erforderlich:**
+- `G_AIR_TEMP_C_[year].12.UNF0` - Monatliche Lufttemperatur [°C]
+
+### Wo bekommt man WaterGAP-Daten?
+
+#### Option 1: Von WaterGAP-Projektgruppe
+
+**Kontakt:**
+- WaterGAP-Projektwebsite besuchen
+- Projektgruppe kontaktieren
+- Datenanfrage stellen
+
+**Typischerweise erhalten Sie:**
+- Zugriff auf Daten-Server
+- Download-Links
+- Dokumentation zum Datenformat
+
+#### Option 2: Von bestehendem Projekt
+
+**Falls Sie Teil eines bestehenden Projekts sind:**
+- Fragen Sie Projektleiter/Kollegen
+- Daten sind oft auf Projekt-Servern
+- Möglicherweise bereits in Datenbank importiert
+
+#### Option 3: Öffentlich verfügbare Daten
+
+**Falls verfügbar:**
+- WaterGAP kann öffentliche Datensätze bereitstellen
+- Prüfen Sie WaterGAP-Veröffentlichungen
+- Kontaktieren Sie die Autoren
+
+### Datenformat verstehen
+
+#### UNF-Dateien (Unformatted)
+
+**Format:** Binäres Format (nicht lesbar als Text)
+
+**Struktur:**
+- Grid-basiert (0.5° x 0.5° Auflösung)
+- Zeitreihen: Monatlich (12 Werte) oder jährlich (1 Wert)
+- Byte-Order: Kann systemabhängig sein (Byte-Swapping erforderlich)
+
+**Dateinamen-Konventionen:**
+
+```
+G_[PARAMETER]_[UNIT]_[YEAR].[MONTHS].UNF0
+
+Beispiele:
+G_Q_out_m3_2010.12.UNF0          # Monatlicher Abfluss 2010
+G_RUNOFF_TOTAL_mm_2010.12.UNF0   # Monatlicher Runoff 2010
+G_AIR_TEMP_C_2010.12.UNF0        # Monatliche Lufttemperatur 2010
+```
+
+**Dateinamen-Bestandteile:**
+- `G_` - Grid-Daten
+- `Q_out` - Parameter (Abfluss)
+- `m3` - Einheit
+- `2010` - Jahr
+- `.12` - 12 Monate (monatlich)
+- `.UNF0` - Dateiformat
+
+#### Dateigröße abschätzen
+
+**Für eine Region (z.B. Afrika):**
+- Anzahl Zellen: ~50.000-100.000 (abhängig von Region)
+- Datentyp: float (4 Bytes) oder double (8 Bytes)
+- Monatlich: 12 Werte pro Jahr
+
+**Beispiel-Berechnung:**
+```
+Afrika: ~70.000 Zellen
+Float: 4 Bytes
+Monatlich: 12 Werte
+Jahr: 1 Jahr
+
+Größe = 70.000 * 4 * 12 = 3.360.000 Bytes ≈ 3.2 MB pro Jahr
+```
+
+**Für mehrere Jahre:**
+- 20 Jahre = ~64 MB pro Parameter
+- Mehrere Parameter = mehrere hundert MB bis GB
+
+### Daten prüfen
+
+**Schritt 1: Dateien auflisten**
+
+```bash
+cd /pfad/zu/watergap/daten
+ls -lh G_*.UNF0
+
+# Sollten Sie sehen:
+# - Dateien für verschiedene Jahre
+# - Verschiedene Parameter
+# - Korrekte Dateinamen
+```
+
+**Schritt 2: Dateigröße prüfen**
+
+```bash
+# Erwartete Größe berechnen
+# Anzahl_Zellen * Datentyp_Größe * Werte_pro_Zelle
+
+# Beispiel für Afrika, monatlich, float:
+# 70.000 * 4 * 12 = 3.360.000 Bytes ≈ 3.2 MB
+
+ls -lh G_Q_out_m3_2010.12.UNF0
+# Sollte etwa 3-4 MB sein (abhängig von Region)
+```
+
+**Schritt 3: Dateien lesbar?**
+
+```bash
+# Prüfen ob Dateien existieren und lesbar sind
+test -r G_Q_out_m3_2010.12.UNF0 && echo "Datei ist lesbar" || echo "FEHLER: Datei nicht lesbar"
+
+# Rechte prüfen
+ls -l G_Q_out_m3_2010.12.UNF0
+# Sollte zeigen: -r--r--r-- oder ähnlich
+```
+
+**Schritt 4: Mit WorldQual testen**
+
+```bash
+# Test-Lesen mit einem Modul
+cd src/worldqual
+# OPTIONS.DAT anpassen: input_dir = /pfad/zu/daten
+# Programm starten (wird Fehler geben wenn Daten fehlen, aber zeigt ob Dateien gefunden werden)
+./worldqual 403100091 2010 2010
+```
+
+### Benötigte Dateien - Komplette Liste
+
+#### Für eine komplette Simulation benötigen Sie:
+
+**Hydrologische Daten (für worldqual):**
+```
+G_Q_out_m3_[year].12.UNF0              # Abfluss [m³/month]
+G_RUNOFF_TOTAL_mm_[year].12.UNF0       # Runoff [mm/month]
+G_FLOW_VELOCITY_m_s_[year].12.UNF0     # Fließgeschwindigkeit [m/s] (optional)
+```
+
+**Klimadaten (für water_temperature):**
+```
+G_AIR_TEMP_C_[year].12.UNF0            # Lufttemperatur [°C]
+```
+
+**Routing-Daten (aus Datenbank oder Dateien):**
+- Abflusszellen (outflow_cell)
+- Zuflüsse (inflow)
+- Flusslängen (river_length)
+- Routing-Reihenfolge (routing_order)
+
+**Eintragsdaten (für fill_worldqual_load):**
+- Bevölkerungsdichte (Grid oder Länderdaten)
+- Abwasserbehandlungsraten (Länderdaten)
+- Landnutzung (Grid-Daten)
+- Düngeranwendung (Länderdaten)
+- Geologische Karten
+
+**Wichtig:** Nicht alle Daten müssen als UNF-Dateien vorliegen - viele können auch aus der Datenbank kommen!
+
+### Daten importieren (falls nötig)
+
+**Falls Daten als CSV/Text vorliegen:**
+
+```sql
+-- Beispiel: CSV importieren
+LOAD DATA LOCAL INFILE '/path/to/data.csv'
+INTO TABLE cell_input
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+```
+
+**Falls Daten aus anderem Format:**
+
+- Kontaktieren Sie das Entwicklungsteam
+- Möglicherweise gibt es Import-Skripte
+- Siehe auch [docs/technical/DATABASE_SCHEMA.md](../docs/technical/DATABASE_SCHEMA.md)
+
+---
+
+## Alle Module kompilieren - Komplette Liste
+
+Diese Liste zeigt **alle Module** und die **exakte Kompilierungsreihenfolge**.
+
+### Kompilierungsreihenfolge (wichtig!)
+
+**Phase 1: Gemeinsame Bibliotheken (MUSS zuerst)**
+
+```bash
+# 1. general_function (keine Abhängigkeiten)
+cd src/general_function
+make clean
+make all
+# Prüfen: ls -la general_functions.o timestring.o country.o
+
+# 2. options (abhängig von general_function)
+cd ../options
+make clean
+make all
+# Prüfen: ls -la options.o options_scen.o
+```
+
+**Phase 2: Utility-Module**
+
+```bash
+# 3. newton (wird von water_temperature benötigt)
+cd ../newton
+make clean
+make all
+# Prüfen: ls -la Newton.o countryinfo.o
+```
+
+**Phase 3: Input-Module (können parallel kompiliert werden)**
+
+```bash
+# 4. fill_worldqual_load
+cd ../fill_worldqual_load
+make clean
+make all
+# Prüfen: ls -la fill_worldqual_load
+
+# 5. water_temperature (nutzt newton)
+cd ../water_temperature
+make clean
+make all
+# Prüfen: ls -la water_temperature
+
+# 6. rtf_input
+cd ../rtf_input
+make clean
+make all
+# Prüfen: ls -la rtf_input
+
+# 7. rtf_input_corr_factor
+cd ../rtf_input_corr_factor
+make clean
+make all
+# Prüfen: ls -la rtf_input_corr_factor
+
+# 8. pop_dens_input
+cd ../pop_dens_input
+make clean
+make all
+# Prüfen: ls -la pop_dens_input
+```
+
+**Phase 4: Core-Module**
+
+```bash
+# 9. wq_load (wird von fill_worldqual_load benötigt)
+cd ../wq_load
+make clean
+make all
+# Prüfen: ls -la wq_load
+
+# 10. worldqual (Hauptprogramm)
+cd ../worldqual
+make clean
+make all
+# Prüfen: ls -la worldqual
+```
+
+**Phase 5: Analyse-Module**
+
+```bash
+# 11. wq_stat
+cd ../wq_stat
+make clean
+make all
+# Prüfen: ls -la wq_stat
+
+# 12. wq_stat_stations
+cd ../wq_stat_stations
+make clean
+make all
+# Prüfen: ls -la wq_stat_stations
+
+# 13. wq_stat_scen
+cd ../wq_stat_scen
+make clean
+make all
+# Prüfen: ls -la wq_stat_scen
+
+# 14. wq_stat_riverdef
+cd ../wq_stat_riverdef
+make clean
+make all
+# Prüfen: ls -la river_start_end (oder ähnlich)
+```
+
+**Phase 6: Utility-Module**
+
+```bash
+# 15. MapRiverQuality
+cd ../MapRiverQuality
+make clean
+make all
+# Prüfen: ls -la mapRiverQuality
+
+# 16. find_river_cells
+cd ../find_river_cells
+make clean
+make all
+# Prüfen: ls -la find_river_cells
+
+# 17. wq_instream_daily
+cd ../wq_instream_daily
+make clean
+make all
+# Prüfen: ls -la wq_instream_daily
+
+# 18. create_scenarios
+cd ../create_scenarios
+make clean
+make all
+# Prüfen: ls -la create_scenarios
+
+# 19. copy_run
+cd ../copy_run
+make clean
+make all
+# Prüfen: ls -la copy_run
+
+# 20. copy_scen
+cd ../copy_scen
+make clean
+make all
+# Prüfen: ls -la copy_scen
+```
+
+### Automatisiertes Build-Skript
+
+**Erstellen Sie `build_all.sh`:**
+
+```bash
+#!/bin/bash
+# Build-Skript für alle WorldQual-Module
+
+set -e  # Bei Fehler abbrechen
+
+echo "Building WorldQual modules..."
+echo "================================"
+
+# Funktion zum Kompilieren
+build_module() {
+    local module=$1
+    echo ""
+    echo "Building $module..."
+    cd "src/$module"
+    if [ -f makefile ]; then
+        make clean
+        make all
+        if [ $? -eq 0 ]; then
+            echo "✓ $module built successfully"
+        else
+            echo "✗ ERROR: $module failed to build"
+            exit 1
+        fi
+        cd ../..
+    else
+        echo "⚠ WARNING: No makefile in $module"
+    fi
+}
+
+# Phase 1: Gemeinsame Bibliotheken
+build_module "general_function"
+build_module "options"
+
+# Phase 2: Utility
+build_module "newton"
+
+# Phase 3: Input-Module
+build_module "fill_worldqual_load"
+build_module "water_temperature"
+build_module "rtf_input"
+build_module "rtf_input_corr_factor"
+build_module "pop_dens_input"
+
+# Phase 4: Core
+build_module "wq_load"
+build_module "worldqual"
+
+# Phase 5: Analyse
+build_module "wq_stat"
+build_module "wq_stat_stations"
+build_module "wq_stat_scen"
+build_module "wq_stat_riverdef"
+
+# Phase 6: Utility
+build_module "MapRiverQuality"
+build_module "find_river_cells"
+build_module "wq_instream_daily"
+build_module "create_scenarios"
+build_module "copy_run"
+build_module "copy_scen"
+
+echo ""
+echo "================================"
+echo "All modules built successfully!"
+```
+
+**Verwendung:**
+```bash
+chmod +x build_all.sh
+./build_all.sh
+```
+
+### Modul-Übersicht
+
+| Modul | Zweck | Abhängigkeiten | Priorität |
+|-------|-------|----------------|-----------|
+| general_function | Gemeinsame Funktionen | keine | **Höchste** |
+| options | Konfiguration | general_function | **Höchste** |
+| newton | Numerische Kurvenanpassung | keine | Hoch |
+| fill_worldqual_load | Einträge berechnen | general_function, options | Hoch |
+| water_temperature | Wassertemperatur | general_function, options, newton | Hoch |
+| wq_load | Load-Berechnung | general_function, options | Hoch |
+| worldqual | Hauptsimulation | general_function, options, wq_load | **Kritisch** |
+| wq_stat* | Statistik | general_function, options | Mittel |
+| MapRiverQuality | Kartierung | general_function, options | Niedrig |
+| create_scenarios | Szenarien | general_function, options | Niedrig |
+| copy_* | Verwaltung | general_function, options | Niedrig |
+
+### Häufige Kompilierungsfehler
+
+**Fehler: "No rule to make target '../general_function/general_functions.o'"**
+
+**Lösung:** general_function muss zuerst kompiliert werden!
+```bash
+cd src/general_function && make all
+cd ../options && make all
+# Dann andere Module
+```
+
+**Fehler: "undefined reference to mysqlpp::..."**
+
+**Lösung:** Bibliothek nicht gelinkt oder falscher Pfad
+```makefile
+# In Makefile prüfen:
+LNKLIB = -lmysqlpp -lmysqlclient
+# Reihenfolge kann wichtig sein!
+```
+
+**Fehler: Verschiedene Module kompilieren nicht**
+
+**Lösung:** Prüfen Sie Abhängigkeiten
+- Module die `general_function` nutzen: müssen nach general_function kompiliert werden
+- Module die `options` nutzen: müssen nach options kompiliert werden
+- Module die `newton` nutzen: müssen nach newton kompiliert werden
+
+### Prüfen ob Kompilierung erfolgreich
+
+**Nach jedem Modul:**
+
+```bash
+# Ausführbare Datei existiert?
+ls -la modulname
+
+# Sollte zeigen:
+# -rwxr-xr-x 1 user user ... modulname
+# Das 'x' bedeutet ausführbar
+
+# Test-Ausführung (sollte Hilfe anzeigen oder Fehler wegen Parameter)
+./modulname
+```
+
+**Alle Module auf einmal prüfen:**
+
+```bash
+# Im Root-Verzeichnis
+for dir in src/*/; do
+    if [ -f "${dir}makefile" ]; then
+        module=$(basename "$dir")
+        if [ -f "${dir}${module}" ] || [ -f "${dir}worldqual" ] || [ -f "${dir}wq_load" ]; then
+            echo "✓ $module: OK"
+        else
+            echo "✗ $module: FEHLT"
+        fi
+    fi
+done
+```
+
+---
+
+## Fehlermeldungen verstehen - Kompletter Guide
+
+Diese Sektion erklärt **alle möglichen Fehlermeldungen** die auftreten können und wie man sie behebt.
+
+### Datenbank-Fehler
+
+#### "database connection failed..."
+
+**Was bedeutet das?**
+MySQL-Verbindung konnte nicht hergestellt werden.
+
+**Mögliche Ursachen:**
+1. MySQL-Server läuft nicht
+2. Falsche Verbindungsdaten
+3. Firewall blockiert Verbindung
+4. Benutzer hat keine Berechtigung
+
+**Lösung:**
+```bash
+# 1. MySQL läuft?
+systemctl status mysql
+# oder
+brew services list | grep mysql
+
+# 2. Verbindung testen
+mysql -u worldqual -p -h localhost
+# Falls Fehler: Passwort oder Benutzer falsch
+
+# 3. OPTIONS.DAT prüfen
+# MyHost, MyUser, MyPassword korrekt?
+
+# 4. Berechtigungen prüfen
+mysql -u root -p
+SHOW GRANTS FOR 'worldqual'@'localhost';
+```
+
+#### "ERROR: Wrong parameter: project_id"
+
+**Was bedeutet das?**
+Projekt-ID existiert nicht in der Datenbank.
+
+**Lösung:**
+```sql
+# Projekte anzeigen
+SELECT * FROM wq_general._project;
+
+# Falls leer: Projekt anlegen (siehe Datenbankstruktur anlegen)
+```
+
+#### "ERROR: Wrong parameter: IDScen"
+
+**Was bedeutet das?**
+Szenario-ID existiert nicht.
+
+**Lösung:**
+```sql
+# Szenarien anzeigen
+SELECT * FROM wq_general._szenario;
+
+# Falls leer: Szenario anlegen
+INSERT INTO _szenario (IDScen, ScenName, project_id) 
+VALUES (91, 'Baseline 2010', 2);
+```
+
+#### "ERROR: Wrong parameter: IDrun"
+
+**Was bedeutet das?**
+Run-ID existiert nicht oder ist nicht vollständig konfiguriert.
+
+**Lösung:**
+```sql
+# Run prüfen
+SELECT * FROM wq_general._runlist WHERE IDrun=403100091;
+
+# Falls leer: Run anlegen (komplex, siehe IDrun anlegen)
+# Oder: Prüfen ob alle benötigten Spalten gefüllt sind
+```
+
+#### "ERROR: Wrong parameter: parameter_id"
+
+**Was bedeutet das?**
+Parameter-ID existiert nicht.
+
+**Lösung:**
+```sql
+# Parameter anzeigen
+SELECT * FROM wq_general._parameter;
+
+# Falls leer: Parameter anlegen
+INSERT INTO _parameter (parameter_id, ParameterName) VALUES
+(0, 'BOD'), (1, 'TDS'), (2, 'FC'), (3, 'TN'), (4, 'TP');
+```
+
+#### "Query error: ..."
+
+**Was bedeutet das?**
+SQL-Query-Fehler (MySQL++ Exception).
+
+**Mögliche Ursachen:**
+- Tabelle existiert nicht
+- Spalte existiert nicht
+- Syntax-Fehler in Query
+- Datenbank nicht gewählt
+
+**Lösung:**
+```sql
+# Tabelle existiert?
+SHOW TABLES LIKE 'tabellenname';
+
+# Struktur prüfen
+DESCRIBE tabellenname;
+
+# Datenbank gewählt?
+SELECT DATABASE();
+USE wq_general;  # Falls nötig
+```
+
+#### "Conversion error: ..."
+
+**Was bedeutet das?**
+Datenkonvertierungs-Fehler (z.B. String zu INT).
+
+**Lösung:**
+- Prüfen Sie Datentypen in Datenbank
+- Prüfen Sie ob NULL-Werte vorhanden sind
+- Prüfen Sie Datenformat
+
+### Datei-Fehler
+
+#### "Can't open input file /path/to/file.UNF0"
+
+**Was bedeutet das?**
+Datei konnte nicht geöffnet werden.
+
+**Mögliche Ursachen:**
+1. Datei existiert nicht
+2. Falscher Pfad
+3. Keine Leseberechtigung
+4. Datei ist leer
+
+**Lösung:**
+```bash
+# 1. Datei existiert?
+ls -l /path/to/file.UNF0
+
+# 2. Pfad richtig?
+# In OPTIONS.DAT prüfen: input_dir = /pfad/zu/daten
+# Vollständiger Pfad: /pfad/zu/daten/G_Q_out_m3_2010.12.UNF0
+
+# 3. Rechte prüfen
+ls -l /path/to/file.UNF0
+# Sollte zeigen: -r--r--r-- oder -rw-r--r--
+chmod 644 /path/to/file.UNF0  # Falls nötig
+
+# 4. Datei nicht leer?
+ls -lh /path/to/file.UNF0
+# Sollte Größe > 0 zeigen
+```
+
+#### "Input file size mismatch"
+
+**Was bedeutet das?**
+Dateigröße stimmt nicht mit erwarteter Größe überein.
+
+**Mögliche Ursachen:**
+- Falsche Anzahl Zellen
+- Falsches Format
+- Datei beschädigt
+- Falsche Werte pro Zelle (12 vs. 1)
+
+**Lösung:**
+```bash
+# Erwartete Größe berechnen
+# Anzahl_Zellen * Datentyp_Größe * Werte_pro_Zelle
+
+# Beispiel: 70.000 Zellen, float (4 Bytes), 12 Monate
+# Erwartet: 70.000 * 4 * 12 = 3.360.000 Bytes
+
+# Tatsächliche Größe prüfen
+ls -l G_Q_out_m3_2010.12.UNF0
+
+# Falls unterschiedlich:
+# - Prüfen Sie Anzahl Zellen (continent.ng)
+# - Prüfen Sie ob Datei monatlich (12) oder jährlich (1) ist
+```
+
+#### "file ... bytesRead ... number_of_cells*valuesPerCell*type_size"
+
+**Was bedeutet das?**
+Datei wurde gelesen, aber Größe stimmt nicht.
+
+**Lösung:**
+- Prüfen Sie ob Datei vollständig ist
+- Prüfen Sie ob Dateiformat korrekt ist
+- Prüfen Sie Byte-Order (Big-Endian vs. Little-Endian)
+
+### Kompilierungsfehler
+
+#### "mysql++.h: No such file or directory"
+
+**Was bedeutet das?**
+MySQL++ Header-Datei nicht gefunden.
+
+**Lösung:**
+```bash
+# MySQL++ installiert?
+find /usr /usr/local -name "mysql++.h"
+
+# Pfad in Makefile anpassen:
+# -I/usr/local/include/mysql++  # Anpassen!
+```
+
+#### "cannot find -lmysqlpp"
+
+**Was bedeutet das?**
+MySQL++ Bibliothek nicht gefunden.
+
+**Lösung:**
+```bash
+# Bibliothek finden
+find /usr /usr/local -name "libmysqlpp.so*"
+
+# Pfad in Makefile anpassen:
+# -L/usr/local/lib  # Anpassen!
+```
+
+#### "undefined reference to mysqlpp::..."
+
+**Was bedeutet das?**
+Bibliothek wird nicht gelinkt.
+
+**Lösung:**
+```makefile
+# In Makefile prüfen:
+LNKLIB = -lmysqlpp -lmysqlclient
+# Muss NACH Objektdateien stehen:
+$(CC) $(OBJECTS) $(LNKLIB) -o $(APPNAME)
+```
+
+#### "multiple definition of ..."
+
+**Was bedeutet das?**
+Funktion mehrfach definiert.
+
+**Lösung:**
+- Funktionen in `.cpp` definieren, nicht in `.h`
+- `inline` für Template-Funktionen verwenden
+- Header-Guards prüfen (`#ifndef`)
+
+### Laufzeit-Fehler
+
+#### "not enough memory"
+
+**Was bedeutet das?**
+Nicht genug RAM verfügbar.
+
+**Lösung:**
+```bash
+# RAM prüfen
+free -h
+
+# Swap aktivieren (falls nicht aktiv)
+sudo swapon --show
+# Falls leer: Swap-Datei erstellen
+
+# Alternative: Kleinere Region/Zeitraum testen
+```
+
+#### "Segmentation fault" oder "Segfault"
+
+**Was bedeutet das?**
+Zugriff auf ungültigen Speicher.
+
+**Lösung:**
+```bash
+# Mit Debugger
+gdb ./worldqual
+(gdb) run 403100091 2010 2010
+# Programm crasht
+(gdb) backtrace
+# Zeigt wo Fehler auftrat
+
+# Häufige Ursachen:
+# - NULL-Pointer
+# - Array-Überlauf
+# - Nicht initialisierte Pointer
+```
+
+#### "Floating point exception"
+
+**Was bedeutet das?**
+Division durch Null oder ungültige Fließkomma-Operation.
+
+**Lösung:**
+- Prüfen Sie Divisionen (z.B. durch Q_out)
+- Prüfen Sie ob Werte NULL oder NaN sind
+- Prüfen Sie mathematische Funktionen (log, sqrt von negativen Werten)
+
+### Logik-Fehler
+
+#### "start year > end year"
+
+**Was bedeutet das?**
+Startjahr ist größer als Endjahr.
+
+**Lösung:**
+```bash
+# Parameter prüfen
+./worldqual 403100091 2010 2000  # FALSCH!
+./worldqual 403100091 2000 2010  # RICHTIG!
+```
+
+#### "ERROR: Wrong parameter"
+
+**Was bedeutet das?**
+Parameter ist keine Zahl oder ungültig.
+
+**Lösung:**
+- Prüfen Sie ob alle Parameter Zahlen sind
+- Prüfen Sie ob Parameter im erlaubten Bereich sind
+- Prüfen Sie Help-Ausgabe: `./programm` (ohne Parameter)
+
+### Daten-Fehler
+
+#### "value = NODATA" oder "value = NaN"
+
+**Was bedeutet das?**
+Ungültiger Wert (NoData oder Not-a-Number).
+
+**Lösung:**
+- Prüfen Sie Input-Daten
+- Prüfen Sie ob Berechnungen gültig sind
+- Prüfen Sie Divisionen durch Null
+
+#### "rout_area < min.rout.area" (in R-Skripten)
+
+**Was bedeutet das?**
+Einzugsgebietsfläche zu klein.
+
+**Lösung:**
+- Normal (Filter in R-Skripten)
+- Können Sie in R-Skript ignorieren oder anpassen
+
+### Performance-Probleme
+
+#### Programm läuft sehr langsam
+
+**Mögliche Ursachen:**
+- Zu große Region
+- Zu langer Zeitraum
+- Zu wenig RAM (Swapping)
+- Datenbank langsam
+
+**Lösung:**
+```bash
+# 1. Mit kleiner Region testen
+# 2. Mit einem Jahr testen
+# 3. RAM prüfen
+free -h
+
+# 4. Datenbank-Performance prüfen
+# Indizes vorhanden?
+SHOW INDEX FROM concentration;
+
+# 5. Parallele Prozesse vermeiden
+# Nur eine Simulation gleichzeitig!
+```
+
+### Fehlerbehebungs-Workflow
+
+**Systematisches Vorgehen:**
+
+1. **Fehlermeldung genau lesen**
+   - Was sagt die Meldung?
+   - Welches Modul?
+   - Welche Zeile (falls vorhanden)?
+
+2. **Kontext prüfen**
+   - Was wurde gerade gemacht?
+   - Welche Parameter wurden verwendet?
+   - Was wurde vorher ausgeführt?
+
+3. **Häufige Ursachen prüfen**
+   - Datenbankverbindung?
+   - Dateien vorhanden?
+   - Parameter korrekt?
+
+4. **Logging aktivieren**
+   ```bash
+   ./programm parameter > log.txt 2>&1
+   # Dann log.txt analysieren
+   ```
+
+5. **Debug-Modus aktivieren**
+   ```cpp
+   #define DEBUG
+   #define DEBUG_queries
+   ```
+
+6. **Mit Debugger**
+   ```bash
+   gdb ./programm
+   ```
 
 ---
 
