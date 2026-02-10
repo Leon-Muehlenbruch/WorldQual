@@ -22,13 +22,13 @@ Value: 3
 Value: 6
 
 4. MyHost
-Value: MySQL
+Value: <YOUR_MYSQL_HOST>
 
 5. MyUser
-Value: REMOVED_USER
+Value: <YOUR_MYSQL_USER>
 
 6. MyPassword
-Value: REMOVED_PASSWORD
+Value: <YOUR_MYSQL_PASSWORD>
 
 7. InputType
   0: Daten aus der Datenbanlk einlesen 

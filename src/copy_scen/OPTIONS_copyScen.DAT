@@ -57,7 +57,7 @@ Value: 2
 Value: MySQL
 
 11. MyUser
-Value: REMOVED_USER
+Value: <YOUR_MYSQL_USER>
 
 12. MyPassword
-Value: REMOVED_PASSWORD
+Value: <YOUR_MYSQL_PASSWORD>

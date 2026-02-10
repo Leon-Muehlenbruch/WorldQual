@@ -70,13 +70,13 @@ Value: 3
 Value: 2
 
 14. MyHost
-Value: MySQL
+Value: <YOUR_MYSQL_HOST>
 
 15. MyUser
-Value: REMOVED_USER
+Value: <YOUR_MYSQL_USER>
 
 16. MyPassword
-Value: REMOVED_PASSWORD
+Value: <YOUR_MYSQL_PASSWORD>
 
 17. InputType
   0: Daten aus der Datenbank einlesen (q, runoff... (auch Fliessgeschwindigkeit, wenn flowVelocityVariant==0))

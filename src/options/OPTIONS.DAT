@@ -27,10 +27,10 @@ Value: 3
 Value: 2
 
 5. MyHost
-Value: MySQL
+Value: <YOUR_MYSQL_HOST>
 
 6. MyUser
-Value: REMOVED_USER
+Value: <YOUR_MYSQL_USER>
 
 7. MyPassword
 Value: xxxx
