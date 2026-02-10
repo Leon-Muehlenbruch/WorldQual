@@ -1,0 +1,3273 @@
+
+<!doctype html>
+<html lang="de" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Globales Wasserqualitäts-Modellierungssystem">
+      
+      
+      
+        <link rel="canonical" href="https://leon-muehlenbruch.github.io/WorldQual/">
+      
+      
+      
+        <link rel="next" href="user/anleitung/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>WorldQual Dokumentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#worldqual---globales-wasserqualitäts-modellierungssystem" class="md-skip">
+          Zum Inhalt
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Kopfzeile">
+    <a href="." title="WorldQual Dokumentation" class="md-header__button md-logo" aria-label="WorldQual Dokumentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WorldQual Dokumentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Home
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Dunkelmodus aktivieren"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dunkelmodus aktivieren" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Hellmodus aktivieren"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Hellmodus aktivieren" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Suche" placeholder="Suche" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Suche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Zurücksetzen" aria-label="Zurücksetzen" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Suche wird initialisiert
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Leon-Muehlenbruch/WorldQual" title="Zum Repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Leon-Muehlenbruch/WorldQual
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Hauptnavigation" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="user/anleitung/" class="md-tabs__link">
+          
+  
+  
+  Benutzer-Dokumentation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="technical/ARCHITECTURE/" class="md-tabs__link">
+          
+  
+  
+  Entwickler-Dokumentation
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="WorldQual Dokumentation" class="md-nav__button md-logo" aria-label="WorldQual Dokumentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WorldQual Dokumentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Leon-Muehlenbruch/WorldQual" title="Zum Repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Leon-Muehlenbruch/WorldQual
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#inhaltsverzeichnis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inhaltsverzeichnis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#was-macht-worldqual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Was macht WorldQual?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Was macht WorldQual?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#einfach-erklärt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Einfach erklärt:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#was-kann-worldqual-berechnen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Was kann WorldQual berechnen?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typische-anwendungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Typische Anwendungen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voraussetzungen---schritt-für-schritt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voraussetzungen - Schritt für Schritt
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Voraussetzungen - Schritt für Schritt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-mysql-datenbank-einrichten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. MySQL-Datenbank einrichten
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. MySQL-Datenbank einrichten">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#was-ist-mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Was ist MySQL?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-11-mysql-installieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 1.1: MySQL installieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-12-mysql-konfigurieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 1.2: MySQL konfigurieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-13-datenbankstruktur-einrichten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 1.3: Datenbankstruktur einrichten
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-watergap-daten-beschaffen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. WaterGAP-Daten beschaffen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. WaterGAP-Daten beschaffen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#was-sind-watergap-daten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Was sind WaterGAP-Daten?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-21-datenquelle-finden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 2.1: Datenquelle finden
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-22-datenformat-verstehen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 2.2: Datenformat verstehen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-23-daten-prüfen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 2.3: Daten prüfen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-module-kompilieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Module kompilieren
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Module kompilieren">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#was-bedeutet-kompilieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Was bedeutet "kompilieren"?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-31-abhängigkeiten-installieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 3.1: Abhängigkeiten installieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-32-pfade-in-makefiles-anpassen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 3.2: Pfade in Makefiles anpassen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-33-module-kompilieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 3.3: Module kompilieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-34-kompilierungsfehler-beheben" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 3.4: Kompilierungsfehler beheben
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checkliste-alles-bereit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checkliste: Alles bereit?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schnellstart-quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schnellstart (Quick Start)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Schnellstart (Quick Start)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#für-neue-nutzer-erste-schritte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Für neue Nutzer: Erste Schritte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-1-konfiguration-vorbereiten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 1: Konfiguration vorbereiten
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-2-einträge-berechnen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 2: Einträge berechnen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-3-hauptsimulation-ausführen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 3: Hauptsimulation ausführen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-4-ergebnisse-analysieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 4: Ergebnisse analysieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-5-visualisierung-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 5: Visualisierung (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detaillierte-anleitung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detaillierte Anleitung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detaillierte Anleitung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#voraussetzungen-prüfen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voraussetzungen prüfen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#konfiguration-verstehen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Konfiguration verstehen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Konfiguration verstehen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#projekt-und-szenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Projekt und Szenario
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#region-und-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Region und Version
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datenbankverbindung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Datenbankverbindung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-daten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input-Daten
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kompletter-workflow-beispiel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kompletter Workflow: Beispiel
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kompletter Workflow: Beispiel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#beispiel-simulation-für-afrika-jahr-2010-parameter-fc-fäkalcoliforme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Beispiel: Simulation für Afrika, Jahr 2010, Parameter FC (Fäkalcoliforme)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-im-detail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Module im Detail
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Module im Detail">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kern-module-müssen-sie-verstehen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kern-Module (müssen Sie verstehen)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kern-Module (müssen Sie verstehen)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-fill_worldqual_load" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. fill_worldqual_load
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-worldqual-hauptsimulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. worldqual (Hauptsimulation)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-wq_stat_stations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. wq_stat_stations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unterstützungs-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unterstützungs-Module
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unterstützungs-Module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#water_temperature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        water_temperature
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create_scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        create_scenarios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapriverquality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MapRiverQuality
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r-skripte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R-Skripte
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#häufige-fragen-faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Häufige Fragen (FAQ)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Häufige Fragen (FAQ)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wie-finde-ich-die-richtige-idrun" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wie finde ich die richtige IDrun?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wie-lange-dauert-eine-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wie lange dauert eine Simulation?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#was-mache-ich-bei-fehlern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Was mache ich bei Fehlern?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kann-ich-mehrere-simulationen-parallel-laufen-lassen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kann ich mehrere Simulationen parallel laufen lassen?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wie-exportiere-ich-ergebnisse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wie exportiere ich Ergebnisse?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#systemanforderungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Systemanforderungen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Systemanforderungen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#software" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Software
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#daten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Daten
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kurzübersicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kurzübersicht
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schnellreferenz-für-erfahrene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schnellreferenz für Erfahrene
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#weitere-hilfe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weitere Hilfe
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Benutzer-Dokumentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Benutzer-Dokumentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="user/anleitung/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Detaillierte Anleitung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="user/schnellreferenz/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schnellreferenz
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="user/projektstruktur/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projektstruktur
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entwickler-Dokumentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Entwickler-Dokumentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="technical/ARCHITECTURE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architektur
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="technical/API/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API-Referenz
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="technical/BUILD_SYSTEM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build-System
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="technical/DATABASE_SCHEMA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datenbank-Schema
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="technical/DEVELOPMENT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Entwicklungsumgebung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="technical/CODING_STANDARDS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Code-Standards
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="technical/CONTRIBUTING/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhaltsverzeichnis">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhaltsverzeichnis
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#inhaltsverzeichnis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inhaltsverzeichnis
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#was-macht-worldqual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Was macht WorldQual?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Was macht WorldQual?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#einfach-erklärt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Einfach erklärt:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#was-kann-worldqual-berechnen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Was kann WorldQual berechnen?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typische-anwendungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Typische Anwendungen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voraussetzungen---schritt-für-schritt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voraussetzungen - Schritt für Schritt
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Voraussetzungen - Schritt für Schritt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-mysql-datenbank-einrichten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. MySQL-Datenbank einrichten
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. MySQL-Datenbank einrichten">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#was-ist-mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Was ist MySQL?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-11-mysql-installieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 1.1: MySQL installieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-12-mysql-konfigurieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 1.2: MySQL konfigurieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-13-datenbankstruktur-einrichten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 1.3: Datenbankstruktur einrichten
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-watergap-daten-beschaffen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. WaterGAP-Daten beschaffen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. WaterGAP-Daten beschaffen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#was-sind-watergap-daten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Was sind WaterGAP-Daten?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-21-datenquelle-finden" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 2.1: Datenquelle finden
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-22-datenformat-verstehen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 2.2: Datenformat verstehen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-23-daten-prüfen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 2.3: Daten prüfen
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-module-kompilieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Module kompilieren
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Module kompilieren">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#was-bedeutet-kompilieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Was bedeutet "kompilieren"?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-31-abhängigkeiten-installieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 3.1: Abhängigkeiten installieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-32-pfade-in-makefiles-anpassen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 3.2: Pfade in Makefiles anpassen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-33-module-kompilieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 3.3: Module kompilieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-34-kompilierungsfehler-beheben" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 3.4: Kompilierungsfehler beheben
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checkliste-alles-bereit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Checkliste: Alles bereit?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schnellstart-quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schnellstart (Quick Start)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Schnellstart (Quick Start)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#für-neue-nutzer-erste-schritte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Für neue Nutzer: Erste Schritte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-1-konfiguration-vorbereiten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 1: Konfiguration vorbereiten
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-2-einträge-berechnen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 2: Einträge berechnen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-3-hauptsimulation-ausführen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 3: Hauptsimulation ausführen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-4-ergebnisse-analysieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 4: Ergebnisse analysieren
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schritt-5-visualisierung-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schritt 5: Visualisierung (optional)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#detaillierte-anleitung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Detaillierte Anleitung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Detaillierte Anleitung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#voraussetzungen-prüfen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voraussetzungen prüfen
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#konfiguration-verstehen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Konfiguration verstehen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Konfiguration verstehen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#projekt-und-szenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Projekt und Szenario
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#region-und-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Region und Version
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datenbankverbindung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Datenbankverbindung
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#input-daten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input-Daten
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kompletter-workflow-beispiel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kompletter Workflow: Beispiel
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kompletter Workflow: Beispiel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#beispiel-simulation-für-afrika-jahr-2010-parameter-fc-fäkalcoliforme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Beispiel: Simulation für Afrika, Jahr 2010, Parameter FC (Fäkalcoliforme)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-im-detail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Module im Detail
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Module im Detail">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kern-module-müssen-sie-verstehen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kern-Module (müssen Sie verstehen)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kern-Module (müssen Sie verstehen)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-fill_worldqual_load" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. fill_worldqual_load
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-worldqual-hauptsimulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. worldqual (Hauptsimulation)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-wq_stat_stations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. wq_stat_stations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unterstützungs-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unterstützungs-Module
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unterstützungs-Module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#water_temperature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        water_temperature
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create_scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        create_scenarios
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapriverquality" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MapRiverQuality
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r-skripte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R-Skripte
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#häufige-fragen-faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Häufige Fragen (FAQ)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Häufige Fragen (FAQ)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wie-finde-ich-die-richtige-idrun" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wie finde ich die richtige IDrun?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wie-lange-dauert-eine-simulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wie lange dauert eine Simulation?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#was-mache-ich-bei-fehlern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Was mache ich bei Fehlern?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kann-ich-mehrere-simulationen-parallel-laufen-lassen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kann ich mehrere Simulationen parallel laufen lassen?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wie-exportiere-ich-ergebnisse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wie exportiere ich Ergebnisse?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#systemanforderungen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Systemanforderungen
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Systemanforderungen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#software" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Software
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#daten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Daten
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kurzübersicht" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kurzübersicht
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schnellreferenz-für-erfahrene" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schnellreferenz für Erfahrene
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#weitere-hilfe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Weitere Hilfe
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="worldqual---globales-wasserqualitäts-modellierungssystem">WorldQual - Globales Wasserqualitäts-Modellierungssystem<a class="headerlink" href="#worldqual---globales-wasserqualitäts-modellierungssystem" title="Permanent link">&para;</a></h1>
+<p><strong>Dokumentations-Übersicht:</strong> <a href="./">INDEX.md</a> | <a href="user/schnellreferenz/">Schnellreferenz</a> | <a href="user/anleitung/">Detaillierte Anleitung</a> | <a href="user/projektstruktur/">Projektstruktur</a></p>
+<h2 id="inhaltsverzeichnis">Inhaltsverzeichnis<a class="headerlink" href="#inhaltsverzeichnis" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="#was-macht-worldqual">Was macht WorldQual?</a></li>
+<li><a href="#schnellstart-quick-start">Schnellstart (Quick Start)</a></li>
+<li><a href="#detaillierte-anleitung">Detaillierte Anleitung</a></li>
+<li><a href="#module-im-detail">Module im Detail</a></li>
+<li><a href="#häufige-fragen-faq">Häufige Fragen (FAQ)</a></li>
+<li><a href="#systemanforderungen">Systemanforderungen</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#weitere-hilfe">Weitere Hilfe</a></li>
+</ul>
+<h2 id="was-macht-worldqual">Was macht WorldQual?<a class="headerlink" href="#was-macht-worldqual" title="Permanent link">&para;</a></h2>
+<p>WorldQual ist ein Computerprogramm, das <strong>vorhersagt, wie sauber oder verschmutzt Wasser in Flüssen weltweit ist</strong>. </p>
+<h3 id="einfach-erklärt">Einfach erklärt:<a class="headerlink" href="#einfach-erklärt" title="Permanent link">&para;</a></h3>
+<p>Stellen Sie sich vor, Sie möchten wissen:
+- <strong>Wie viel Schadstoffe</strong> sind in einem Fluss?
+- <strong>Woher kommen</strong> diese Schadstoffe? (z.B. aus Kläranlagen, Landwirtschaft, Industrie)
+- <strong>Wie verändern sich</strong> die Werte, wenn sich die Bedingungen ändern? (z.B. mehr Bevölkerung, Klimawandel)</p>
+<p>WorldQual beantwortet diese Fragen durch <strong>mathematische Simulationen</strong>. Es berechnet:
+1. <strong>Einträge</strong>: Wie viele Schadstoffe gelangen in die Flüsse (aus verschiedenen Quellen)
+2. <strong>Transport</strong>: Wie werden die Schadstoffe im Fluss transportiert?
+3. <strong>Abbau</strong>: Wie schnell werden Schadstoffe abgebaut oder verdünnt?
+4. <strong>Ergebnis</strong>: Welche Konzentration hat das Wasser am Ende?</p>
+<h3 id="was-kann-worldqual-berechnen">Was kann WorldQual berechnen?<a class="headerlink" href="#was-kann-worldqual-berechnen" title="Permanent link">&para;</a></h3>
+<p>WorldQual kann verschiedene <strong>Wasserqualitätsparameter</strong> simulieren:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Was bedeutet das?</th>
+<th>Warum wichtig?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>BOD</strong> (Biochemischer Sauerstoffbedarf)</td>
+<td>Wie viel Sauerstoff wird verbraucht, um organische Stoffe abzubauen</td>
+<td>Zeigt Verschmutzung durch Abwasser an</td>
+</tr>
+<tr>
+<td><strong>Salz</strong> (TDS)</td>
+<td>Gesamter Salzgehalt im Wasser</td>
+<td>Wichtig für Trinkwasser und Bewässerung</td>
+</tr>
+<tr>
+<td><strong>Fäkalcoliforme Bakterien</strong> (FC)</td>
+<td>Bakterien aus Fäkalien</td>
+<td>Gesundheitsrisiko, zeigt Verunreinigung an</td>
+</tr>
+<tr>
+<td><strong>Stickstoff</strong> (TN)</td>
+<td>Gesamtstickstoff</td>
+<td>Kann zu Algenblüte führen, aus Dünger</td>
+</tr>
+<tr>
+<td><strong>Phosphor</strong> (TP)</td>
+<td>Gesamtphosphor</td>
+<td>Kann zu Algenblüte führen, aus Dünger</td>
+</tr>
+</tbody>
+</table>
+<h3 id="typische-anwendungen">Typische Anwendungen<a class="headerlink" href="#typische-anwendungen" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Forschung</strong>: Wie verändert sich die Wasserqualität durch Klimawandel?</li>
+<li><strong>Planung</strong>: Was passiert, wenn sich Bevölkerungsdichte oder Landnutzung ändert?</li>
+<li><strong>Validierung</strong>: Stimmen unsere Vorhersagen mit gemessenen Daten überein?</li>
+<li><strong>Szenarien</strong>: Vergleich verschiedener Zukunftsszenarien</li>
+</ul>
+<hr />
+<h2 id="voraussetzungen---schritt-für-schritt">Voraussetzungen - Schritt für Schritt<a class="headerlink" href="#voraussetzungen---schritt-für-schritt" title="Permanent link">&para;</a></h2>
+<p>Bevor Sie WorldQual nutzen können, müssen Sie drei Dinge einrichten. Diese Anleitung erklärt jeden Schritt detailliert, als ob Sie niemanden hätten, den Sie fragen können.</p>
+<h3 id="1-mysql-datenbank-einrichten">1. MySQL-Datenbank einrichten<a class="headerlink" href="#1-mysql-datenbank-einrichten" title="Permanent link">&para;</a></h3>
+<h4 id="was-ist-mysql">Was ist MySQL?<a class="headerlink" href="#was-ist-mysql" title="Permanent link">&para;</a></h4>
+<p>MySQL ist ein Datenbankserver, der die Daten für WorldQual speichert (Projekte, Szenarien, Simulationsergebnisse, etc.).</p>
+<h4 id="schritt-11-mysql-installieren">Schritt 1.1: MySQL installieren<a class="headerlink" href="#schritt-11-mysql-installieren" title="Permanent link">&para;</a></h4>
+<p><strong>Linux (Ubuntu/Debian):</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># MySQL Server installieren</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>mysql-server
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># MySQL starten</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>mysql
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>mysql<span class="w">  </span><span class="c1"># Startet automatisch beim Booten</span>
+</code></pre></div></p>
+<p><strong>macOS:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Mit Homebrew installieren</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>brew<span class="w"> </span>install<span class="w"> </span>mysql@8.0
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>brew<span class="w"> </span>services<span class="w"> </span>start<span class="w"> </span>mysql@8.0
+</code></pre></div></p>
+<p><strong>Prüfen ob MySQL läuft:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>mysql<span class="w">  </span><span class="c1"># Linux</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># oder</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>brew<span class="w"> </span>services<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>mysql<span class="w">  </span><span class="c1"># macOS</span>
+</code></pre></div></p>
+<h4 id="schritt-12-mysql-konfigurieren">Schritt 1.2: MySQL konfigurieren<a class="headerlink" href="#schritt-12-mysql-konfigurieren" title="Permanent link">&para;</a></h4>
+<p><strong>Erste Einrichtung (nur beim ersten Start):</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Sicherheits-Skript ausführen (Linux)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo<span class="w"> </span>mysql_secure_installation
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># Oder direkt als root einloggen (macOS)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>mysql<span class="w"> </span>-u<span class="w"> </span>root
+</code></pre></div></p>
+<p><strong>Benutzer für WorldQual erstellen:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">-- In MySQL einloggen</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">mysql</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">-</span><span class="n">p</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1">-- Benutzer erstellen</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;worldqual&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;ihr_passwort_hier&#39;</span><span class="p">;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1">-- Berechtigungen geben</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="k">GRANT</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;worldqual&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="n">FLUSH</span><span class="w"> </span><span class="k">PRIVILEGES</span><span class="p">;</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="c1">-- Testen</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="n">mysql</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="n">worldqual</span><span class="w"> </span><span class="o">-</span><span class="n">p</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="c1">-- Passwort eingeben, dann sollte es funktionieren</span>
+</code></pre></div></p>
+<p><strong>Wichtig:</strong> Merken Sie sich:
+- Benutzername: <code>worldqual</code> (oder wie Sie es genannt haben)
+- Passwort: Das, was Sie oben eingegeben haben
+- Host: <code>localhost</code> (wenn lokal) oder die IP-Adresse des Servers</p>
+<h4 id="schritt-13-datenbankstruktur-einrichten">Schritt 1.3: Datenbankstruktur einrichten<a class="headerlink" href="#schritt-13-datenbankstruktur-einrichten" title="Permanent link">&para;</a></h4>
+<p>WorldQual benötigt spezielle Datenbanktabellen. Diese müssen Sie entweder:
+- <strong>Von einem bestehenden Projekt kopieren</strong>, oder
+- <strong>Neu erstellen</strong> (benötigt Datenbank-Schema-Dateien)</p>
+<p><strong>Falls Sie ein bestehendes Projekt haben:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Datenbank exportieren</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>mysqldump<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>-p<span class="w"> </span>wq_general<span class="w"> </span>&gt;<span class="w"> </span>wq_general_backup.sql
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Auf neuem System importieren</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>mysql<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>-p<span class="w"> </span>&lt;<span class="w"> </span>wq_general_backup.sql
+</code></pre></div></p>
+<p><strong>Falls Sie neu starten:</strong>
+Sie benötigen die Datenbank-Schema-Dateien (normalerweise <code>.sql</code> Dateien). Diese sollten vom Projekt bereitgestellt werden.</p>
+<p><strong>Prüfen ob Datenbanken existieren:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">mysql</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="n">worldqual</span><span class="w"> </span><span class="o">-</span><span class="n">p</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">SHOW</span><span class="w"> </span><span class="n">DATABASES</span><span class="p">;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="c1">-- Sollten Sie sehen: wq_general (und eventuell weitere)</span>
+</code></pre></div></p>
+<h3 id="2-watergap-daten-beschaffen">2. WaterGAP-Daten beschaffen<a class="headerlink" href="#2-watergap-daten-beschaffen" title="Permanent link">&para;</a></h3>
+<h4 id="was-sind-watergap-daten">Was sind WaterGAP-Daten?<a class="headerlink" href="#was-sind-watergap-daten" title="Permanent link">&para;</a></h4>
+<p>WaterGAP (Water Global Assessment and Prognosis) ist ein hydrologisches Modell. WorldQual benötigt dessen Output-Daten:
+- Abfluss (Q_out) - wie viel Wasser fließt im Fluss?
+- Runoff - wie viel Wasser fließt ab?
+- Weitere hydrologische Daten</p>
+<h4 id="schritt-21-datenquelle-finden">Schritt 2.1: Datenquelle finden<a class="headerlink" href="#schritt-21-datenquelle-finden" title="Permanent link">&para;</a></h4>
+<p><strong>Option A: Sie haben bereits Zugriff</strong>
+- Fragen Sie Ihren Betreuer/Kollegen nach dem Pfad zu den Daten
+- Daten sind normalerweise in UNF-Dateien (binäres Format)</p>
+<p><strong>Option B: Daten müssen beschafft werden</strong>
+- Kontaktieren Sie die WaterGAP-Projektgruppe
+- Oder nutzen Sie öffentlich verfügbare WaterGAP-Daten (falls verfügbar)</p>
+<h4 id="schritt-22-datenformat-verstehen">Schritt 2.2: Datenformat verstehen<a class="headerlink" href="#schritt-22-datenformat-verstehen" title="Permanent link">&para;</a></h4>
+<p>WaterGAP-Daten kommen als <strong>UNF-Dateien</strong> (Unformatted):
+- Format: Binär (nicht lesbar als Text)
+- Struktur: Grid-Daten (0.5° x 0.5° Auflösung)
+- Zeitreihen: Monatlich (12 Werte pro Jahr) oder jährlich</p>
+<p><strong>Typische Dateinamen:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>G_Q_out_m3_2010.12.UNF0    # Monatlicher Abfluss für 2010
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>G_RUNOFF_TOTAL_mm_2010.12.UNF0  # Monatlicher Runoff für 2010
+</code></pre></div></p>
+<h4 id="schritt-23-daten-prüfen">Schritt 2.3: Daten prüfen<a class="headerlink" href="#schritt-23-daten-prüfen" title="Permanent link">&para;</a></h4>
+<p><strong>Prüfen ob Dateien existieren:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># In das Verzeichnis wechseln</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nb">cd</span><span class="w"> </span>/pfad/zu/watergap/daten
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># Dateien anzeigen</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>ls<span class="w"> </span>-lh<span class="w"> </span>G_*.UNF0
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="c1"># Sollten Sie sehen:</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="c1"># - Dateien für verschiedene Jahre</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="c1"># - Verschiedene Parameter (Q_out, RUNOFF, etc.)</span>
+</code></pre></div></p>
+<p><strong>Wichtig:</strong> 
+- Notieren Sie den vollständigen Pfad (z.B. <code>/home/user/watergap_data/africa</code>)
+- Dieser Pfad wird später in <code>OPTIONS.DAT</code> benötigt</p>
+<h3 id="3-module-kompilieren">3. Module kompilieren<a class="headerlink" href="#3-module-kompilieren" title="Permanent link">&para;</a></h3>
+<h4 id="was-bedeutet-kompilieren">Was bedeutet "kompilieren"?<a class="headerlink" href="#was-bedeutet-kompilieren" title="Permanent link">&para;</a></h4>
+<p>Kompilieren bedeutet, den C++-Quellcode in ausführbare Programme umzuwandeln.</p>
+<h4 id="schritt-31-abhängigkeiten-installieren">Schritt 3.1: Abhängigkeiten installieren<a class="headerlink" href="#schritt-31-abhängigkeiten-installieren" title="Permanent link">&para;</a></h4>
+<p><strong>C++ Compiler:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Linux</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>build-essential<span class="w"> </span>g++
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># macOS (Xcode Command Line Tools)</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>xcode-select<span class="w"> </span>--install
+</code></pre></div></p>
+<p><strong>MySQL++ Bibliothek (C++ MySQL Connector):</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Linux (Ubuntu/Debian)</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>libmysql++-dev<span class="w"> </span>libmysqlclient-dev
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># macOS</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>brew<span class="w"> </span>install<span class="w"> </span>mysql-connector-c++
+</code></pre></div></p>
+<p><strong>Prüfen ob installiert:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>g++<span class="w"> </span>--version<span class="w">  </span><span class="c1"># Sollte Version anzeigen</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>mysql_config<span class="w"> </span>--version<span class="w">  </span><span class="c1"># Sollte MySQL-Version anzeigen</span>
+</code></pre></div></p>
+<h4 id="schritt-32-pfade-in-makefiles-anpassen">Schritt 3.2: Pfade in Makefiles anpassen<a class="headerlink" href="#schritt-32-pfade-in-makefiles-anpassen" title="Permanent link">&para;</a></h4>
+<p><strong>Problem:</strong> Die Makefiles müssen wissen, wo MySQL++ installiert ist. Dies kann je nach System unterschiedlich sein.</p>
+<p><strong>Schritt 1: MySQL++ Pfade finden</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Header-Dateien finden</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>find<span class="w"> </span>/usr<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;mysql++.h&quot;</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="c1"># Oder</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>find<span class="w"> </span>/usr/local<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;mysql++.h&quot;</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="c1"># Bibliotheken finden</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>find<span class="w"> </span>/usr<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;libmysqlpp.so&quot;</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="c1"># Oder</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>find<span class="w"> </span>/usr/local<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;libmysqlpp.so&quot;</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null
+</code></pre></div></p>
+<p><strong>Schritt 2: Makefile anpassen</strong></p>
+<p>Öffnen Sie ein Makefile (z.B. <code>water_temperature/makefile</code>):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c"># Aktuelle Zeile (kann unterschiedlich sein):</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nv">INCDIROPTS</span><span class="w">  </span><span class="o">=</span><span class="w"> </span>-L/usr/lib/libmysqlpp.so<span class="w"> </span>-I/usr/include/mysql<span class="w">  </span>-I/usr/include/mysql++<span class="w"> </span>...
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c"># Anpassen falls nötig:</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="nv">INCDIROPTS</span><span class="w">  </span><span class="o">=</span><span class="w"> </span>-L/usr/local/lib/libmysqlpp.so<span class="w"> </span>-I/usr/include/mysql<span class="w">  </span>-I/usr/local/include/mysql++<span class="w"> </span>...
+</code></pre></div>
+<p><strong>Typische Pfade:</strong>
+- Linux: <code>/usr/include/mysql++</code>, <code>/usr/lib/libmysqlpp.so</code>
+- macOS: <code>/usr/local/include/mysql++</code>, <code>/usr/local/lib/libmysqlpp.so</code></p>
+<h4 id="schritt-33-module-kompilieren">Schritt 3.3: Module kompilieren<a class="headerlink" href="#schritt-33-module-kompilieren" title="Permanent link">&para;</a></h4>
+<p><strong>Reihenfolge ist wichtig! Zuerst gemeinsame Module:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># 1. general_function (wird von allen anderen benötigt)</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nb">cd</span><span class="w"> </span>general_function
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>make<span class="w"> </span>clean
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>make<span class="w"> </span>all
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="c1"># Sollte keine Fehler geben</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c1"># 2. options (wird auch von allen benötigt)</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="nb">cd</span><span class="w"> </span>../options
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>make<span class="w"> </span>clean
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>make<span class="w"> </span>all
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="c1"># Sollte keine Fehler geben</span>
+</code></pre></div>
+<p><strong>Dann spezifische Module:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># 3. water_temperature</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nb">cd</span><span class="w"> </span>../water_temperature
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>make<span class="w"> </span>clean
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>make<span class="w"> </span>all
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="c1"># Prüfen: ls -la water_temperature (sollte ausführbare Datei sein)</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="c1"># 4. fill_worldqual_load</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="nb">cd</span><span class="w"> </span>../fill_worldqual_load
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>make<span class="w"> </span>clean
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>make<span class="w"> </span>all
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="c1"># Prüfen: ls -la fill_worldqual_load</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="c1"># 5. worldqual (Hauptprogramm)</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="nb">cd</span><span class="w"> </span>../worldqual
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>make<span class="w"> </span>clean
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>make<span class="w"> </span>all
+<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="c1"># Prüfen: ls -la worldqual</span>
+<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>
+<a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a><span class="c1"># 6. Weitere Module nach Bedarf...</span>
+</code></pre></div>
+<h4 id="schritt-34-kompilierungsfehler-beheben">Schritt 3.4: Kompilierungsfehler beheben<a class="headerlink" href="#schritt-34-kompilierungsfehler-beheben" title="Permanent link">&para;</a></h4>
+<p><strong>Häufige Fehler:</strong></p>
+<p><strong>Fehler: "mysql++.h: No such file or directory"</strong>
+- Lösung: MySQL++ Header-Pfad in Makefile anpassen (siehe Schritt 3.2)</p>
+<p><strong>Fehler: "cannot find -lmysqlpp"</strong>
+- Lösung: Bibliotheks-Pfad in Makefile anpassen</p>
+<p><strong>Fehler: "undefined reference to mysqlpp::..."</strong>
+- Lösung: Bibliothek nicht gefunden, Pfade prüfen</p>
+<p><strong>Test ob Kompilierung erfolgreich:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Prüfen ob ausführbare Dateien existieren</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>ls<span class="w"> </span>-la<span class="w"> </span>worldqual<span class="w"> </span>fill_worldqual_load<span class="w"> </span>water_temperature
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1"># Sollten ausführbar sein (grün, x-Berechtigung)</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="c1"># Test-Ausführung (sollte Hilfe anzeigen oder Fehler wegen fehlender Parameter)</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>./worldqual
+</code></pre></div></p>
+<h3 id="checkliste-alles-bereit">Checkliste: Alles bereit?<a class="headerlink" href="#checkliste-alles-bereit" title="Permanent link">&para;</a></h3>
+<p>Prüfen Sie vor dem Start:</p>
+<ul>
+<li>[ ] MySQL läuft: <code>systemctl status mysql</code> (Linux) oder <code>brew services list | grep mysql</code> (macOS)</li>
+<li>[ ] MySQL-Benutzer existiert: <code>mysql -u worldqual -p</code> funktioniert</li>
+<li>[ ] Datenbanken existieren: <code>SHOW DATABASES;</code> zeigt <code>wq_general</code></li>
+<li>[ ] WaterGAP-Daten vorhanden: <code>ls /pfad/zu/daten/*.UNF0</code> zeigt Dateien</li>
+<li>[ ] Module kompiliert: <code>ls -la worldqual fill_worldqual_load</code> zeigt ausführbare Dateien</li>
+<li>[ ] Pfade bekannt: Sie wissen wo MySQL++ installiert ist</li>
+</ul>
+<p><strong>Wenn alles erledigt ist, können Sie mit dem Schnellstart beginnen!</strong></p>
+<hr />
+<h2 id="schnellstart-quick-start">Schnellstart (Quick Start)<a class="headerlink" href="#schnellstart-quick-start" title="Permanent link">&para;</a></h2>
+<h3 id="für-neue-nutzer-erste-schritte">Für neue Nutzer: Erste Schritte<a class="headerlink" href="#für-neue-nutzer-erste-schritte" title="Permanent link">&para;</a></h3>
+<p><strong>Voraussetzung:</strong> Sie haben die obigen Schritte abgeschlossen:
+- ✅ MySQL-Datenbank eingerichtet und getestet
+- ✅ WaterGAP-Daten verfügbar und Pfad notiert
+- ✅ Alle Module erfolgreich kompiliert</p>
+<h3 id="schritt-1-konfiguration-vorbereiten">Schritt 1: Konfiguration vorbereiten<a class="headerlink" href="#schritt-1-konfiguration-vorbereiten" title="Permanent link">&para;</a></h3>
+<p>Jedes Modul braucht eine <code>OPTIONS.DAT</code> Datei. Kopieren Sie eine Beispiel-Datei:</p>
+<p><strong>Tipp:</strong> Detaillierte Erklärung der Konfiguration finden Sie in <a href="user/anleitung/#konfiguration-verstehen">DOCUMENTATION.md - Konfiguration verstehen</a></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nb">cd</span><span class="w"> </span>fill_worldqual_load
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>cp<span class="w"> </span>OPTIONS.DAT<span class="w"> </span>OPTIONS.DAT.mein_projekt
+</code></pre></div>
+<p><strong>Wie öffnet man OPTIONS.DAT?</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># Mit nano (einfacher Editor)</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>nano<span class="w"> </span>OPTIONS.DAT
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1"># Navigation in nano:</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="c1"># - Pfeiltasten: Bewegen</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="c1"># - Strg+O: Speichern (dann Enter drücken)</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="c1"># - Strg+X: Beenden</span>
+</code></pre></div>
+<p><strong>Was genau ändern?</strong></p>
+<p>Die Datei enthält Zeilen wie:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>Value: 2
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>Value: 91
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>Value: localhost
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>Value: worldqual
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>Value: passwort
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>Value: /pfad/zu/daten
+</code></pre></div></p>
+<p><strong>Ändern Sie die Werte nach "Value:":</strong></p>
+<ul>
+<li><code>Value: 2</code> → Ihre Projektnummer (z.B. 2 für WWQA)</li>
+<li><code>Value: 91</code> → Ihre Szenario-Nummer (z.B. 91)</li>
+<li><code>Value: 2</code> → Region (1=EU, 2=AF, 3=AS, 4=AU, 5=NA, 6=SA)</li>
+<li><code>Value: localhost</code> → MySQL-Server (localhost oder IP-Adresse)</li>
+<li><code>Value: worldqual</code> → MySQL-Benutzername</li>
+<li><code>Value: passwort</code> → MySQL-Passwort</li>
+<li><code>Value: /pfad/zu/daten</code> → Vollständiger Pfad zu WaterGAP-Daten</li>
+</ul>
+<p><strong>Wichtig:</strong> 
+- Ändern Sie NUR die Werte nach "Value:"
+- Lassen Sie den Rest der Datei unverändert
+- Speichern Sie die Datei (Strg+O, dann Enter)</p>
+<p><strong>Detaillierte Erklärung:</strong> Siehe <a href="user/anleitung/#konfiguration-verstehen">DOCUMENTATION.md - Konfiguration verstehen</a></p>
+<h3 id="schritt-2-einträge-berechnen">Schritt 2: Einträge berechnen<a class="headerlink" href="#schritt-2-einträge-berechnen" title="Permanent link">&para;</a></h3>
+<p>Berechnen Sie, wie viele Schadstoffe in die Flüsse gelangen:</p>
+<p><strong>Mehr Details:</strong> Siehe <a href="user/anleitung/#fill_worldqual_load---einträge-berechnen">DOCUMENTATION.md - fill_worldqual_load</a></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nb">cd</span><span class="w"> </span>fill_worldqual_load
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="c1"># OPTIONS.DAT anpassen!</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>./fill_worldqual_load<span class="w"> </span><span class="m">2010</span><span class="w"> </span><span class="m">2010</span>
+</code></pre></div>
+<p><strong>Was passiert hier?</strong>
+- Das Programm liest Daten über Bevölkerungsdichte, Abwasserbehandlung, Landnutzung, etc.
+- Es berechnet für jede Grid-Zelle (ca. 0.5° x 0.5°), wie viele Schadstoffe pro Monat eingetragen werden
+- Die Ergebnisse werden in der Datenbank gespeichert</p>
+<p><strong>Dauer:</strong> Abhängig von Region und Zeitraum (kann Minuten bis Stunden dauern)</p>
+<h3 id="schritt-3-hauptsimulation-ausführen">Schritt 3: Hauptsimulation ausführen<a class="headerlink" href="#schritt-3-hauptsimulation-ausführen" title="Permanent link">&para;</a></h3>
+<p>Simulieren Sie die Wasserqualität im Fluss:</p>
+<p><strong>Mehr Details:</strong> Siehe <a href="user/anleitung/#worldqual---hauptsimulation">DOCUMENTATION.md - worldqual</a></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nb">cd</span><span class="w"> </span>../worldqual
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="c1"># 1. IDrun aus Datenbank holen (siehe unten)</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="c1"># 2. OPTIONS.DAT anpassen (wie Schritt 1)</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="c1"># 3. Simulation starten</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>./worldqual<span class="w"> </span><span class="m">403100091</span><span class="w"> </span><span class="m">2010</span><span class="w"> </span><span class="m">2010</span>
+</code></pre></div>
+<p><strong>Wie finde ich die IDrun?</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="o">#</span><span class="w"> </span><span class="k">In</span><span class="w"> </span><span class="n">MySQL</span><span class="w"> </span><span class="n">einloggen</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="n">mysql</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="n">worldqual</span><span class="w"> </span><span class="o">-</span><span class="n">p</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="o">#</span><span class="w"> </span><span class="n">Datenbank</span><span class="w"> </span><span class="n">wählen</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="n">USE</span><span class="w"> </span><span class="n">wq_general</span><span class="p">;</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="o">#</span><span class="w"> </span><span class="n">IDrun</span><span class="w"> </span><span class="n">suchen</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">IDrun</span><span class="p">,</span><span class="w"> </span><span class="n">runName</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">_runlist</span><span class="w"> </span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">parameter_id</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">IDScen</span><span class="o">=</span><span class="mi">91</span><span class="p">;</span>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="o">#</span><span class="w"> </span><span class="n">Ergebnis</span><span class="w"> </span><span class="n">z</span><span class="p">.</span><span class="n">B</span><span class="p">.:</span><span class="w"> </span><span class="mi">403100091</span>
+</code></pre></div>
+<p><strong>Was wenn keine IDrun existiert?</strong>
+Sie müssen eine IDrun in der Datenbank anlegen. Dies ist komplex - siehe <a href="user/anleitung/#schritt-5-hauptsimulation">DOCUMENTATION.md - IDrun finden</a> für Details.</p>
+<p><strong>Was passiert hier?</strong>
+- Das Programm liest die Einträge aus Schritt 2
+- Es simuliert, wie die Schadstoffe im Fluss transportiert werden
+- Es berechnet Abbauprozesse (z.B. Bakterien sterben ab, Nährstoffe werden abgebaut)
+- Ergebnis: Konzentrationen für jede Grid-Zelle, jeden Monat</p>
+<p><strong>Dauer:</strong> Kann Stunden bis Tage dauern (abhängig von Region und Zeitraum)</p>
+<h3 id="schritt-4-ergebnisse-analysieren">Schritt 4: Ergebnisse analysieren<a class="headerlink" href="#schritt-4-ergebnisse-analysieren" title="Permanent link">&para;</a></h3>
+<p>Vergleichen Sie Ihre Simulation mit gemessenen Daten:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nb">cd</span><span class="w"> </span>../wq_stat_stations
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>./wq_stat_stations<span class="w"> </span><span class="m">403100091</span><span class="w"> </span><span class="m">2010</span><span class="w"> </span><span class="m">2010</span>
+</code></pre></div>
+<p><strong>Was passiert hier?</strong>
+- Das Programm findet Messstationen in der Datenbank
+- Es vergleicht Ihre simulierten Werte mit den gemessenen Werten
+- Es berechnet statistische Kennzahlen (z.B. R², RMSE)
+- Ergebnis: Textdateien mit Vergleichsdaten</p>
+<h3 id="schritt-5-visualisierung-optional">Schritt 5: Visualisierung (optional)<a class="headerlink" href="#schritt-5-visualisierung-optional" title="Permanent link">&para;</a></h3>
+<p>Erstellen Sie Diagramme mit R:</p>
+<p><strong>Voraussetzung: R installieren</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># Linux</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>r-base
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="c1"># macOS</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>brew<span class="w"> </span>install<span class="w"> </span>r
+</code></pre></div>
+<p><strong>R-Pakete installieren:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># R öffnen (im Terminal: R)</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="nf">install.packages</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;ggplot2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;gridExtra&quot;</span><span class="p">))</span>
+</code></pre></div></p>
+<p><strong>R-Skripte nutzen:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1"># 1. R öffnen</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="n">R</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="c1"># 2. In Verzeichnis wechseln</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="nf">setwd</span><span class="p">(</span><span class="s">&quot;R-scripte&quot;</span><span class="p">)</span>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="c1"># 3. start.R anpassen (mit Texteditor oder file.edit(&quot;start.R&quot;))</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a><span class="c1"># Wichtige Variablen:</span>
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="c1"># - input.path: Pfad zu Statistik-Dateien</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="c1"># - current_dir: Wo Grafiken gespeichert werden</span>
+<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="c1"># - unit: Einheit (z.B. &quot;cfu/100ml&quot; für FC)</span>
+<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a><span class="c1"># - log_scale: &quot;y&quot; für logarithmische y-Achse</span>
+<a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a>
+<a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a><span class="c1"># 4. Skripte ausführen</span>
+<a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a><span class="nf">source</span><span class="p">(</span><span class="s">&quot;start.R&quot;</span><span class="p">)</span>
+<a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a><span class="nf">source</span><span class="p">(</span><span class="s">&quot;station.R&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1"># Diagramme für einzelne Stationen</span>
+</code></pre></div>
+<p><strong>Detaillierte Anleitung:</strong> Siehe <a href="user/anleitung/#schritt-8-visualisierung">DOCUMENTATION.md - Visualisierung</a></p>
+<hr />
+<h2 id="detaillierte-anleitung">Detaillierte Anleitung<a class="headerlink" href="#detaillierte-anleitung" title="Permanent link">&para;</a></h2>
+<h3 id="voraussetzungen-prüfen">Voraussetzungen prüfen<a class="headerlink" href="#voraussetzungen-prüfen" title="Permanent link">&para;</a></h3>
+<p>Bevor Sie starten, prüfen Sie:</p>
+<ol>
+<li>
+<p><strong>MySQL-Datenbank läuft?</strong>
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>systemctl<span class="w"> </span>status<span class="w"> </span>mysql
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="c1"># oder</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>mysql<span class="w"> </span>-u<span class="w"> </span>username<span class="w"> </span>-p<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;SHOW DATABASES;&quot;</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Module kompiliert?</strong>
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nb">cd</span><span class="w"> </span>general_function<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>all
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="nb">cd</span><span class="w"> </span>../options<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>all
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="nb">cd</span><span class="w"> </span>../water_temperature<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>all
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="c1"># etc.</span>
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Input-Daten vorhanden?</strong></p>
+</li>
+<li>WaterGAP-Daten (Abfluss, Runoff, etc.)</li>
+<li>Bevölkerungsdaten</li>
+<li>Landnutzungsdaten</li>
+<li>Weitere je nach Parameter</li>
+</ol>
+<h3 id="konfiguration-verstehen">Konfiguration verstehen<a class="headerlink" href="#konfiguration-verstehen" title="Permanent link">&para;</a></h3>
+<p>Die <code>OPTIONS.DAT</code> Datei ist das Herzstück der Konfiguration. Hier die wichtigsten Einstellungen:</p>
+<h4 id="projekt-und-szenario">Projekt und Szenario<a class="headerlink" href="#projekt-und-szenario" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>1. project_id
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>   Welches Projekt verwenden Sie?
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>   1: CESR
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>   2: WWQA
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>   3: CESR Sensitivity Analysis
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a>   4: test
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>Value: 2
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a>2. IDScen
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a>   Welches Szenario simulieren Sie?
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a>   (Nummer aus Datenbanktabelle wq_general._szenario)
+<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a>Value: 91
+</code></pre></div>
+<p><strong>Wo finde ich die richtigen Nummern?</strong>
+- In der MySQL-Datenbank: <code>SELECT * FROM wq_general._project;</code>
+- In der MySQL-Datenbank: <code>SELECT * FROM wq_general._szenario;</code></p>
+<h4 id="region-und-version">Region und Version<a class="headerlink" href="#region-und-version" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>3. IDVersion
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>   Welche WaterGAP-Version?
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>   2: WaterGAP2
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>   3: WaterGAP3
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>Value: 3
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>
+<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a>4. IDReg
+<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a>   Welche Region?
+<a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a>   1: Europa (eu)
+<a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a>   2: Afrika (af)
+<a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a>   3: Asien (as)
+<a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a>   4: Australien (au)
+<a id="__codelineno-30-13" name="__codelineno-30-13" href="#__codelineno-30-13"></a>   5: Nordamerika (na)
+<a id="__codelineno-30-14" name="__codelineno-30-14" href="#__codelineno-30-14"></a>   6: Südamerika (sa)
+<a id="__codelineno-30-15" name="__codelineno-30-15" href="#__codelineno-30-15"></a>Value: 2
+</code></pre></div>
+<h4 id="datenbankverbindung">Datenbankverbindung<a class="headerlink" href="#datenbankverbindung" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>5. MyHost
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>   MySQL-Server-Adresse
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>Value: localhost
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>   # oder IP-Adresse, z.B. REMOVED_HOST
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>6. MyUser
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a>   MySQL-Benutzername
+<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a>Value: worldqual
+<a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a>
+<a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a>7. MyPassword
+<a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a>   MySQL-Passwort
+<a id="__codelineno-31-12" name="__codelineno-31-12" href="#__codelineno-31-12"></a>Value: mein_passwort
+</code></pre></div>
+<h4 id="input-daten">Input-Daten<a class="headerlink" href="#input-daten" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>8. InputType
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>   Woher kommen die Daten?
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>   0: Aus der Datenbank lesen
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>   1: Aus UNF-Dateien lesen
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>Value: 1
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>9. input_dir
+<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>   Pfad zu den UNF-Dateien (nur bei InputType=1)
+<a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>Value: /pfad/zu/meinen/daten
+</code></pre></div>
+<h3 id="kompletter-workflow-beispiel">Kompletter Workflow: Beispiel<a class="headerlink" href="#kompletter-workflow-beispiel" title="Permanent link">&para;</a></h3>
+<p>Hier ein <strong>vollständiges Beispiel</strong> für eine Simulation:</p>
+<h4 id="beispiel-simulation-für-afrika-jahr-2010-parameter-fc-fäkalcoliforme">Beispiel: Simulation für Afrika, Jahr 2010, Parameter FC (Fäkalcoliforme)<a class="headerlink" href="#beispiel-simulation-für-afrika-jahr-2010-parameter-fc-fäkalcoliforme" title="Permanent link">&para;</a></h4>
+<p><strong>Vorbereitung:</strong>
+1. Datenbank prüfen: Projekt 2 (WWQA), Szenario 91 existiert
+2. Input-Daten vorhanden: WaterGAP3-Daten für Afrika
+3. Module kompiliert</p>
+<p><strong>Schritt 1: Einträge berechnen</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="nb">cd</span><span class="w"> </span>fill_worldqual_load
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="c1"># OPTIONS.DAT anpassen:</span>
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a><span class="c1"># project_id = 2</span>
+<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a><span class="c1"># IDScen = 91</span>
+<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a><span class="c1"># IDReg = 2 (Afrika)</span>
+<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a><span class="c1"># Parameter-ID für FC ist 2 (wird in Datenbank gespeichert)</span>
+<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>
+<a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a>./fill_worldqual_load<span class="w"> </span><span class="m">2010</span><span class="w"> </span><span class="m">2010</span>
+</code></pre></div>
+<p><strong>Ausgabe:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>Program fill_worldqual_load started at: 2026-02-02 10:00:00
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>project_id = 2 (WWQA)
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>Database: wwqa_wq_load_af connection ok...
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>Berechne Einträge für Parameter 2 (FC)...
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>Jahr 2010...
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>Fertig!
+</code></pre></div></p>
+<p><strong>Schritt 2: Wassertemperatur (optional, aber empfohlen)</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="nb">cd</span><span class="w"> </span>../water_temperature
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="c1"># OPTIONS.DAT anpassen:</span>
+<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a><span class="c1"># IDTemp = 100 (aus Datenbank)</span>
+<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>
+<a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>./water_temperature<span class="w"> </span><span class="m">2010</span><span class="w"> </span><span class="m">2010</span>
+</code></pre></div>
+<p><strong>Schritt 3: Hauptsimulation</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="nb">cd</span><span class="w"> </span>../worldqual
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="c1"># OPTIONS.DAT anpassen:</span>
+<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a><span class="c1"># IDrun muss aus Datenbank geholt werden:</span>
+<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a><span class="c1"># mysql&gt; SELECT IDrun FROM wq_general._runlist WHERE parameter_id=2 AND IDScen=91;</span>
+<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a><span class="c1"># Ergebnis z.B.: 403100091</span>
+<a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>
+<a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>./worldqual<span class="w"> </span><span class="m">403100091</span><span class="w"> </span><span class="m">2010</span><span class="w"> </span><span class="m">2010</span>
+</code></pre></div>
+<p><strong>Ausgabe:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>Program worldqual started at: 2026-02-02 10:30:00
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>project_id = 2 (WWQA)
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>IDrun = 403100091
+<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a>Parameter: FC (Fäkalcoliforme)
+<a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>Region: Afrika
+<a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a>Database: wwqa_worldqual_af connection ok...
+<a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a>Lese Einträge...
+<a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a>Lese hydrologische Daten...
+<a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a>Simuliere Jahr 2010...
+<a id="__codelineno-37-10" name="__codelineno-37-10" href="#__codelineno-37-10"></a>  Monat 1... 2... 3... ... 12
+<a id="__codelineno-37-11" name="__codelineno-37-11" href="#__codelineno-37-11"></a>Fertig!
+<a id="__codelineno-37-12" name="__codelineno-37-12" href="#__codelineno-37-12"></a>Program worldqual ended at: 2026-02-02 14:30:00
+</code></pre></div></p>
+<p><strong>Schritt 4: Statistik</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="nb">cd</span><span class="w"> </span>../wq_stat_stations
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="c1"># STAT.DAT anpassen falls nötig</span>
+<a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a>
+<a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a>./wq_stat_stations<span class="w"> </span><span class="m">403100091</span><span class="w"> </span><span class="m">2010</span><span class="w"> </span><span class="m">2010</span>
+</code></pre></div>
+<p><strong>Ergebnis:</strong> Textdateien mit statistischen Vergleichen</p>
+<p><strong>Schritt 5: Visualisierung</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="c1"># In R</span>
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="nf">setwd</span><span class="p">(</span><span class="s">&quot;R-scripte&quot;</span><span class="p">)</span>
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>
+<a id="__codelineno-39-4" name="__codelineno-39-4" href="#__codelineno-39-4"></a><span class="c1"># start.R öffnen und anpassen:</span>
+<a id="__codelineno-39-5" name="__codelineno-39-5" href="#__codelineno-39-5"></a><span class="n">input.path</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;/pfad/zu/statistik/dateien&quot;</span>
+<a id="__codelineno-39-6" name="__codelineno-39-6" href="#__codelineno-39-6"></a><span class="n">input.filename</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w">  </span><span class="c1"># leer = alle Dateien</span>
+<a id="__codelineno-39-7" name="__codelineno-39-7" href="#__codelineno-39-7"></a><span class="n">unit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;cfu/100ml&quot;</span><span class="w">  </span><span class="c1"># Einheit für FC</span>
+<a id="__codelineno-39-8" name="__codelineno-39-8" href="#__codelineno-39-8"></a><span class="n">log_scale</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;y&quot;</span><span class="w">     </span><span class="c1"># logarithmische y-Achse</span>
+<a id="__codelineno-39-9" name="__codelineno-39-9" href="#__codelineno-39-9"></a>
+<a id="__codelineno-39-10" name="__codelineno-39-10" href="#__codelineno-39-10"></a><span class="nf">source</span><span class="p">(</span><span class="s">&quot;start.R&quot;</span><span class="p">)</span>
+<a id="__codelineno-39-11" name="__codelineno-39-11" href="#__codelineno-39-11"></a><span class="nf">source</span><span class="p">(</span><span class="s">&quot;station.R&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1"># Erstellt Diagramme</span>
+</code></pre></div>
+<hr />
+<h2 id="module-im-detail">Module im Detail<a class="headerlink" href="#module-im-detail" title="Permanent link">&para;</a></h2>
+<h3 id="kern-module-müssen-sie-verstehen">Kern-Module (müssen Sie verstehen)<a class="headerlink" href="#kern-module-müssen-sie-verstehen" title="Permanent link">&para;</a></h3>
+<h4 id="1-fill_worldqual_load">1. fill_worldqual_load<a class="headerlink" href="#1-fill_worldqual_load" title="Permanent link">&para;</a></h4>
+<p><strong>Was macht es?</strong> Berechnet, wie viele Schadstoffe in die Flüsse gelangen.</p>
+<p><strong>Wann brauche ich es?</strong> <strong>IMMER</strong> vor der Hauptsimulation!</p>
+<p><strong>Wie funktioniert es?</strong>
+- Liest Daten über:
+  - Bevölkerungsdichte → Abwassermengen
+  - Abwasserbehandlung → Wie viel wird gereinigt?
+  - Landnutzung → Dünger, Erosion
+  - Geologie → Natürliche Quellen
+- Berechnet für jede Grid-Zelle und jeden Monat die Einträge
+- Speichert in Datenbank: <code>wwqa_wq_load_[region].calc_cell_month_load_*</code></p>
+<p><strong>Beispiel:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>./fill_worldqual_load<span class="w"> </span><span class="m">1990</span><span class="w"> </span><span class="m">2010</span>
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="c1"># Berechnet Einträge für Jahre 1990-2010</span>
+</code></pre></div></p>
+<h4 id="2-worldqual-hauptsimulation">2. worldqual (Hauptsimulation)<a class="headerlink" href="#2-worldqual-hauptsimulation" title="Permanent link">&para;</a></h4>
+<p><strong>Was macht es?</strong> Simuliert die Wasserqualität im Fluss.</p>
+<p><strong>Wann brauche ich es?</strong> Nach <code>fill_worldqual_load</code>.</p>
+<p><strong>Wie funktioniert es?</strong>
+- Liest Einträge aus Schritt 1
+- Liest hydrologische Daten (Abfluss, Runoff)
+- Simuliert:
+  1. <strong>Transport</strong>: Schadstoffe werden flussabwärts transportiert
+  2. <strong>Verdünnung</strong>: Durch Zuflüsse wird Wasser verdünnt
+  3. <strong>Abbau</strong>: Bakterien sterben ab, Nährstoffe werden abgebaut
+  4. <strong>Temperatur</strong>: Beeinflusst Abbauprozesse
+- Ergebnis: Konzentrationen für jede Zelle, jeden Monat</p>
+<p><strong>Beispiel:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>./worldqual<span class="w"> </span><span class="m">403100091</span><span class="w"> </span><span class="m">1990</span><span class="w"> </span><span class="m">2010</span>
+<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a><span class="c1"># Simuliert Jahre 1990-2010 für Run 403100091</span>
+</code></pre></div></p>
+<h4 id="3-wq_stat_stations">3. wq_stat_stations<a class="headerlink" href="#3-wq_stat_stations" title="Permanent link">&para;</a></h4>
+<p><strong>Was macht es?</strong> Vergleicht Simulation mit Messungen.</p>
+<p><strong>Wann brauche ich es?</strong> Nach der Simulation, zur Validierung.</p>
+<p><strong>Wie funktioniert es?</strong>
+- Findet Messstationen in der Datenbank
+- Liest gemessene Werte
+- Liest simulierte Werte
+- Berechnet: R², RMSE, Bias, etc.
+- Erstellt Vergleichsdateien für Visualisierung</p>
+<p><strong>Beispiel:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>./wq_stat_stations<span class="w"> </span><span class="m">403100091</span><span class="w"> </span><span class="m">1990</span><span class="w"> </span><span class="m">2010</span>
+<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="c1"># Vergleicht für Jahre 1990-2010</span>
+</code></pre></div></p>
+<h3 id="unterstützungs-module">Unterstützungs-Module<a class="headerlink" href="#unterstützungs-module" title="Permanent link">&para;</a></h3>
+<h4 id="water_temperature">water_temperature<a class="headerlink" href="#water_temperature" title="Permanent link">&para;</a></h4>
+<p><strong>Was macht es?</strong> Berechnet Wassertemperatur aus Lufttemperatur.</p>
+<p><strong>Wann brauche ich es?</strong> Wenn Temperatur für Abbauprozesse wichtig ist (z.B. bei Bakterien).</p>
+<h4 id="create_scenarios">create_scenarios<a class="headerlink" href="#create_scenarios" title="Permanent link">&para;</a></h4>
+<p><strong>Was macht es?</strong> Erstellt neue Szenarien basierend auf bestehenden.</p>
+<p><strong>Wann brauche ich es?</strong> Wenn Sie viele ähnliche Szenarien erstellen wollen.</p>
+<h4 id="mapriverquality">MapRiverQuality<a class="headerlink" href="#mapriverquality" title="Permanent link">&para;</a></h4>
+<p><strong>Was macht es?</strong> Erstellt Karten mit Wasserqualitätsklassen.</p>
+<p><strong>Wann brauche ich es?</strong> Für Visualisierung und Präsentationen.</p>
+<h3 id="r-skripte">R-Skripte<a class="headerlink" href="#r-skripte" title="Permanent link">&para;</a></h3>
+<p>Die R-Skripte erstellen <strong>Diagramme und Grafiken</strong> aus den Ergebnissen.</p>
+<p><strong>Wichtigste Skripte:</strong>
+- <code>start.R</code>: Konfiguration (MUSS angepasst werden!)
+- <code>station.R</code>: Diagramme für einzelne Stationen
+- <code>stations_scatterplot.R</code>: Streudiagramme (Simulation vs. Messung)
+- <code>RiverSection.R</code>: Diagramme für Flussabschnitte</p>
+<p><strong>Wie nutze ich sie?</strong>
+1. <code>start.R</code> öffnen
+2. Variablen anpassen (siehe Kommentare)
+3. Skript ausführen: <code>source("start.R")</code>
+4. Dann andere Skripte ausführen</p>
+<hr />
+<h2 id="häufige-fragen-faq">Häufige Fragen (FAQ)<a class="headerlink" href="#häufige-fragen-faq" title="Permanent link">&para;</a></h2>
+<h3 id="wie-finde-ich-die-richtige-idrun">Wie finde ich die richtige IDrun?<a class="headerlink" href="#wie-finde-ich-die-richtige-idrun" title="Permanent link">&para;</a></h3>
+<p>Die IDrun ist eine eindeutige Nummer für eine Simulation. Sie finden sie in der Datenbank:</p>
+<p><strong>Schnellreferenz:</strong> Siehe <a href="user/schnellreferenz/#idrun-finden">QUICK_REFERENCE.md - IDrun finden</a></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="n">IDrun</span><span class="p">,</span><span class="w"> </span><span class="n">runName</span><span class="p">,</span><span class="w"> </span><span class="n">parameter_id</span><span class="p">,</span><span class="w"> </span><span class="n">IDScen</span><span class="w"> </span>
+<a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a><span class="k">FROM</span><span class="w"> </span><span class="n">wq_general</span><span class="p">.</span><span class="n">_runlist</span><span class="w"> </span>
+<a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">parameter_id</span><span class="o">=</span><span class="mi">2</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">IDScen</span><span class="o">=</span><span class="mi">91</span><span class="p">;</span>
+</code></pre></div>
+<p>Die IDrun setzt sich zusammen aus: <code>parameter_id</code> + <code>IDScen</code> + weitere Nummern.</p>
+<h3 id="wie-lange-dauert-eine-simulation">Wie lange dauert eine Simulation?<a class="headerlink" href="#wie-lange-dauert-eine-simulation" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Einträge berechnen</strong>: Minuten bis Stunden (abhängig von Region)</li>
+<li><strong>Hauptsimulation</strong>: Stunden bis Tage (abhängig von Region und Zeitraum)</li>
+<li><strong>Statistik</strong>: Minuten bis Stunden</li>
+</ul>
+<p><strong>Tipp:</strong> Testen Sie immer zuerst mit einem Jahr und kleiner Region!</p>
+<h3 id="was-mache-ich-bei-fehlern">Was mache ich bei Fehlern?<a class="headerlink" href="#was-mache-ich-bei-fehlern" title="Permanent link">&para;</a></h3>
+<p><strong>Detaillierte Fehlerbehebung:</strong> Siehe <a href="user/anleitung/#fehlerbehebung">DOCUMENTATION.md - Fehlerbehebung</a></p>
+<ol>
+<li><strong>Datenbankverbindung schlägt fehl</strong></li>
+<li>MySQL läuft? <code>systemctl status mysql</code></li>
+<li>Passwort richtig? In OPTIONS.DAT prüfen</li>
+<li>
+<p>Berechtigungen? MySQL-User hat Zugriff?</p>
+</li>
+<li>
+<p><strong>Datei nicht gefunden</strong></p>
+</li>
+<li>Pfad richtig? <code>input_dir</code> in OPTIONS.DAT prüfen</li>
+<li>Dateien existieren? <code>ls /pfad/zu/dateien</code></li>
+<li>
+<p>Rechte? <code>chmod</code> prüfen</p>
+</li>
+<li>
+<p><strong>Falsche Parameter-ID</strong></p>
+</li>
+<li>Parameter existiert? <code>SELECT * FROM wq_general._parameter;</code></li>
+<li>
+<p>Parameter für Projekt konfiguriert?</p>
+</li>
+<li>
+<p><strong>Speicherprobleme</strong></p>
+</li>
+<li>Zu große Region? Kleinere Region testen</li>
+<li>Zu langer Zeitraum? Ein Jahr testen</li>
+<li>RAM prüfen: <code>free -h</code></li>
+</ol>
+<h3 id="kann-ich-mehrere-simulationen-parallel-laufen-lassen">Kann ich mehrere Simulationen parallel laufen lassen?<a class="headerlink" href="#kann-ich-mehrere-simulationen-parallel-laufen-lassen" title="Permanent link">&para;</a></h3>
+<p><strong>Nein!</strong> Die Programme schreiben in die gleiche Datenbank. Parallele Ausführung kann zu Konflikten führen.</p>
+<h3 id="wie-exportiere-ich-ergebnisse">Wie exportiere ich Ergebnisse?<a class="headerlink" href="#wie-exportiere-ich-ergebnisse" title="Permanent link">&para;</a></h3>
+<p>Ergebnisse sind in der Datenbank. Sie können sie exportieren:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">wwqa_worldqual_af</span><span class="p">.</span><span class="n">concentration</span><span class="w"> </span>
+<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">IDrun</span><span class="o">=</span><span class="mi">403100091</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">year</span><span class="o">=</span><span class="mi">2010</span><span class="p">;</span>
+</code></pre></div>
+<p>Oder als CSV:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">wwqa_worldqual_af</span><span class="p">.</span><span class="n">concentration</span><span class="w"> </span>
+<a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="k">WHERE</span><span class="w"> </span><span class="n">IDrun</span><span class="o">=</span><span class="mi">403100091</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="k">year</span><span class="o">=</span><span class="mi">2010</span>
+<a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a><span class="k">INTO</span><span class="w"> </span><span class="n">OUTFILE</span><span class="w"> </span><span class="s1">&#39;/tmp/ergebnisse.csv&#39;</span><span class="p">;</span>
+</code></pre></div></p>
+<hr />
+<h2 id="systemanforderungen">Systemanforderungen<a class="headerlink" href="#systemanforderungen" title="Permanent link">&para;</a></h2>
+<h3 id="software">Software<a class="headerlink" href="#software" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>C++ Compiler</strong> (g++ mit C++11)</li>
+<li><strong>MySQL</strong> Datenbankserver (5.5+)</li>
+<li><strong>MySQL++</strong> Bibliothek</li>
+<li><strong>R</strong> (3.0+) mit ggplot2, gridExtra</li>
+<li><strong>Make</strong></li>
+</ul>
+<h3 id="hardware">Hardware<a class="headerlink" href="#hardware" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>RAM</strong>: Mindestens 8 GB (16+ GB empfohlen für große Regionen)</li>
+<li><strong>Festplatte</strong>: Abhängig von Datenmenge (mehrere GB)</li>
+<li><strong>CPU</strong>: Multi-Core empfohlen (Programm nutzt aber nur einen Kern)</li>
+</ul>
+<h3 id="daten">Daten<a class="headerlink" href="#daten" title="Permanent link">&para;</a></h3>
+<ul>
+<li>WaterGAP2/3 hydrologische Daten</li>
+<li>Bevölkerungsdaten</li>
+<li>Landnutzungsdaten</li>
+<li>Weitere je nach Parameter</li>
+</ul>
+<hr />
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<p><strong>Wichtig:</strong> Die detaillierte Schritt-für-Schritt Installation finden Sie oben im Abschnitt <a href="#voraussetzungen---schritt-für-schritt">Voraussetzungen - Schritt für Schritt</a>.</p>
+<h3 id="kurzübersicht">Kurzübersicht<a class="headerlink" href="#kurzübersicht" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>MySQL installieren und konfigurieren</strong> (siehe oben, Abschnitt 1)</li>
+<li><strong>WaterGAP-Daten beschaffen</strong> (siehe oben, Abschnitt 2)</li>
+<li><strong>Module kompilieren</strong> (siehe oben, Abschnitt 3)</li>
+</ol>
+<h3 id="schnellreferenz-für-erfahrene">Schnellreferenz für Erfahrene<a class="headerlink" href="#schnellreferenz-für-erfahrene" title="Permanent link">&para;</a></h3>
+<p><strong>Abhängigkeiten installieren:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="c1"># Ubuntu/Debian</span>
+<a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+<a id="__codelineno-46-3" name="__codelineno-46-3" href="#__codelineno-46-3"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>build-essential<span class="w"> </span>g++<span class="w"> </span>mysql-server<span class="w"> </span>libmysql++-dev<span class="w"> </span>libmysqlclient-dev<span class="w"> </span>r-base
+<a id="__codelineno-46-4" name="__codelineno-46-4" href="#__codelineno-46-4"></a>
+<a id="__codelineno-46-5" name="__codelineno-46-5" href="#__codelineno-46-5"></a><span class="c1"># R-Pakete</span>
+<a id="__codelineno-46-6" name="__codelineno-46-6" href="#__codelineno-46-6"></a>R<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;install.packages(c(&#39;ggplot2&#39;, &#39;gridExtra&#39;))&quot;</span>
+</code></pre></div></p>
+<p><strong>Module kompilieren:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="nb">cd</span><span class="w"> </span>general_function<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>clean<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>all
+<a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a><span class="nb">cd</span><span class="w"> </span>../options<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>clean<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>all
+<a id="__codelineno-47-3" name="__codelineno-47-3" href="#__codelineno-47-3"></a><span class="nb">cd</span><span class="w"> </span>../water_temperature<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>clean<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>all
+<a id="__codelineno-47-4" name="__codelineno-47-4" href="#__codelineno-47-4"></a><span class="nb">cd</span><span class="w"> </span>../fill_worldqual_load<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>clean<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>all
+<a id="__codelineno-47-5" name="__codelineno-47-5" href="#__codelineno-47-5"></a><span class="nb">cd</span><span class="w"> </span>../worldqual<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>clean<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>all
+</code></pre></div></p>
+<p><strong>Wichtig:</strong> Pfade in Makefiles anpassen, falls MySQL++ nicht im Standardpfad ist! Siehe <a href="#voraussetzungen---schritt-für-schritt">Voraussetzungen - Schritt für Schritt</a> für Details.</p>
+<hr />
+<h2 id="weitere-hilfe">Weitere Hilfe<a class="headerlink" href="#weitere-hilfe" title="Permanent link">&para;</a></h2>
+<p><strong>Für Nutzer:</strong>
+- <strong><a href="user/anleitung/">Detaillierte Dokumentation</a></strong> - Schritt-für-Schritt Anleitungen
+- <strong><a href="user/schnellreferenz/">Schnellreferenz</a></strong> - Wichtige Befehle und Nummern
+- <strong><a href="user/projektstruktur/">Projektstruktur</a></strong> - Verzeichnisse und Dateien
+- <strong><a href="./">Dokumentations-Index</a></strong> - Übersicht aller Dokumentationen
+- <strong><a href="user/anleitung/#fehlerbehebung">Fehlerbehebung</a></strong> - Probleme lösen</p>
+<p><strong>Für Entwickler:</strong>
+- <strong><a href="./">Technische Dokumentation</a></strong> - Entwickler-Dokumentation
+- <strong><a href="technical/ARCHITECTURE/">Architektur</a></strong> - Code-Struktur und Design
+- <strong><a href="technical/DEVELOPMENT/">Entwicklungsumgebung</a></strong> - Build-System und Entwicklung
+- <strong><a href="technical/CODING_STANDARDS/">Code-Standards</a></strong> - Coding-Konventionen
+- <strong><a href="technical/CONTRIBUTING/">Contributing</a></strong> - Wie man beiträgt</p>
+<hr />
+<p><strong>Version:</strong> 1.0<br />
+<strong>Letzte Aktualisierung:</strong> Februar 2026</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Zurück zum Seitenanfang
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Leon-Muehlenbruch/WorldQual" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "In Zwischenablage kopiert", "clipboard.copy": "In Zwischenablage kopieren", "search.result.more.one": "1 weiteres Suchergebnis auf dieser Seite", "search.result.more.other": "# weitere Suchergebnisse auf dieser Seite", "search.result.none": "Keine Suchergebnisse", "search.result.one": "1 Suchergebnis", "search.result.other": "# Suchergebnisse", "search.result.placeholder": "Suchbegriff eingeben", "search.result.term.missing": "Es fehlt", "select.version": "Version ausw\u00e4hlen"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
