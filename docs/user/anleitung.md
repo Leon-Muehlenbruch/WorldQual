@@ -734,7 +734,7 @@ Die Konstanten (C0, C1, C2) werden in der Datenbank gespeichert (Tabelle `_water
 
 **Schnellreferenz:** Siehe auch [QUICK_REFERENCE.md - OPTIONS.DAT](schnellreferenz.md#optionsdat---wichtige-einstellungen)
 
-Jedes Modul hat eine `OPTIONS.DAT` Datei. Diese Datei enthält **alle Einstellungen** für die Simulation.
+Jedes Modul hat eine `OPTIONS.DAT` Datei. Diese Datei enthält **alle Einstellungen** für die Simulation. Die Datei wird sequentiell gelesen – jede `Value:`-Zeile wird der nächsten Variablen zugeordnet. Jedes Modul hat eigene Optionen, gefolgt von den allgemeinen Optionen (IDVersion, IDReg, DB-Credentials, InputType).
 
 ### Format der Datei
 
@@ -838,51 +838,319 @@ input_dir = /home/user/watergap_data/africa
 
 **Wichtig:** Der Pfad muss existieren und lesbar sein!
 
-### Beispiel: Komplette OPTIONS.DAT
+### wq_load OPTIONS.DAT – Alle Optionen im Detail
+
+Das `wq_load`-Modul berechnet Schadstoffeinträge in Flüsse. Es hat die umfangreichste OPTIONS.DAT aller Module, da es sowohl eigene Optionen (1–17) als auch die allgemeinen Optionen der Elternklasse (18–24) enthält.
+
+#### Aufbau: Eigene Optionen (1–17) + Eltern-Optionen (18–24)
+
+Der Parser (`options_wq_load.cpp`) liest zuerst die wq_load-spezifischen Optionen 1–17, dann übergibt er an die Basisklasse `optionsClass`, die ab Option 18 die allgemeinen Parameter (IDVersion, IDReg, DB-Credentials, InputType) liest.
+
+!!! warning "Reihenfolge ist kritisch"
+    Die Optionen werden **streng sequentiell** gelesen – jede `Value:`-Zeile wird der nächsten Variablen zugeordnet. Eine fehlende oder zusätzliche Option verschiebt **alle nachfolgenden** Zuordnungen.
+
+#### Option 1: parameter_id
+
+Bestimmt welchen Schadstoff-Parameter das Modul berechnet. Der Wert wird über die Datenbanktabelle `wq_general.wq_parameter` nachgeschlagen und intern in die Variable `toCalc` umgewandelt, die als zentrale Verzweigungsvariable den gesamten Berechnungsablauf steuert.
+
+| parameter_id | Parameter | toCalc | Beschreibung |
+|:---|:---|:---:|:---|
+| 80 / 110 | BOD | 0 | Biologischer Sauerstoffbedarf |
+| 210 / 260 | TDS | 1 | Salz (Total Dissolved Solids) |
+| 310 | FC | 2 | Fäkale Coliforme |
+| 410 | TN | 3 | Gesamtstickstoff |
+| 510 | TP | 4 | Gesamtphosphor |
+| 390 / 610 | Pestizide | 5 | Pestizide |
+
+```
+1. parameter_id aus der Tabelle wq_general.wq_parameter.
+Value: 260
+```
+
+!!! info "parameter_id vs. toCalc"
+    Im Code werden **beide** Variablen genutzt: `parameter_id` in SQL-Abfragen (z.B. `WHERE parameter_id=260`), `toCalc` für die Programmlogik (z.B. `if(toCalc==1)` für TDS-spezifische Berechnungen). Die `parameter_id` kann mehrere Werte pro Parametertyp haben (z.B. 210 und 260 für TDS), während `toCalc` immer eindeutig ist.
+
+#### Option 2: following_year
+
+Nur relevant für **Pestizide** (`toCalc==5`). Steuert ob die Dezember-Belastung des Vorjahres als Anfangsbedingung geladen wird.
+
+| Wert | Bedeutung |
+|:---:|:---|
+| 0 | Erstes Berechnungsjahr (Standard) |
+| 1 | Folgejahr – lädt Vorjahres-Belastung |
+
+```
+2. following_year only for pesticide;
+0: first year to calculate; (default)
+1: following year. there are a loading from december last year
+Value: 0
+```
+
+#### Option 3: project_id
+
+Projekt-Nummer aus `wq_general._project`. Bestimmt welche **Datenbank** verwendet wird.
+
+```sql
+SELECT project_id, Project_Name, database_name FROM wq_general._project;
+```
+
+Im Code wird daraus der Datenbankname abgeleitet: `project_id` → DB-Lookup → `MyDatabase` → Prefix in allen SQL-Queries (z.B. `wwqa_wq_load_au.cell_input`).
+
+```
+3. project_id, Tabelle wq_general._project
+Value: 10
+```
+
+#### Option 4: IDScen
+
+Szenario-ID aus `wq_general._szenario`. Der **am häufigsten verwendete Parameter** im gesamten Modul. Wird in ~20 SQL-Queries als Filter eingesetzt und an alle Hilfsklassen (COUNTRY_CLASS, LS_CLASS) weitergegeben.
+
+```sql
+SELECT IDScen, ScenName FROM wq_general._szenario WHERE project_id=10;
+```
+
+```
+4. IDScen, wq_general._szenario
+Value: 24
+```
+
+#### Option 5: manure_timing
+
+Steuert die zeitliche Verteilung der Dung-Ausbringung auf Felder.
+
+| Wert | Bedeutung | Effekt im Code |
+|:---:|:---|:---|
+| 0 | Ganzjährige Ausbringung | Dung wird über Regentage des ganzen Jahres verteilt |
+| 1 | März bis Oktober | Nur Monate 2–9 bekommen Belastung, Rest = 0 |
+
+```
+5. manure timing
+0: all year round application
+1: application between March and October
+Value: 0
+```
+
+#### Option 6: climate (Klimainput-Auflösung)
+
+Bestimmt das Format der Klimadaten und welches Grid-Mapping verwendet wird.
+
+| Wert | Bedeutung | Grid-Mapping |
+|:---:|:---|:---|
+| 0 | 0.5° Auflösung | `G_WG3_WG2WITH5MIN.UNF4` |
+| 1 | 5 Minuten Auflösung | Kein Mapping (direkte Einlesung) |
+| 2 | 0.5° CRU/WATCH | `G_WG3_WATCH.UNF4` (anderes Mapping!) |
+
+```
+6. Klimainput
+0: in 0.5°
+1: in 5 min
+2: in 0.5° CRU/WATCH
+Value: 2
+```
+
+!!! info "Unterschied climate=0 vs. climate=2"
+    Beide nutzen 0.5°-Daten, aber mit **unterschiedlichen Grid-Mappings**: `climate=0` nutzt das Standard-WG2-zu-WG3-Mapping, `climate=2` nutzt ein spezielles WATCH-Mapping mit einer anderen Grid-Größe (67.420 Zellen).
+
+#### Option 7: gridded_pop_from_file
+
+Bestimmt die Quelle der räumlich verteilten Bevölkerungsdaten.
+
+| Wert | Bedeutung | Datenquelle |
+|:---:|:---|:---|
+| 0 | Aus Datenbank | Tabelle `wq_load_[continent].cell_input` |
+| 1 | Aus UNF-Dateien | `GURBPOP[year].UNF0` und `GRURPOP[year].UNF0` |
+
+```
+7. gridded_pop_from_file
+0: nein, aus der Tabelle wq_load_[continent].cell_input (default)
+1: ja, aus UNF-Datei (z.B. griddi-Output)
+Value: 1
+```
+
+#### Option 8: gridded_pop_path
+
+Pfad zu den Bevölkerungsdateien. Nur relevant wenn `gridded_pop_from_file=1`.
+
+Erwartet folgende Dateien im Verzeichnis:
+
+- `GURBPOP[year].UNF0` – Urbane Bevölkerung
+- `GRURPOP[year].UNF0` – Rurale Bevölkerung
+
+```
+8.gridded_pop_path (nur für gridded_pop_from_file==1)
+Value: /pfad/zu/griddi/OUTPUT/SSP2/au
+```
+
+#### Optionen 9–16: Pfade zu Input-Dateien
+
+Alle Pfade werden direkt per `sprintf()` mit Dateinamen und Jahreszahl kombiniert. Nicht alle Pfade werden für jeden Parameter benötigt.
+
+| Option | Variable | Benötigte Dateien | Verwendet für |
+|:---:|:---|:---|:---|
+| 9 | `path_watergap_output` | `G_URBAN_RUNOFF_[year].12.UNF0`, `G_SURFACE_RUNOFF_[year].12.UNF0`, `G_GW_RUNOFF_[year].12.UNF0` | Alle Parameter |
+| 10 | `path_livestock_output` | `G_LIVESTOCK_NR_[year].12.UNF0` | Alle (Viehbestand) |
+| 11 | `path_corr_factor` | `G_CORR_FACT_RTF_[year].12.UNF0` | Alle (Korrekturfaktoren) |
+| 12 | `path_climate` | `GTEMP_[year].12.UNF2`, `GPREC_[year].12.UNF2` | Alle (Temperatur), Pestizide (Niederschlag) |
+| 13 | `path_gnrd` | `GNRD_[year].12.UNF1` | Alle (Regentage) |
+| 14 | `path_tp_input` | `G_SOILEROS.UNF0`, `G_PWEATHERING.UNF0`, `GLCC[year].UNF2` | Nur TN/TP |
+| 15 | `path_tp_input2` | `CROPLAND_CORR_KM2_[year].UNF0`, `P_RATE_TON_KM2_[year].UNF0` | Nur TN/TP |
+| 16 | `path_tp_input3` | `G_PATMDEPOS_[year].UNF0` | Nur TP |
+
+```
+9.path_watergap_output
+Value: /pfad/zu/watergap/hydro/OUTPUT/SSP2/au/GFDL-ESM2M/rcp6p0
+
+10.path_livestock_output
+Value: /pfad/zu/livestock/Livestock_produced/SSP2_IMAGE/au
+
+11.path_corr_factor
+Value: /pfad/zu/corr_factor/OUTPUT/SSP2/au/GFDL-ESM2M/rcp6p0
+
+12.path_climate
+Value: /pfad/zu/climate/ISIMIP2b/UNF_watch/GFDL-ESM2M/rcp6p0
+
+13.path_gnrd
+Value: /pfad/zu/climate/ISIMIP2b/UNF_watch/GFDL-ESM2M/rcp6p0
+
+14.path_tp_input
+Value: /pfad/zu/tp_input/au
+
+15.path_tp_input2
+Value: /pfad/zu/tp_input/au/SSP2
+
+16.path_tp_input3
+Value: /pfad/zu/tp_input/au/SSP2
+```
+
+#### Option 17: IDInTableName
+
+Steuert ob IDScen und parameter_id als Spalten (Standard) oder als Teil des Tabellennamens verwendet werden.
+
+| Wert | Tabellenzugriff |
+|:---:|:---|
+| 0 | `cell_input WHERE IDScen=24` (Standard) |
+| 1 | `cell_input_24` (IDScen im Tabellennamen) |
+
+```
+17. IDScen und parameterID in table name (cell_input, cell_) default: 0
+0: cell_input, cell_input_rtf_irr, wateruse mit der Spalte IDScen
+1: Wert IDScen in dem Namen der Tabellen: cell_input_24, cell_input_rtf_irr_24, wateruse_24
+Value: 0
+```
+
+#### Optionen 18–24: Allgemeine Optionen (Elternklasse)
+
+Ab Option 18 folgen die Optionen der Basisklasse `optionsClass`, die alle Module gemeinsam haben.
+
+| Option | Variable | Werte | Beispiel |
+|:---:|:---|:---|:---|
+| 18 | `IDVersion` | 2 = WaterGAP2, 3 = WaterGAP3 | `3` |
+| 19 | `IDReg` | 1=eu, 2=af, 3=as, 4=au, 5=na, 6=sa | `4` |
+| 20 | `MyHost` | MySQL-Host (IP oder Hostname) | `<YOUR_MYSQL_HOST>` |
+| 21 | `MyUser` | MySQL-Benutzername | `<YOUR_MYSQL_USER>` |
+| 22 | `MyPassword` | MySQL-Passwort | `<YOUR_MYSQL_PASSWORD>` |
+| 23 | `InputType` | 0 = Datenbank, 1 = UNF-Dateien | `1` |
+| 24 | `input_dir` | Pfad zu Land-Area-Daten | `/pfad/zu/UNF_input/au` |
+
+`IDVersion` und `IDReg` werden gemeinsam zu `continent_abb` kombiniert (z.B. IDVersion=3 + IDReg=4 → `"au"`), das dann als Suffix für Datenbanknamen dient: `wq_load_au`.
+
+### Beispiel: Komplette wq_load OPTIONS.DAT (TDS, Australien, SSP2)
 
 ```
 Runtime options worldqual
 
-1. project_id, Tabelle wq_general._project
-  1: CESR
-  2: WWQA
-  3: CESR Sensitivity Analysis
-  4: test
+1. parameter_id aus der Tabelle wq_general.wq_parameter.
+Value: 260
+
+2. following_year only for pesticide;
+0: first year to calculate; (default)
+1: following year. there are a loading from december last year
+Value: 0
+
+3. project_id, Tabelle wq_general._project
+Value: 10
+
+4. IDScen, wq_general._szenario
+Value: 24
+
+5. manure timing
+0: all year round application
+1: application between March and October
+Value: 0
+
+6. Klimainput
+0: in 0.5°
+1: in 5 min
+2: in 0.5° CRU/WATCH
 Value: 2
 
-2. IDScen, wq_general._szenario
-Value: 91
-
-3. IDVersion
-  2: WaterGAP2
-  3: WaterGAP3
-Value: 3
-
-4. IDReg
-  1 WaterGAP3 eu
-  2 WaterGAP3 af
-  3 WaterGAP3 as
-  4 WaterGAP3 au
-  5 WaterGAP3 na
-  6 WaterGAP3 sa
-Value: 2
-
-5. MyHost
-Value: localhost
-
-6. MyUser
-Value: worldqual
-
-7. MyPassword
-Value: mein_passwort
-
-8. InputType
-  0: Daten aus der Datenbank einlesen
-  1: Daten aus UNF-Dateien einlesen
+7. gridded_pop_from_file
+0: nein, aus der Tabelle wq_load_[continent].cell_input (default)
+1: ja, aus UNF-Datei (z.B. griddi-Output)
 Value: 1
 
-9. input_dir
-Value: /home/user/watergap_data/africa
+8.gridded_pop_path (nur für gridded_pop_from_file==1)
+Value: /pfad/zu/griddi/OUTPUT/SSP2/au
+
+9.path_watergap_output
+Value: /pfad/zu/watergap/hydro/OUTPUT/SSP2/au/GFDL-ESM2M/rcp6p0
+
+10.path_livestock_output
+Value: /pfad/zu/livestock/Livestock_produced/SSP2_IMAGE/au
+
+11.path_corr_factor
+Value: /pfad/zu/corr_factor/OUTPUT/SSP2/au/GFDL-ESM2M/rcp6p0
+
+12.path_climate
+Value: /pfad/zu/climate/ISIMIP2b/UNF_watch/GFDL-ESM2M/rcp6p0
+
+13.path_gnrd
+Value: /pfad/zu/climate/ISIMIP2b/UNF_watch/GFDL-ESM2M/rcp6p0
+
+14.path_tp_input
+Value: /pfad/zu/tp_input/au
+
+15.path_tp_input2
+Value: /pfad/zu/tp_input/au/SSP2
+
+16.path_tp_input3
+Value: /pfad/zu/tp_input/au/SSP2
+
+17. IDScen und parameterID in table name (cell_input, cell_) default: 0
+0: cell_input, cell_input_rtf_irr, wateruse mit der Spalte IDScen
+1: Wert IDScen in dem Namen der Tabellen: cell_input_24, cell_input_rtf_irr_24, wateruse_24
+Value: 0
+
+18. IDVersion
+2: WaterGAP2
+3: WaterGAP3
+Value: 3
+
+19. IDReg
+1 WaterGAP3 eu
+2 WaterGAP3 af
+3 WaterGAP3 as
+4 WaterGAP3 au
+5 WaterGAP3 na
+6 WaterGAP3 sa
+Value: 4
+
+20. MyHost
+Value: <YOUR_MYSQL_HOST>
+
+21. MyUser
+Value: <YOUR_MYSQL_USER>
+
+22. MyPassword
+Value: <YOUR_MYSQL_PASSWORD>
+
+23. InputType
+0: Daten aus der Datenbank einlesen
+1: Daten aus UNF-Dateien
+Value: 1
+
+24. Path to Land Area data
+Value: /pfad/zu/UNF_input/au
 ```
 
 ---
