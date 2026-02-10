@@ -21,3 +21,4 @@ Thumbs.db
 *.log
 
 # WICHTIG: docs/ wird NICHT ignoriert für GitHub Pages!
+site/

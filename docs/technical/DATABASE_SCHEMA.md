@@ -6,7 +6,7 @@ Detaillierte Dokumentation der **Datenbankstruktur** für Entwickler.
 
 - [Übersicht](#übersicht)
 - [Hauptdatenbanken](#hauptdatenbanken)
-- [Tabellen-Details](#tabellen-details)
+- [Hauptdatenbanken](#hauptdatenbanken)
 - [Beziehungen](#beziehungen)
 - [Indizes](#indizes)
 - [Wichtige Queries](#wichtige-queries)
